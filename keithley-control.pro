@@ -5,10 +5,11 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Keithley_Control
+TARGET = keithley-control
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,12 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+DESTDIR = bin
+UI_DIR = build/ui
+MOC_DIR = build/moc
+RCC_DIR = build/rcc
+unix:OBJECTS_DIR = build/o/unix
+win32:OBJECTS_DIR = build/o/win32
+macx:OBJECTS_DIR = build/o/mac
+
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        rs232.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        rs232.h
 
 FORMS += \
         mainwindow.ui
