@@ -15,13 +15,8 @@ public:
     explicit Measurement_Device(QWidget *parent = 0);
 
 public slots:
-    void connectRS232(QString portName, quint32 baudRate, QString deviceName);
     void onReceivedMessage(QString message);
     void onConnectionStatusChanged(bool connected);
-
-protected slots:
-    void onConnectButtonClicked();
-    void onSendButtonClicked();
 
 protected:
     void connectRS232();

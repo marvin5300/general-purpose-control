@@ -33,29 +33,30 @@ unix:OBJECTS_DIR = build/o/unix
 win32:OBJECTS_DIR = build/o/win32
 macx:OBJECTS_DIR = build/o/mac
 
-SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-        rs232.cpp \
-    measurement_device.cpp \
-    keithley_2xxx.cpp \
-    keithley_2410.cpp \
-    keithley_2000.cpp
-
-HEADERS += \
-        mainwindow.h \
-        rs232.h \
-    measurement_device.h \
-    keithley_2xxx.h \
-    keithley_2410.h \
-    keithley_2000.h
-
-FORMS += \
-        mainwindow.ui \
-    keithley_2410.ui \
-    keithley_2000.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+HEADERS += \
+    src/keithley_2000.h \
+    src/keithley_2410.h \
+    src/keithley_2xxx.h \
+    src/mainwindow.h \
+    src/measurement_device.h \
+    src/rs232.h
+
+SOURCES += \
+    src/keithley_2000.cpp \
+    src/keithley_2410.cpp \
+    src/keithley_2xxx.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/measurement_device.cpp \
+    src/rs232.cpp
+
+FORMS += \
+    src/keithley_2000.ui \
+    src/keithley_2410.ui \
+    src/mainwindow.ui

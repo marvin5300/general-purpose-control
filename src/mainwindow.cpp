@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <rs232.h>
+#include "rs232.h"
 #include <QThread>
 
 MainWindow::MainWindow(QWidget *parent) :
