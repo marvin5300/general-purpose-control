@@ -5,11 +5,20 @@
 //#include <iomanip>
 #include <QThread>
 
-RS232::RS232(QString _portName, quint32  _baudRate, QString _deviceName, QObject *parent) : QObject(parent)
+RS232::RS232(QString _portName, quint32  _baudRate,
+             char _terminator,
+             QSerialPort::FlowControl _flowControl,
+             QSerialPort::StopBits _stopBits,
+             QSerialPort::DataBits _dataBits,
+             QSerialPort::Parity _parity, QObject *parent) :
+    QObject(parent)
 {
     portName = _portName;
     baudRate = _baudRate;
-    deviceName = _deviceName;
+    terminator = _terminator;
+    flowControl = _flowControl;
+    dataBits = _dataBits;
+    parity = _parity;
 }
 
 void RS232::makeConnection() {
@@ -20,10 +29,10 @@ void RS232::makeConnection() {
     }
     serialPort = new QSerialPort(portName);
     serialPort->setBaudRate(baudRate);
-    serialPort->setStopBits(QSerialPort::OneStop);
-    serialPort->setFlowControl(QSerialPort::NoFlowControl);
-    serialPort->setParity(QSerialPort::NoParity);
-    serialPort->setDataBits(QSerialPort::Data8);
+    serialPort->setStopBits(stopBits);
+    serialPort->setFlowControl(flowControl);
+    serialPort->setDataBits(dataBits);
+    serialPort->setParity(parity);
     if (!serialPort->open(QIODevice::ReadWrite)) {
         qDebug() << (QObject::tr("Failed to open port %1, error: %2\ntrying again in %3 seconds\n")
             .arg(portName)
@@ -32,7 +41,7 @@ void RS232::makeConnection() {
         serialPort.clear();
         QThread::usleep(timeout);
         //emit serialRestart(portName, baudRate);
-        emit connectionStatus(false, portName);
+        emit connectionStatus(false);
         this->deleteLater();
         return;
     }
@@ -75,15 +84,7 @@ bool RS232::scanMessage(std::string& buffer){
 }
 
 void RS232::processMessage(std::string& message){
-    if (!correctDeviceConnected){
-        QString someString = QString::fromStdString(message);
-        if (someString.contains(deviceName)){
-            correctDeviceConnected = true;
-            emit connectionStatus(true, portName);
-        }else{
-            closeConnection(portName);
-        }
-    }
+
 // here comes all the fun stuff to do with parsing messages from the device
 }
 
@@ -96,12 +97,10 @@ void RS232::sendScpiCommand(QString command){
     serialPort->write((command.toStdString()+""+terminator).c_str(), command.length()+1);
 }
 
-void RS232::closeConnection(QString _portName){
-    if (_portName == portName){
-        closeSerialPort();
-        emit connectionStatus(false, portName);
-        this->deleteLater();
-    }
+void RS232::closeConnection(){
+    closeSerialPort();
+    emit connectionStatus(false);
+    this->deleteLater();
 }
 
 void RS232::closeSerialPort(){

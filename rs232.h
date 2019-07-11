@@ -22,18 +22,23 @@ class RS232 : public QObject
 {
     Q_OBJECT
 public:
-    explicit RS232(QString _portName, quint32 _baudRate, QString _deviceName, QObject *parent = nullptr);
+    explicit RS232(QString _portName, quint32 _baudRate = 9600,
+                   char _terminator = 0x0a,
+                   QSerialPort::FlowControl _flowControl = QSerialPort::NoFlowControl,
+                   QSerialPort::StopBits _stopBits = QSerialPort::OneStop,
+                   QSerialPort::DataBits _dataBits = QSerialPort::Data8,
+                   QSerialPort::Parity _parity = QSerialPort::NoParity,
+                   QObject *parent = nullptr);
 
 signals:
-    void serialRestart(QString _portName, quint32 _baudRate);
     void receivedMessage(QString message);
-    void connectionStatus(bool connected, QString _portName);
+    void connectionStatus(bool connected);
 
 public slots:
     void onReadyRead();
     void makeConnection();
     void sendScpiCommand(QString command);
-    void closeConnection(QString _portName);
+    void closeConnection();
 
 private slots:
     bool scanMessage(std::string& buffer);
@@ -42,12 +47,14 @@ private:
     QPointer<QSerialPort> serialPort;
     void closeSerialPort();
     QString portName;
-    QString deviceName;
     std::string buffer = "";
-    quint32 baudRate = 9600;
+    quint32 baudRate; // usually 9600
+    char terminator; // usually <LF> "linefeed" in ascii
+    QSerialPort::FlowControl flowControl; // usually NoFlowControl
+    QSerialPort::StopBits stopBits; // usually OneStop
+    QSerialPort::DataBits dataBits; // usually Data8 (8 Bits)
+    QSerialPort::Parity parity; // usually NoParity
     unsigned int timeout = 5000; // ms
-    char terminator = 0x0a; // <LF> "linefeed" in ascii
-    bool correctDeviceConnected = false;
     void processMessage(std::string& message);
 };
 
