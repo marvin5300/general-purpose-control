@@ -3,7 +3,7 @@
 
 #include <QGroupBox>
 
-//
+// this class is made assuming all devices use rs232 serial connection on scpi message base
 class MeasurementDevice : public QGroupBox
 {
     Q_OBJECT

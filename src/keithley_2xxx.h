@@ -6,7 +6,7 @@
 class Keithley_2xxx : public MeasurementDevice
 {
 public:
-    explicit Keithley_2xxx(QWidget *parent = 0);
+    using MeasurementDevice::MeasurementDevice;
 
 public slots:
     void onReceivedMessage(QString message);
