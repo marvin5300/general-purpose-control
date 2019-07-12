@@ -6,7 +6,7 @@ Keithley_2000::Keithley_2000(QWidget *parent) :
     ui(new Ui::Keithley_2000)
 {
     ui->setupUi(this);
-    deviceName = "2000";
+    deviceName = "MODEL 2000";
 }
 
 Keithley_2000::~Keithley_2000()

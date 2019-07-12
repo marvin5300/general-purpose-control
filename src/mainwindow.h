@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "serialconsole.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,6 +17,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void openSerialConsole();
 };
 
 #endif // MAINWINDOW_H

@@ -40,23 +40,29 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    src/serialconsole.h \
     src/keithley_2000.h \
     src/keithley_2410.h \
     src/keithley_2xxx.h \
     src/mainwindow.h \
-    src/measurement_device.h \
+    src/measurementdevice.h \
     src/rs232.h
 
 SOURCES += \
+    src/serialconsole.cpp \
     src/keithley_2000.cpp \
     src/keithley_2410.cpp \
     src/keithley_2xxx.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
-    src/measurement_device.cpp \
+    src/measurementdevice.cpp \
     src/rs232.cpp
 
 FORMS += \
     src/keithley_2000.ui \
     src/keithley_2410.ui \
-    src/mainwindow.ui
+    src/mainwindow.ui \
+    src/serialconsole.ui
+
+RESOURCES += \
+    src/resources.qrc

@@ -1,12 +1,15 @@
 #ifndef KEITHLEY_2XXX_H
 #define KEITHLEY_2XXX_H
 
-#include "measurement_device.h"
+#include "measurementdevice.h"
 
-class Keithley_2xxx : public Measurement_Device
+class Keithley_2xxx : public MeasurementDevice
 {
 public:
     explicit Keithley_2xxx(QWidget *parent = 0);
+
+public slots:
+    void onReceivedMessage(QString message);
 };
 
 #endif // KEITHLEY_2XXX_H
