@@ -42,9 +42,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     src/devicegenerator.h \
     src/serialconsole.h \
-    src/keithley_2000.h \
-    src/keithley_2410.h \
-    src/keithley_2xxx.h \
+    src/devices/keithley_2000.h \
+    src/devices/keithley_2410.h \
+    src/devices/keithley_2xxx.h \
     src/mainwindow.h \
     src/measurementdevice.h \
     src/rs232.h \
@@ -53,9 +53,9 @@ HEADERS += \
 SOURCES += \
     src/devicegenerator.cpp \
     src/serialconsole.cpp \
-    src/keithley_2000.cpp \
-    src/keithley_2410.cpp \
-    src/keithley_2xxx.cpp \
+    src/devices/keithley_2000.cpp \
+    src/devices/keithley_2410.cpp \
+    src/devices/keithley_2xxx.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/measurementdevice.cpp \

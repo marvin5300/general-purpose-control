@@ -1,4 +1,4 @@
-#include "MeasurementDevice.h"
+#include "measurementdevice.h"
 #include "rs232.h"
 #include <QThread>
 
@@ -8,7 +8,7 @@ MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidg
 }
 
 void MeasurementDevice::onReceivedMessage(QString message){
-    if (!correctDeviceConnected){
+    if (!correctDeviceConnected){ // first queued message is "*IDN?" and this should return the device name
         if (message.contains(deviceName)){
             correctDeviceConnected = true;
             onConnectionStatusChanged(true);
@@ -19,7 +19,7 @@ void MeasurementDevice::onReceivedMessage(QString message){
 }
 
 void MeasurementDevice::onConnectionStatusChanged(bool connected){
-    // will only have function in specific measurement device
+    // should connect to signalise the gui that connection is established or not
 }
 
 void MeasurementDevice::connectRS232() {
@@ -41,7 +41,7 @@ void MeasurementDevice::connectRS232() {
 
     // after thread start there will be a signal emitted which starts the RS232 makeConnection function
     serialThread->start();
-    emit scpiCommand(QString("*IDN?"));
+    emit scpiCommand(QString("*IDN?")); // standard message to ask for device information
 }
 
 void MeasurementDevice::setPort(QString _portName){

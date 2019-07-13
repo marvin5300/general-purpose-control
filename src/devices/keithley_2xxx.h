@@ -1,7 +1,7 @@
 #ifndef KEITHLEY_2XXX_H
 #define KEITHLEY_2XXX_H
 
-#include "measurementdevice.h"
+#include "../measurementdevice.h"
 
 class Keithley_2xxx : public MeasurementDevice
 {

@@ -6,6 +6,7 @@
 #include <string>
 #include <QPointer>
 
+// This class only knows basic serial communication
 class RS232 : public QObject
 {
     Q_OBJECT
