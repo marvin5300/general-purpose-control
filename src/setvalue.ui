@@ -78,7 +78,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="deviceSelectionCombobox"/>
+      <widget class="QComboBox" name="portSelectionCombobox"/>
      </item>
     </layout>
    </item>
@@ -92,7 +92,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="deviceSelectionCombobox"/>
      </item>
     </layout>
    </item>

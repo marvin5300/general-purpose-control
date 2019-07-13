@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "measurementdevice.h"
 #include "setvalue.h"
 //#include <QDebug>
 
@@ -35,7 +36,7 @@ void MainWindow::onAddMeasureValuesButtonClicked(){
     SetValue *widget = new SetValue(this);
     //unsigned int n = ui->measureValuesVerticalLayout->count();
     //ui->measureValuesVerticalLayout->insertWidget(n-2,widget);
-    ui->setValuesVerticalLayout->insertWidget(-1,widget);
+    ui->measureValuesVerticalLayout->insertWidget(-1,widget);
 }
 
 void MainWindow::openSerialConsole(){

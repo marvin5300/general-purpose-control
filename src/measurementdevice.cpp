@@ -2,18 +2,9 @@
 #include "rs232.h"
 #include <QThread>
 
-MeasurementDevice::MeasurementDevice(QWidget *parent) :
+MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidget *parent) :
     QGroupBox(parent)
 {
-#if defined(Q_OS_WIN)
-    for (quint8 i = 1; i < 100; i++){
-        ports << QString("COM"+(int)i);
-    }
-#else
-    for (quint8 i = 0; i < 100; i++){
-        ports << QString("/dev/ttyACM"+(int)i);
-    }
-#endif
 }
 
 void MeasurementDevice::onReceivedMessage(QString message){
@@ -38,7 +29,7 @@ void MeasurementDevice::connectRS232() {
     serialConnection->moveToThread(serialThread);
     // connect all signals about quitting
     connect(serialThread, &QThread::finished, serialThread, &QThread::deleteLater);
-    // connect all signals not coming from Daemon to gps
+    connect(this, &MeasurementDevice::closeConnection, serialConnection, &RS232::closeConnection);
     connect(serialThread, &QThread::started, serialConnection, &RS232::makeConnection);
     //connect(serialConnection, &RS232::serialRestart, this, &MainWindow::connectRS232);
     connect(serialConnection, &RS232::connectionStatus, this, &MeasurementDevice::onConnectionStatusChanged);
@@ -51,4 +42,15 @@ void MeasurementDevice::connectRS232() {
     // after thread start there will be a signal emitted which starts the RS232 makeConnection function
     serialThread->start();
     emit scpiCommand(QString("*IDN?"));
+}
+
+void MeasurementDevice::setPort(QString _portName){
+    emit closeConnection();
+    portName = _portName;
+    connectRS232();
+}
+
+void MeasurementDevice::exit(){
+    emit closeConnection();
+    this->deleteLater();
 }

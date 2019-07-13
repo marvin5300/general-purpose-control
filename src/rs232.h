@@ -6,18 +6,6 @@
 #include <string>
 #include <QPointer>
 
-/* supported baudrates:
- * 57600
- * 38400
- * 19200
- *  9600
- *  4800
- *  2400
- *  1200
- *   600
- *   300
- */
-
 class RS232 : public QObject
 {
     Q_OBJECT

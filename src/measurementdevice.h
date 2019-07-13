@@ -4,6 +4,7 @@
 #include <QGroupBox>
 
 // this class is made assuming all devices use rs232 serial connection on scpi message base
+
 class MeasurementDevice : public QGroupBox
 {
     Q_OBJECT
@@ -11,19 +12,22 @@ class MeasurementDevice : public QGroupBox
 signals:
     void scpiCommand(QString command);
     void disconnectRS232(QString portName);
+    void closeConnection();
 
 public:
-    explicit MeasurementDevice(QWidget *parent = 0);
+    explicit MeasurementDevice(QString _portName, quint32 _baudRate = 9600, QWidget *parent = 0);
+    const QString deviceName;
 
 public slots:
     virtual void onReceivedMessage(QString message);
     virtual void onConnectionStatusChanged(bool connected);
+    void setPort(QString _portName);
+    void exit();
 
 protected:
     void connectRS232();
-    QString portName, deviceName;
+    QString portName;
     quint32 baudRate;
-    QStringList ports;
     bool correctDeviceConnected = false;
 };
 

@@ -40,6 +40,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    src/devicegenerator.h \
     src/serialconsole.h \
     src/keithley_2000.h \
     src/keithley_2410.h \
@@ -50,6 +51,7 @@ HEADERS += \
     src/setvalue.h
 
 SOURCES += \
+    src/devicegenerator.cpp \
     src/serialconsole.cpp \
     src/keithley_2000.cpp \
     src/keithley_2410.cpp \

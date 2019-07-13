@@ -2,7 +2,7 @@
 #include "ui_serialconsole.h"
 
 SerialConsole::SerialConsole(QWidget *parent) :
-    MeasurementDevice(parent),
+    MeasurementDevice(""),
     ui(new Ui::SerialConsole)
 {
     ui->setupUi(this);
