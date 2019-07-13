@@ -46,7 +46,8 @@ HEADERS += \
     src/keithley_2xxx.h \
     src/mainwindow.h \
     src/measurementdevice.h \
-    src/rs232.h
+    src/rs232.h \
+    src/setvalue.h
 
 SOURCES += \
     src/serialconsole.cpp \
@@ -56,13 +57,13 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/measurementdevice.cpp \
-    src/rs232.cpp
+    src/rs232.cpp \
+    src/setvalue.cpp
 
 FORMS += \
-    src/keithley_2000.ui \
-    src/keithley_2410.ui \
     src/mainwindow.ui \
-    src/serialconsole.ui
+    src/serialconsole.ui \
+    src/setvalue.ui
 
 RESOURCES += \
     src/resources.qrc

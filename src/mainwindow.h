@@ -15,6 +15,10 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void onAddAdjustValuesButtonClicked();
+    void onAddMeasureValuesButtonClicked();
+
 private:
     Ui::MainWindow *ui;
     void openSerialConsole();
