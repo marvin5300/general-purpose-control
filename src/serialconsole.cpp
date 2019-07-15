@@ -12,3 +12,18 @@ SerialConsole::~SerialConsole()
 {
     delete ui;
 }
+
+void SerialConsole::onReceivedMessage(QString message){
+
+}
+
+const QString SerialConsole::getInterfaceName(){
+    return "default";
+}
+
+const QString SerialConsole::getDeviceName(){
+    return "default";
+}
+
+void SerialConsole::connectRS232(){
+}

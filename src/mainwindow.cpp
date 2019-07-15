@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "measurementdevice.h"
-#include "setvalue.h"
+#include "scanparameterselection.h"
 #include "devicemanager.h"
 //#include <QDebug>
 
@@ -27,17 +27,20 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::onAddAdjustValuesButtonClicked(){
-    SetValue *widget = new SetValue(this);
+    ScanParameterSelection *widget = new ScanParameterSelection(this);
     //unsigned int n = ui->setValuesVerticalLayout->count();
     //ui->setValuesVerticalLayout->insertWidget(n-2,widget);
-    ui->setValuesVerticalLayout->insertWidget(1,widget);
+    ui->setValuesVerticalLayout->insertWidget(ui->setValuesVerticalLayout->count()-1,widget);
 }
 
 void MainWindow::onAddMeasureValuesButtonClicked(){
-    MeasurementDevice *device = DeviceManager::getDevice("default","default");
+    //MeasurementDevice *device = DeviceManager::getDevice("default","default");
+    QPointer<MeasurementDevice> device = DeviceManager::getDevice("not selected", "not selected");
+
     //unsigned int n = ui->measureValuesVerticalLayout->count();
     //ui->measureValuesVerticalLayout->insertWidget(n-2,widget);
-    ui->deviceConfigVerticalLayout->insertWidget(1,device);
+    DeviceManager::actualizeDeviceNameModel();
+    ui->deviceConfigVerticalLayout->insertWidget(ui->deviceConfigVerticalLayout->count()-1,device);
 }
 
 void MainWindow::openSerialConsole(){

@@ -2,7 +2,7 @@
 #define SERIALCONSOLE_H
 
 #include "measurementdevice.h"
-#include <QGroupBox>
+#include <QFrame>
 
 namespace Ui {
 class SerialConsole;
@@ -12,12 +12,18 @@ class SerialConsole : public MeasurementDevice
 {
     Q_OBJECT
 
+public slots:
+    void onReceivedMessage(QString message);
+
 public:
     explicit SerialConsole(QWidget *parent = nullptr);
+    const QString getInterfaceName();
+    const QString getDeviceName();
     ~SerialConsole();
 
 private:
     Ui::SerialConsole *ui;
+    void connectRS232();
 };
 
 #endif // SERIALCONSOLE_H

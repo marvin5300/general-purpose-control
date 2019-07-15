@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QGroupBox" name="setValuesBox">
       <property name="title">
-       <string>Set Adjusted Values</string>
+       <string>Scan Value Selection</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">

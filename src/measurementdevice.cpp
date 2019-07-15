@@ -1,15 +1,31 @@
 #include "measurementdevice.h"
-#include "ui_measurementdevice.h".h"
+#include "ui_measurementdevice.h"
+#include "devicemanager.h"
 #include "rs232.h"
 #include <QThread>
 
+quint64 MeasurementDevice::globalIdCounter = 0;
+
 MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidget *parent) :
-    QGroupBox(parent),
+    QFrame(parent),
     ui(new Ui::MeasurementDevice)
 {
     ui->setupUi(this);
-    portName = _portName;
+    interfaceName = _portName;
     baudRate = _baudRate;
+    localId = globalIdCounter;
+    globalIdCounter++;
+    this->setFrameShadow(QFrame::Plain);
+    this->setFrameShape(QFrame::StyledPanel);
+    this->setMidLineWidth(1);
+    ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/res/close1.png)}:hover{ border-image: url(:/res/close2.png);}");
+    connect(ui->closeButton, &QPushButton::clicked, this, &MeasurementDevice::exit);
+    ui->deviceNameSelectBox->setModel(DeviceManager::getAllDeviceNameModel());
+    connect(ui->deviceNameSelectBox, &QComboBox::currentTextChanged, this, &MeasurementDevice::onDeviceSelectionChanged);
+}
+
+quint32 MeasurementDevice::getLocalId(){
+    return localId;
 }
 
 MeasurementDevice::~MeasurementDevice()
@@ -18,8 +34,12 @@ MeasurementDevice::~MeasurementDevice()
 }
 
 void MeasurementDevice::onReceivedMessage(QString message){
+
+}
+
+void MeasurementDevice::checkDevice(QString _deviceName, QString message){
     if (!correctDeviceConnected){ // first queued message is "*IDN?" and this should return the device name
-        if (message.contains(deviceName)){
+        if (message.contains(_deviceName)){
             correctDeviceConnected = true;
             onConnectionStatusChanged(true);
         }else{
@@ -32,10 +52,10 @@ void MeasurementDevice::onConnectionStatusChanged(bool connected){
     // should connect to signalise the gui that connection is established or not
 }
 
-void MeasurementDevice::connectRS232() {
+void MeasurementDevice::connectRS232(QString _interfaceName, quint32 _baudRate) {
     // here is where the magic threading happens look closely
     QThread *serialThread = new QThread();
-    RS232 *serialConnection = new RS232(portName, baudRate);
+    RS232 *serialConnection = new RS232(_interfaceName, _baudRate);
     serialConnection->moveToThread(serialThread);
     // connect all signals about quitting
     connect(serialThread, &QThread::finished, serialThread, &QThread::deleteLater);
@@ -43,6 +63,7 @@ void MeasurementDevice::connectRS232() {
     connect(serialThread, &QThread::started, serialConnection, &RS232::makeConnection);
     //connect(serialConnection, &RS232::serialRestart, this, &MainWindow::connectRS232);
     connect(serialConnection, &RS232::connectionStatus, this, &MeasurementDevice::onConnectionStatusChanged);
+    connect(serialConnection, &RS232::receivedMessage, this, &MeasurementDevice::onReceivedMessage);
     connect(this, &MeasurementDevice::disconnectRS232, serialConnection, &RS232::closeConnection);
 
     // connect all send/receive messages
@@ -54,17 +75,19 @@ void MeasurementDevice::connectRS232() {
     emit scpiCommand(QString("*IDN?")); // standard message to ask for device information
 }
 
-const QString MeasurementDevice::getPortName(){
-    return portName;
-}
-
-void MeasurementDevice::setPort(QString _portName){
+void MeasurementDevice::setInterface(QString _interfaceName){
     emit closeConnection();
-    portName = _portName;
+    interfaceName = _interfaceName;
     connectRS232();
 }
 
+void MeasurementDevice::onDeviceSelectionChanged(QString _deviceName){
+
+}
+
 void MeasurementDevice::exit(){
+    //QPointer<MeasurementDevice> thisObject = this;
+    DeviceManager::removeDevice(this);
     emit closeConnection();
     this->deleteLater();
 }

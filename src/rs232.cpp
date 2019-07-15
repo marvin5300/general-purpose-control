@@ -47,7 +47,6 @@ void RS232::makeConnection() {
     }
     connect(serialPort, &QSerialPort::readyRead, this, &RS232::onReadyRead);
     serialPort->clear(QSerialPort::AllDirections);
-    sendScpiCommand("*IDN?");
 }
 
 void RS232::onReadyRead() {

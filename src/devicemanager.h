@@ -1,8 +1,7 @@
 #ifndef DEVICEMANAGER_H
 #define DEVICEMANAGER_H
 
-#include "devices/keithley_2000.h"
-#include "devices/keithley_2410.h"
+#include "measurementdevice.h"
 #include <QString>
 #include <QPointer>
 #include <QStringList>
@@ -12,18 +11,23 @@
 // deviceNameList and getDevice hold all device names and information about how to initialise
 // the models can be generated at will and should contain valid device names and port names.
 // Should be enough to edit them here
-namespace DeviceManager {
-    QPointer<MeasurementDevice> getDevice(QString deviceName, QString portName);
-    static const QStringList deviceNameList({
-                                               "MODULE 2000",
-                                               "MODULE 2410"
-                                            });
+class DeviceManager : public QObject
+{
+    Q_OBJECT
+
+public:
+    static QPointer<MeasurementDevice> getDevice(QString deviceName, QString portName);
+    static const QStringList deviceNameList;
     static QList<QPointer<MeasurementDevice> > activeDevicesList;   // holds all devices currently active
+    static void cleanupActiveDevicesList();
     static QStringList ports;
     static QPointer<QStandardItemModel> activeDeviceNameModel;
-    static bool setDevicePort(QString deviceName, QString oldPortName, QString newPortName);
-    QPointer<QStandardItemModel> getDeviceNameModel();
-    QPointer<QStandardItemModel> getPortNameModel();
-    void generatePortList();
-}
+    static QPointer<QStandardItemModel> allDeviceNameModel;
+    static void removeDevice(QPointer<MeasurementDevice> device);
+    static QPointer<QStandardItemModel> getActiveDeviceNameModel();
+    //QPointer<QStandardItemModel> getPortNameModel();
+    static QPointer<QStandardItemModel> getAllDeviceNameModel();
+    static void generatePortList();
+    static void actualizeDeviceNameModel();
+};
 #endif // DEVICEMANAGER_H
