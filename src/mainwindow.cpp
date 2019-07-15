@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "measurementdevice.h"
 #include "setvalue.h"
+#include "devicemanager.h"
 //#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -12,9 +13,9 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("General Purpose Control");
     this->setWindowIcon(QIcon(":/res/tune.png"));
     ui->addAdjustValueButton->setStyleSheet(":!hover{ border-image: url(:/res/plus1.png)}:hover{ border-image: url(:/res/plus2.png);}");
-    ui->addMeasureValueButton->setStyleSheet(":!hover{ border-image: url(:/res/plus1.png)}:hover{ border-image: url(:/res/plus2.png);}");
+    ui->addDeviceButton->setStyleSheet(":!hover{ border-image: url(:/res/plus1.png)}:hover{ border-image: url(:/res/plus2.png);}");
     connect(ui->addAdjustValueButton, &QPushButton::clicked, this, &MainWindow::onAddAdjustValuesButtonClicked);
-    connect(ui->addMeasureValueButton, &QPushButton::clicked, this, &MainWindow::onAddMeasureValuesButtonClicked);
+    connect(ui->addDeviceButton, &QPushButton::clicked, this, &MainWindow::onAddMeasureValuesButtonClicked);
     connect(ui->actionSerial_Console, &QAction::triggered, this, &MainWindow::openSerialConsole);
 }
 //Add_PB->setStyleSheet( "*{border-image: url(:/icons/maximize.bmp);}"
@@ -29,14 +30,14 @@ void MainWindow::onAddAdjustValuesButtonClicked(){
     SetValue *widget = new SetValue(this);
     //unsigned int n = ui->setValuesVerticalLayout->count();
     //ui->setValuesVerticalLayout->insertWidget(n-2,widget);
-    ui->setValuesVerticalLayout->insertWidget(-1,widget);
+    ui->setValuesVerticalLayout->insertWidget(1,widget);
 }
 
 void MainWindow::onAddMeasureValuesButtonClicked(){
-    SetValue *widget = new SetValue(this);
+    MeasurementDevice *device = DeviceManager::getDevice("default","default");
     //unsigned int n = ui->measureValuesVerticalLayout->count();
     //ui->measureValuesVerticalLayout->insertWidget(n-2,widget);
-    ui->measureValuesVerticalLayout->insertWidget(-1,widget);
+    ui->deviceConfigVerticalLayout->insertWidget(1,device);
 }
 
 void MainWindow::openSerialConsole(){

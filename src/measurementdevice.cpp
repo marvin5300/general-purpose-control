@@ -1,10 +1,20 @@
 #include "measurementdevice.h"
+#include "ui_measurementdevice.h".h"
 #include "rs232.h"
 #include <QThread>
 
 MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidget *parent) :
-    QGroupBox(parent)
+    QGroupBox(parent),
+    ui(new Ui::MeasurementDevice)
 {
+    ui->setupUi(this);
+    portName = _portName;
+    baudRate = _baudRate;
+}
+
+MeasurementDevice::~MeasurementDevice()
+{
+    delete ui;
 }
 
 void MeasurementDevice::onReceivedMessage(QString message){
@@ -42,6 +52,10 @@ void MeasurementDevice::connectRS232() {
     // after thread start there will be a signal emitted which starts the RS232 makeConnection function
     serialThread->start();
     emit scpiCommand(QString("*IDN?")); // standard message to ask for device information
+}
+
+const QString MeasurementDevice::getPortName(){
+    return portName;
 }
 
 void MeasurementDevice::setPort(QString _portName){

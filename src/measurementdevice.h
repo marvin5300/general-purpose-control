@@ -8,6 +8,10 @@
 
 // basic communication like "*IDN?" command and everything that does not change for different
 // devices are baked fix in here
+namespace Ui {
+class MeasurementDevice;
+}
+
 class MeasurementDevice : public QGroupBox
 {
     Q_OBJECT
@@ -19,6 +23,7 @@ signals:
 
 public:
     explicit MeasurementDevice(QString _portName, quint32 _baudRate = 9600, QWidget *parent = 0);
+    ~MeasurementDevice();
     const QString deviceName;
 
 public slots:
@@ -26,8 +31,10 @@ public slots:
     void onConnectionStatusChanged(bool connected);
     void setPort(QString _portName);
     void exit();
+    const QString getPortName();
 
 protected:
+    Ui::MeasurementDevice *ui;
     void connectRS232();
     QString portName;
     quint32 baudRate;

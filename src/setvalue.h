@@ -3,6 +3,7 @@
 
 #include <QFrame>
 #include "measurementdevice.h"
+#include <QStandardItemModel>
 
 namespace Ui {
 class SetValue;
@@ -18,7 +19,6 @@ public:
     bool measureOnly = true;
 
 private slots:
-    void onPortSelectionChanged(QString portName);
     void onDeviceSelectionChanged(QString deviceName);
 
 private:

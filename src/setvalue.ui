@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
-    <height>393</height>
+    <width>619</width>
+    <height>619</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,20 +65,6 @@
         <string/>
        </property>
       </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>port:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="portSelectionCombobox"/>
      </item>
     </layout>
    </item>

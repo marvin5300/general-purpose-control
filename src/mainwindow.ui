@@ -99,15 +99,15 @@
     <item row="2" column="0">
      <widget class="QGroupBox" name="setValuesBox_2">
       <property name="title">
-       <string>Set Measurement Values</string>
+       <string>Devices Configurator</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
-        <layout class="QHBoxLayout" name="measureValuesVerticalLayout">
+        <layout class="QHBoxLayout" name="deviceConfigVerticalLayout">
          <item>
           <layout class="QVBoxLayout" name="addButtonLayout_2">
            <item>
-            <widget class="QPushButton" name="addMeasureValueButton">
+            <widget class="QPushButton" name="addDeviceButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
