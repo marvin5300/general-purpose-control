@@ -15,6 +15,7 @@ public:
     const QString getDeviceName();
 
 private:
+    void init();
     void connectRS232();
     const QString deviceName = "not selected";
 };

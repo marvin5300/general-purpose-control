@@ -8,7 +8,7 @@ namespace Ui {
 class SerialConsole;
 }
 
-class SerialConsole : public MeasurementDevice
+class SerialConsole : public QFrame
 {
     Q_OBJECT
 
@@ -22,6 +22,7 @@ public:
     ~SerialConsole();
 
 private:
+    void init();
     Ui::SerialConsole *ui;
     void connectRS232();
 };

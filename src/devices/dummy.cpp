@@ -3,7 +3,7 @@
 Dummy::Dummy()
     : MeasurementDevice("default")
 {
-
+    init();
 }
 
 const QString Dummy::getDeviceName(){
@@ -18,4 +18,9 @@ void Dummy::onReceivedMessage(QString message){
 }
 
 void Dummy::connectRS232(){
+}
+
+
+void Dummy::init(){
+    MeasurementDevice::init(deviceName);
 }

@@ -36,11 +36,19 @@ void MainWindow::onAddAdjustValuesButtonClicked(){
 void MainWindow::onAddMeasureValuesButtonClicked(){
     //MeasurementDevice *device = DeviceManager::getDevice("default","default");
     QPointer<MeasurementDevice> device = DeviceManager::getDevice("not selected", "not selected");
-
+    connect(device, &MeasurementDevice::deviceSelectionChange, this, &MainWindow::onDeviceSelectionChange);
     //unsigned int n = ui->measureValuesVerticalLayout->count();
     //ui->measureValuesVerticalLayout->insertWidget(n-2,widget);
     DeviceManager::actualizeDeviceNameModel();
     ui->deviceConfigVerticalLayout->insertWidget(ui->deviceConfigVerticalLayout->count()-1,device);
+}
+
+void MainWindow::onDeviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName){
+    QPointer<MeasurementDevice> neoDevice = DeviceManager::getDevice(_newDeviceName, _newInterfaceName);
+    //unsigned int i = ui->deviceConfigVerticalLayout->indexOf(device);
+    ui->deviceConfigVerticalLayout->replaceWidget(device,neoDevice);
+    DeviceManager::actualizeDeviceNameModel();
+    connect(neoDevice, &MeasurementDevice::deviceSelectionChange, this, &MainWindow::onDeviceSelectionChange);
 }
 
 void MainWindow::openSerialConsole(){

@@ -20,6 +20,7 @@ signals:
     void scpiCommand(QString command);
     void disconnectRS232(QString _interfaceName);
     void closeConnection();
+    void deviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
 
 public:
     explicit MeasurementDevice(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
@@ -36,6 +37,8 @@ public slots:
     virtual quint32 getLocalId();
 
 protected:
+    void init(QString deviceName);
+    virtual void init() = 0;
     static quint64 globalIdCounter;
     quint64 localId = 0;
     void checkDevice(QString _deviceName, QString message);
@@ -45,7 +48,7 @@ protected:
     QString interfaceName;
     quint32 baudRate;
     bool correctDeviceConnected = false;
-    void onDeviceSelectionChanged(QString _deviceName);
+    void onDeviceSelectionChanged(QString _newDeviceName);
 };
 
 #endif // MEASUREMENT_DEVICE_H

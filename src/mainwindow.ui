@@ -6,23 +6,71 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>908</width>
-    <height>722</height>
+    <width>326</width>
+    <height>627</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>600</height>
+    </size>
+   </property>
    <layout class="QGridLayout" name="gridLayout_3">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+    <property name="leftMargin">
+     <number>3</number>
+    </property>
+    <property name="topMargin">
+     <number>3</number>
+    </property>
+    <property name="rightMargin">
+     <number>3</number>
+    </property>
+    <property name="bottomMargin">
+     <number>3</number>
+    </property>
     <item row="0" column="0">
      <widget class="QGroupBox" name="setValuesBox">
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>400</height>
+       </size>
+      </property>
       <property name="title">
        <string>Scan Value Selection</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item row="0" column="0">
         <layout class="QHBoxLayout" name="setValuesVerticalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <item>
           <layout class="QVBoxLayout" name="addButtonLayout">
            <item>
@@ -98,12 +146,33 @@
     </item>
     <item row="2" column="0">
      <widget class="QGroupBox" name="setValuesBox_2">
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>400</height>
+       </size>
+      </property>
       <property name="title">
        <string>Devices Configurator</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item row="0" column="0">
         <layout class="QHBoxLayout" name="deviceConfigVerticalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <item>
           <layout class="QVBoxLayout" name="addButtonLayout_2">
            <item>
@@ -177,7 +246,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>908</width>
+     <width>326</width>
      <height>25</height>
     </rect>
    </property>

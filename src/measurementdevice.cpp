@@ -18,9 +18,16 @@ MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidg
     this->setFrameShadow(QFrame::Plain);
     this->setFrameShape(QFrame::StyledPanel);
     this->setMidLineWidth(1);
+    ui->settingsTableWidget->setFrameShadow(QTableWidget::Plain);
+    ui->settingsTableWidget->setFrameShape(QTableWidget::StyledPanel);
+    ui->settingsTableWidget->setStyleSheet("border: none;");
     ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/res/close1.png)}:hover{ border-image: url(:/res/close2.png);}");
     connect(ui->closeButton, &QPushButton::clicked, this, &MeasurementDevice::exit);
     ui->deviceNameSelectBox->setModel(DeviceManager::getAllDeviceNameModel());
+}
+
+void MeasurementDevice::init(QString _deviceName){
+    ui->deviceNameSelectBox->setCurrentIndex(ui->deviceNameSelectBox->findText(_deviceName));
     connect(ui->deviceNameSelectBox, &QComboBox::currentTextChanged, this, &MeasurementDevice::onDeviceSelectionChanged);
 }
 
@@ -81,8 +88,10 @@ void MeasurementDevice::setInterface(QString _interfaceName){
     connectRS232();
 }
 
-void MeasurementDevice::onDeviceSelectionChanged(QString _deviceName){
-
+void MeasurementDevice::onDeviceSelectionChanged(QString _newDeviceName){
+    // create new device on same location but different subclass
+    emit deviceSelectionChange(QPointer<MeasurementDevice>(this),_newDeviceName, QString("not selected"));
+    exit();
 }
 
 void MeasurementDevice::exit(){

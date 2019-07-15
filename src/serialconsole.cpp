@@ -1,8 +1,8 @@
 #include "serialconsole.h"
 #include "ui_serialconsole.h"
 
-SerialConsole::SerialConsole(QWidget *parent) :
-    MeasurementDevice(""),
+SerialConsole::SerialConsole(QWidget *parent):
+    QFrame(parent),
     ui(new Ui::SerialConsole)
 {
     ui->setupUi(this);
@@ -26,4 +26,8 @@ const QString SerialConsole::getDeviceName(){
 }
 
 void SerialConsole::connectRS232(){
+}
+
+void SerialConsole::init(){
+
 }

@@ -12,11 +12,12 @@ public slots:
     void onReceivedMessage(QString message);
 
 public:
-    using Keithley_2xxx::Keithley_2xxx;
+    explicit Keithley_2000(QString _interfaceName);
     const QString getInterfaceName();
     const QString getDeviceName();
 
 private:
+    void init();
     void connectRS232();
     const QString deviceName = "MODULE 2000";
 };

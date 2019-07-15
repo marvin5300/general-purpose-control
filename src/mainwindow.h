@@ -11,6 +11,10 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+public slots:
+    void onDeviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
