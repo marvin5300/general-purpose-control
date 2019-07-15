@@ -6,9 +6,10 @@
 #include <QDebug>
 
 QList<QPointer<MeasurementDevice> > DeviceManager::activeDevicesList;
-QStringList DeviceManager::ports;
+QStringList DeviceManager::interfaceNameList;
 QPointer<QStandardItemModel> DeviceManager::activeDeviceNameModel;
 QPointer<QStandardItemModel> DeviceManager::allDeviceNameModel;
+QPointer<QStandardItemModel> DeviceManager::allInterfaceNameModel;
 
 const QStringList DeviceManager::deviceNameList({
                                            "MODULE 2000",
@@ -84,17 +85,29 @@ QPointer<QStandardItemModel> DeviceManager::getAllDeviceNameModel(){
     return allDeviceNameModel;
 }
 
-void DeviceManager::generatePortList(){    // this is done once at start
-    if (!ports.empty()){
+QPointer<QStandardItemModel> DeviceManager::getAllInterfaceNameModel(){
+    if (allInterfaceNameModel.isNull()){
+        allInterfaceNameModel = new QStandardItemModel;
+        allInterfaceNameModel->appendRow(new QStandardItem(QString("not selected")));
+        for (auto interfaceName : interfaceNameList){
+            allInterfaceNameModel->appendRow(new QStandardItem(interfaceName));
+        }
+    }
+    return allInterfaceNameModel;
+}
+
+
+void DeviceManager::generateInterfaceList(){    // this is done once at start
+    if (!interfaceNameList.empty()){
         return;
     }
 #if defined(Q_OS_WIN)
     for (quint8 i = 1; i < 100; i++){
-        ports.append(QString("COM%1").arg(i));
+        interfaceNameList.append(QString("COM%1").arg(i));
     }
 #else
     for (quint8 i = 0; i < 100; i++){
-        ports.append(QString("/dev/ttyACM%1").arg(i));
+        interfaceNameList.append(QString("/dev/ttyACM%1").arg(i));
     }
 #endif
 }

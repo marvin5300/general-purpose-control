@@ -20,14 +20,16 @@ public:
     static const QStringList deviceNameList;
     static QList<QPointer<MeasurementDevice> > activeDevicesList;   // holds all devices currently active
     static void cleanupActiveDevicesList();
-    static QStringList ports;
+    static QStringList interfaceNameList;
     static QPointer<QStandardItemModel> activeDeviceNameModel;
     static QPointer<QStandardItemModel> allDeviceNameModel;
+    static QPointer<QStandardItemModel> allInterfaceNameModel;
     static void removeDevice(QPointer<MeasurementDevice> device);
     static QPointer<QStandardItemModel> getActiveDeviceNameModel();
     //QPointer<QStandardItemModel> getPortNameModel();
     static QPointer<QStandardItemModel> getAllDeviceNameModel();
-    static void generatePortList();
+    static QPointer<QStandardItemModel> getAllInterfaceNameModel();
+    static void generateInterfaceList();
     static void actualizeDeviceNameModel();
 };
 #endif // DEVICEMANAGER_H

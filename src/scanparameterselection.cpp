@@ -10,6 +10,9 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     this->setFrameShadow(QFrame::Plain);
     this->setFrameShape(QFrame::StyledPanel);
     this->setMidLineWidth(1);
+    ui->settingsTableWidget->setFrameShadow(QTableWidget::Plain);
+    ui->settingsTableWidget->setFrameShape(QTableWidget::StyledPanel);
+    ui->settingsTableWidget->setStyleSheet("border: none;");
     ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/res/close1.png)}:hover{ border-image: url(:/res/close2.png);}");
     connect(ui->closeButton, &QPushButton::clicked, this, &ScanParameterSelection::deleteLater);
     QPointer<QStandardItemModel> deviceModel = DeviceManager::getActiveDeviceNameModel();

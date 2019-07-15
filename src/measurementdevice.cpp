@@ -24,14 +24,17 @@ MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidg
     ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/res/close1.png)}:hover{ border-image: url(:/res/close2.png);}");
     connect(ui->closeButton, &QPushButton::clicked, this, &MeasurementDevice::exit);
     ui->deviceNameSelectBox->setModel(DeviceManager::getAllDeviceNameModel());
+    ui->interfaceNameSelectBox->setModel(DeviceManager::getAllInterfaceNameModel());
 }
 
-void MeasurementDevice::init(QString _deviceName){
+void MeasurementDevice::init(QString _deviceName, QString _interfaceName){
     ui->deviceNameSelectBox->setCurrentIndex(ui->deviceNameSelectBox->findText(_deviceName));
     connect(ui->deviceNameSelectBox, &QComboBox::currentTextChanged, this, &MeasurementDevice::onDeviceSelectionChanged);
+    ui->interfaceNameSelectBox->setCurrentIndex(ui->interfaceNameSelectBox->findText(_interfaceName));
+    connect(ui->interfaceNameSelectBox, &QComboBox::currentTextChanged, this, &MeasurementDevice::onInterfaceSelectionChanged);
 }
 
-quint32 MeasurementDevice::getLocalId(){
+const quint64 MeasurementDevice::getLocalId(){
     return localId;
 }
 
@@ -82,16 +85,16 @@ void MeasurementDevice::connectRS232(QString _interfaceName, quint32 _baudRate) 
     emit scpiCommand(QString("*IDN?")); // standard message to ask for device information
 }
 
-void MeasurementDevice::setInterface(QString _interfaceName){
+void MeasurementDevice::onInterfaceSelectionChanged(QString _interfaceName){
     emit closeConnection();
     interfaceName = _interfaceName;
+    DeviceManager::actualizeDeviceNameModel();
     connectRS232();
 }
 
 void MeasurementDevice::onDeviceSelectionChanged(QString _newDeviceName){
     // create new device on same location but different subclass
-    emit deviceSelectionChange(QPointer<MeasurementDevice>(this),_newDeviceName, QString("not selected"));
-    exit();
+    emit deviceSelectionChange(QPointer<MeasurementDevice>(this),_newDeviceName, interfaceName);
 }
 
 void MeasurementDevice::exit(){

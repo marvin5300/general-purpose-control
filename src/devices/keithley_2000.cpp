@@ -14,7 +14,7 @@ const QString Keithley_2000::getInterfaceName(){
 }
 
 void Keithley_2000::init(){
-    MeasurementDevice::init(deviceName);
+    MeasurementDevice::init(deviceName, interfaceName);
 }
 
 void Keithley_2000::onReceivedMessage(QString message){

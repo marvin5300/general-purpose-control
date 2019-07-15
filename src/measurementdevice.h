@@ -30,14 +30,14 @@ public:
 public slots:
     virtual void onReceivedMessage(QString message); // this function has no definition yet, it is heavily dependend on the type of device
     void onConnectionStatusChanged(bool connected);
-    void setInterface(QString _interfaceName);
+    virtual void onInterfaceSelectionChanged(QString _interfaceName);
     void exit();
     virtual const QString getInterfaceName() = 0;
     virtual const QString getDeviceName() = 0;
-    virtual quint32 getLocalId();
+    virtual const quint64 getLocalId();
 
 protected:
-    void init(QString deviceName);
+    void init(QString deviceName, QString _interfaceName);
     virtual void init() = 0;
     static quint64 globalIdCounter;
     quint64 localId = 0;

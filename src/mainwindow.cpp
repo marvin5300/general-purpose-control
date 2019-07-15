@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->addAdjustValueButton, &QPushButton::clicked, this, &MainWindow::onAddAdjustValuesButtonClicked);
     connect(ui->addDeviceButton, &QPushButton::clicked, this, &MainWindow::onAddMeasureValuesButtonClicked);
     connect(ui->actionSerial_Console, &QAction::triggered, this, &MainWindow::openSerialConsole);
+    DeviceManager::generateInterfaceList();
 }
 //Add_PB->setStyleSheet( "*{border-image: url(:/icons/maximize.bmp);}"
 //":pressed{ border-image: url(:/icons/maximize_pressed.bmp);}");

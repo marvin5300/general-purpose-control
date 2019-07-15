@@ -22,5 +22,5 @@ void Dummy::connectRS232(){
 
 
 void Dummy::init(){
-    MeasurementDevice::init(deviceName);
+    MeasurementDevice::init(deviceName, interfaceName);
 }
