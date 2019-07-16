@@ -47,6 +47,7 @@ void RS232::makeConnection() {
     }
     connect(serialPort, &QSerialPort::readyRead, this, &RS232::onReadyRead);
     serialPort->clear(QSerialPort::AllDirections);
+    emit connectionStatus(true);
 }
 
 void RS232::onReadyRead() {
@@ -98,7 +99,6 @@ void RS232::sendScpiCommand(QString command){
 
 void RS232::closeConnection(){
     closeSerialPort();
-    emit connectionStatus(false);
     this->deleteLater();
 }
 

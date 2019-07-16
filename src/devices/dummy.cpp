@@ -1,7 +1,7 @@
 #include "dummy.h"
 
 Dummy::Dummy()
-    : MeasurementDevice("default")
+    : MeasurementDevice("not selected")
 {
     init();
 }

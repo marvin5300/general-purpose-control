@@ -32,6 +32,13 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName){
     connect(ui->deviceNameSelectBox, &QComboBox::currentTextChanged, this, &MeasurementDevice::onDeviceSelectionChanged);
     ui->interfaceNameSelectBox->setCurrentIndex(ui->interfaceNameSelectBox->findText(_interfaceName));
     connect(ui->interfaceNameSelectBox, &QComboBox::currentTextChanged, this, &MeasurementDevice::onInterfaceSelectionChanged);
+    //interfaceName = _interfaceName;
+    if (_interfaceName!="not selected"&&_interfaceName!=""){
+        connectRS232();
+    }else{
+        ui->deviceNameSelectBox->setStyleSheet("color: black;");
+        ui->interfaceNameSelectBox->setStyleSheet("color: black;");
+    }
 }
 
 const quint64 MeasurementDevice::getLocalId(){
@@ -60,6 +67,17 @@ void MeasurementDevice::checkDevice(QString _deviceName, QString message){
 
 void MeasurementDevice::onConnectionStatusChanged(bool connected){
     // should connect to signalise the gui that connection is established or not
+
+}
+
+void MeasurementDevice::setUiConnectionState(bool connected){
+    if (connected){
+        ui->deviceNameSelectBox->setStyleSheet("color: green;");
+        ui->interfaceNameSelectBox->setStyleSheet("color: green;");
+    }else{
+        ui->deviceNameSelectBox->setStyleSheet("color: red;");
+        ui->interfaceNameSelectBox->setStyleSheet("color: red;");
+    }
 }
 
 void MeasurementDevice::connectRS232(QString _interfaceName, quint32 _baudRate) {
@@ -73,6 +91,7 @@ void MeasurementDevice::connectRS232(QString _interfaceName, quint32 _baudRate) 
     connect(serialThread, &QThread::started, serialConnection, &RS232::makeConnection);
     //connect(serialConnection, &RS232::serialRestart, this, &MainWindow::connectRS232);
     connect(serialConnection, &RS232::connectionStatus, this, &MeasurementDevice::onConnectionStatusChanged);
+    connect(serialConnection, &RS232::connectionStatus, this, &MeasurementDevice::setUiConnectionState);
     connect(serialConnection, &RS232::receivedMessage, this, &MeasurementDevice::onReceivedMessage);
     connect(this, &MeasurementDevice::disconnectRS232, serialConnection, &RS232::closeConnection);
 
@@ -89,12 +108,18 @@ void MeasurementDevice::onInterfaceSelectionChanged(QString _interfaceName){
     emit closeConnection();
     interfaceName = _interfaceName;
     DeviceManager::actualizeDeviceNameModel();
-    connectRS232();
+    if (_interfaceName!="not selected"&&_interfaceName!=""){
+        connectRS232();
+    }else{
+        ui->deviceNameSelectBox->setStyleSheet("color: black;");
+        ui->interfaceNameSelectBox->setStyleSheet("color: black;");
+    }
 }
 
 void MeasurementDevice::onDeviceSelectionChanged(QString _newDeviceName){
     // create new device on same location but different subclass
     emit deviceSelectionChange(QPointer<MeasurementDevice>(this),_newDeviceName, interfaceName);
+    exit();
 }
 
 void MeasurementDevice::exit(){

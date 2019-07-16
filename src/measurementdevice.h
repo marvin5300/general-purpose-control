@@ -29,6 +29,7 @@ public:
 
 public slots:
     virtual void onReceivedMessage(QString message); // this function has no definition yet, it is heavily dependend on the type of device
+    void setUiConnectionState(bool connected);
     void onConnectionStatusChanged(bool connected);
     virtual void onInterfaceSelectionChanged(QString _interfaceName);
     void exit();
