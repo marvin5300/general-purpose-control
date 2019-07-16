@@ -51,12 +51,12 @@ MeasurementDevice::~MeasurementDevice()
 }
 
 void MeasurementDevice::onReceivedMessage(QString message){
-
+    checkDevice(message);
 }
 
-void MeasurementDevice::checkDevice(QString _deviceName, QString message){
+void MeasurementDevice::checkDevice(QString message){
     if (!correctDeviceConnected){ // first queued message is "*IDN?" and this should return the device name
-        if (message.contains(_deviceName)){
+        if (message.contains(deviceName)){
             correctDeviceConnected = true;
             onConnectionStatusChanged(true);
         }else{
@@ -93,7 +93,6 @@ void MeasurementDevice::connectRS232(QString _interfaceName, quint32 _baudRate) 
     connect(serialConnection, &RS232::connectionStatus, this, &MeasurementDevice::onConnectionStatusChanged);
     connect(serialConnection, &RS232::connectionStatus, this, &MeasurementDevice::setUiConnectionState);
     connect(serialConnection, &RS232::receivedMessage, this, &MeasurementDevice::onReceivedMessage);
-    connect(this, &MeasurementDevice::disconnectRS232, serialConnection, &RS232::closeConnection);
 
     // connect all send/receive messages
     connect(this, &MeasurementDevice::scpiCommand, serialConnection, &RS232::sendScpiCommand);

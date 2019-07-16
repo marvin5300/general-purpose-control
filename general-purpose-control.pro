@@ -42,6 +42,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     src/devicemanager.h \
     src/devices/dummy.h \
+    src/filehandler.h \
     src/scanparameterselection.h \
     src/serialconsole.h \
     src/devices/keithley_2000.h \
@@ -49,11 +50,13 @@ HEADERS += \
     src/devices/keithley_2xxx.h \
     src/mainwindow.h \
     src/measurementdevice.h \
-    src/rs232.h
+    src/rs232.h \
+    src/settings.h
 
 SOURCES += \
     src/devicemanager.cpp \
     src/devices/dummy.cpp \
+    src/filehandler.cpp \
     src/scanparameterselection.cpp \
     src/serialconsole.cpp \
     src/devices/keithley_2000.cpp \
@@ -62,13 +65,15 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/measurementdevice.cpp \
-    src/rs232.cpp
+    src/rs232.cpp \
+    src/settings.cpp
 
 FORMS += \
     src/mainwindow.ui \
     src/measurementdevice.ui \
     src/scanparameterselection.ui \
-    src/serialconsole.ui
+    src/serialconsole.ui \
+    src/settings.ui
 
 RESOURCES += \
     src/resources.qrc

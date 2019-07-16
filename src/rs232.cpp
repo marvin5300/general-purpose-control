@@ -47,7 +47,6 @@ void RS232::makeConnection() {
     }
     connect(serialPort, &QSerialPort::readyRead, this, &RS232::onReadyRead);
     serialPort->clear(QSerialPort::AllDirections);
-    emit connectionStatus(true);
 }
 
 void RS232::onReadyRead() {

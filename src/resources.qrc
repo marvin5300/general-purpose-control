@@ -7,5 +7,6 @@
         <file>../res/plus2.png</file>
         <file>../res/close1.png</file>
         <file>../res/close2.png</file>
+        <file>../res/settings1.png</file>
     </qresource>
 </RCC>

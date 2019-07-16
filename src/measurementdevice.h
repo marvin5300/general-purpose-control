@@ -18,7 +18,6 @@ class MeasurementDevice : public QFrame
 
 signals:
     void scpiCommand(QString command);
-    void disconnectRS232(QString _interfaceName);
     void closeConnection();
     void deviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
 
@@ -42,7 +41,7 @@ protected:
     virtual void init() = 0;
     static quint64 globalIdCounter;
     quint64 localId = 0;
-    void checkDevice(QString _deviceName, QString message);
+    virtual void checkDevice(QString message);
     Ui::MeasurementDevice *ui;
     void connectRS232(QString _interfaceName, quint32 _baudRate);
     virtual void connectRS232() = 0;
