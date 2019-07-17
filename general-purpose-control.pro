@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
+QMAKE_CXXFLAGS += -std=c++11
 
 DESTDIR = bin
 UI_DIR = build/ui
@@ -51,7 +52,8 @@ HEADERS += \
     src/mainwindow.h \
     src/measurementdevice.h \
     src/rs232.h \
-    src/settings.h
+    src/settings.h \
+    src/measurementparameter.h
 
 SOURCES += \
     src/devicemanager.cpp \

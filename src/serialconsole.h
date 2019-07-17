@@ -1,13 +1,13 @@
 #ifndef SERIALCONSOLE_H
 #define SERIALCONSOLE_H
 
-#include <QFrame>
+#include <QDialog>
 
 namespace Ui {
 class SerialConsole;
 }
 
-class SerialConsole : public QFrame
+class SerialConsole : public QDialog
 {
     Q_OBJECT
 
@@ -20,11 +20,13 @@ public slots:
     void onConnectionStatusChanged(bool connected);
 
 public:
-    explicit SerialConsole(QWidget *parent = nullptr);
+    explicit SerialConsole(QWidget *parent = nullptr, Qt::WindowFlags flags =
+            Qt::Window | Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
     ~SerialConsole();
 
 private:
     Ui::SerialConsole *ui;
+    void onSendButtonClicked();
     void onConnectButtonClicked();
     void connectRS232(QString _interfaceName, quint32 _baudRate);
 };
