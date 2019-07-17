@@ -32,7 +32,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    void openSerialConsole();
     QPointer<FileHandler> fileHandler;
     QString highLevel = "QProgressBar {"
                         "background-color: #74c8ff;"

@@ -11,8 +11,9 @@ public slots:
 public:
     //using MeasurementDevice::MeasurementDevice;
     Dummy();
-    const QString getInterfaceName();
-    const QString getDeviceName();
+    const QString getInterfaceName()const;
+    const QString getDeviceName()const;
+    const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const{return QMap<QString,DeviceParameterConstraint>();}
 
 private:
     void init();

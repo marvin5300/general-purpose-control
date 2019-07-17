@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->progressBar->setStyleSheet(lowLevel);
     connect(ui->addAdjustValueButton, &QPushButton::clicked, this, &MainWindow::onAddAdjustValuesButtonClicked);
     connect(ui->addDeviceButton, &QPushButton::clicked, this, &MainWindow::onAddMeasureValuesButtonClicked);
-    connect(ui->actionSerial_Console, &QAction::triggered, this, &MainWindow::openSerialConsole);
+    connect(ui->actionSerial_Console, &QAction::triggered, this, [this](){SerialConsole *console = new SerialConsole(this);});
     DeviceManager::generateInterfaceList();
     connect(ui->actionselect_output_file, &QAction::triggered, this, [this](){
         QString outputFileName = QFileDialog::getOpenFileName(this, tr("Open File"), "/home", tr("Any File (*)"));
@@ -65,17 +65,6 @@ void MainWindow::onDeviceSelectionChange(QPointer<MeasurementDevice> device, QSt
     ui->deviceConfigVerticalLayout->replaceWidget(device,neoDevice);
     DeviceManager::actualizeDeviceNameModel();
     connect(neoDevice, &MeasurementDevice::deviceSelectionChange, this, &MainWindow::onDeviceSelectionChange);
-}
-
-void MainWindow::openSerialConsole(){
-    QMainWindow *serialConsoleWindow = new QMainWindow(this);
-    serialConsoleWindow->setWindowTitle("Serial Console");
-    serialConsoleWindow->setWindowIcon(QIcon(":/res/rs232.png"));
-    serialConsoleWindow->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    SerialConsole *serialConsole = new SerialConsole(serialConsoleWindow);
-    serialConsole->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    serialConsoleWindow->setCentralWidget(serialConsole);
-    serialConsoleWindow->show();
 }
 
 void MainWindow::onSettingsClicked(){

@@ -13,13 +13,16 @@ public slots:
 
 public:
     explicit Keithley_2410(QString _interfaceName);
-    const QString getInterfaceName();
-    const QString getDeviceName();
+    const QString getInterfaceName()const;
+    const QString getDeviceName()const;
+    const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
 
 private:
     void init();
     void connectRS232();
     const QString deviceName = "MODULE 2410";
+    static const QMap<QString, DeviceParameterConstraint> deviceParamMap;
+    QMap<QString, MeasurementValue> valuesMap;
 };
 
 #endif // KEITHLEY_2410_H

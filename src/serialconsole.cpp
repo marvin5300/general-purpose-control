@@ -3,24 +3,44 @@
 #include "rs232.h"
 #include <QThread>
 
-SerialConsole::SerialConsole(QWidget *parent):
-    QFrame(parent),
+SerialConsole::SerialConsole(QWidget *parent, Qt::WindowFlags flags):
+    QDialog(parent,flags),
     ui(new Ui::SerialConsole)
 {
     ui->setupUi(this);
+    setWindowTitle("Serial Console");
+    setWindowIcon(QIcon(":/res/rs232.png"));
+    raise();
+    show();
 }
 
 SerialConsole::~SerialConsole()
 {
+    closeConnection();
     delete ui;
 }
 
 void SerialConsole::onReceivedMessage(QString message){
     onConnectionStatusChanged(true);
+    ui->outputTextEdit->appendPlainText(QString(message + "\n"));
 }
 
 void SerialConsole::onConnectionStatusChanged(bool connected){
+    QString unconn = "color: darkred;";
+    QString conn = "color: darkgreen;";
+    if (connected){
+        ui->baudRateEdit->setStyleSheet(conn);
+        ui->connectButton->setStyleSheet(conn);
+        ui->portNameEdit->setStyleSheet(conn);
+    }else{
+        ui->baudRateEdit->setStyleSheet(unconn);
+        ui->connectButton->setStyleSheet(unconn);
+        ui->portNameEdit->setStyleSheet(unconn);
+    }
+}
 
+void SerialConsole::onSendButtonClicked(){
+    emit scpiCommand(ui->SCPImessageEdit->text());
 }
 
 void SerialConsole::onConnectButtonClicked(){

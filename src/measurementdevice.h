@@ -2,6 +2,10 @@
 #define MEASUREMENT_DEVICE_H
 
 #include <QFrame>
+#include "measurementparameter.h"
+#include <QPointer>
+#include <QMap>
+#include <QStandardItemModel>
 
 // this class is made assuming all devices use rs232 serial connection on scpi message base
 // this is an abstract function not meant to live on its own but only to be inherited from
@@ -25,6 +29,11 @@ public:
     explicit MeasurementDevice(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     ~MeasurementDevice();
     const QString deviceName;
+    QPointer<QStandardItemModel> getDeviceParameterConstraintsModel()const;
+    virtual const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const = 0;
+    virtual const QString getInterfaceName()const = 0;
+    virtual const QString getDeviceName()const = 0;
+    virtual quint64 getLocalId()const;
 
 public slots:
     virtual void onReceivedMessage(QString message); // this function has no definition yet, it is heavily dependend on the type of device
@@ -32,9 +41,6 @@ public slots:
     void onConnectionStatusChanged(bool connected);
     virtual void onInterfaceSelectionChanged(QString _interfaceName);
     void exit();
-    virtual const QString getInterfaceName() = 0;
-    virtual const QString getDeviceName() = 0;
-    virtual const quint64 getLocalId();
 
 protected:
     void init(QString deviceName, QString _interfaceName);

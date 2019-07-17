@@ -6,11 +6,11 @@ Dummy::Dummy()
     init();
 }
 
-const QString Dummy::getDeviceName(){
+const QString Dummy::getDeviceName()const{
     return deviceName;
 }
 
-const QString Dummy::getInterfaceName(){
+const QString Dummy::getInterfaceName()const{
     return QString("not selected");
 }
 

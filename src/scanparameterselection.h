@@ -2,8 +2,9 @@
 #define SCANPARAMETERSELECTION_H
 
 #include <QFrame>
-#include "measurementdevice.h"
 #include <QStandardItemModel>
+#include "measurementparameter.h"
+#include "measurementdevice.h"
 
 namespace Ui {
 class ScanParameterSelection;
@@ -18,7 +19,7 @@ public:
     ~ScanParameterSelection();
 
 private slots:
-    void onDeviceSelectionChanged(QString deviceName);
+    void onDeviceSelectionChanged(int selectedIndex);
 
 private:
     Ui::ScanParameterSelection *ui;
