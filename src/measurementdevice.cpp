@@ -122,18 +122,18 @@ void MeasurementDevice::onDeviceSelectionChanged(QString _newDeviceName){
     exit();
 }
 
-QPointer<QStandardItemModel> MeasurementDevice::getDeviceParameterConstraintsModel() const{
-    const QMap<QString,DeviceParameterConstraint> deviceParamConstraints = getDeviceParameterConstraints();
-    QPointer<QStandardItemModel> model = new QStandardItemModel;
-    for (auto constraint : deviceParamConstraints){
-        QList<QStandardItem*> list;
-        list << new QStandardItem(constraint.name);
-        list << new QStandardItem(QString("min: %1").arg(constraint.min_value)),
-        list << new QStandardItem(QString("max: %1").arg(constraint.max_value));
-        model->appendRow(list);
-    }
-    return model;
-}
+//QPointer<QStandardItemModel> MeasurementDevice::getDeviceParameterConstraintsModel() const{
+//    const QMap<QString,DeviceParameterConstraint> deviceParamConstraints = getDeviceParameterConstraints();
+//    QPointer<QStandardItemModel> model = new QStandardItemModel;
+//    for (auto constraint : deviceParamConstraints){
+//        QList<QStandardItem*> list;
+//        list << new QStandardItem(constraint.name);
+//        list << new QStandardItem(QString("min: %1").arg(constraint.min_value)),
+//        list << new QStandardItem(QString("max: %1").arg(constraint.max_value));
+//        model->appendRow(list);
+//    }
+//    return model;
+//}
 
 void MeasurementDevice::exit(){
     //QPointer<MeasurementDevice> thisObject = this;

@@ -29,7 +29,6 @@ public:
     explicit MeasurementDevice(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     ~MeasurementDevice();
     const QString deviceName;
-    QPointer<QStandardItemModel> getDeviceParameterConstraintsModel()const;
     virtual const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const = 0;
     virtual const QString getInterfaceName()const = 0;
     virtual const QString getDeviceName()const = 0;

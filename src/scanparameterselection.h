@@ -20,9 +20,11 @@ public:
 
 private slots:
     void onDeviceSelectionChanged(int selectedIndex);
+    void keepDeviceSelectionIndex();
 
 private:
     Ui::ScanParameterSelection *ui;
+    int deviceSelectionIndex = 0;
 };
 
 #endif // SCANPARAMETERSELECTION_H

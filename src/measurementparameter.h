@@ -1,8 +1,11 @@
 #ifndef MEASUREMENTPARAMETER_H
 #define MEASUREMENTPARAMETER_H
 #include <QString>
+#include <QStringList>
 
 enum AccessMode{NONE, READONLY, WRITEONLY, READWRITE};
+static const QStringList accessModeStrings({"NONE", "READONLY", "WRITEONLY", "READWRITE"});
+static const QStringList deviceParameterConstraintsHeaderStrings({"Name", "AccessMode", "Min", "Max"});
 
 struct DeviceParameterConstraint{
     DeviceParameterConstraint(QString _name, double _min_value,
