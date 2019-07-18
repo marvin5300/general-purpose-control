@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1011</width>
-    <height>917</height>
+    <height>939</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,7 +52,7 @@
         <number>0</number>
        </property>
        <item row="1" column="0">
-        <layout class="QHBoxLayout" name="deviceConfigVerticalLayout">
+        <layout class="QHBoxLayout" name="deviceConfigHorizontalLayout">
          <property name="sizeConstraint">
           <enum>QLayout::SetDefaultConstraint</enum>
          </property>
@@ -154,7 +154,7 @@
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <layout class="QHBoxLayout" name="setValuesVerticalLayout">
+        <layout class="QHBoxLayout" name="setValuesHorizontalLayout">
          <property name="sizeConstraint">
           <enum>QLayout::SetDefaultConstraint</enum>
          </property>
@@ -312,19 +312,19 @@
      <x>0</x>
      <y>0</y>
      <width>1011</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
-     <string>Settings</string>
+     <string>Setti&amp;ngs</string>
     </property>
     <addaction name="actionopen_settings"/>
     <addaction name="actionselect_output_file"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
-     <string>Tools</string>
+     <string>Too&amp;ls</string>
     </property>
     <addaction name="actionSerial_Console"/>
    </widget>
@@ -334,17 +334,17 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSerial_Console">
    <property name="text">
-    <string>Serial Console</string>
+    <string>&amp;Serial Console</string>
    </property>
   </action>
   <action name="actionopen_settings">
    <property name="text">
-    <string>open settings</string>
+    <string>&amp;open settings</string>
    </property>
   </action>
   <action name="actionselect_output_file">
    <property name="text">
-    <string>select output file</string>
+    <string>&amp;select output file</string>
    </property>
   </action>
  </widget>

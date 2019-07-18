@@ -6,6 +6,8 @@
 #include <QPointer>
 #include <QMap>
 #include <QStandardItemModel>
+#include <QLayout>
+#include <QMouseEvent>
 
 // this class is made assuming all devices use rs232 serial connection on scpi message base
 // this is an abstract function not meant to live on its own but only to be inherited from
@@ -33,6 +35,7 @@ public:
     virtual const QString getInterfaceName()const = 0;
     virtual const QString getDeviceName()const = 0;
     virtual quint64 getLocalId()const;
+    QPointer<QHBoxLayout> layout;
 
 public slots:
     virtual void onReceivedMessage(QString message); // this function has no definition yet, it is heavily dependend on the type of device
@@ -42,7 +45,8 @@ public slots:
     void exit();
 
 protected:
-    void init(QString deviceName, QString _interfaceName);
+    void init(QString deviceName, QString _interfaceName,
+              QMap<QString,DeviceParameterConstraint> constraintsMap = QMap<QString,DeviceParameterConstraint>());
     virtual void init() = 0;
     static quint64 globalIdCounter;
     quint64 localId = 0;
@@ -54,6 +58,20 @@ protected:
     quint32 baudRate;
     bool correctDeviceConnected = false;
     void onDeviceSelectionChanged(QString _newDeviceName);
+
+    // enable drag drop of widget
+    enum MoveDirection{MoveLeft,MoveRight,MoveUp,MoveDown};
+    void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *);
+    void paintEvent(QPaintEvent *);
+    bool isMinimumDistanceRiched(QMouseEvent *event);
+    bool moveInLayout(QWidget *widget, MoveDirection direction);
+    QPoint dragStartPosition;
+    int oldX = 0;
+    int oldY = 0;
+    int mouseClickX = 0;
+    int mouseClickY = 0;
 };
 
 #endif // MEASUREMENT_DEVICE_H

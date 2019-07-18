@@ -11,12 +11,14 @@ class FileHandler : public QObject
 public:
     explicit FileHandler(QObject *parent = nullptr);
     const QString getFilePath();
+    const QString getFileName();
 
 signals:
     void openFileStatus(bool successful);
 
 public slots:
     void setOutputFile(QString fileName);
+    void writeToFile(QString line);
 
 private:
     QPointer<QFile> outputFile;

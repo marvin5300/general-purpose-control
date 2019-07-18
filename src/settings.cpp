@@ -1,6 +1,7 @@
 #include "settings.h"
 #include "ui_settings.h"
 #include <QFileDialog>
+#include <QStandardPaths>
 
 Settings::Settings(QWidget *parent, QString filePath, Qt::WindowFlags flags) :
     QDialog(parent, flags),
@@ -13,7 +14,11 @@ Settings::Settings(QWidget *parent, QString filePath, Qt::WindowFlags flags) :
     connect(ui->deleteFilePathButton, &QPushButton::clicked, ui->filePathEdit, &QLineEdit::clear);
     ui->deleteFilePathButton->setStyleSheet(":!hover{ border-image: url(:/res/close1.png)}:hover{ border-image: url(:/res/close2.png);}");
     connect(ui->openButton, &QPushButton::clicked, this, [this](){
-       this->ui->filePathEdit->setText(QFileDialog::getOpenFileName(this, tr("Open File"), "/home", tr("Any File (*)")));
+       this->ui->filePathEdit->setText(QFileDialog::getSaveFileName(this, tr("Open File"),
+                                                                    QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+                                                                    tr("Any File (*)"),
+                                                                    nullptr,
+                                                                    QFileDialog::DontConfirmOverwrite));
     });
     ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
     connect(ui->buttonBox, &QDialogButtonBox::accepted, this, &Settings::applySettings);

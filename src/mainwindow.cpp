@@ -6,17 +6,14 @@
 #include "settings.h"
 #include <QFileDialog>
 #include <QPalette>
-//#include <QDebug>
+#include <QStandardPaths>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    fileHandler = new FileHandler(this);
-    connect(fileHandler, &FileHandler::openFileStatus, this, [this](bool open){
-        this->ui->fileStatusLabel->setText(open ? "file open" :  "no file");
-    });
     this->setWindowTitle("General Purpose Control");
     this->setWindowIcon(QIcon(":/res/tune.png"));
     ui->addAdjustValueButton->setStyleSheet(":!hover{ border-image: url(:/res/plus1.png)}:hover{ border-image: url(:/res/plus2.png);}");
@@ -24,15 +21,30 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->progressBar->setValue(0);
     connect(ui->progressBar, &QProgressBar::valueChanged, this, &MainWindow::adjustProgressBarAppearance);
     ui->progressBar->setStyleSheet(lowLevel);
+
+    connect(ui->startMeasurementButton, &QPushButton::clicked, this, &MainWindow::onStartMeasurementButtonClicked);
     connect(ui->addAdjustValueButton, &QPushButton::clicked, this, &MainWindow::onAddAdjustValuesButtonClicked);
     connect(ui->addDeviceButton, &QPushButton::clicked, this, &MainWindow::onAddMeasureValuesButtonClicked);
     connect(ui->actionSerial_Console, &QAction::triggered, this, [this](){SerialConsole *console = new SerialConsole(this);});
     DeviceManager::generateInterfaceList();
-    connect(ui->actionselect_output_file, &QAction::triggered, this, [this](){
-        QString outputFileName = QFileDialog::getOpenFileName(this, tr("Open File"), "/home", tr("Any File (*)"));
-        this->setOutputFile(outputFileName);
-    });
+
+    // all settings related stuff
     connect(ui->actionopen_settings, &QAction::triggered, this, &MainWindow::onSettingsClicked);
+
+    // all filehandler related stuff
+    fileHandler = new FileHandler(this);
+    connect(fileHandler, &FileHandler::openFileStatus, this, [this](bool open){
+        this->ui->fileStatusLabel->setText(open ? fileHandler->getFileName() :  "no file");
+    });
+    connect(this, &MainWindow::setOutputFile, fileHandler, &FileHandler::setOutputFile);
+    connect(ui->actionselect_output_file, &QAction::triggered, this, [this](){
+        QString outputFileName = QFileDialog::getSaveFileName(this, tr("Open File"),
+                                                              QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+                                                              tr("Any File (*)"),
+                                                              nullptr,
+                                                              QFileDialog::DontConfirmOverwrite);
+        if(!outputFileName.isEmpty()){this->setOutputFile(outputFileName);}
+    });
 }
 //Add_PB->setStyleSheet( "*{border-image: url(:/icons/maximize.bmp);}"
 //":pressed{ border-image: url(:/icons/maximize_pressed.bmp);}");
@@ -44,25 +56,30 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAddAdjustValuesButtonClicked(){
     ScanParameterSelection *widget = new ScanParameterSelection(this);
-    //unsigned int n = ui->setValuesVerticalLayout->count();
-    //ui->setValuesVerticalLayout->insertWidget(n-2,widget);
-    ui->setValuesVerticalLayout->insertWidget(ui->setValuesVerticalLayout->count()-1,widget);
+    widget->layout=ui->setValuesHorizontalLayout;
+    //unsigned int n = ui->setValuesHorizontalLayout->count();
+    //ui->setValuesHorizontalLayout->insertWidget(n-2,widget);
+    ui->setValuesHorizontalLayout->insertWidget(ui->setValuesHorizontalLayout->count()-1,widget);
 }
 
 void MainWindow::onAddMeasureValuesButtonClicked(){
     //MeasurementDevice *device = DeviceManager::getDevice("default","default");
     QPointer<MeasurementDevice> device = DeviceManager::getDevice("not selected", "not selected");
+    device->setParent(this);
+    device->layout=ui->deviceConfigHorizontalLayout;
     connect(device, &MeasurementDevice::deviceSelectionChange, this, &MainWindow::onDeviceSelectionChange);
     //unsigned int n = ui->measureValuesVerticalLayout->count();
     //ui->measureValuesVerticalLayout->insertWidget(n-2,widget);
     DeviceManager::actualizeDeviceNameModel();
-    ui->deviceConfigVerticalLayout->insertWidget(ui->deviceConfigVerticalLayout->count()-1,device);
+    ui->deviceConfigHorizontalLayout->insertWidget(ui->deviceConfigHorizontalLayout->count()-1,device);
 }
 
 void MainWindow::onDeviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName){
     QPointer<MeasurementDevice> neoDevice = DeviceManager::getDevice(_newDeviceName, _newInterfaceName);
-    //unsigned int i = ui->deviceConfigVerticalLayout->indexOf(device);
-    ui->deviceConfigVerticalLayout->replaceWidget(device,neoDevice);
+    neoDevice->setParent(this);
+    neoDevice->layout=ui->deviceConfigHorizontalLayout;
+    //unsigned int i = ui->deviceConfigHorizontalLayout->indexOf(device);
+    ui->deviceConfigHorizontalLayout->replaceWidget(device,neoDevice);
     DeviceManager::actualizeDeviceNameModel();
     connect(neoDevice, &MeasurementDevice::deviceSelectionChange, this, &MainWindow::onDeviceSelectionChange);
 }
@@ -76,4 +93,8 @@ void MainWindow::onSettingsClicked(){
 void MainWindow::adjustProgressBarAppearance(int value){
     (value>=50) ? ui->progressBar->setStyleSheet(highLevel) :
         ui->progressBar->setStyleSheet(lowLevel);
+}
+
+void MainWindow::onStartMeasurementButtonClicked(){
+
 }

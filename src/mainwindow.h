@@ -29,6 +29,7 @@ private slots:
     void onAddAdjustValuesButtonClicked();
     void onAddMeasureValuesButtonClicked();
     void adjustProgressBarAppearance(int value);
+    void onStartMeasurementButtonClicked();
 
 private:
     Ui::MainWindow *ui;
