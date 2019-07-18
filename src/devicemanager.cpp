@@ -70,7 +70,7 @@ void DeviceManager::actualizeDeviceNameModel(){
     }
     activeDeviceNameModel->clear();
     for (auto device : activeDevicesList){
-        activeDeviceNameModel->appendRow(new QStandardItem(QString(device->getDeviceName() + "  on port: " + device->getInterfaceName())));
+        activeDeviceNameModel->appendRow(new QStandardItem(QString(device->getDeviceName() + " : " + device->getInterfaceName())));
     }
 }
 
