@@ -46,6 +46,8 @@ private:
                         "text-align: center; }"
                         "QProgressBar::chunk {"
                         "background-color: #010327; }";
+    bool ongoingMeasurement = false;
+    void setUiMeasurementState(bool _ongoingMeasurement);
 };
 
 #endif // MAINWINDOW_H

@@ -28,7 +28,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QGroupBox" name="setValuesBox_2">
+     <widget class="QGroupBox" name="devicesGroupBox">
       <property name="baseSize">
        <size>
         <width>0</width>
@@ -130,7 +130,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="setValuesBox">
+     <widget class="QGroupBox" name="scanValueGroupBox">
       <property name="baseSize">
        <size>
         <width>0</width>
@@ -232,13 +232,13 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="timeSelectionGroupBox">
       <property name="title">
        <string>Measurement Time Selection</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="intervalLabel">
          <property name="text">
           <string>interval:</string>
          </property>
@@ -312,7 +312,7 @@
      <x>0</x>
      <y>0</y>
      <width>1011</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSettings">

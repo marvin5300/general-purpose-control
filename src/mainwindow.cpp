@@ -95,6 +95,20 @@ void MainWindow::adjustProgressBarAppearance(int value){
         ui->progressBar->setStyleSheet(lowLevel);
 }
 
-void MainWindow::onStartMeasurementButtonClicked(){
+void MainWindow::setUiMeasurementState(bool _ongoingMeasurement){
+    ui->menuSettings->setDisabled(_ongoingMeasurement);
+    ongoingMeasurement = _ongoingMeasurement;
+    ui->devicesGroupBox->setDisabled(_ongoingMeasurement);
+    ui->scanValueGroupBox->setDisabled(_ongoingMeasurement);
+    ui->noLimitCheck->setDisabled(_ongoingMeasurement);
+    ui->intervalLabel->setDisabled(_ongoingMeasurement);
+    ui->intervalLineEdit->setDisabled(_ongoingMeasurement);
+    ui->startMeasurementButton->setText(_ongoingMeasurement ? "force stop" : "start measurement");
+}
 
+void MainWindow::onStartMeasurementButtonClicked(){
+    setUiMeasurementState(!ongoingMeasurement); // ongoingMeasurement is false at the start of the program
+    if (ongoingMeasurement){ // now it is true when measurement started
+        // start measurement routine
+    }
 }

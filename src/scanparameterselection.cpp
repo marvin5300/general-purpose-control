@@ -75,7 +75,8 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
         for (int k = 0; k < 4; k++){
             ui->scanParameterTableWidget->item(i,k)->setFlags(
                         ui->scanParameterTableWidget->item(i,k)->flags() &
-                        ~Qt::ItemIsEditable & ~Qt::ItemIsSelectable);
+                        ~Qt::ItemIsEditable & ~Qt::ItemIsSelectable | Qt::ItemNeverHasChildren);
+            ui->scanParameterTableWidget->item(i,k)->setTextAlignment(Qt::AlignCenter);
         }
         i++;
     }
@@ -215,5 +216,5 @@ void ScanParameterSelection::mouseReleaseEvent(QMouseEvent *)
         return;
     }
     layout->update();
-    this->saveGeometry();
+    //this->saveGeometry();
 }
