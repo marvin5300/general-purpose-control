@@ -13,6 +13,8 @@ MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidg
     ui(new Ui::MeasurementDevice)
 {
     ui->setupUi(this);
+    ui->interfaceNameSelectBox->setAttribute(Qt::WA_NoMousePropagation);
+    ui->deviceNameSelectBox->setAttribute(Qt::WA_NoMousePropagation);
     interfaceName = _portName;
     baudRate = _baudRate;
     localId = globalIdCounter;
