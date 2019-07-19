@@ -49,7 +49,7 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName, QMap<Q
     ui->parameterTableWidget->setRowCount(constraintsMap.size());
     ui->parameterTableWidget->setColumnCount(deviceParameterConstraintsHeaderStrings.size()+1);
     QStringList temp;
-    temp << "meas";
+    temp << "Get?";
     temp.append(deviceParameterConstraintsHeaderStrings);
     ui->parameterTableWidget->setHorizontalHeaderLabels(temp);
     ui->parameterTableWidget->verticalHeader()->hide();

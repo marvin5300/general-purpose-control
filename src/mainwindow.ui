@@ -154,7 +154,7 @@
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <layout class="QHBoxLayout" name="setValuesHorizontalLayout">
+        <layout class="QHBoxLayout" name="scanValuesHorizontalLayout">
          <property name="sizeConstraint">
           <enum>QLayout::SetDefaultConstraint</enum>
          </property>
@@ -312,7 +312,7 @@
      <x>0</x>
      <y>0</y>
      <width>1011</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSettings">

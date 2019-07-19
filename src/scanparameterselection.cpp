@@ -4,6 +4,7 @@
 #include <QSizePolicy>
 #include <QDebug>
 #include <QPainter>
+#include <QTimer>
 
 ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     QFrame(parent),
@@ -33,6 +34,10 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     connect(ui->scanParameterAdjustMode, &QComboBox::currentTextChanged, this,
             &ScanParameterSelection::onScanParameterAdjustModeChanged);
     onScanParameterAdjustModeChanged("ramp");
+
+    timer.setInterval(1000);
+    timer.setSingleShot(true);
+    connect(&timer, &QTimer::timeout, this, [this](){mouseReleaseReady = true;});
 }
 
 void ScanParameterSelection::keepDeviceSelectionIndex(){
@@ -137,7 +142,7 @@ void ScanParameterSelection::mouseMoveEvent(QMouseEvent *event){
         return;
     }
     int x = event->globalX() - mouseClickX + oldX;
-    int LeftBorder = parentWidget()->geometry().width() - this->geometry().width();
+    int LeftBorder = layout->geometry().width() - this->geometry().width();
     if(x < 0) x = 0;
     else if(x > LeftBorder) x = LeftBorder;
     move(x, oldY);
@@ -174,7 +179,7 @@ bool ScanParameterSelection::moveInLayout(QWidget *widget, MoveDirection directi
     {
         return false;
     }
-    const int newIndex = direction == MoveLeft ? index - 1 : index + 1;
+    const int newIndex = (direction == MoveLeft) ? (index - 1) : (index + 1);
     layout->removeWidget(widget);
     layout->insertWidget(newIndex , widget);
     return true;
@@ -190,10 +195,15 @@ void ScanParameterSelection::paintEvent(QPaintEvent *)
 
 void ScanParameterSelection::mouseReleaseEvent(QMouseEvent *)
 {
+    if (!mouseReleaseReady){
+        return;
+    }
+    mouseReleaseReady = false;
+    timer.start();
     if(layout.isNull()){
         return;
     }
-    int x = geometry().x();
+    int x = this->geometry().x();
     MoveDirection direct;
     int offset;
     if(oldX > x)
@@ -206,6 +216,10 @@ void ScanParameterSelection::mouseReleaseEvent(QMouseEvent *)
         offset = x - oldX;
         direct = MoveRight;
     }
+    qDebug() << "offset: " << offset <<
+                " width: " << width() <<
+                " x: " << x <<
+                " oldX: " << oldX;
     int count = offset/width();
     for(int i = 0; i < count; i++)
     {

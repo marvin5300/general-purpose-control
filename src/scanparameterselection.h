@@ -6,6 +6,7 @@
 #include "measurementparameter.h"
 #include "measurementdevice.h"
 #include <QLayout>
+#include <QTimer>
 //#include <QMouseEvent>
 
 namespace Ui {
@@ -39,6 +40,8 @@ private:
     bool isMinimumDistanceRiched(QMouseEvent *event);
     bool moveInLayout(QWidget *widget, MoveDirection direction);
     QPoint dragStartPosition;
+    QTimer timer;
+    bool mouseReleaseReady = true;
     int oldX = 0;
     int oldY = 0;
     int mouseClickX = 0;
