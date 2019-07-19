@@ -110,11 +110,23 @@ void MainWindow::onStartMeasurementButtonClicked(){
     setUiMeasurementState(!ongoingMeasurement); // ongoingMeasurement is false at the start of the program
     if (ongoingMeasurement){ // now it is true when measurement started
         // start measurement routine
+        pendingScanParameters = ui->scanValuesHorizontalLayout->count()-2; // beware there are already 2 items in this layout
+        emit requestAllScanParameters();
+    }
+}
+
+void MainWindow::onScanParameterReceived(MeasurementDevice *device, DeviceParameterConstraint constraint){
+    loopDevices.insert(constraint.name, device);
+    loopParameters.insert(constraint.name, constraint);
+    if (pendingScanParameters==0){
+        qDebug() << "error more scan parameters received than requested!!";
+    }
+    pendingScanParameters--;
+    if (pendingScanParameters==0){
+        measurementLoop();
     }
 }
 
 void MainWindow::measurementLoop(){
-    for (int i = 0; i < ui->scanValuesHorizontalLayout->count()-2; i++){
-        //ui->scanValuesHorizontalLayout->itemAt(i+1);
-    }
+
 }
