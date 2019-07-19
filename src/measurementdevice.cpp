@@ -47,8 +47,11 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName, QMap<Q
     // setup table widget
     ui->parameterTableWidget->clear();
     ui->parameterTableWidget->setRowCount(constraintsMap.size());
-    ui->parameterTableWidget->setColumnCount(deviceParameterConstraintsHeaderStrings.size());
-    ui->parameterTableWidget->setHorizontalHeaderLabels(deviceParameterConstraintsHeaderStrings);
+    ui->parameterTableWidget->setColumnCount(deviceParameterConstraintsHeaderStrings.size()+1);
+    QStringList temp;
+    temp << "meas";
+    temp.append(deviceParameterConstraintsHeaderStrings);
+    ui->parameterTableWidget->setHorizontalHeaderLabels(temp);
     ui->parameterTableWidget->verticalHeader()->hide();
     ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->parameterTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
@@ -56,23 +59,30 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName, QMap<Q
     unsigned int i = 0;
     for (auto constraint : constraintsMap){
         ui->parameterTableWidget->setColumnWidth(i,20);
-
-        ui->parameterTableWidget->setItem(i,0,new QTableWidgetItem(constraint.name));
-        ui->parameterTableWidget->setItem(i,1,new QTableWidgetItem(accessModeStrings.at(constraint.mode)));
-        ui->parameterTableWidget->setItem(i,2,new QTableWidgetItem(QString("%1").arg(constraint.max_value)));
-        ui->parameterTableWidget->setItem(i,3,new QTableWidgetItem(QString("%1").arg(constraint.min_value)));
-        for (int k = 0; k < 4; k++){
+        QTableWidgetItem *item = new QTableWidgetItem;
+        item->setCheckState(Qt::Unchecked);
+        item->setFlags(item->flags()|Qt::ItemIsUserCheckable);
+        ui->parameterTableWidget->setItem(i,0,item);
+        ui->parameterTableWidget->setItem(i,1,new QTableWidgetItem(constraint.name));
+        //ui->parameterTableWidget->item(i,0)->setCheckState(Qt::Unchecked);
+        ui->parameterTableWidget->setItem(i,2,new QTableWidgetItem(accessModeStrings.at(constraint.mode)));
+        ui->parameterTableWidget->setItem(i,3,new QTableWidgetItem(QString("%1").arg(constraint.max_value)));
+        ui->parameterTableWidget->setItem(i,4,new QTableWidgetItem(QString("%1").arg(constraint.min_value)));
+        for (int k = 0; k < 5; k++){
             ui->parameterTableWidget->item(i,k)->setFlags(
                         ui->parameterTableWidget->item(i,k)->flags() &
-                        ~Qt::ItemIsEditable & ~Qt::ItemIsSelectable);
+                        ~Qt::ItemIsEditable & ~Qt::ItemIsSelectable | Qt::ItemNeverHasChildren);
+            ui->parameterTableWidget->item(i,k)->setTextAlignment(Qt::AlignCenter);
         }
+        ui->parameterTableWidget->item(i,0)->setFlags(ui->parameterTableWidget->item(i,0)->flags() | Qt::ItemIsUserCheckable); //  | Qt::ItemIsEditable | Qt::ItemIsSelectable
         i++;
     }
     ui->parameterTableWidget->resizeColumnsToContents();
     ui->parameterTableWidget->resizeRowsToContents();
+   // ui->parameterTableWidget->setColumnWidth(0,0);
     // adjusting the settings here for different measurement parameter structs
-    ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(
-                deviceParameterConstraintsHeaderStrings.size()-1,QHeaderView::Stretch);
+    /*ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(
+                deviceParameterConstraintsHeaderStrings.size()-1,QHeaderView::Stretch);*/
     ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(
                 deviceParameterConstraintsHeaderStrings.size()-2,QHeaderView::Stretch);
 
@@ -268,5 +278,5 @@ void MeasurementDevice::mouseReleaseEvent(QMouseEvent *)
         return;
     }
     layout->update();
-    this->saveGeometry();
+    //this->saveGeometry();
 }
