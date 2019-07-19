@@ -48,6 +48,7 @@ private:
                         "background-color: #010327; }";
     bool ongoingMeasurement = false;
     void setUiMeasurementState(bool _ongoingMeasurement);
+    void measurementLoop();
 };
 
 #endif // MAINWINDOW_H

@@ -56,10 +56,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAddAdjustValuesButtonClicked(){
     ScanParameterSelection *widget = new ScanParameterSelection(this);
-    widget->layout=ui->setValuesHorizontalLayout;
-    //unsigned int n = ui->setValuesHorizontalLayout->count();
-    //ui->setValuesHorizontalLayout->insertWidget(n-2,widget);
-    ui->setValuesHorizontalLayout->insertWidget(ui->setValuesHorizontalLayout->count()-1,widget);
+    widget->layout=ui->scanValuesHorizontalLayout;
+    //unsigned int n = ui->scanValuesHorizontalLayout->count();
+    //ui->scanValuesHorizontalLayout->insertWidget(n-2,widget);
+    ui->scanValuesHorizontalLayout->insertWidget(ui->scanValuesHorizontalLayout->count()-1,widget);
 }
 
 void MainWindow::onAddMeasureValuesButtonClicked(){
@@ -110,5 +110,11 @@ void MainWindow::onStartMeasurementButtonClicked(){
     setUiMeasurementState(!ongoingMeasurement); // ongoingMeasurement is false at the start of the program
     if (ongoingMeasurement){ // now it is true when measurement started
         // start measurement routine
+    }
+}
+
+void MainWindow::measurementLoop(){
+    for (int i = 0; i < ui->scanValuesHorizontalLayout->count()-2; i++){
+        //ui->scanValuesHorizontalLayout->itemAt(i+1);
     }
 }
