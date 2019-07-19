@@ -13,6 +13,10 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     this->setFrameShadow(QFrame::Plain);
     this->setFrameShape(QFrame::StyledPanel);
     this->setMidLineWidth(1);
+    ui->scanParameterAdjustMode->setAttribute(Qt::WA_NoMousePropagation);
+    ui->deviceSelectionCombobox->setAttribute(Qt::WA_NoMousePropagation);
+    ui->scanParameterSelectionCombobox->setAttribute(Qt::WA_NoMousePropagation);
+
     ui->scanParameterTableWidget->setFrameShadow(QTableWidget::Plain);
     ui->scanParameterTableWidget->setFrameShape(QTableWidget::StyledPanel);
     ui->scanParameterTableWidget->setStyleSheet("border: none;");
