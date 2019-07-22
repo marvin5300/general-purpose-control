@@ -17,10 +17,18 @@ class ScanParameterSelection : public QFrame
 {
     Q_OBJECT
 
+signals:
+    void completedLoop();
+    void measureValues(QList<MeasurementValue> measVals);
+
 public:
     explicit ScanParameterSelection(QWidget *parent = nullptr);
     ~ScanParameterSelection();
     QPointer<QHBoxLayout> layout;
+
+public slots:
+    void measure(quint64 count);
+    void nextScanParameterStep();
 
 private slots:
     void onDeviceSelectionChanged(int selectedIndex);

@@ -16,6 +16,8 @@ public:
     const QString getInterfaceName()const;
     const QString getDeviceName()const;
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
+    const QList<MeasurementValue> getMeasures();
+    void setScanParameter(MeasurementValue value);
 
 private:
     void init();

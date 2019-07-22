@@ -6,6 +6,7 @@
 #include "serialconsole.h"
 #include "filehandler.h"
 #include <QMap>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -17,7 +18,8 @@ class MainWindow : public QMainWindow
 
 signals:
     void setOutputFile(QString filename);
-    void requestAllScanParameters();
+    void nextInterval();
+    void measure(quint64 count);
 
 public slots:
     void onDeviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
@@ -32,6 +34,7 @@ private slots:
     void onAddMeasureValuesButtonClicked();
     void adjustProgressBarAppearance(int value);
     void onStartMeasurementButtonClicked();
+    void finishedMeasurement();
 
 private:
     Ui::MainWindow *ui;
@@ -50,11 +53,14 @@ private:
                         "background-color: #010327; }";
     bool ongoingMeasurement = false;
     void setUiMeasurementState(bool _ongoingMeasurement);
-    QMap<QString, QPointer<MeasurementDevice> > loopDevices;
-    QMap<QString, DeviceParameterConstraint> loopParameters;
-    quint32 pendingScanParameters = 0;
+    void connectScanValues(bool doConnect);
+    //QMap<QString, QPointer<MeasurementDevice> > loopDevices;
+    //QMap<QString, DeviceParameterConstraint> loopParameters;
+    //quint32 pendingScanParameters = 0;
     void onScanParameterReceived(MeasurementDevice *device, DeviceParameterConstraint constraint);
-    void measurementLoop();
+    //void measurementLoop();
+    QTimer intervalTimer;
+    quint64 measCount = 0;
 };
 
 #endif // MAINWINDOW_H

@@ -23,6 +23,14 @@ const QString Keithley_2000::getInterfaceName()const{
     return interfaceName;
 }
 
+const QList<MeasurementValue> Keithley_2000::getMeasures(){
+    return QList<MeasurementValue>();
+}
+
+void Keithley_2000::setScanParameter(MeasurementValue value){
+
+}
+
 void Keithley_2000::init(){
     MeasurementDevice::init(deviceName, interfaceName,deviceParamMap);
 }

@@ -130,7 +130,31 @@ ScanParameterSelection::~ScanParameterSelection()
     delete ui;
 }
 
+// measurement loop functions:
+void ScanParameterSelection::measure(quint64 count){
+    if (DeviceManager::activeDevicesList.count()<=deviceSelectionIndex){
+        emit measureValues(QList<MeasurementValue>());
+        return;
+    }
+    emit measureValues(DeviceManager::activeDevicesList.at(deviceSelectionIndex)->getMeasures());
+}
 
+void ScanParameterSelection::nextScanParameterStep(){
+    // changes scan parameter value to the next step (within selected range and settings)
+    if (DeviceManager::activeDevicesList.count()<=deviceSelectionIndex){
+        emit completedLoop();
+        return;
+    }
+    MeasurementValue scanParameter;
+    // determine which value will be next and if the loop is finished
+    if (1){
+        scanParameter.value = 0.0; // set it to a different value
+    }
+    scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
+    DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
+}
+
+// drag & drop actions:
 void ScanParameterSelection::mouseMoveEvent(QMouseEvent *event){
     if(layout.isNull()){
         return;
@@ -216,10 +240,6 @@ void ScanParameterSelection::mouseReleaseEvent(QMouseEvent *)
         offset = x - oldX;
         direct = MoveRight;
     }
-    qDebug() << "offset: " << offset <<
-                " width: " << width() <<
-                " x: " << x <<
-                " oldX: " << oldX;
     int count = offset/width();
     for(int i = 0; i < count; i++)
     {
