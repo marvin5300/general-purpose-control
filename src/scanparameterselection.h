@@ -20,6 +20,7 @@ class ScanParameterSelection : public QFrame
 signals:
     void completedLoop();
     void measureValues(QList<MeasurementValue> measVals);
+    void addProgress(double progress);
 
 public:
     explicit ScanParameterSelection(QWidget *parent = nullptr);
@@ -30,6 +31,7 @@ public slots:
     void measure(quint64 count);
     void nextScanParameterStep();
     void scanParameterInit();
+    void progressCarry(double progress);
 
 private slots:
     void onDeviceSelectionChanged(int selectedIndex);

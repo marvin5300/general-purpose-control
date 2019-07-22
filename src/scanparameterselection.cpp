@@ -214,6 +214,11 @@ void ScanParameterSelection::nextScanParameterStep(){
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
 }
 
+void ScanParameterSelection::progressCarry(double progress){
+
+    emit addProgress(0.0);
+}
+
 // drag & drop actions:
 void ScanParameterSelection::mouseMoveEvent(QMouseEvent *event){
     if(layout.isNull()){
