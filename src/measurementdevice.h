@@ -36,6 +36,8 @@ public:
     virtual const QString getDeviceName()const = 0;
     virtual quint64 getLocalId()const;
     QPointer<QHBoxLayout> layout;
+    virtual const QList<MeasurementValue> getMeasures() = 0;
+    virtual void setScanParameter(MeasurementValue value) = 0;
 
 public slots:
     virtual void onReceivedMessage(QString message); // this function has no definition yet, it is heavily dependend on the type of device

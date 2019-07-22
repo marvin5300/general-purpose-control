@@ -325,7 +325,7 @@
      <item>
       <widget class="QLabel" name="stepsLabel">
        <property name="text">
-        <string>in steps of:</string>
+        <string>num of steps:</string>
        </property>
       </widget>
      </item>

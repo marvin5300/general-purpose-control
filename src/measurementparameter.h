@@ -22,7 +22,7 @@ struct DeviceParameterConstraint{
 };
 
 struct MeasurementValue{
-    MeasurementValue(QString _name, double _value){
+    MeasurementValue(QString _name="", double _value=0.0){
         name = _name;
         value = _value;
     }
