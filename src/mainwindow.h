@@ -20,6 +20,7 @@ signals:
     void setOutputFile(QString filename);
     void nextInterval();
     void measure(quint64 count);
+    void scanInit();
 
 public slots:
     void onDeviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);

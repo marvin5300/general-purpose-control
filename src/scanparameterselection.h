@@ -29,6 +29,7 @@ public:
 public slots:
     void measure(quint64 count);
     void nextScanParameterStep();
+    void scanParameterInit();
 
 private slots:
     void onDeviceSelectionChanged(int selectedIndex);
@@ -38,7 +39,10 @@ private slots:
 private:
     Ui::ScanParameterSelection *ui;
     int deviceSelectionIndex = 0;
-
+    double parameterBeginValue = 0.0;
+    double parameterCurrentValue = 0.0;
+    double parameterEndValue = 1.0;
+    quint64 stepNumber = 100;
     // enable drag drop of widget
     enum MoveDirection{MoveLeft,MoveRight,MoveUp,MoveDown};
     void mouseMoveEvent(QMouseEvent *event);
