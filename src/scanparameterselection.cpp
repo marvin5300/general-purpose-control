@@ -66,7 +66,7 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
     ui->scanParameterTableWidget->verticalHeader()->hide();
     ui->scanParameterTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->scanParameterTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-    unsigned int i = 0;
+    int i = 0;
     for (auto constraint : deviceParameterConstraints){
         ui->scanParameterTableWidget->setColumnWidth(i,20);
 
