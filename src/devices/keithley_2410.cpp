@@ -23,6 +23,10 @@ const QList<MeasurementValue> Keithley_2410::getMeasures(){
     return QList<MeasurementValue>();
 }
 
+MeasurementValue Keithley_2410::getMeasure(QString valueName){
+
+}
+
 void Keithley_2410::setScanParameter(MeasurementValue value){
 
 }

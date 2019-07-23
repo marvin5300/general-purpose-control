@@ -24,6 +24,7 @@ private:
     const QString deviceName = "MODULE 2000";
     static const QMap<QString, DeviceParameterConstraint> deviceParamMap;
     QMap<QString, MeasurementValue> valuesMap;
+    MeasurementValue getMeasure(QString valueName);
 };
 
 #endif // KEITHLEY_2000_H

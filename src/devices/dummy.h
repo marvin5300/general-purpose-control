@@ -21,6 +21,7 @@ private:
     void init();
     void connectRS232();
     const QString deviceName = "not selected";
+    MeasurementValue getMeasure(QString valueName){return MeasurementValue();}
 };
 
 #endif // DUMMY_H
