@@ -152,10 +152,12 @@ ScanParameterSelection::~ScanParameterSelection()
 // measurement loop functions:
 void ScanParameterSelection::measure(quint64 count){
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
-        emit measureValues(QList<MeasurementValue>());
+        emit measureValues("", QList<MeasurementValue>(), 0);
         return;
     }
-    emit measureValues(DeviceManager::activeDevicesList.at(deviceSelectionIndex)->getMeasures());
+    emit measureValues(ui->deviceSelectionCombobox->currentText(),
+                       DeviceManager::activeDevicesList.at(deviceSelectionIndex)->getMeasures(),
+                       count);
 }
 
 void ScanParameterSelection::scanParameterInit(){
@@ -182,18 +184,18 @@ void ScanParameterSelection::nextScanParameterStep(){
 
     MeasurementValue scanParameter;
     // determine which value will be next and if the loop is finished
-
+    bool newLoop = false;
     if (ui->scanParameterAdjustMode->currentText()=="ramp"){
         // if ramping
-        bool newLoop = false;
-        if (parameterCurrentValue == parameterEndValue){
+        if (parameterCurrentValue == parameterEndValue||
+                (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){
             //qDebug() << "deviceSelectionIndex: " << deviceSelectionIndex << " completedLoop";
             emit completedLoop();
             newLoop = true;
         }
         switch(ui->stepsCombobox->currentIndex()){
         case 0:
-            parameterCurrentValue = parameterCurrentValue + (parameterEndValue-parameterBeginValue)/stepNumber;
+            parameterCurrentValue = parameterCurrentValue + (parameterEndValue-parameterBeginValue)/(stepNumber-1);
             break;
         case 1:
             parameterCurrentValue = parameterCurrentValue + stepNumber;
@@ -209,14 +211,21 @@ void ScanParameterSelection::nextScanParameterStep(){
             scanParameter.value = parameterBeginValue;
         }
     }
-
+    qDebug() << "current value = " << parameterCurrentValue;
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
 }
 
-void ScanParameterSelection::progressCarry(double progress){
-
-    emit addProgress(0.0);
+void ScanParameterSelection::progressCarry(int progress){
+    if (stepNumber<2){
+        emit addProgress(100);
+        return;
+    }
+    double increment = 1.0/(stepNumber); // the step precision of the percentage value
+    double progressCurrentLoop = (1.0-increment)*(parameterCurrentValue-parameterBeginValue)/(parameterEndValue-parameterBeginValue);
+    progressCurrentLoop += 0.01*progress*increment;
+    int percentage = (int)(100.0*progressCurrentLoop);
+    emit addProgress(percentage);
 }
 
 // drag & drop actions:

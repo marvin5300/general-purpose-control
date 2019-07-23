@@ -257,13 +257,13 @@ void MeasurementDevice::mouseReleaseEvent(QMouseEvent *)
     }
     int x = geometry().x();
     MoveDirection direct;
-    int offset;
+    int offset = 0;
     if(oldX > x)
     {
         offset = oldX - x;
         direct = MoveLeft;
     }
-    else if(oldX < x)
+    else if(oldX <= x)
     {
         offset = x - oldX;
         direct = MoveRight;
