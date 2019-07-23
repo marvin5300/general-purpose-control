@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
             [this](){
                 this->measure(++measCount);
                 this->nextInterval();
+                this->probeProgress(0);
             });
     intervalTimer.setSingleShot(false);
 
@@ -129,6 +130,7 @@ void MainWindow::onStartMeasurementButtonClicked(){
                                          QMessageBox::Ok, QMessageBox::Abort);
             ok = (button==QMessageBox::Ok);
             emit scanInit();
+            ui->progressBar->setValue(0);
         }
         if (!ok){
             onStartMeasurementButtonClicked();
@@ -148,6 +150,7 @@ void MainWindow::finishedMeasurement(){
     connectScanValues(false);
     ongoingMeasurement = false;
     setUiMeasurementState(ongoingMeasurement);
+    ui->progressBar->setValue(100);
     // put here any command for successful finished measurement
     QMessageBox::information(this, tr("Success!"), tr("Measurement finished"),QMessageBox::Ok);
 }
@@ -157,15 +160,20 @@ void MainWindow::connectScanValues(bool doConnect){
         for (int i = ui->scanValuesHorizontalLayout->count()-2; i>1 ; i--){
             connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::completedLoop,
                     dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::nextScanParameterStep);
-            connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::addProgress,
-                    dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::progressCarry);
+            connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::addProgress,
+                    dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::progressCarry);
             connect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measure);
             connect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::scanParameterInit);
+            connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measureValues,
+                    fileHandler, &FileHandler::onReceivingValues);
         }
+        connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measureValues,
+                fileHandler, &FileHandler::onReceivingValues);
         connect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measure);
-        connect(this, &MainWindow::probeProgress, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::progressCarry);
+        connect(this, &MainWindow::probeProgress, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()),
+                &ScanParameterSelection::progressCarry);
         connect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::scanParameterInit);
-        connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()), &ScanParameterSelection::addProgress,
+        connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::addProgress,
                 this, &MainWindow::onProgressReceived);
         connect(this, &MainWindow::nextInterval,
                 dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()),
@@ -180,7 +188,11 @@ void MainWindow::connectScanValues(bool doConnect){
                     dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::progressCarry);
             disconnect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measure);
             disconnect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::scanParameterInit);
+            disconnect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measureValues,
+                    fileHandler, &FileHandler::onReceivingValues);
         }
+        disconnect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measureValues,
+                fileHandler, &FileHandler::onReceivingValues);
         disconnect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measure);
         disconnect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::scanParameterInit);
         disconnect(this, &MainWindow::nextInterval,
@@ -202,10 +214,11 @@ void MainWindow::onScanParameterReceived(MeasurementDevice *device, DeviceParame
     }*/
 }
 
-void MainWindow::onProgressReceived(double progress){
-    if (progress>1){
+void MainWindow::onProgressReceived(int progress){
+    qDebug() << progress;
+    if (progress>100){
         qDebug() << "warning progress > 1 (progress = " << progress << ")";
         progress = 1;
     }
-    ui->progressBar->setValue((int)(progress*100.0));
+    ui->progressBar->setValue(progress);
 }

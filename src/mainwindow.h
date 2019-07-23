@@ -21,12 +21,12 @@ signals:
     void nextInterval();
     void measure(quint64 count);
     void scanInit();
-    void probeProgress(double progressStart = 0);
+    void probeProgress(int progressStart = 0);
 
 public slots:
     void onDeviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
     void onSettingsClicked();
-    void onProgressReceived(double progress);
+    void onProgressReceived(int progress);
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
