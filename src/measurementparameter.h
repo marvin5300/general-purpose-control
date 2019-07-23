@@ -2,6 +2,7 @@
 #define MEASUREMENTPARAMETER_H
 #include <QString>
 #include <QStringList>
+#include "ui_measurementdevice.h"
 
 enum AccessMode{NONE, READONLY, WRITEONLY, READWRITE};
 static const QStringList accessModeStrings({"NONE", "READONLY", "WRITEONLY", "READWRITE"});

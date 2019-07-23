@@ -24,7 +24,22 @@ const QString Keithley_2000::getInterfaceName()const{
 }
 
 const QList<MeasurementValue> Keithley_2000::getMeasures(){
-    return QList<MeasurementValue>();
+
+    // must redesign this function for asynchronous serial connection
+    QList<MeasurementValue> measValList;
+    for(int i = 0; i < ui->parameterTableWidget->rowCount(); i++){
+        if (ui->parameterTableWidget->itemAt(0,i)->checkState()==Qt::Unchecked){
+            continue;
+        }
+        QString valueName = ui->parameterTableWidget->itemAt(1,i)->text();
+        // check if readable
+        MeasurementValue value = getMeasure(valueName);
+        measValList.append(value);
+    }
+}
+
+MeasurementValue Keithley_2000::getMeasure(QString valueName){
+
 }
 
 void Keithley_2000::setScanParameter(MeasurementValue value){

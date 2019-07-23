@@ -56,6 +56,7 @@ protected:
     Ui::MeasurementDevice *ui;
     void connectRS232(QString _interfaceName, quint32 _baudRate);
     virtual void connectRS232() = 0;
+    virtual MeasurementValue getMeasure(QString valueName) = 0;
     QString interfaceName;
     quint32 baudRate;
     bool correctDeviceConnected = false;
