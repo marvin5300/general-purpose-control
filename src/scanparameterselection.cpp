@@ -150,14 +150,18 @@ ScanParameterSelection::~ScanParameterSelection()
 }
 
 // measurement loop functions:
-void ScanParameterSelection::measure(quint64 count){
+void ScanParameterSelection::onMeasureValuesReceived(QList<MeasurementValue> measVal, quint64 count){
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
-        emit measureValues("", QList<MeasurementValue>(), 0);
+        emit measuredValues("", QList<MeasurementValue>(), 0);
         return;
     }
-    emit measureValues(ui->deviceSelectionCombobox->currentText(),
-                       DeviceManager::activeDevicesList.at(deviceSelectionIndex)->getMeasures(),
+    emit measuredValues(ui->deviceSelectionCombobox->currentText(),
+                       measVal,
                        count);
+}
+
+void ScanParameterSelection::measure(quint64 count){
+    emit queueMeasure(count);
 }
 
 void ScanParameterSelection::scanParameterInit(){
@@ -168,6 +172,17 @@ void ScanParameterSelection::scanParameterInit(){
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     scanParameter.value = parameterBeginValue;
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
+    connect(this, &ScanParameterSelection::queueMeasure,
+            DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::queueMeasure);
+    connect(DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::measuredValues,
+            this, &ScanParameterSelection::onMeasureValuesReceived);
+}
+
+void ScanParameterSelection::measurementFinished(){
+    disconnect(this, &ScanParameterSelection::queueMeasure,
+               DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::queueMeasure);
+    connect(DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::measuredValues,
+            this, &ScanParameterSelection::onMeasureValuesReceived);
 }
 
 void ScanParameterSelection::nextScanParameterStep(){
@@ -211,7 +226,7 @@ void ScanParameterSelection::nextScanParameterStep(){
             scanParameter.value = parameterBeginValue;
         }
     }
-    qDebug() << "current value = " << parameterCurrentValue;
+    //qDebug() << "current value = " << parameterCurrentValue;
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
 }
