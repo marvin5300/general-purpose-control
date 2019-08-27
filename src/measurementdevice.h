@@ -26,6 +26,8 @@ signals:
     void scpiCommand(QString command);
     void closeConnection();
     void deviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
+    void onMeasureValuesReceived(quint64 count);
+    void measuredValues(QList<MeasurementValue> values, quint64 count);
 
 public:
     explicit MeasurementDevice(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
@@ -36,7 +38,6 @@ public:
     virtual const QString getDeviceName()const = 0;
     virtual quint64 getLocalId()const;
     QPointer<QHBoxLayout> layout;
-    virtual const QList<MeasurementValue> getMeasures() = 0;
     virtual void setScanParameter(MeasurementValue value) = 0;
 
 public slots:
@@ -44,6 +45,7 @@ public slots:
     void setUiConnectionState(bool connected);
     void onConnectionStatusChanged(bool connected);
     virtual void onInterfaceSelectionChanged(QString _interfaceName);
+    void queueMeasure(quint64 count);
     void exit();
 
 protected:
@@ -61,6 +63,7 @@ protected:
     quint32 baudRate;
     bool correctDeviceConnected = false;
     void onDeviceSelectionChanged(QString _newDeviceName);
+    virtual const QList<MeasurementValue> getMeasures() = 0;
 
     // enable drag drop of widget
     enum MoveDirection{MoveLeft,MoveRight,MoveUp,MoveDown};

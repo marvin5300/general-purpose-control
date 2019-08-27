@@ -97,6 +97,10 @@ MeasurementDevice::~MeasurementDevice()
     delete ui;
 }
 
+void MeasurementDevice::queueMeasure(quint64 count){
+
+}
+
 void MeasurementDevice::onReceivedMessage(QString message){
     checkDevice(message);
 }
