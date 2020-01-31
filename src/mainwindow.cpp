@@ -162,14 +162,8 @@ void MainWindow::connectScanValues(bool doConnect){
                     dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::nextScanParameterStep);
             connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::addProgress,
                     dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::progressCarry);
-            connect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measure);
             connect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::scanParameterInit);
-            connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measuredValues,
-                    fileHandler, &FileHandler::onReceivingValues);
         }
-        connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measuredValues,
-                fileHandler, &FileHandler::onReceivingValues);
-        connect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measure);
         connect(this, &MainWindow::probeProgress, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()),
                 &ScanParameterSelection::progressCarry);
         connect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::scanParameterInit);
@@ -186,14 +180,8 @@ void MainWindow::connectScanValues(bool doConnect){
                        dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::nextScanParameterStep);
             disconnect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::addProgress,
                     dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::progressCarry);
-            disconnect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measure);
             disconnect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::scanParameterInit);
-            disconnect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::measuredValues,
-                    fileHandler, &FileHandler::onReceivingValues);
         }
-        disconnect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measuredValues,
-                fileHandler, &FileHandler::onReceivingValues);
-        disconnect(this, &MainWindow::measure, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::measure);
         disconnect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::scanParameterInit);
         disconnect(this, &MainWindow::nextInterval,
                 dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()),

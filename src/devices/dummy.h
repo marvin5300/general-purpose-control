@@ -7,6 +7,7 @@ class Dummy : public MeasurementDevice
     Q_OBJECT
 public slots:
     void onReceivedMessage(QString message);
+    void queueMeasure(quint64 count)override;
 
 public:
     //using MeasurementDevice::MeasurementDevice;
@@ -14,14 +15,13 @@ public:
     const QString getInterfaceName()const;
     const QString getDeviceName()const;
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const{return QMap<QString,DeviceParameterConstraint>();}
-    const QList<MeasurementValue> getMeasures(){return QList<MeasurementValue>();}
     void setScanParameter(MeasurementValue value){}
+    void connectBus();
 
 private:
     void init();
-    void connectRS232();
     const QString deviceName = "not selected";
-    MeasurementValue getMeasure(QString valueName){return MeasurementValue();}
+    bool checkDevice(QString message);
 };
 
 #endif // DUMMY_H

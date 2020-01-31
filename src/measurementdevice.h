@@ -10,7 +10,7 @@
 #include <QMouseEvent>
 
 // this class is made assuming all devices use rs232 serial connection on scpi message base
-// this is an abstract function not meant to live on its own but only to be inherited from
+// this is an abstract class not meant to live on its own but only to be inherited from
 
 // basic communication like "*IDN?" command and everything that does not change for different
 // devices are baked fix in here
@@ -26,44 +26,41 @@ signals:
     void scpiCommand(QString command);
     void closeConnection();
     void deviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
-    void onMeasureValuesReceived(quint64 count);
-    void measuredValues(QList<MeasurementValue> values, quint64 count);
+    void measuredValues(QString deviceName, QList<MeasurementValue> values, quint64 number);
 
 public:
     explicit MeasurementDevice(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     ~MeasurementDevice();
-    const QString deviceName;
     virtual const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const = 0;
     virtual const QString getInterfaceName()const = 0;
     virtual const QString getDeviceName()const = 0;
-    virtual quint64 getLocalId()const;
+    quint64 getLocalId()const;
+    const QString deviceName;
     QPointer<QHBoxLayout> layout;
     virtual void setScanParameter(MeasurementValue value) = 0;
 
 public slots:
-    virtual void onReceivedMessage(QString message); // this function has no definition yet, it is heavily dependend on the type of device
+    virtual void onReceivedMessage(QString message) = 0; // this function has no definition yet, it is heavily dependend on the type of device
+    virtual void queueMeasure(quint64 count) = 0;
+    virtual void connectBus() = 0;
     void setUiConnectionState(bool connected);
     void onConnectionStatusChanged(bool connected);
-    virtual void onInterfaceSelectionChanged(QString _interfaceName);
-    void queueMeasure(quint64 count);
+    void onInterfaceSelectionChanged(QString _interfaceName);
     void exit();
 
 protected:
+    virtual void init() = 0;
+    virtual bool checkDevice(QString message) = 0;
     void init(QString deviceName, QString _interfaceName,
               QMap<QString,DeviceParameterConstraint> constraintsMap = QMap<QString,DeviceParameterConstraint>());
-    virtual void init() = 0;
-    static quint64 globalIdCounter;
-    quint64 localId = 0;
-    virtual void checkDevice(QString message);
-    Ui::MeasurementDevice *ui;
-    void connectRS232(QString _interfaceName, quint32 _baudRate);
-    virtual void connectRS232() = 0;
-    virtual MeasurementValue getMeasure(QString valueName) = 0;
+    void onDeviceSelectionChanged(QString _newDeviceName);
     QString interfaceName;
     quint32 baudRate;
+    quint64 localId = 0;
+    static quint64 globalIdCounter;
     bool correctDeviceConnected = false;
-    void onDeviceSelectionChanged(QString _newDeviceName);
-    virtual const QList<MeasurementValue> getMeasures() = 0;
+
+    Ui::MeasurementDevice *ui;
 
     // enable drag drop of widget
     enum MoveDirection{MoveLeft,MoveRight,MoveUp,MoveDown};
