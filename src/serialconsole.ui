@@ -47,7 +47,7 @@
        <item>
         <widget class="QLineEdit" name="portNameEdit">
          <property name="text">
-          <string>COM3</string>
+          <string>/dev/ttyUSB0</string>
          </property>
         </widget>
        </item>

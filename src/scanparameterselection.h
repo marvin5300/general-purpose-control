@@ -19,8 +19,6 @@ class ScanParameterSelection : public QFrame
 
 signals:
     void completedLoop();
-    void measuredValues(QString deviceName, QList<MeasurementValue> measVals, quint64 number);
-    void queueMeasure(quint64 count);
     void addProgress(double progress);
 
 public:
@@ -29,12 +27,9 @@ public:
     QPointer<QHBoxLayout> layout;
 
 public slots:
-    void measure(quint64 count);
     void nextScanParameterStep();
     void scanParameterInit();
-    void measurementFinished();
     void progressCarry(int progress);
-    void onMeasureValuesReceived(QList<MeasurementValue> measVals, quint64 count);
 
 private slots:
     void onDeviceSelectionChanged(int selectedIndex);

@@ -149,21 +149,6 @@ ScanParameterSelection::~ScanParameterSelection()
     delete ui;
 }
 
-// measurement loop functions:
-void ScanParameterSelection::onMeasureValuesReceived(QList<MeasurementValue> measVal, quint64 count){
-    if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
-        emit measuredValues("", QList<MeasurementValue>(), 0);
-        return;
-    }
-    emit measuredValues(ui->deviceSelectionCombobox->currentText(),
-                       measVal,
-                       count);
-}
-
-void ScanParameterSelection::measure(quint64 count){
-    emit queueMeasure(count);
-}
-
 void ScanParameterSelection::scanParameterInit(){
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
         return;
@@ -172,17 +157,6 @@ void ScanParameterSelection::scanParameterInit(){
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     scanParameter.value = parameterBeginValue;
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
-    connect(this, &ScanParameterSelection::queueMeasure,
-            DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::queueMeasure);
-    connect(DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::measuredValues,
-            this, &ScanParameterSelection::onMeasureValuesReceived);
-}
-
-void ScanParameterSelection::measurementFinished(){
-    disconnect(this, &ScanParameterSelection::queueMeasure,
-               DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::queueMeasure);
-    connect(DeviceManager::activeDevicesList.at(deviceSelectionIndex), &MeasurementDevice::measuredValues,
-            this, &ScanParameterSelection::onMeasureValuesReceived);
 }
 
 void ScanParameterSelection::nextScanParameterStep(){

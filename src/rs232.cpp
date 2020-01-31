@@ -18,6 +18,7 @@ RS232::RS232(QString _portName, quint32  _baudRate,
     terminator = _terminator;
     flowControl = _flowControl;
     dataBits = _dataBits;
+    stopBits = _stopBits;
     parity = _parity;
 }
 
@@ -37,7 +38,7 @@ void RS232::makeConnection() {
         qDebug() << (QObject::tr("Failed to open port %1, error: %2\ntrying again in %3 seconds\n")
             .arg(portName)
             .arg(serialPort->errorString())
-            .arg(timeout));
+            .arg(timeout/1000));
         serialPort.clear();
         QThread::usleep(timeout);
         //emit serialRestart(portName, baudRate);
@@ -72,7 +73,8 @@ bool RS232::scanMessage(std::string& buffer){
         if (buffer[i]==terminator){
             buffer.erase(0, message.size()+1);
             if (!message.empty()){
-                emit receivedMessage(QString::fromStdString(message+"\n"));
+                emit receivedMessage(QString::fromStdString(message));
+                qDebug() << "received: " << QString::fromStdString(message);
                 processMessage(message);
                 return true;
             }
@@ -93,6 +95,7 @@ void RS232::sendScpiCommand(QString command){
     }
     //std::cout << "\nsend:" << (command.toStdString()+terminator) << std::endl;
     //emit receivedMessage(QString(command + terminator + "\n"));
+    qDebug() << "send: " << QString(command+""+terminator);
     serialPort->write((command.toStdString()+""+terminator).c_str(), command.length()+1);
 }
 

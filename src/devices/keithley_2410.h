@@ -8,9 +8,6 @@ class Keithley_2410 : public Keithley_2xxx
 {
     Q_OBJECT
 
-public slots:
-    void onReceivedMessage(QString message);
-
 public:
     explicit Keithley_2410(QString _interfaceName);
     const QString getInterfaceName()const;
@@ -19,13 +16,16 @@ public:
     const QList<MeasurementValue> getMeasures();
     void setScanParameter(MeasurementValue value);
 
+public slots:
+    //void onReceivedMessage(QString message);
+    //void queueMeasure(quint64 count);
+
 private:
     void init();
-    void connectRS232();
     const QString deviceName = "MODULE 2410";
     static const QMap<QString, DeviceParameterConstraint> deviceParamMap;
     QMap<QString, MeasurementValue> valuesMap;
-    MeasurementValue getMeasure(QString valueName);
+    //using Keithley_2xxx::checkDevice;
 };
 
 #endif // KEITHLEY_2410_H

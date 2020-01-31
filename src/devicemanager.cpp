@@ -4,6 +4,7 @@
 #include "devices/keithley_2410.h"
 #include "devices/dummy.h"
 #include <QDebug>
+#include <QDir>
 
 QList<QPointer<MeasurementDevice> > DeviceManager::activeDevicesList;
 QStringList DeviceManager::interfaceNameList;
@@ -102,12 +103,11 @@ void DeviceManager::generateInterfaceList(){    // this is done once at start
         return;
     }
 #if defined(Q_OS_WIN)
-    for (quint8 i = 1; i < 100; i++){
+    for (quint8 i = 1; i < 10; i++){
         interfaceNameList.append(QString("COM%1").arg(i));
     }
 #else
-    for (quint8 i = 0; i < 100; i++){
-        interfaceNameList.append(QString("/dev/ttyACM%1").arg(i));
-    }
+    QDir directory("/dev","*",QDir::Name, QDir::System);
+    interfaceNameList = directory.entryList(QStringList() << "ttyUSB*" << "ttyS*" << "ttyAM*");
 #endif
 }

@@ -43,7 +43,7 @@ private:
     QSerialPort::StopBits stopBits; // usually OneStop
     QSerialPort::DataBits dataBits; // usually Data8 (8 Bits)
     QSerialPort::Parity parity; // usually NoParity
-    unsigned int timeout = 5000; // ms
+    unsigned int timeout = 5000; // s
     void processMessage(std::string& message);
 };
 

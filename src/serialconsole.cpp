@@ -10,6 +10,8 @@ SerialConsole::SerialConsole(QWidget *parent, Qt::WindowFlags flags):
     ui->setupUi(this);
     setWindowTitle("Serial Console");
     setWindowIcon(QIcon(":/res/rs232.png"));
+    connect(ui->connectButton, &QPushButton::clicked, this, &SerialConsole::onConnectButtonClicked);
+    connect(ui->sendButton, &QPushButton::clicked, this, &SerialConsole::onSendButtonClicked);
     raise();
     show();
 }
@@ -22,7 +24,7 @@ SerialConsole::~SerialConsole()
 
 void SerialConsole::onReceivedMessage(QString message){
     onConnectionStatusChanged(true);
-    ui->outputTextEdit->appendPlainText(QString(message + "\n"));
+    ui->outputTextEdit->appendPlainText(QString(message));
 }
 
 void SerialConsole::onConnectionStatusChanged(bool connected){
@@ -62,7 +64,6 @@ void SerialConsole::connectRS232(QString _interfaceName, quint32 _baudRate) {
     connect(serialThread, &QThread::started, serialConnection, &RS232::makeConnection);
     //connect(serialConnection, &RS232::serialRestart, this, &MainWindow::connectRS232);
     connect(serialConnection, &RS232::connectionStatus, this, &SerialConsole::onConnectionStatusChanged);
-    connect(serialConnection, &RS232::receivedMessage, this, &SerialConsole::onReceivedMessage);
 
     // connect all send/receive messages
     connect(this, &SerialConsole::scpiCommand, serialConnection, &RS232::sendScpiCommand);
