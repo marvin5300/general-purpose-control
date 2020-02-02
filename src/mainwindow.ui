@@ -240,7 +240,7 @@
        <item>
         <widget class="QLabel" name="intervalLabel">
          <property name="text">
-          <string>interval:</string>
+          <string>delay between set and measure:</string>
          </property>
         </widget>
        </item>
@@ -326,7 +326,7 @@
      <x>0</x>
      <y>0</y>
      <width>1011</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSettings">

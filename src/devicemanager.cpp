@@ -13,8 +13,8 @@ QPointer<QStandardItemModel> DeviceManager::allDeviceNameModel;
 QPointer<QStandardItemModel> DeviceManager::allInterfaceNameModel;
 
 const QStringList DeviceManager::deviceNameList({
-                                           "MODULE 2000",
-                                           "MODULE 2410"
+                                           "MODEL 2000",
+                                           "MODEL 2410"
                                         });
 
 QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString portName){
@@ -46,7 +46,7 @@ void DeviceManager::removeDevice(QPointer<MeasurementDevice> device){
             /*qDebug() << activeDevicesList.at(i)->getDeviceName() << " == " << device->getDeviceName();
             qDebug() << activeDevicesList.at(i)->getInterfaceName() << " == " << device->getInterfaceName();
             qDebug() << activeDevicesList.at(i)->getLocalId() << " == " << device->getLocalId();*/
-            if (activeDevicesList.at(i)->getDeviceName() == device->getDeviceName()
+            if (activeDevicesList.at(i)->deviceName() == device->deviceName()
                     && activeDevicesList.at(i)->getInterfaceName() == device->getInterfaceName()
                     && activeDevicesList.at(i)->getLocalId() == device->getLocalId()){
                 activeDevicesList.removeAt(i);
@@ -71,7 +71,7 @@ void DeviceManager::actualizeDeviceNameModel(){
     }
     activeDeviceNameModel->clear();
     for (auto device : activeDevicesList){
-        activeDeviceNameModel->appendRow(new QStandardItem(QString(device->getDeviceName() + " : " + device->getInterfaceName())));
+        activeDeviceNameModel->appendRow(new QStandardItem(QString(device->deviceName() + " : " + device->getInterfaceName())));
     }
 }
 

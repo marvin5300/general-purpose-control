@@ -31,10 +31,9 @@ class Keithley_2000 : public Keithley_2xxx
 public:
     explicit Keithley_2000(QString _interfaceName);
     const QString getInterfaceName()const;
-    const QString getDeviceName()const;
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
     const QList<MeasurementValue> getMeasures();
-    void setScanParameter(MeasurementValue value);
+    const QString deviceName() {return _deviceName;}
 
 public slots:
     //void onReceivedMessage(QString message);
@@ -42,7 +41,7 @@ public slots:
 
 private:
     void init();
-    const QString deviceName = "MODULE 2000";
+    const QString _deviceName = "MODEL 2000";
     static const QMap<QString, DeviceParameterConstraint> deviceParamMap;
     QMap<QString, MeasurementValue> valuesMap;
     //using Keithley_2xxx::checkDevice;

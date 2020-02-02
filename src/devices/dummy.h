@@ -13,15 +13,14 @@ public:
     //using MeasurementDevice::MeasurementDevice;
     Dummy();
     const QString getInterfaceName()const;
-    const QString getDeviceName()const;
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const{return QMap<QString,DeviceParameterConstraint>();}
-    void setScanParameter(MeasurementValue value){}
-    void connectBus();
+    void setScanParameter(MeasurementValue value){value = value;}
+    void connectBus(){}
+    const QString deviceName() {return _deviceName;}
 
 private:
     void init();
-    const QString deviceName = "not selected";
-    bool checkDevice(QString message);
+    const QString _deviceName = "not selected";
 };
 
 #endif // DUMMY_H
