@@ -27,6 +27,9 @@ public slots:
     void onDeviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
     void onSettingsClicked();
     void onProgressReceived(int progress);
+    void onMeasureReady(QString deviceName, quint64 number);
+    void onScanParamSelReady(QString deviceName, quint64 number);
+    void onTimerTimeout();
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -57,12 +60,11 @@ private:
     bool ongoingMeasurement = false;
     void setUiMeasurementState(bool _ongoingMeasurement);
     void connectScanValues(bool doConnect);
-    //QMap<QString, QPointer<MeasurementDevice> > loopDevices;
-    //QMap<QString, DeviceParameterConstraint> loopParameters;
-    //quint32 pendingScanParameters = 0;
-    void onScanParameterReceived(MeasurementDevice *device, DeviceParameterConstraint constraint);
-    //void measurementLoop();
     QTimer intervalTimer;
+    bool timerOngoing;
+    int numberOfScanparameterSelections;
+    int scanParameterReadyCounter;
+    int measurementReadyCounter;
     quint64 measCount = 0;
 };
 

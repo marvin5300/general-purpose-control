@@ -29,11 +29,10 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &ScanParameterSelection::onDeviceSelectionChanged);
     ui->deviceSelectionCombobox->setModel(deviceModel);
-    ui->scanParameterAdjustMode->addItem("ramp");
-    ui->scanParameterAdjustMode->addItem("fixed");
+    ui->scanParameterAdjustMode->addItem("measure only");
     connect(ui->scanParameterAdjustMode, &QComboBox::currentTextChanged, this,
             &ScanParameterSelection::onScanParameterAdjustModeChanged);
-    onScanParameterAdjustModeChanged("ramp");
+    onScanParameterAdjustModeChanged("measure only");
 
     connect(ui->fromEdit, &QLineEdit::editingFinished, this,
             [this](){bool ok = false;
@@ -67,7 +66,6 @@ void ScanParameterSelection::keepDeviceSelectionIndex(){
 }
 
 void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
-    deviceSelectionIndex = selectedIndex;
     if (selectedIndex>=DeviceManager::activeDevicesList.size()){
         //qDebug() << "activeDevicesList size too small!!";
         return;
@@ -76,6 +74,12 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
     if (selectedIndex<0){
         return;
     }
+    if (!(lastSelectedDevice.isNull())){
+        disconnect(lastSelectedDevice,&MeasurementDevice::scanParameterReady, this,&ScanParameterSelection::onDeviceScanParameterReady);
+    }
+    deviceSelectionIndex = selectedIndex;
+    lastSelectedDevice = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
+    connect(DeviceManager::activeDevicesList.at(deviceSelectionIndex),&MeasurementDevice::scanParameterReady, this,&ScanParameterSelection::onDeviceScanParameterReady);
     QMap<QString,DeviceParameterConstraint> deviceParameterConstraints = DeviceManager::activeDevicesList.at(selectedIndex)->getDeviceParameterConstraints();
     ui->scanParameterSelectionCombobox->clear();
     ui->scanParameterTableWidget->clear();
@@ -85,12 +89,14 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
     ui->scanParameterTableWidget->verticalHeader()->hide();
     ui->scanParameterTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->scanParameterTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    bool setScanParamPossible = false;
     int i = 0;
     for (auto constraint : deviceParameterConstraints){
         ui->scanParameterTableWidget->setColumnWidth(i,20);
 
         if(constraint.mode == READWRITE ||constraint.mode == WRITEONLY){
             ui->scanParameterSelectionCombobox->addItem(constraint.name);
+            setScanParamPossible = true;
         }
         ui->scanParameterTableWidget->setItem(i,0,new QTableWidgetItem(constraint.name));
         ui->scanParameterTableWidget->setItem(i,1,new QTableWidgetItem(accessModeStrings.at(constraint.mode)));
@@ -103,6 +109,26 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
             ui->scanParameterTableWidget->item(i,k)->setTextAlignment(Qt::AlignCenter);
         }
         i++;
+    }
+    if (setScanParamPossible){
+        int index = ui->scanParameterAdjustMode->findText("fixed");
+        if (index<0){
+            ui->scanParameterAdjustMode->addItem("fixed");
+        }
+        index = ui->scanParameterAdjustMode->findText("ramp");
+        if (index<0){
+            ui->scanParameterAdjustMode->addItem("ramp");
+            ui->scanParameterAdjustMode->setCurrentIndex(ui->scanParameterAdjustMode->findText("ramp"));
+        }
+    }else{
+        int index = ui->scanParameterAdjustMode->findText("ramp");
+        if (index>=0){
+            ui->scanParameterAdjustMode->removeItem(index);
+        }
+        index = ui->scanParameterAdjustMode->findText("fixed");
+        if (index>=0){
+            ui->scanParameterAdjustMode->removeItem(index);
+        }
     }
     for (i = 0; i < ui->scanParameterSelectionCombobox->count(); i++){
         if (ui->scanParameterSelectionCombobox->itemText(i)=="V"){
@@ -126,6 +152,8 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
 void ScanParameterSelection::onScanParameterAdjustModeChanged(QString mode){
     ui->checkBox_4->hide();
     ui->checkBox_5->hide();
+    ui->delayEdit->hide();
+    ui->delayLabel->hide();
     if (mode == "fixed"){
         ui->toEdit->setHidden(true);
         ui->toLabel->setHidden(true);
@@ -142,6 +170,21 @@ void ScanParameterSelection::onScanParameterAdjustModeChanged(QString mode){
         ui->logStepsButton->setHidden(false);
         ui->fromLabel->setText("from:");
     }
+    if (mode == "measure only"){
+        ui->scanParameterSelectionCombobox->setEnabled(false);
+        ui->scanParameterTableWidget->setHidden(true);
+        ui->toEdit->setHidden(true);
+        ui->toLabel->setHidden(true);
+        ui->stepsEdit->setHidden(true);
+        ui->stepsCombobox->setHidden(true);
+        ui->logStepsButton->setHidden(true);
+        ui->fromLabel->setText("number of measurements:");
+        ui->scanParameterSpacer->changeSize(0,0,QSizePolicy::Preferred,QSizePolicy::Expanding);
+    }else{
+        ui->scanParameterSelectionCombobox->setEnabled(true);
+        ui->scanParameterTableWidget->setHidden(false);
+        ui->scanParameterSpacer->changeSize(0,0,QSizePolicy::Preferred,QSizePolicy::Preferred);
+    }
 }
 
 ScanParameterSelection::~ScanParameterSelection()
@@ -153,10 +196,16 @@ void ScanParameterSelection::scanParameterInit(){
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
         return;
     }
+    setScanCounter = 0;
+    parameterCurrentValue = parameterBeginValue;
     MeasurementValue scanParameter;
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     scanParameter.value = parameterBeginValue;
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
+}
+
+void ScanParameterSelection::onDeviceScanParameterReady(QString deviceName, quint64 number){
+    emit scanParameterReady(deviceName, number);
 }
 
 void ScanParameterSelection::nextScanParameterStep(){
@@ -169,6 +218,15 @@ void ScanParameterSelection::nextScanParameterStep(){
     bool fixedMode = ui->scanParameterAdjustMode->currentText()=="fixed";
     if (fixedMode){
         emit completedLoop();
+    }
+
+    setScanCounter++;
+
+    bool measureOnly = ui->scanParameterAdjustMode->currentText()=="measure only";
+    if (measureOnly){
+        if (setScanCounter>=static_cast<quint64>(parameterBeginValue)){
+            emit completedLoop();
+        }
     }
 
     MeasurementValue scanParameter;
@@ -200,7 +258,6 @@ void ScanParameterSelection::nextScanParameterStep(){
             scanParameter.value = parameterBeginValue;
         }
     }
-    //qDebug() << "current value = " << parameterCurrentValue;
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
 }

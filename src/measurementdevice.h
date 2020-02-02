@@ -27,15 +27,16 @@ signals:
     void closeConnection();
     void deviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
     void measuredValues(QString deviceName, QList<MeasurementValue> values, quint64 number);
+    void measureReady(QString deviceName, quint64 number);
+    void scanParameterReady(QString deviceName, quint64 number);
 
 public:
     explicit MeasurementDevice(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     ~MeasurementDevice();
     virtual const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const = 0;
     virtual const QString getInterfaceName()const = 0;
-    virtual const QString getDeviceName()const = 0;
+    virtual const QString deviceName() = 0;
     quint64 getLocalId()const;
-    const QString deviceName;
     QPointer<QHBoxLayout> layout;
     virtual void setScanParameter(MeasurementValue value) = 0;
 
@@ -43,14 +44,13 @@ public slots:
     virtual void onReceivedMessage(QString message) = 0; // this function has no definition yet, it is heavily dependend on the type of device
     virtual void queueMeasure(quint64 count) = 0;
     virtual void connectBus() = 0;
-    void setUiConnectionState(bool connected);
     void onConnectionStatusChanged(bool connected);
+    void setUiConnectionState(bool connected);
     void onInterfaceSelectionChanged(QString _interfaceName);
     void exit();
 
 protected:
     virtual void init() = 0;
-    virtual bool checkDevice(QString message) = 0;
     void init(QString deviceName, QString _interfaceName,
               QMap<QString,DeviceParameterConstraint> constraintsMap = QMap<QString,DeviceParameterConstraint>());
     void onDeviceSelectionChanged(QString _newDeviceName);

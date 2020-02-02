@@ -20,6 +20,7 @@ class ScanParameterSelection : public QFrame
 signals:
     void completedLoop();
     void addProgress(double progress);
+    void scanParameterReady(QString deviceName, quint64 number);
 
 public:
     explicit ScanParameterSelection(QWidget *parent = nullptr);
@@ -30,6 +31,7 @@ public slots:
     void nextScanParameterStep();
     void scanParameterInit();
     void progressCarry(int progress);
+    void onDeviceScanParameterReady(QString deviceName, quint64 number);
 
 private slots:
     void onDeviceSelectionChanged(int selectedIndex);
@@ -38,11 +40,13 @@ private slots:
 
 private:
     Ui::ScanParameterSelection *ui;
+    QPointer<MeasurementDevice> lastSelectedDevice;
     int deviceSelectionIndex = 0;
     double parameterBeginValue = 0.0;
     double parameterCurrentValue = 0.0;
     double parameterEndValue = 1.0;
     quint64 stepNumber = 100;
+    quint64 setScanCounter;
     // enable drag drop of widget
     enum MoveDirection{MoveLeft,MoveRight,MoveUp,MoveDown};
     void mouseMoveEvent(QMouseEvent *event);

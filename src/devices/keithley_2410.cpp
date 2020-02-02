@@ -15,19 +15,11 @@ const QMap<QString,DeviceParameterConstraint> Keithley_2410::getDeviceParameterC
     return deviceParamMap;
 }
 
-const QString Keithley_2410::getDeviceName()const{
-    return deviceName;
-}
-
 const QString Keithley_2410::getInterfaceName()const{
     return interfaceName;
 }
 
-void Keithley_2410::setScanParameter(MeasurementValue value){
-
-}
-
 void Keithley_2410::init(){
-    MeasurementDevice::init(deviceName, interfaceName,deviceParamMap);
+    MeasurementDevice::init(_deviceName, interfaceName,deviceParamMap);
 }
 

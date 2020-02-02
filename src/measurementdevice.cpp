@@ -47,11 +47,12 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName, QMap<Q
     // setup table widget
     ui->parameterTableWidget->clear();
     ui->parameterTableWidget->setRowCount(constraintsMap.size());
-    ui->parameterTableWidget->setColumnCount(deviceParameterConstraintsHeaderStrings.size()+1);
-    QStringList temp;
-    temp << "Get?";
-    temp.append(deviceParameterConstraintsHeaderStrings);
-    ui->parameterTableWidget->setHorizontalHeaderLabels(temp);
+    ui->parameterTableWidget->setColumnCount(deviceParameterConstraintsHeaderStrings.size());
+    //QStringList temp;
+    //temp << "Get?";
+    //temp.append(deviceParameterConstraintsHeaderStrings);
+    //ui->parameterTableWidget->setHorizontalHeaderLabels(temp);
+    ui->parameterTableWidget->setHorizontalHeaderLabels(deviceParameterConstraintsHeaderStrings);
     ui->parameterTableWidget->verticalHeader()->hide();
     ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->parameterTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
@@ -59,16 +60,16 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName, QMap<Q
     unsigned int i = 0;
     for (auto constraint : constraintsMap){
         ui->parameterTableWidget->setColumnWidth(i,20);
-        QTableWidgetItem *item = new QTableWidgetItem;
+        QTableWidgetItem *item = new QTableWidgetItem(constraint.name);
         item->setCheckState(Qt::Unchecked);
         item->setFlags(item->flags()|Qt::ItemIsUserCheckable);
         ui->parameterTableWidget->setItem(i,0,item);
-        ui->parameterTableWidget->setItem(i,1,new QTableWidgetItem(constraint.name));
+        //ui->parameterTableWidget->setItem(i,1,new QTableWidgetItem(constraint.name));
         //ui->parameterTableWidget->item(i,0)->setCheckState(Qt::Unchecked);
-        ui->parameterTableWidget->setItem(i,2,new QTableWidgetItem(accessModeStrings.at(constraint.mode)));
-        ui->parameterTableWidget->setItem(i,3,new QTableWidgetItem(QString("%1").arg(constraint.max_value)));
-        ui->parameterTableWidget->setItem(i,4,new QTableWidgetItem(QString("%1").arg(constraint.min_value)));
-        for (int k = 0; k < 5; k++){
+        ui->parameterTableWidget->setItem(i,1,new QTableWidgetItem(accessModeStrings.at(constraint.mode)));
+        ui->parameterTableWidget->setItem(i,2,new QTableWidgetItem(QString("%1").arg(constraint.max_value)));
+        ui->parameterTableWidget->setItem(i,3,new QTableWidgetItem(QString("%1").arg(constraint.min_value)));
+        for (int k = 0; k < 4; k++){
             ui->parameterTableWidget->item(i,k)->setFlags(
                         ui->parameterTableWidget->item(i,k)->flags() &
                         ~Qt::ItemIsEditable & ~Qt::ItemIsSelectable | Qt::ItemNeverHasChildren);
@@ -98,8 +99,7 @@ MeasurementDevice::~MeasurementDevice()
 }
 
 void MeasurementDevice::onConnectionStatusChanged(bool connected){
-    // should connect to signalise the gui that connection is established or not
-
+    setUiConnectionState(connected);
 }
 
 void MeasurementDevice::setUiConnectionState(bool connected){
@@ -107,6 +107,7 @@ void MeasurementDevice::setUiConnectionState(bool connected){
         ui->deviceNameSelectBox->setStyleSheet("color: green;");
         ui->interfaceNameSelectBox->setStyleSheet("color: green;");
     }else{
+        correctDeviceConnected = false;
         ui->deviceNameSelectBox->setStyleSheet("color: red;");
         ui->interfaceNameSelectBox->setStyleSheet("color: red;");
     }

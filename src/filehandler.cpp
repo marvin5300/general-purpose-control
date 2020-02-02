@@ -1,6 +1,7 @@
 #include "filehandler.h"
 #include <QMessageBox>
 #include <QTextStream>
+#include <QDebug>
 
 FileHandler::FileHandler(QObject *parent) : QObject(parent)
 {
@@ -34,6 +35,12 @@ void FileHandler::setOutputFile(QString fileName){
 }
 
 void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> values, quint64 number){
+    //qDebug() << deviceName << " " << number;
+    for (auto value : values){
+        qDebug() << value.name << " " << value.value;
+    }
+    return;
+    // does nothing except print it for now!!!
     QStringList valuesList = valueLineListMap.value(number);
     if (deviceName==""||values.empty()){
         return;
