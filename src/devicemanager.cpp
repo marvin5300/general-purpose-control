@@ -1,7 +1,8 @@
 #include "devicemanager.h"
 
-#include "devices/keithley_2000.h"
-#include "devices/keithley_2410.h"
+#include <src/devices/keithley_2000.h>
+#include <src/devices/keithley_2410.h>
+#include <src/devices/sourcetronic_st2819a.h>
 #include "devices/dummy.h"
 #include <QDebug>
 #include <QDir>
@@ -14,7 +15,8 @@ QPointer<QStandardItemModel> DeviceManager::allInterfaceNameModel;
 
 const QStringList DeviceManager::deviceNameList({
                                            "MODEL 2000",
-                                           "MODEL 2410"
+                                           "MODEL 2410",
+                                           "ST2819A"
                                         });
 
 QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString portName){
@@ -27,6 +29,9 @@ QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString
     }
     if (deviceName == deviceNameList.at(1)){
         device = new Keithley_2410(portName);
+    }
+    if (deviceName == deviceNameList.at(2)){
+        device = new SourceTronic_ST2819A(portName);
     }
     activeDevicesList.append(device);
     return device;

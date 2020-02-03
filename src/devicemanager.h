@@ -1,7 +1,7 @@
 #ifndef DEVICEMANAGER_H
 #define DEVICEMANAGER_H
 
-#include "measurementdevice.h"
+#include <src/measurementdevice.h>
 #include <QString>
 #include <QPointer>
 #include <QStringList>

@@ -48,12 +48,13 @@ HEADERS += \
     src/serialconsole.h \
     src/devices/keithley_2000.h \
     src/devices/keithley_2410.h \
-    src/devices/keithley_2xxx.h \
     src/mainwindow.h \
     src/measurementdevice.h \
     src/rs232.h \
     src/settings.h \
-    src/measurementparameter.h
+    src/measurementparameter.h \
+    src/devices/scpidevice.h \
+    src/devices/sourcetronic_st2819a.h
 
 SOURCES += \
     src/devicemanager.cpp \
@@ -63,12 +64,13 @@ SOURCES += \
     src/serialconsole.cpp \
     src/devices/keithley_2000.cpp \
     src/devices/keithley_2410.cpp \
-    src/devices/keithley_2xxx.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/measurementdevice.cpp \
     src/rs232.cpp \
-    src/settings.cpp
+    src/settings.cpp \
+    src/devices/scpidevice.cpp \
+    src/devices/sourcetronic_st2819a.cpp
 
 FORMS += \
     src/mainwindow.ui \

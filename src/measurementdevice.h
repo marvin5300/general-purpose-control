@@ -1,8 +1,8 @@
 #ifndef MEASUREMENT_DEVICE_H
 #define MEASUREMENT_DEVICE_H
 
+#include <src/measurementparameter.h>
 #include <QFrame>
-#include "measurementparameter.h"
 #include <QPointer>
 #include <QMap>
 #include <QStandardItemModel>
@@ -23,7 +23,6 @@ class MeasurementDevice : public QFrame
     Q_OBJECT
 
 signals:
-    void scpiCommand(QString command);
     void closeConnection();
     void deviceSelectionChange(QPointer<MeasurementDevice> device, QString _newDeviceName, QString _newInterfaceName);
     void measuredValues(QString deviceName, QList<MeasurementValue> values, quint64 number);

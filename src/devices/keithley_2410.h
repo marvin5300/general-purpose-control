@@ -1,19 +1,18 @@
 #ifndef KEITHLEY_2410_H
 #define KEITHLEY_2410_H
 
-#include "keithley_2xxx.h"
+#include <src/devices/scpidevice.h>
 
 
-class Keithley_2410 : public Keithley_2xxx
+class Keithley_2410 : public ScpiDevice
 {
     Q_OBJECT
 
 public:
-    explicit Keithley_2410(QString _interfaceName);
+    Keithley_2410(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     const QString getInterfaceName()const;
     const QString getDeviceName()const;
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
-    const QList<MeasurementValue> getMeasures();
     const QString deviceName() {return _deviceName;}
 
 public slots:

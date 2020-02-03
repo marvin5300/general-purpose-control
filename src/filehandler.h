@@ -1,10 +1,10 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 
+#include <src/measurementparameter.h>
 #include <QObject>
 #include <QPointer>
 #include <QFile>
-#include "measurementparameter.h"
 #include <QMap>
 
 class FileHandler : public QObject

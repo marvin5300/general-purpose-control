@@ -1,10 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <src/measurementdevice.h>
+#include <src/serialconsole.h>
+#include <src/filehandler.h>
 #include <QMainWindow>
-#include "measurementdevice.h"
-#include "serialconsole.h"
-#include "filehandler.h"
 #include <QMap>
 #include <QTimer>
 
