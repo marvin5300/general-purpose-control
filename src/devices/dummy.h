@@ -1,6 +1,7 @@
 #ifndef DUMMY_H
 #define DUMMY_H
-#include "../measurementdevice.h"
+
+#include <src/devices/scpidevice.h>
 
 class Dummy : public MeasurementDevice
 {
@@ -10,7 +11,6 @@ public slots:
     void queueMeasure(quint64 count)override;
 
 public:
-    //using MeasurementDevice::MeasurementDevice;
     Dummy();
     const QString getInterfaceName()const;
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const{return QMap<QString,DeviceParameterConstraint>();}

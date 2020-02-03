@@ -1,9 +1,10 @@
-#include "keithley_2xxx.h"
+#include <src/devices/scpidevice.h>
 #include <src/rs232.h>
 #include <QThread>
 #include <QVector>
+#include <ui_measurementdevice.h>
 
-void Keithley_2xxx::queueMeasure(quint64 number){
+void ScpiDevice::queueMeasure(quint64 number){
     measureID = number;
     activeMeasParams.clear();
     for (int i = 0; i < ui->parameterTableWidget->rowCount(); i++){
@@ -23,7 +24,7 @@ void Keithley_2xxx::queueMeasure(quint64 number){
     }
 }
 
-void Keithley_2xxx::setScanParameter(MeasurementValue value){
+void ScpiDevice::setScanParameter(MeasurementValue value){
     //qDebug() << "setScanParameter: device status "<<correctDeviceConnected <<" deviceName: "<<deviceName();
     emit scanParameterReady(deviceName(),0);
     if (!correctDeviceConnected){
@@ -35,7 +36,7 @@ void Keithley_2xxx::setScanParameter(MeasurementValue value){
     }
 }
 
-QString Keithley_2xxx::translateMeas(QString paramName){
+QString ScpiDevice::translateMeas(QString paramName){
     QString scpiCommandString = "";
     if (paramName=="V"){
         scpiCommandString = ":MEAS:VOLT?";
@@ -49,7 +50,7 @@ QString Keithley_2xxx::translateMeas(QString paramName){
     return scpiCommandString;
 }
 
-QString Keithley_2xxx::translateSet(QString paramName){
+QString ScpiDevice::translateSet(QString paramName){
     QString scpiCommandString = "";
     if (paramName=="V"){
         scpiCommandString = ":CONF:VOLT";
@@ -60,7 +61,7 @@ QString Keithley_2xxx::translateSet(QString paramName){
     return scpiCommandString;
 }
 
-void Keithley_2xxx::onReceivedMessage(QString message){
+void ScpiDevice::onReceivedMessage(QString message){
     if (!correctDeviceConnected){
         if (checkDevice(message)==false){
 
@@ -90,7 +91,7 @@ void Keithley_2xxx::onReceivedMessage(QString message){
     }
 }
 
-bool Keithley_2xxx::checkDevice(QString message){
+bool ScpiDevice::checkDevice(QString message){
     if (!correctDeviceConnected){ // first queued message is "*IDN?" and this should return the device name
         if (message.contains(deviceName())){
             correctDeviceConnected = true;
@@ -102,25 +103,25 @@ bool Keithley_2xxx::checkDevice(QString message){
     }
 }
 
-void Keithley_2xxx::connectBus(){
+void ScpiDevice::connectBus(){
     connectRS232(interfaceName,baudRate);
 }
 
-void Keithley_2xxx::connectRS232(QString _interfaceName, quint32 _baudRate) {
+void ScpiDevice::connectRS232(QString _interfaceName, quint32 _baudRate) {
     // here is where the magic threading happens look closely
     QThread *serialThread = new QThread();
     RS232 *serialConnection = new RS232(_interfaceName, _baudRate);
     serialConnection->moveToThread(serialThread);
     // connect all signals about quitting
     connect(serialThread, &QThread::finished, serialThread, &QThread::deleteLater);
-    connect(this, &MeasurementDevice::closeConnection, serialConnection, &RS232::closeConnection);
+    connect(this, &ScpiDevice::closeConnection, serialConnection, &RS232::closeConnection);
     connect(serialThread, &QThread::started, serialConnection, &RS232::makeConnection);
     //connect(serialConnection, &RS232::serialRestart, this, &MainWindow::connectRS232);
-    connect(serialConnection, &RS232::connectionStatus, this, &MeasurementDevice::onConnectionStatusChanged);
+    connect(serialConnection, &RS232::connectionStatus, this, &ScpiDevice::onConnectionStatusChanged);
 
     // connect all send/receive messages
-    connect(this, &MeasurementDevice::scpiCommand, serialConnection, &RS232::sendScpiCommand);
-    connect(serialConnection, &RS232::receivedMessage, this, &MeasurementDevice::onReceivedMessage);
+    connect(this, &ScpiDevice::scpiCommand, serialConnection, &RS232::sendScpiCommand);
+    connect(serialConnection, &RS232::receivedMessage, this, &ScpiDevice::onReceivedMessage);
 
     // after thread start there will be a signal emitted which starts the RS232 makeConnection function
     serialThread->start();

@@ -1,13 +1,18 @@
-#ifndef KEITHLEY_2XXX_H
-#define KEITHLEY_2XXX_H
+#ifndef SCPIDEVICE_H_H
+#define SCPIDEVICE_H_H
 
-#include "../measurementdevice.h"
+#include <src/measurementdevice.h>
 #include <QDebug>
 #include <QList>
 #include <QQueue>
 
-class Keithley_2xxx : public MeasurementDevice
+// all devices that use the scpi protocol (commands look like ':TRIGer:SOURce EXTernal')
+
+class ScpiDevice : public MeasurementDevice
 {
+    Q_OBJECT
+signals:
+    void scpiCommand(QString command);
 public:
     using MeasurementDevice::MeasurementDevice;
 public slots:
@@ -27,4 +32,4 @@ protected:
     QList<MeasurementValue> measureResults;
 };
 
-#endif // KEITHLEY_2XXX_H
+#endif // SCPIDEVICE_H_H

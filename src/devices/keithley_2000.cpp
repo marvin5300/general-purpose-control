@@ -1,4 +1,4 @@
-#include "keithley_2000.h"
+#include <src/devices/keithley_2000.h>
 
 const QMap<QString,DeviceParameterConstraint> Keithley_2000::deviceParamMap = {
     {"V",DeviceParameterConstraint("V", 0.0, 0.0, READONLY)},
@@ -6,8 +6,7 @@ const QMap<QString,DeviceParameterConstraint> Keithley_2000::deviceParamMap = {
     {"R",DeviceParameterConstraint("R", 0.0, 0.0, READONLY)}
 };
 
-Keithley_2000::Keithley_2000(QString _interfaceName)
-    : Keithley_2xxx(_interfaceName){
+Keithley_2000::Keithley_2000(QString _interfaceName, quint32 _baudRate, QWidget *parent) : ScpiDevice(_interfaceName){
     init();
 }
 

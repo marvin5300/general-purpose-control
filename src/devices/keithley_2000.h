@@ -1,7 +1,7 @@
 #ifndef KEITHLEY_2000_H
 #define KEITHLEY_2000_H
 
-#include "keithley_2xxx.h"
+#include <src/devices/scpidevice.h>
 
 /* Connection: serial over RS-232
  * Supported baudrates: 19.2k; 9600; 4800; 2400; 1200; 600; 300
@@ -24,15 +24,14 @@ You see: RS 232: ON (assuming you have already selected the RS-232 interface).
  *
  *
 */
-class Keithley_2000 : public Keithley_2xxx
+class Keithley_2000 : public ScpiDevice
 {
     Q_OBJECT
 
 public:
-    explicit Keithley_2000(QString _interfaceName);
+    Keithley_2000(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     const QString getInterfaceName()const;
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
-    const QList<MeasurementValue> getMeasures();
     const QString deviceName() {return _deviceName;}
 
 public slots:

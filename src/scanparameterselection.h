@@ -1,10 +1,10 @@
 #ifndef SCANPARAMETERSELECTION_H
 #define SCANPARAMETERSELECTION_H
 
+#include <src/measurementparameter.h>
+#include <src/measurementdevice.h>
 #include <QFrame>
 #include <QStandardItemModel>
-#include "measurementparameter.h"
-#include "measurementdevice.h"
 #include <QLayout>
 #include <QTimer>
 //#include <QMouseEvent>
