@@ -29,7 +29,9 @@ public:
     //QPointer<QStandardItemModel> getPortNameModel();
     static QPointer<QStandardItemModel> getAllDeviceNameModel();
     static QPointer<QStandardItemModel> getAllInterfaceNameModel();
-    static void generateInterfaceList();
+    static void setSerialMask(QStringList masks = _masks);
+    static void generateInterfaceList(QStringList masks = _masks);
     static void actualizeDeviceNameModel();
+    static QStringList _masks;
 };
 #endif // DEVICEMANAGER_H

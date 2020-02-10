@@ -54,7 +54,13 @@ HEADERS += \
     src/settings.h \
     src/measurementparameter.h \
     src/devices/scpidevice.h \
-    src/devices/sourcetronic_st2819a.h
+    src/devices/sourcetronic_st2819a.h \
+    src/devices/rigol_dsa1030a.h \
+    src/devices/hameg_hm8143.h \
+    src/devices/gw_instek_gpd4303s.h \
+    src/devices/hp_34401a.h \
+    src/devices/tektronix_dmm4020.h \
+    src/devices/voltcraft_psp1803.h
 
 SOURCES += \
     src/devicemanager.cpp \
@@ -70,7 +76,13 @@ SOURCES += \
     src/rs232.cpp \
     src/settings.cpp \
     src/devices/scpidevice.cpp \
-    src/devices/sourcetronic_st2819a.cpp
+    src/devices/sourcetronic_st2819a.cpp \
+    src/devices/rigol_dsa1030a.cpp \
+    src/devices/hameg_hm8143.cpp \
+    src/devices/gw_instek_gpd4303s.cpp \
+    src/devices/hp_34401a.cpp \
+    src/devices/tektronix_dmm4020.cpp \
+    src/devices/voltcraft_psp1803.cpp
 
 FORMS += \
     src/mainwindow.ui \

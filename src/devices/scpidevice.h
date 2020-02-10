@@ -11,6 +11,7 @@
 class ScpiDevice : public MeasurementDevice
 {
     Q_OBJECT
+
 signals:
     void scpiCommand(QString command);
 public:
@@ -21,12 +22,14 @@ public slots:
     void connectBus();
     void setScanParameter(MeasurementValue value);
 protected:
+    virtual QMap<QString, DeviceParameterConstraint> deviceParamMap() = 0;
+    QString translateMeas(QString paramName){return "";}
+    QString translateSet(QString paramName){return "";}
+    bool outputState(){return true;}
     void measure();
     bool checkDevice(QString message);
     void connectRS232(QString _interfaceName, quint32 _baudRate);
-    static const QMap<QString, DeviceParameterConstraint> deviceParamMap;
-    QString translateMeas(QString paramName);
-    QString translateSet(QString paramName);
+    static const QMap<QString, DeviceParameterConstraint> _deviceParamMap;
     quint64 measureID;
     QQueue<QString> activeMeasParams;
     QList<MeasurementValue> measureResults;

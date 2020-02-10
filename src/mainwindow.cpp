@@ -58,6 +58,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::setSerialMask(QStringList masks){
+    DeviceManager::setSerialMask(masks);
+}
+
 void MainWindow::onAddAdjustValuesButtonClicked(){
     ScanParameterSelection *widget = new ScanParameterSelection(this);
     widget->layout=ui->scanValuesHorizontalLayout;
@@ -89,8 +93,9 @@ void MainWindow::onDeviceSelectionChange(QPointer<MeasurementDevice> device, QSt
 }
 
 void MainWindow::onSettingsClicked(){
-    Settings *dialog = new Settings(this, fileHandler->getFilePath());
+    Settings *dialog = new Settings(this, fileHandler->getFilePath(),DeviceManager::_masks);
     connect(dialog, &Settings::setOutputFileName, fileHandler, &FileHandler::setOutputFile);
+    connect(dialog, &Settings::setSerialMask, this, &MainWindow::setSerialMask);
     dialog->show();
 }
 

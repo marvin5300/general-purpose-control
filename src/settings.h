@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QAbstractButton>
 
 namespace Ui {
 class Settings;
@@ -14,9 +15,10 @@ class Settings : public QDialog
 signals:
     // only emit signals if save or apply button is clicked
     void setOutputFileName(QString fileName);
+    void setSerialMask(QStringList masks);
 
 public:
-    explicit Settings(QWidget *parent = nullptr, QString filePath = "",
+    explicit Settings(QWidget *parent = nullptr, QString filePath = "", QStringList masks = {},
                       Qt::WindowFlags flags = Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
     ~Settings();
 
