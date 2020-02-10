@@ -3,6 +3,12 @@
 #include <src/devices/keithley_2000.h>
 #include <src/devices/keithley_2410.h>
 #include <src/devices/sourcetronic_st2819a.h>
+#include <src/devices/tektronix_dmm4020.h>
+#include <src/devices/voltcraft_psp1803.h>
+#include <src/devices/rigol_dsa1030a.h>
+#include <src/devices/hp_34401a.h>
+#include <src/devices/hameg_hm8143.h>
+#include <src/devices/gw_instek_gpd4303s.h>
 #include "devices/dummy.h"
 #include <QDebug>
 #include <QDir>
@@ -13,10 +19,18 @@ QPointer<QStandardItemModel> DeviceManager::activeDeviceNameModel;
 QPointer<QStandardItemModel> DeviceManager::allDeviceNameModel;
 QPointer<QStandardItemModel> DeviceManager::allInterfaceNameModel;
 
+QStringList DeviceManager::_masks = {"ttyUSB*", "ttyA*"};
+
 const QStringList DeviceManager::deviceNameList({
                                            "MODEL 2000",
                                            "MODEL 2410",
-                                           "ST2819A"
+                                           "ST2819A",
+                                           "DMM4020",
+                                           "PSP1803",
+                                           "RIGOL DSA1030A",
+                                           "HP 34401A",
+                                           "Hameg HM8143",
+                                           "GPD-4303S"
                                         });
 
 QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString portName){
@@ -32,6 +46,24 @@ QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString
     }
     if (deviceName == deviceNameList.at(2)){
         device = new SourceTronic_ST2819A(portName);
+    }
+    if (deviceName == deviceNameList.at(3)){
+        device = new Tektronix_DMM4020(portName);
+    }
+    if (deviceName == deviceNameList.at(4)){
+        device = new Voltcraft_PSP1803(portName);
+    }
+    if (deviceName == deviceNameList.at(5)){
+        device = new RIGOL_DSA1030A(portName);
+    }
+    if (deviceName == deviceNameList.at(6)){
+        device = new HP_34401A(portName);
+    }
+    if (deviceName == deviceNameList.at(7)){
+        device = new Hameg_HM8143(portName);
+    }
+    if (deviceName == deviceNameList.at(8)){
+        device = new GW_INSTEK_GPD4303S(portName);
     }
     activeDevicesList.append(device);
     return device;
@@ -102,8 +134,28 @@ QPointer<QStandardItemModel> DeviceManager::getAllInterfaceNameModel(){
     return allInterfaceNameModel;
 }
 
+void DeviceManager::setSerialMask(QStringList masks){
+    _masks = masks;
+#if defined(Q_OS_UNIX)
+    QDir directory("/dev","*",QDir::Name, QDir::System);
+    if (!masks.empty()){
+        interfaceNameList = directory.entryList(masks);
+    }else{
+        interfaceNameList.clear();
+    }
+    if (allInterfaceNameModel.isNull()){
+        allInterfaceNameModel = new QStandardItemModel;
+        allInterfaceNameModel->appendRow(new QStandardItem(QString("not selected")));
+    }else{
+        allInterfaceNameModel->setRowCount(1);
+    }
+    for (auto name : interfaceNameList){
+        allInterfaceNameModel->appendRow(new QStandardItem(name));
+    }
+#endif
+}
 
-void DeviceManager::generateInterfaceList(){    // this is done once at start
+void DeviceManager::generateInterfaceList(QStringList masks){    // this is done once at start
     if (!interfaceNameList.empty()){
         return;
     }
@@ -111,8 +163,9 @@ void DeviceManager::generateInterfaceList(){    // this is done once at start
     for (quint8 i = 1; i < 10; i++){
         interfaceNameList.append(QString("COM%1").arg(i));
     }
-#else
+#endif
+#if defined(Q_OS_UNIX)
     QDir directory("/dev","*",QDir::Name, QDir::System);
-    interfaceNameList = directory.entryList(QStringList() << "ttyUSB*" << "ttyS*" << "ttyAM*");
+    interfaceNameList = directory.entryList(masks);
 #endif
 }

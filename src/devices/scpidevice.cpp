@@ -26,39 +26,14 @@ void ScpiDevice::queueMeasure(quint64 number){
 
 void ScpiDevice::setScanParameter(MeasurementValue value){
     //qDebug() << "setScanParameter: device status "<<correctDeviceConnected <<" deviceName: "<<deviceName();
-    emit scanParameterReady(deviceName(),0);
     if (!correctDeviceConnected){
         return;
     }
-    if (value.name!=""){
-        emit scpiCommand(QString(translateSet(value.name)+" %1").arg(value.value));
-        emit scpiCommand(":CONF?");
+    if (value.name!=""&&deviceParamMap().value(value.name).mode>1){
+        emit scpiCommand(QString(translateSet(value.name)+"%1").arg(value.value));
+    }else{
+        emit scanParameterReady(deviceName(),0);
     }
-}
-
-QString ScpiDevice::translateMeas(QString paramName){
-    QString scpiCommandString = "";
-    if (paramName=="V"){
-        scpiCommandString = ":MEAS:VOLT?";
-    }
-    if (paramName=="I"){
-        scpiCommandString = ":MEAS:CURR?";
-    }
-    if (paramName=="R"){
-        scpiCommandString = ":MEAS:RES?";
-    }
-    return scpiCommandString;
-}
-
-QString ScpiDevice::translateSet(QString paramName){
-    QString scpiCommandString = "";
-    if (paramName=="V"){
-        scpiCommandString = ":CONF:VOLT";
-    }
-    if (paramName=="I"){
-        scpiCommandString = ":CONF:CURR";
-    }
-    return scpiCommandString;
 }
 
 void ScpiDevice::onReceivedMessage(QString message){
@@ -77,10 +52,6 @@ void ScpiDevice::onReceivedMessage(QString message){
     bool ok = false;
     val = message.toDouble(&ok);
     if (!ok){
-        qDebug() << "could not convert '" << message << "' to double";
-        if (message.contains("CURR")||message.contains("VOLT")||message.contains("RES")){
-            emit scanParameterReady(deviceName(),measureID);
-        }
         return;
     }
     measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val));

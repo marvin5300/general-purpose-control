@@ -1,26 +1,24 @@
-#ifndef KEITHLEY_2410_H
-#define KEITHLEY_2410_H
+#ifndef HP_34401A_H
+#define HP_34401A_H
 
 #include <src/devices/scpidevice.h>
 
-
-class Keithley_2410 : public ScpiDevice
+class HP_34401A : public ScpiDevice
 {
     Q_OBJECT
 
 public:
-    explicit Keithley_2410(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
+    explicit HP_34401A(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = nullptr);
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
     const QString getInterfaceName()const;
     const QString deviceName() {return _deviceName;}
-public slots:
-    void onReceivedMessage(QString message);
+
 private:
     void init();
-    const QString _deviceName = "MODEL 2410";
+    const QString _deviceName = "HP 34401A";
     static const QMap<QString, DeviceParameterConstraint> _deviceParamMap;
     QMap<QString, DeviceParameterConstraint> deviceParamMap(){return _deviceParamMap;}
     QMap<QString, MeasurementValue> valuesMap;
 };
 
-#endif // KEITHLEY_2410_H
+#endif // HP_34401A_H

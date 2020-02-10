@@ -30,6 +30,7 @@ public slots:
     void onMeasureReady(QString deviceName, quint64 number);
     void onScanParamSelReady(QString deviceName, quint64 number);
     void onTimerTimeout();
+    void setSerialMask(QStringList masks);
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);

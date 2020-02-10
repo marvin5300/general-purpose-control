@@ -1,26 +1,24 @@
-#ifndef KEITHLEY_2410_H
-#define KEITHLEY_2410_H
+#ifndef DSA1030A_H
+#define DSA1030A_H
 
 #include <src/devices/scpidevice.h>
 
-
-class Keithley_2410 : public ScpiDevice
+class RIGOL_DSA1030A : public ScpiDevice
 {
     Q_OBJECT
 
 public:
-    explicit Keithley_2410(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
+    explicit RIGOL_DSA1030A(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
     const QString getInterfaceName()const;
     const QString deviceName() {return _deviceName;}
-public slots:
-    void onReceivedMessage(QString message);
+
 private:
     void init();
-    const QString _deviceName = "MODEL 2410";
+    const QString _deviceName = "RIGOL DSA1030A";
     static const QMap<QString, DeviceParameterConstraint> _deviceParamMap;
     QMap<QString, DeviceParameterConstraint> deviceParamMap(){return _deviceParamMap;}
     QMap<QString, MeasurementValue> valuesMap;
 };
 
-#endif // KEITHLEY_2410_H
+#endif // DSA1030A_H

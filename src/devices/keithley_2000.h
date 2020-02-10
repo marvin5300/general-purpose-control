@@ -29,21 +29,18 @@ class Keithley_2000 : public ScpiDevice
     Q_OBJECT
 
 public:
-    Keithley_2000(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
-    const QString getInterfaceName()const;
+    explicit Keithley_2000(QString _interfaceName, quint32 _baudRate = 9600, QWidget *parent = 0);
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
+    const QString getInterfaceName()const;
     const QString deviceName() {return _deviceName;}
-
-public slots:
-    //void onReceivedMessage(QString message);
-    //void queueMeasure(quint64 count);
 
 private:
     void init();
     const QString _deviceName = "MODEL 2000";
-    static const QMap<QString, DeviceParameterConstraint> deviceParamMap;
+    static const QMap<QString, DeviceParameterConstraint> _deviceParamMap;
+    QMap<QString, DeviceParameterConstraint> deviceParamMap(){return _deviceParamMap;}
     QMap<QString, MeasurementValue> valuesMap;
-    //using Keithley_2xxx::checkDevice;
+    QString translateMeas(QString paramName);
 };
 
 #endif // KEITHLEY_2000_H
