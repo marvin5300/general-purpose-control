@@ -111,7 +111,7 @@ void MainWindow::setUiMeasurementState(bool _ongoingMeasurement){
     ui->scanValueGroupBox->setDisabled(_ongoingMeasurement);
     ui->noLimitCheck->setDisabled(_ongoingMeasurement);
     ui->intervalLabel->setDisabled(_ongoingMeasurement);
-    ui->intervalLineEdit->setDisabled(_ongoingMeasurement);
+    ui->intervalspinbox->setDisabled(_ongoingMeasurement);
     ui->startMeasurementButton->setText(_ongoingMeasurement ? "force stop" : "start measurement");
 }
 
@@ -128,20 +128,8 @@ void MainWindow::onStartMeasurementButtonClicked(){
         // start measurement routine
         //pendingScanParameters = ui->scanValuesHorizontalLayout->count()-2; // beware there are already 2 items in this layout
         connectScanValues(true); // connect
-        bool ok = false;
-        int interval = ui->intervalLineEdit->text().toInt(&ok);
-        intervalTimer.setInterval(ok ? interval : 500);
-        if (!ok){
-            int button = QMessageBox::warning(this,tr("Could not parse Interval to int"),
-                                         tr("Set Interval to 500 ms instead!"),
-                                         QMessageBox::Ok, QMessageBox::Abort);
-            ok = (button==QMessageBox::Ok);
-        }
-        if (!ok){
-            //onStartMeasurementButtonClicked();
-            setUiMeasurementState(!ongoingMeasurement);
-            return;
-        }
+        int interval = ui->intervalspinbox->value();
+        intervalTimer.setInterval(interval);
         scanParameterReadyCounter = numberOfScanparameterSelections;
         emit scanInit();
         ui->progressBar->setValue(0);
@@ -185,6 +173,7 @@ void MainWindow::onTimerTimeout(){
 }
 
 void MainWindow::finishedMeasurement(){
+    measCycle++;
     intervalTimer.stop();
     for (QPointer<MeasurementDevice> device : DeviceManager::activeDevicesList){
         disconnect(this,&MainWindow::measure, device, &MeasurementDevice::queueMeasure);
@@ -194,6 +183,11 @@ void MainWindow::finishedMeasurement(){
     connectScanValues(false);
     ongoingMeasurement = false;
     setUiMeasurementState(ongoingMeasurement);
+    if (measCycle < ui->cyclesspinbox->value()){
+        onStartMeasurementButtonClicked();
+        return;
+    }
+    measCycle = 0;
     ui->progressBar->setValue(100);
     // put here any command for successful finished measurement
     QMessageBox::information(this, tr("Success!"), tr("Measurement finished"),QMessageBox::Ok);

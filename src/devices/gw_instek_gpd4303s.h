@@ -17,6 +17,8 @@ private:
     void init();
     const QString _deviceName = "GPD-4303S";
     static const QMap<QString, DeviceParameterConstraint> _deviceParamMap;
+    static const char _terminator;
+    //const char terminator() {return _terminator;}
     QMap<QString, DeviceParameterConstraint> deviceParamMap(){return _deviceParamMap;}
     QMap<QString, MeasurementValue> valuesMap;
     QString translateSet(QString paramName);

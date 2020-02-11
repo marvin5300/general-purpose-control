@@ -42,11 +42,16 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> 
     if (outputFile.isNull()){
         return;
     }
-    QStringList valuesList = valueLineListMap.value(number);
     if (deviceName==""||values.empty()){
         return;
     }
-    for (int i = valuesList.size(); i<fileHeaderStrings.size(); i++){
+    QStringList valuesList;
+    /*for (auto value : values){
+        valuesList.append(QString(value.name+"["+deviceName+"]:%1").arg(value.value));
+    }
+    */
+    int size = values.size()>fileHeaderStrings.size()?values.size():fileHeaderStrings.size();
+    for (int i = 0; i < size; i++){
         // make sure size of the values list and fileHeaderStrings are same size
         // so no seg fault occurs
         valuesList.append(QString());
@@ -55,7 +60,7 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> 
         QString fileHeader = QString(value.name+"["+deviceName+"]");
         if (!fileHeaderStrings.contains(fileHeader)){
             fileHeaderStrings.append(fileHeader);
-            correctFileColumns();
+            correct_columns();
         }
         valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value.value);
     }
@@ -81,16 +86,16 @@ void FileHandler::writeBufferToFile(bool endOfMeasurement){
     }
 }
 
+void FileHandler::correct_columns(){
+
+}
+
 void FileHandler::writeLine(QString line){
     if (outputFile.isNull()||(outputFile->isOpen()==false)){
         return;
     }
     QTextStream out(outputFile);
     out << line << endl;
-}
-
-void FileHandler::correctFileColumns(){
-
 }
 
 const QString FileHandler::getFilePath(){

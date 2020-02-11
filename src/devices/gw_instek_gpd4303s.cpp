@@ -98,7 +98,7 @@ QString GW_INSTEK_GPD4303S::translateSet(QString paramName){
 
 double GW_INSTEK_GPD4303S::translateInc(QString receivedString){
     QString message = receivedString;
-    message.chop(1); // chop 1 because it always provides the measurement unit too
+    message.chop(2); // chop 2: the '\r' and the measurement unit
     bool ok = false;
     double val = message.toDouble(&ok);
     if (!ok){

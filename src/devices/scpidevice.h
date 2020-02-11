@@ -23,6 +23,7 @@ public slots:
     void setScanParameter(MeasurementValue value);
 protected:
     virtual QMap<QString, DeviceParameterConstraint> deviceParamMap() = 0;
+    virtual const char terminator(){return static_cast<char>(0x0a);}
     virtual QString translateMeas(QString paramName){return "";}
     virtual QString translateSet(QString paramName){return "";}
     virtual double translateInc(QString receivedString){return 0;}
