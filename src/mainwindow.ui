@@ -240,17 +240,23 @@
        <item>
         <widget class="QLabel" name="intervalLabel">
          <property name="text">
-          <string>delay between set and measure:</string>
+          <string>delay set - measure:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="intervalLineEdit">
-         <property name="text">
-          <string>500</string>
+        <widget class="QSpinBox" name="intervalspinbox">
+         <property name="minimum">
+          <number>1</number>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <property name="maximum">
+          <number>10000000</number>
+         </property>
+         <property name="singleStep">
+          <number>500</number>
+         </property>
+         <property name="value">
+          <number>1000</number>
          </property>
         </widget>
        </item>
@@ -273,6 +279,23 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>n cycles:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="cyclesspinbox">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>99999</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="startMeasurementButton">

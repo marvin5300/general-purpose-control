@@ -67,6 +67,7 @@ private:
     int scanParameterReadyCounter;
     int measurementReadyCounter = 0;
     quint64 measCount = 0;
+    int measCycle = 0;
 };
 
 #endif // MAINWINDOW_H

@@ -31,6 +31,9 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     ui->deviceSelectionCombobox->setModel(deviceModel);
     connect(ui->scanParameterAdjustMode, &QComboBox::currentTextChanged, this,
             &ScanParameterSelection::onScanParameterAdjustModeChanged);
+    ui->scanParameterAdjustMode->addItem("fixed");
+    ui->scanParameterAdjustMode->addItem("ramp");
+
 
     connect(ui->fromEdit, &QLineEdit::editingFinished, this,
             [this](){bool ok = false;
@@ -87,14 +90,11 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
     ui->scanParameterTableWidget->verticalHeader()->hide();
     ui->scanParameterTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->scanParameterTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-    bool setScanParamPossible = false;
     int i = 0;
     for (auto constraint : deviceParameterConstraints){
         ui->scanParameterTableWidget->setColumnWidth(i,20);
-
         if(constraint.mode == READWRITE ||constraint.mode == WRITEONLY){
             ui->scanParameterSelectionCombobox->addItem(constraint.name);
-            setScanParamPossible = true;
         }
         ui->scanParameterTableWidget->setItem(i,0,new QTableWidgetItem(constraint.name));
         ui->scanParameterTableWidget->setItem(i,1,new QTableWidgetItem(accessModeStrings.at(constraint.mode)));
@@ -107,32 +107,6 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
             ui->scanParameterTableWidget->item(i,k)->setTextAlignment(Qt::AlignCenter);
         }
         i++;
-    }
-    if (setScanParamPossible){
-        int index = ui->scanParameterAdjustMode->findText("fixed");
-        if (index<0){
-            ui->scanParameterAdjustMode->addItem("fixed");
-        }
-        index = ui->scanParameterAdjustMode->findText("ramp");
-        if (index<0){
-            ui->scanParameterAdjustMode->addItem("ramp");
-            ui->scanParameterAdjustMode->setCurrentIndex(ui->scanParameterAdjustMode->findText("ramp"));
-        }
-    }else{
-        int index = ui->scanParameterAdjustMode->findText("ramp");
-        if (index>=0){
-            ui->scanParameterAdjustMode->removeItem(index);
-        }
-        index = ui->scanParameterAdjustMode->findText("fixed");
-        if (index>=0){
-            ui->scanParameterAdjustMode->removeItem(index);
-        }
-    }
-    for (i = 0; i < ui->scanParameterSelectionCombobox->count(); i++){
-        if (ui->scanParameterSelectionCombobox->itemText(i)=="V"){
-            // default selection
-            ui->scanParameterSelectionCombobox->setCurrentIndex(i);
-        }
     }
     ui->scanParameterTableWidget->resizeColumnsToContents();
     ui->scanParameterTableWidget->resizeRowsToContents();

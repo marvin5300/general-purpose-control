@@ -78,7 +78,7 @@ void ScpiDevice::connectBus(){
 void ScpiDevice::connectSerial(QString _interfaceName, quint32 _baudRate) {
     // here is where the magic threading happens look closely
     QThread *serialThread = new QThread();
-    Serial *serialConnection = new Serial(_interfaceName, _baudRate);
+    Serial *serialConnection = new Serial(_interfaceName, _baudRate, terminator());
     serialConnection->moveToThread(serialThread);
     // connect all signals about quitting
     connect(serialThread, &QThread::finished, serialThread, &QThread::deleteLater);

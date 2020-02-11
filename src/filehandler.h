@@ -25,13 +25,13 @@ public slots:
     void writeBufferToFile(bool endOfMeasurement);
 
 private:
+    void correct_columns();
     QString placeholder = "n/a";
     QPointer<QFile> outputFile;
     quint64 lastWrittenLine = 0;
     QStringList fileHeaderStrings;
     QMap<quint64, QStringList> valueLineListMap;
     quint64 bufferedLines = 100;
-    void correctFileColumns();
 };
 
 #endif // FILEHANDLER_H
