@@ -39,8 +39,9 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> 
     for (auto value : values){
         qDebug() << value.name << " " << value.value;
     }
-    return;
-    // does nothing except print it for now!!!
+    if (outputFile.isNull()){
+        return;
+    }
     QStringList valuesList = valueLineListMap.value(number);
     if (deviceName==""||values.empty()){
         return;

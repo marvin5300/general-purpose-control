@@ -149,6 +149,7 @@ void MainWindow::onStartMeasurementButtonClicked(){
         for (QPointer<MeasurementDevice> device : DeviceManager::activeDevicesList){
             disconnect(this,&MainWindow::measure, device, &MeasurementDevice::queueMeasure);
             disconnect(device,&MeasurementDevice::measuredValues,fileHandler,&FileHandler::onReceivingValues);
+            disconnect(device,&MeasurementDevice::measureReady,this,&MainWindow::onMeasureReady);
         }
         connectScanValues(false);
         intervalTimer.stop();
@@ -188,6 +189,7 @@ void MainWindow::finishedMeasurement(){
     for (QPointer<MeasurementDevice> device : DeviceManager::activeDevicesList){
         disconnect(this,&MainWindow::measure, device, &MeasurementDevice::queueMeasure);
         disconnect(device,&MeasurementDevice::measuredValues,fileHandler,&FileHandler::onReceivingValues);
+        disconnect(device,&MeasurementDevice::measureReady,this,&MainWindow::onMeasureReady);
     }
     connectScanValues(false);
     ongoingMeasurement = false;

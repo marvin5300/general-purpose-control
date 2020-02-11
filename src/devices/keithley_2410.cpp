@@ -19,6 +19,7 @@ const QString Keithley_2410::getInterfaceName()const{
     return interfaceName;
 }
 
+/*
 void Keithley_2410::onReceivedMessage(QString message){
     if (!correctDeviceConnected){
         if (checkDevice(message)==false){
@@ -47,6 +48,21 @@ void Keithley_2410::onReceivedMessage(QString message){
         emit measureReady(deviceName(),measureID);
         measureResults.clear();
     }
+}
+*/
+
+QString Keithley_2410::translateMeas(QString paramName){
+    QString scpiCommandString = "";
+    if (paramName=="V"){
+        scpiCommandString = ":MEAS:VOLT?";
+    }
+    if (paramName=="I"){
+        scpiCommandString = ":MEAS:CURR?";
+    }
+    if (paramName=="R"){
+        scpiCommandString = ":MEAS:RES?";
+    }
+    return scpiCommandString;
 }
 
 void Keithley_2410::init(){

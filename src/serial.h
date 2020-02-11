@@ -1,5 +1,5 @@
-#ifndef RS232_H
-#define RS232_H
+#ifndef SERIAL_H
+#define SERIAL_H
 
 #include <QObject>
 #include <QSerialPort>
@@ -7,11 +7,11 @@
 #include <QPointer>
 
 // This class only knows basic serial communication
-class RS232 : public QObject
+class Serial : public QObject
 {
     Q_OBJECT
 public:
-    explicit RS232(QString _portName, quint32 _baudRate = 9600,
+    explicit Serial(QString _portName, quint32 _baudRate = 9600,
                    char _terminator = 0x0a,
                    QSerialPort::FlowControl _flowControl = QSerialPort::NoFlowControl,
                    QSerialPort::StopBits _stopBits = QSerialPort::OneStop,
@@ -47,4 +47,4 @@ private:
     void processMessage(std::string& message);
 };
 
-#endif // RS232_H
+#endif // SERIAL_H

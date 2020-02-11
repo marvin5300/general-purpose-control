@@ -65,7 +65,7 @@ private:
     bool timerOngoing;
     int numberOfScanparameterSelections;
     int scanParameterReadyCounter;
-    int measurementReadyCounter;
+    int measurementReadyCounter = 0;
     quint64 measCount = 0;
 };
 
