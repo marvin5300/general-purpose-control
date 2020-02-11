@@ -1,11 +1,11 @@
-#include "rs232.h"
+#include "serial.h"
 #include <sstream>
 #include <iostream>
 #include <QDebug>
 //#include <iomanip>
 #include <QThread>
 
-RS232::RS232(QString _portName, quint32  _baudRate,
+Serial::Serial(QString _portName, quint32  _baudRate,
              char _terminator,
              QSerialPort::FlowControl _flowControl,
              QSerialPort::StopBits _stopBits,
@@ -22,7 +22,7 @@ RS232::RS232(QString _portName, quint32  _baudRate,
     parity = _parity;
 }
 
-void RS232::makeConnection() {
+void Serial::makeConnection() {
     // this function gets called with a signal from client-thread
 
     if (!serialPort.isNull()) {
@@ -46,11 +46,11 @@ void RS232::makeConnection() {
         this->deleteLater();
         return;
     }
-    connect(serialPort, &QSerialPort::readyRead, this, &RS232::onReadyRead);
+    connect(serialPort, &QSerialPort::readyRead, this, &Serial::onReadyRead);
     serialPort->clear(QSerialPort::AllDirections);
 }
 
-void RS232::onReadyRead() {
+void Serial::onReadyRead() {
     // this function gets called when the serial port emits readyRead signal
     QByteArray temp = serialPort->readAll();
     for (int i=0; i<temp.size(); i++) {
@@ -65,7 +65,7 @@ void RS232::onReadyRead() {
     while (scanMessage(buffer)) {};
 }
 
-bool RS232::scanMessage(std::string& buffer){
+bool Serial::scanMessage(std::string& buffer){
     // Reads the buffer and returns true if a complete message is found.
     // If so: removes it from the buffer and starts the processing of this message.
     std::string message = "";
@@ -84,12 +84,12 @@ bool RS232::scanMessage(std::string& buffer){
     return false;
 }
 
-void RS232::processMessage(std::string& message){
+void Serial::processMessage(std::string& message){
 
 // here comes all the fun stuff to do with parsing messages from the device
 }
 
-void RS232::sendScpiCommand(QString command){
+void Serial::sendScpiCommand(QString command){
     if (serialPort.isNull()) {
         return;
     }
@@ -99,12 +99,12 @@ void RS232::sendScpiCommand(QString command){
     serialPort->write((command.toStdString()+""+terminator).c_str(), command.length()+1);
 }
 
-void RS232::closeConnection(){
+void Serial::closeConnection(){
     closeSerialPort();
     this->deleteLater();
 }
 
-void RS232::closeSerialPort(){
+void Serial::closeSerialPort(){
     if (!serialPort.isNull()){
         serialPort->close();
         serialPort.clear();

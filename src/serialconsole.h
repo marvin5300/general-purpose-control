@@ -28,7 +28,7 @@ private:
     Ui::SerialConsole *ui;
     void onSendButtonClicked();
     void onConnectButtonClicked();
-    void connectRS232(QString _interfaceName, quint32 _baudRate);
+    void connectSerial(QString _interfaceName, quint32 _baudRate);
 };
 
 #endif // SERIALCONSOLE_H

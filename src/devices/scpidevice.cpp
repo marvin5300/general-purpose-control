@@ -1,5 +1,5 @@
 #include <src/devices/scpidevice.h>
-#include <src/rs232.h>
+#include <src/serial.h>
 #include <QThread>
 #include <QVector>
 #include <ui_measurementdevice.h>
@@ -31,6 +31,8 @@ void ScpiDevice::setScanParameter(MeasurementValue value){
     }
     if (value.name!=""&&deviceParamMap().value(value.name).mode>1){
         emit scpiCommand(QString(translateSet(value.name)+"%1").arg(value.value));
+        setOutputState(true);
+        emit scanParameterReady(deviceName(),0);
     }else{
         emit scanParameterReady(deviceName(),0);
     }
@@ -48,12 +50,7 @@ void ScpiDevice::onReceivedMessage(QString message){
         qDebug() << "expected no message, got '"<< message <<"'";
         return;
     }
-    double val = 0.;
-    bool ok = false;
-    val = message.toDouble(&ok);
-    if (!ok){
-        return;
-    }
+    double val = translateInc(message);
     measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val));
     if (activeMeasParams.isEmpty()){
         emit measuredValues(deviceName(),measureResults,measureID);
@@ -75,26 +72,26 @@ bool ScpiDevice::checkDevice(QString message){
 }
 
 void ScpiDevice::connectBus(){
-    connectRS232(interfaceName,baudRate);
+    connectSerial(interfaceName,baudRate);
 }
 
-void ScpiDevice::connectRS232(QString _interfaceName, quint32 _baudRate) {
+void ScpiDevice::connectSerial(QString _interfaceName, quint32 _baudRate) {
     // here is where the magic threading happens look closely
     QThread *serialThread = new QThread();
-    RS232 *serialConnection = new RS232(_interfaceName, _baudRate);
+    Serial *serialConnection = new Serial(_interfaceName, _baudRate);
     serialConnection->moveToThread(serialThread);
     // connect all signals about quitting
     connect(serialThread, &QThread::finished, serialThread, &QThread::deleteLater);
-    connect(this, &ScpiDevice::closeConnection, serialConnection, &RS232::closeConnection);
-    connect(serialThread, &QThread::started, serialConnection, &RS232::makeConnection);
-    //connect(serialConnection, &RS232::serialRestart, this, &MainWindow::connectRS232);
-    connect(serialConnection, &RS232::connectionStatus, this, &ScpiDevice::onConnectionStatusChanged);
+    connect(this, &ScpiDevice::closeConnection, serialConnection, &Serial::closeConnection);
+    connect(serialThread, &QThread::started, serialConnection, &Serial::makeConnection);
+    //connect(serialConnection, &Serial::serialRestart, this, &MainWindow::connectSerial);
+    connect(serialConnection, &Serial::connectionStatus, this, &ScpiDevice::onConnectionStatusChanged);
 
     // connect all send/receive messages
-    connect(this, &ScpiDevice::scpiCommand, serialConnection, &RS232::sendScpiCommand);
-    connect(serialConnection, &RS232::receivedMessage, this, &ScpiDevice::onReceivedMessage);
+    connect(this, &ScpiDevice::scpiCommand, serialConnection, &Serial::sendScpiCommand);
+    connect(serialConnection, &Serial::receivedMessage, this, &ScpiDevice::onReceivedMessage);
 
-    // after thread start there will be a signal emitted which starts the RS232 makeConnection function
+    // after thread start there will be a signal emitted which starts the Serial makeConnection function
     serialThread->start();
     emit scpiCommand(QString("*IDN?")); // standard message to ask for device information
 }

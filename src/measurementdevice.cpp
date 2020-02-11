@@ -1,7 +1,7 @@
 #include "measurementdevice.h"
 #include "ui_measurementdevice.h"
 #include "devicemanager.h"
-#include "rs232.h"
+#include "serial.h"
 #include <QThread>
 #include <QList>
 #include <QPainter>

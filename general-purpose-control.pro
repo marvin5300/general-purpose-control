@@ -50,7 +50,6 @@ HEADERS += \
     src/devices/keithley_2410.h \
     src/mainwindow.h \
     src/measurementdevice.h \
-    src/rs232.h \
     src/settings.h \
     src/measurementparameter.h \
     src/devices/scpidevice.h \
@@ -60,7 +59,8 @@ HEADERS += \
     src/devices/gw_instek_gpd4303s.h \
     src/devices/hp_34401a.h \
     src/devices/tektronix_dmm4020.h \
-    src/devices/voltcraft_psp1803.h
+    src/devices/voltcraft_psp1803.h \
+    src/serial.h
 
 SOURCES += \
     src/devicemanager.cpp \
@@ -73,7 +73,6 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/measurementdevice.cpp \
-    src/rs232.cpp \
     src/settings.cpp \
     src/devices/scpidevice.cpp \
     src/devices/sourcetronic_st2819a.cpp \
@@ -82,7 +81,8 @@ SOURCES += \
     src/devices/gw_instek_gpd4303s.cpp \
     src/devices/hp_34401a.cpp \
     src/devices/tektronix_dmm4020.cpp \
-    src/devices/voltcraft_psp1803.cpp
+    src/devices/voltcraft_psp1803.cpp \
+    src/serial.cpp
 
 FORMS += \
     src/mainwindow.ui \

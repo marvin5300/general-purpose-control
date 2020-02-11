@@ -1,6 +1,6 @@
 #include "serialconsole.h"
 #include "ui_serialconsole.h"
-#include "rs232.h"
+#include "serial.h"
 #include <QThread>
 
 SerialConsole::SerialConsole(QWidget *parent, Qt::WindowFlags flags):
@@ -9,7 +9,7 @@ SerialConsole::SerialConsole(QWidget *parent, Qt::WindowFlags flags):
 {
     ui->setupUi(this);
     setWindowTitle("Serial Console");
-    setWindowIcon(QIcon(":/res/rs232.png"));
+    setWindowIcon(QIcon(":/res/Serial.png"));
     connect(ui->connectButton, &QPushButton::clicked, this, &SerialConsole::onConnectButtonClicked);
     connect(ui->sendButton, &QPushButton::clicked, this, &SerialConsole::onSendButtonClicked);
     raise();
@@ -51,24 +51,24 @@ void SerialConsole::onConnectButtonClicked(){
     if (!ok){
         return;
     }
-    connectRS232(ui->portNameEdit->text(), baudRate);
+    connectSerial(ui->portNameEdit->text(), baudRate);
 }
 
-void SerialConsole::connectRS232(QString _interfaceName, quint32 _baudRate) {
+void SerialConsole::connectSerial(QString _interfaceName, quint32 _baudRate) {
     // here is where the magic threading happens look closely
     QThread *serialThread = new QThread();
-    RS232 *serialConnection = new RS232(_interfaceName, _baudRate);
+    Serial *serialConnection = new Serial(_interfaceName, _baudRate);
     serialConnection->moveToThread(serialThread);
     // connect all signals about quitting
     connect(serialThread, &QThread::finished, serialThread, &QThread::deleteLater);
-    connect(serialThread, &QThread::started, serialConnection, &RS232::makeConnection);
-    //connect(serialConnection, &RS232::serialRestart, this, &MainWindow::connectRS232);
-    connect(serialConnection, &RS232::connectionStatus, this, &SerialConsole::onConnectionStatusChanged);
+    connect(serialThread, &QThread::started, serialConnection, &Serial::makeConnection);
+    //connect(serialConnection, &Serial::serialRestart, this, &MainWindow::connectSerial);
+    connect(serialConnection, &Serial::connectionStatus, this, &SerialConsole::onConnectionStatusChanged);
 
     // connect all send/receive messages
-    connect(this, &SerialConsole::scpiCommand, serialConnection, &RS232::sendScpiCommand);
-    connect(serialConnection, &RS232::receivedMessage, this, &SerialConsole::onReceivedMessage);
+    connect(this, &SerialConsole::scpiCommand, serialConnection, &Serial::sendScpiCommand);
+    connect(serialConnection, &Serial::receivedMessage, this, &SerialConsole::onReceivedMessage);
 
-    // after thread start there will be a signal emitted which starts the RS232 makeConnection function
+    // after thread start there will be a signal emitted which starts the Serial makeConnection function
     serialThread->start();
 }

@@ -1,4 +1,4 @@
-#include "devicemanager.h"
+#include <src/devicemanager.h>
 
 #include <src/devices/keithley_2000.h>
 #include <src/devices/keithley_2410.h>
@@ -9,7 +9,7 @@
 #include <src/devices/hp_34401a.h>
 #include <src/devices/hameg_hm8143.h>
 #include <src/devices/gw_instek_gpd4303s.h>
-#include "devices/dummy.h"
+#include <src/devices/dummy.h>
 #include <QDebug>
 #include <QDir>
 

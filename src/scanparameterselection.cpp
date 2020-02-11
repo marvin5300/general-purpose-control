@@ -29,10 +29,8 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &ScanParameterSelection::onDeviceSelectionChanged);
     ui->deviceSelectionCombobox->setModel(deviceModel);
-    ui->scanParameterAdjustMode->addItem("measure only");
     connect(ui->scanParameterAdjustMode, &QComboBox::currentTextChanged, this,
             &ScanParameterSelection::onScanParameterAdjustModeChanged);
-    onScanParameterAdjustModeChanged("measure only");
 
     connect(ui->fromEdit, &QLineEdit::editingFinished, this,
             [this](){bool ok = false;
@@ -170,21 +168,6 @@ void ScanParameterSelection::onScanParameterAdjustModeChanged(QString mode){
         ui->logStepsButton->setHidden(false);
         ui->fromLabel->setText("from:");
     }
-    if (mode == "measure only"){
-        ui->scanParameterSelectionCombobox->setEnabled(false);
-        ui->scanParameterTableWidget->setHidden(true);
-        ui->toEdit->setHidden(true);
-        ui->toLabel->setHidden(true);
-        ui->stepsEdit->setHidden(true);
-        ui->stepsCombobox->setHidden(true);
-        ui->logStepsButton->setHidden(true);
-        ui->fromLabel->setText("number of measurements:");
-        ui->scanParameterSpacer->changeSize(0,0,QSizePolicy::Preferred,QSizePolicy::Expanding);
-    }else{
-        ui->scanParameterSelectionCombobox->setEnabled(true);
-        ui->scanParameterTableWidget->setHidden(false);
-        ui->scanParameterSpacer->changeSize(0,0,QSizePolicy::Preferred,QSizePolicy::Preferred);
-    }
 }
 
 ScanParameterSelection::~ScanParameterSelection()
@@ -218,16 +201,11 @@ void ScanParameterSelection::nextScanParameterStep(){
     bool fixedMode = ui->scanParameterAdjustMode->currentText()=="fixed";
     if (fixedMode){
         emit completedLoop();
+        return;
     }
 
+    // following should only happen when ramping
     setScanCounter++;
-
-    bool measureOnly = ui->scanParameterAdjustMode->currentText()=="measure only";
-    if (measureOnly){
-        if (setScanCounter>=static_cast<quint64>(parameterBeginValue)){
-            emit completedLoop();
-        }
-    }
 
     MeasurementValue scanParameter;
     // determine which value will be next and if the loop is finished

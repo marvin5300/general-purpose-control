@@ -12,13 +12,13 @@ struct DeviceParameterConstraint{
     DeviceParameterConstraint(QString _name="", double _min_value=.0,
                          double _max_value=.0, AccessMode _mode=NONE){
         name = _name;
-        mode = _mode;
         min_value = _min_value;
         max_value = _max_value;
+        mode = _mode;
     }
+    QString name;
     double min_value;
     double max_value;
-    QString name;
     AccessMode mode;
 };
 

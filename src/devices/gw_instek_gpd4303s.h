@@ -21,8 +21,8 @@ private:
     QMap<QString, MeasurementValue> valuesMap;
     QString translateSet(QString paramName);
     QString translateMeas(QString paramName);
-    bool outputState() {return outputON;}
-    bool outputON = false;
+    double translateInc(QString receivedString);
+    void setOutputState(bool on);
+    bool _outputOn = false;
 };
-
 #endif // GW_INSTEK_GPD4303S_H
