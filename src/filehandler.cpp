@@ -2,6 +2,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QDebug>
+#include <QDateTime>
 
 FileHandler::FileHandler(QObject *parent) : QObject(parent)
 {
@@ -14,7 +15,7 @@ void FileHandler::setOutputFile(QString fileName){
         outputFile.clear();
     }
     if (fileName == ""){
-        emit openFileStatus(false);
+        emit openedFileName("no file");
         return;
     }
     outputFile = new QFile(fileName);
@@ -25,12 +26,43 @@ void FileHandler::setOutputFile(QString fileName){
                                      QMessageBox::Open, QMessageBox::Abort);
         if (button != QMessageBox::Open){
             outputFile.clear();
-            emit openFileStatus(false);
+            emit openedFileName("no file");
             return;
         }
     }
     if (outputFile->open(QIODevice::ReadWrite|QIODevice::Append)){
-        emit openFileStatus(true);
+        emit openedFileName(outputFile->fileName());
+    }
+}
+
+void FileHandler::onNewMeasurementStarted(){
+    if (!outputFile.isNull()){
+        return;
+    }
+    if (_autoOutput){
+        createAutomaticOutputFile();
+    }
+}
+
+void FileHandler::createAutomaticOutputFile(){
+    // create automatic output file
+}
+
+void FileHandler::onFinishedMeasurement(){
+    writeBufferToFile(true);
+    if (!_autoOutput){
+        emit openedFileName("no file");
+        return;
+    }
+    createAutomaticOutputFile();
+}
+
+void FileHandler::setOutputAutomatic(bool autoOutput){
+    if (!_autoOutput&&autoOutput){
+        outputFile->close();
+        outputFile.clear();
+        createAutomaticOutputFile();
+        _autoOutput = true;
     }
 }
 
@@ -50,20 +82,28 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> 
         valuesList.append(QString(value.name+"["+deviceName+"]:%1").arg(value.value));
     }
     */
-    int size = values.size()>fileHeaderStrings.size()?values.size():fileHeaderStrings.size();
-    for (int i = 0; i < size; i++){
-        // make sure size of the values list and fileHeaderStrings are same size
-        // so no seg fault occurs
-        valuesList.append(QString());
-    }
+    qDebug() << "size";
     for (auto value : values){
         QString fileHeader = QString(value.name+"["+deviceName+"]");
         if (!fileHeaderStrings.contains(fileHeader)){
             fileHeaderStrings.append(fileHeader);
             correct_columns();
         }
+    }
+    for (int i = 0; i < fileHeaderStrings.size(); i++){
+        // make sure size of the values list and fileHeaderStrings are same size
+        // so no seg fault occurs
+        valuesList.append(QString());
+    }
+    qDebug() << "valuesList size" << valuesList.size();
+    valuesList[0] = (QString("%1").arg(QDateTime::currentMSecsSinceEpoch()));
+    qDebug() << "after insert timestamp";
+    for (auto value : values){
+        QString fileHeader = QString(value.name+"["+deviceName+"]");
+        qDebug() << "insert " << value.value << " at "<<(fileHeaderStrings.indexOf(fileHeader));
         valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value.value);
     }
+    qDebug() << "after filling valuesList";
     valueLineListMap.insert(number, valuesList);
     if (number > lastWrittenLine + bufferedLines || number < lastWrittenLine){
         writeBufferToFile(false); // writes only older buffered lines to file
@@ -71,7 +111,9 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> 
 }
 
 void FileHandler::writeBufferToFile(bool endOfMeasurement){
-    if (outputFile.isNull()||(outputFile->isOpen()==false)){
+    qDebug() << "write buffer to file, end of measurement: "<<endOfMeasurement;
+    qDebug() << "buffer: "<<valueLineListMap;
+    if (outputFile.isNull()||(outputFile->isOpen()==false)||valueLineListMap.empty()){
         return;
     }
     QTextStream out(outputFile);
@@ -83,6 +125,10 @@ void FileHandler::writeBufferToFile(bool endOfMeasurement){
             }
             out << "\n";
         }
+    }
+    if (endOfMeasurement){
+        outputFile->close();
+        outputFile.clear();
     }
 }
 

@@ -37,18 +37,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // all filehandler related stuff
     fileHandler = new FileHandler(this);
-    connect(fileHandler, &FileHandler::openFileStatus, this, [this](bool open){
-        this->ui->fileStatusLabel->setText(open ? fileHandler->getFileName() :  "no file");
-    });
     connect(this, &MainWindow::setOutputFile, fileHandler, &FileHandler::setOutputFile);
+    connect(this, &MainWindow::finishedMeasurement, fileHandler, &FileHandler::onFinishedMeasurement);
+    connect(this, &MainWindow::startMeasurement, fileHandler, &FileHandler::onNewMeasurementStarted);
+    connect(fileHandler, &FileHandler::openedFileName, ui->fileStatusLabel, &QLabel::setText);
     connect(ui->actionselect_output_file, &QAction::triggered, this, [this](){
         QString outputFileName = QFileDialog::getSaveFileName(this, tr("Open File"),
                                                               QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
                                                               tr("Any File (*)"),
                                                               nullptr,
                                                               QFileDialog::DontConfirmOverwrite);
-        if(!outputFileName.isEmpty()){this->setOutputFile(outputFileName);}
+        if(!outputFileName.isEmpty()){emit setOutputFile(outputFileName);}
     });
+    emit setAutoOutputFile(ui->autoFileCheckbox->isChecked());
 }
 //Add_PB->setStyleSheet( "*{border-image: url(:/icons/maximize.bmp);}"
 //":pressed{ border-image: url(:/icons/maximize_pressed.bmp);}");
@@ -106,7 +107,6 @@ void MainWindow::adjustProgressBarAppearance(int value){
 
 void MainWindow::setUiMeasurementState(bool _ongoingMeasurement){
     ui->menuSettings->setDisabled(_ongoingMeasurement);
-    ongoingMeasurement = _ongoingMeasurement;
     ui->devicesGroupBox->setDisabled(_ongoingMeasurement);
     ui->scanValueGroupBox->setDisabled(_ongoingMeasurement);
     ui->noLimitCheck->setDisabled(_ongoingMeasurement);
@@ -116,7 +116,9 @@ void MainWindow::setUiMeasurementState(bool _ongoingMeasurement){
 }
 
 void MainWindow::onStartMeasurementButtonClicked(){
-    setUiMeasurementState(!ongoingMeasurement); // ongoingMeasurement is false at the start of the program
+    qDebug() << "start cycle "<< measCycle;
+    ongoingMeasurement = !ongoingMeasurement;
+    setUiMeasurementState(ongoingMeasurement); // ongoingMeasurement is false at the start of the program
     if (ongoingMeasurement){ // now it is true when measurement started
         // connect all measure devices and signals
         for (QPointer<MeasurementDevice> device : DeviceManager::activeDevicesList){
@@ -127,9 +129,9 @@ void MainWindow::onStartMeasurementButtonClicked(){
 
         // start measurement routine
         //pendingScanParameters = ui->scanValuesHorizontalLayout->count()-2; // beware there are already 2 items in this layout
-        connectScanValues(true); // connect
         int interval = ui->intervalspinbox->value();
         intervalTimer.setInterval(interval);
+        connectScanValues(true); // connect
         scanParameterReadyCounter = numberOfScanparameterSelections;
         emit scanInit();
         ui->progressBar->setValue(0);
@@ -142,6 +144,9 @@ void MainWindow::onStartMeasurementButtonClicked(){
         connectScanValues(false);
         intervalTimer.stop();
         // put here any command for force quit
+        measCycle = 0;
+        qDebug() << "emit finished";
+        emit finishedMeasurement();
         QMessageBox::warning(this,tr("Attention!"),tr("Measurement was canceled early"),QMessageBox::Ok);
     }
 }
@@ -152,18 +157,19 @@ void MainWindow::onMeasureReady(QString deviceName, quint64 number){
     if (measurementReadyCounter>0){
         return;
     }
-    ongoingMeasurement = false;
+    qDebug() << "measurement ongoing = "<<ongoingMeasurement;
     scanParameterReadyCounter = numberOfScanparameterSelections;
     this->nextInterval();
     this->probeProgress(0);
 }
 
 void MainWindow::onScanParamSelReady(QString deviceName, quint64 number){
-    scanParameterReadyCounter--;
+    if (scanParameterReadyCounter>0){
+        scanParameterReadyCounter--;
+    }
     if (scanParameterReadyCounter>0){
         return;
     }
-    ongoingMeasurement = true;
     intervalTimer.start();
 }
 
@@ -172,8 +178,12 @@ void MainWindow::onTimerTimeout(){
     emit measure(++measCount);
 }
 
-void MainWindow::finishedMeasurement(){
-    measCycle++;
+void MainWindow::onFinishedMeasurement(){
+    qDebug() << "finished cycle "<< measCycle;
+    if (!ui->noLimitCheck->isChecked()){
+        // if it is checked, measCycle will not go up and measurements will continue forever
+        measCycle++;
+    }
     intervalTimer.stop();
     for (QPointer<MeasurementDevice> device : DeviceManager::activeDevicesList){
         disconnect(this,&MainWindow::measure, device, &MeasurementDevice::queueMeasure);
@@ -190,12 +200,21 @@ void MainWindow::finishedMeasurement(){
     measCycle = 0;
     ui->progressBar->setValue(100);
     // put here any command for successful finished measurement
+    qDebug() << "emit finished";
+    emit finishedMeasurement();
     QMessageBox::information(this, tr("Success!"), tr("Measurement finished"),QMessageBox::Ok);
 }
 
 void MainWindow::connectScanValues(bool doConnect){
     if (doConnect){
-        numberOfScanparameterSelections = 0;
+        numberOfScanparameterSelections = ui->scanValuesHorizontalLayout->count()-2;
+        if (numberOfScanparameterSelections < 1){
+            // if there is no scan value only measurement:
+            scanParameterReadyCounter = numberOfScanparameterSelections;
+            connect(this, &MainWindow::nextInterval, this, &MainWindow::onFinishedMeasurement);
+            intervalTimer.start();
+            return;
+        }
         for (int i = ui->scanValuesHorizontalLayout->count()-2; i>1 ; i--){
             connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::completedLoop,
                     dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::nextScanParameterStep);
@@ -203,9 +222,7 @@ void MainWindow::connectScanValues(bool doConnect){
                     dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::progressCarry);
             connect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::scanParameterInit);
             connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::scanParameterReady,this, &MainWindow::onScanParamSelReady);
-            numberOfScanparameterSelections++;
         }
-        numberOfScanparameterSelections++;
         connect(this, &MainWindow::probeProgress, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()),
                 &ScanParameterSelection::progressCarry);
         connect(this, &MainWindow::scanInit, dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::scanParameterInit);
@@ -216,8 +233,13 @@ void MainWindow::connectScanValues(bool doConnect){
                 dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()),
                 &ScanParameterSelection::nextScanParameterStep);
         connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::completedLoop,
-                this, &MainWindow::finishedMeasurement);
+                this, &MainWindow::onFinishedMeasurement);
     }else{
+        if (numberOfScanparameterSelections < 1){
+            // if there is no scan value only measurement:
+            disconnect(this, &MainWindow::nextInterval, this, &MainWindow::onFinishedMeasurement);
+            return;
+        }
         for (int i = ui->scanValuesHorizontalLayout->count()-2; i>1 ; i--){
             disconnect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i)->widget()), &ScanParameterSelection::completedLoop,
                        dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(i-1)->widget()), &ScanParameterSelection::nextScanParameterStep);
@@ -232,7 +254,7 @@ void MainWindow::connectScanValues(bool doConnect){
                 dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(ui->scanValuesHorizontalLayout->count()-2)->widget()),
                 &ScanParameterSelection::nextScanParameterStep);
         disconnect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::completedLoop,
-                this, &MainWindow::finishedMeasurement);
+                this, &MainWindow::onFinishedMeasurement);
     }
 }
 
