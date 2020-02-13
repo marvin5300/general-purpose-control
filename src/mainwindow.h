@@ -18,9 +18,12 @@ class MainWindow : public QMainWindow
 
 signals:
     void setOutputFile(QString filename);
+    void setAutoOutputFile(bool autoOutput);
     void nextInterval();
     void measure(quint64 count);
     void scanInit();
+    void startMeasurement();
+    void finishedMeasurement();
     void probeProgress(int progressStart = 0);
 
 public slots:
@@ -41,7 +44,7 @@ private slots:
     void onAddMeasureValuesButtonClicked();
     void adjustProgressBarAppearance(int value);
     void onStartMeasurementButtonClicked();
-    void finishedMeasurement();
+    void onFinishedMeasurement();
 
 private:
     Ui::MainWindow *ui;
