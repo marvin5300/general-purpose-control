@@ -1,7 +1,7 @@
 #ifndef MEASUREMENT_DEVICE_H
 #define MEASUREMENT_DEVICE_H
 
-#include <src/measurementparameter.h>
+#include <measurementparameter.h>
 #include <QFrame>
 #include <QPointer>
 #include <QMap>
