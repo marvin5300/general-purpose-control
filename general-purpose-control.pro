@@ -40,6 +40,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+INCLUDEPATH+= src
+
 HEADERS += \
     src/devicemanager.h \
     src/devices/dummy.h \
@@ -60,7 +62,15 @@ HEADERS += \
     src/devices/hp_34401a.h \
     src/devices/tektronix_dmm4020.h \
     src/devices/voltcraft_psp1803.h \
-    src/serial.h
+    src/serial.h \
+    #src/devices/i2c/i2cdevices/lm75/lm75.h \
+    #src/devices/i2c/i2cdevices/sht21/sht21.h \
+    #src/devices/i2c/i2cdevices/x9119/x9119.h \
+    #src/devices/i2c/i2cdevices/ads1115/ads1115.h \
+    #src/devices/i2c/i2cdevices/i2cdevice.h \
+    #src/devices/spi/serialadapter/serialadapter.h \
+    #src/devices/spi/serialadapter/spi.h \
+    #src/devices/i2c/i2cdevices/ads1115measurementdevice.h
 
 SOURCES += \
     src/devicemanager.cpp \
@@ -82,7 +92,14 @@ SOURCES += \
     src/devices/hp_34401a.cpp \
     src/devices/tektronix_dmm4020.cpp \
     src/devices/voltcraft_psp1803.cpp \
-    src/serial.cpp
+    src/serial.cpp \
+    #src/devices/i2c/i2cdevices/lm75/lm75.cpp \
+    #src/devices/i2c/i2cdevices/sht21/sht21.cpp \
+    #src/devices/i2c/i2cdevices/ads1115/ads1115.cpp \
+    #src/devices/i2c/i2cdevices/x9119/x9119.cpp \
+    #src/devices/i2c/i2cdevices/i2cdevice.cpp \
+    #src/devices/spi/serialadapter/serialadapter.cpp \
+    #src/devices/spi/serialadapter/spi.cpp
 
 FORMS += \
     src/mainwindow.ui \
