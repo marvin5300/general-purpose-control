@@ -25,7 +25,7 @@ MeasurementDevice::MeasurementDevice(QString _portName, quint32 _baudRate, QWidg
     ui->parameterTableWidget->setFrameShadow(QTableWidget::Plain);
     ui->parameterTableWidget->setFrameShape(QTableWidget::StyledPanel);
     ui->parameterTableWidget->setStyleSheet("border: none;");
-    ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/res/close1.png)}:hover{ border-image: url(:/res/close2.png);}");
+    ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/close1.png)}:hover{ border-image: url(:/close2.png);}");
     connect(ui->closeButton, &QPushButton::clicked, this, &MeasurementDevice::exit);
     ui->deviceNameSelectBox->setModel(DeviceManager::getAllDeviceNameModel());
     ui->interfaceNameSelectBox->setModel(DeviceManager::getAllInterfaceNameModel());

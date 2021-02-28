@@ -16,9 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("General Purpose Control");
-    this->setWindowIcon(QIcon(":/res/tune.png"));
-    ui->addAdjustValueButton->setStyleSheet(":!hover{ border-image: url(:/res/plus1.png)}:hover{ border-image: url(:/res/plus2.png);}");
-    ui->addDeviceButton->setStyleSheet(":!hover{ border-image: url(:/res/plus1.png)}:hover{ border-image: url(:/res/plus2.png);}");
+    this->setWindowIcon(QIcon(":/tune.png"));
+    ui->addAdjustValueButton->setStyleSheet(":!hover{ border-image: url(:/plus1.png)}:hover{ border-image: url(:/plus2.png);}");
+    ui->addDeviceButton->setStyleSheet(":!hover{ border-image: url(:/plus1.png)}:hover{ border-image: url(:/plus2.png);}");
     ui->progressBar->setValue(0);
     connect(ui->progressBar, &QProgressBar::valueChanged, this, &MainWindow::adjustProgressBarAppearance);
     ui->progressBar->setStyleSheet(lowLevel);

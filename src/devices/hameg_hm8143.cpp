@@ -1,4 +1,4 @@
-#include <src/devices/hameg_hm8143.h>
+#include "devices/hameg_hm8143.h"
 
 const QMap<QString,DeviceParameterConstraint> Hameg_HM8143::_deviceParamMap = {
 };

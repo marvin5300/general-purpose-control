@@ -1,0 +1,4 @@
+Graphical control program for tabletop lab devices
+Select devices and ports for read and set parameters.
+Loop / ramp over parameters and read a set of parameters independent of device.
+It is licensed under the GNU Lesser General Public License version 3 (LGPL v3).
