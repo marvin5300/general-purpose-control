@@ -1,0 +1,85 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\documentclass{beamer}
+\usepackage{pdfpages}
+
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{minipage-marginpar}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{color} 	% Farben
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Eigene Befehle
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\input{macros/newcommands}
+\input{macros/code-highlighting}
+\input{macros/beamerstyle}
+
+\input{content/title.tex}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[II. Physikalisches Institut] % (optional, but mostly needed)
+{
+  %\inst{1}%
+  II. Physikalisches Institut, Justus-Liebig-Universität Giessen
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{GeneralPurposeControl}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+\date 
+
+\graphicspath{content/figures/} % Location of the graphics files
+
+ \pgfdeclareimage[height=1cm]{jlu-logo}{content/figures/jlu-logo.ps}
+ %\pgfdeclareimage[height=0.6cm]{panda-logo}{data/PANDA_logo.png}
+ \logo{
+ 	%\pgfuseimage{panda-logo}
+ 	\hspace{\dimexpr\paperwidth-4.8cm-5pt}%
+ 	\pgfuseimage{jlu-logo}
+ }
+
+% table of contents pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+	\begin{frame}<beamer>{Outline}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+	\titlepage
+	%\includegraphics[width=0.4\textwidth]{Aachen19.png}
+\end{frame}
+\end{document}
+
+

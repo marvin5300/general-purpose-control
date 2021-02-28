@@ -1,0 +1,61 @@
+\usepackage{fontawesome}
+%\usepackage{subfigure}
+\usepackage[]{subcaption}
+\captionsetup[figure]{labelformat=empty}% redefines the caption setup of the figures environment in the beamer class.
+\setbeamerfont{caption name}{size=\tiny}
+\setbeamerfont{caption}{size=\tiny}
+\setbeamertemplate{navigation symbols}{%
+	\usebeamerfont{footline}%
+	\usebeamercolor[fg]{normal text}%
+	%\hspace{1em}%(DD 16)
+	\hspace{1em} \insertframenumber/\inserttotalframenumber
+}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{default}
+\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\usecolortheme{beaver}
+
+%\defbeamertemplateparent{enumerate items}{enumerate item,enumerate subitem,enumerate subsubitem,enumerate mini template}{}
+%\setbeamertemplate{itemize items}[triangle]
+\defbeamertemplate{itemize item}{chevron}{\usebeamerfont*{itemize item}\raise1pt\hbox{\faAngleRight}}
+\setbeamertemplate{items}[chevron]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[circle]
+
+%\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+\setbeamertemplate{section in toc}{\inserttocsection}
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}{\inserttocsubsection}
+\setbeamertemplate{subsection in toc}[circle]
