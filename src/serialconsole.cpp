@@ -9,7 +9,7 @@ SerialConsole::SerialConsole(QWidget *parent, Qt::WindowFlags flags):
 {
     ui->setupUi(this);
     setWindowTitle("Serial Console");
-    setWindowIcon(QIcon(":/res/Serial.png"));
+    setWindowIcon(QIcon(":/Serial.png"));
     connect(ui->connectButton, &QPushButton::clicked, this, &SerialConsole::onConnectButtonClicked);
     connect(ui->sendButton, &QPushButton::clicked, this, &SerialConsole::onSendButtonClicked);
     raise();

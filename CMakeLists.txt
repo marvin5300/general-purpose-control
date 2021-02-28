@@ -10,7 +10,7 @@ set(PROJECT_HEADER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set(PROJECT_CONFIG_DIR "${CMAKE_CURRENT_SOURCE_DIR}/config")
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS "${PROJECT_UI_DIR}")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/version.cmake")
 
@@ -40,11 +40,48 @@ set(Qt5_DIR "/usr/lib/x86_64-linux-gnu/cmake/Qt5/")
 
 endif()
 
+#if (MSVC)
+#    if("${MSVC_RUNTIME}" STREQUAL "")
+#        set(MSVC_RUNTIME "static")
+#    endif()
+#        # Set compiler options.
+#    set(variables
+#      CMAKE_C_FLAGS_DEBUG
+#      CMAKE_C_FLAGS_MINSIZEREL
+#      CMAKE_C_FLAGS_RELEASE
+#      CMAKE_C_FLAGS_RELWITHDEBINFO
+#      CMAKE_CXX_FLAGS_DEBUG
+#      CMAKE_CXX_FLAGS_MINSIZEREL
+#      CMAKE_CXX_FLAGS_RELEASE
+#      CMAKE_CXX_FLAGS_RELWITHDEBINFO
+#    )
+#    if(${MSVC_RUNTIME} STREQUAL "static")
+#      message(STATUS
+#        "MSVC -> forcing use of statically-linked runtime."
+#      )
+#      foreach(variable ${variables})
+#        if(${variable} MATCHES "/MD")
+#          string(REGEX REPLACE "/MD" "/MT" ${variable} "${${variable}}")
+#        endif()
+#      endforeach()
+#    else()
+#      message(STATUS
+#        "MSVC -> forcing use of dynamically-linked runtime."
+#      )
+#      foreach(variable ${variables})
+#        if(${variable} MATCHES "/MT")
+#          string(REGEX REPLACE "/MT" "/MD" ${variable} "${${variable}}")
+#        endif()
+#      endforeach()
+#    endif()
+#endif()
+
 find_package(Qt5 COMPONENTS Network SerialPort Svg Widgets Gui REQUIRED)
 
 if(NOT WIN32) # added to make program editable in qt-creator on windows
 
 find_library(RT rt REQUIRED)
+find_library(PTHREAD pthread REQUIRED)
 
 endif()
 
@@ -77,7 +114,7 @@ add_compile_options(
     )
 endif (${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "armv7l")
 
-set(GPC_SOURCE_FILES
+set(PROJECT_SOURCE_FILES
     "${PROJECT_SRC_DIR}/devicemanager.cpp"
     "${PROJECT_SRC_DIR}/devices/dummy.cpp"
     "${PROJECT_SRC_DIR}/filehandler.cpp"
@@ -107,7 +144,7 @@ set(GPC_SOURCE_FILES
     #"${PROJECT_SRC_DIR}/devices/spi/serialadapter/spi.cpp"
 )
 
-set(GPC_HEADER_FILES
+set(PROJECT_HEADER_FILES
     "${PROJECT_HEADER_DIR}/devicemanager.h"
     "${PROJECT_HEADER_DIR}/devices/dummy.h"
     "${PROJECT_HEADER_DIR}/filehandler.h"
@@ -143,7 +180,7 @@ set(PROJECT_UI_FILES
     "${PROJECT_UI_DIR}/measurementdevice.ui"
     "${PROJECT_UI_DIR}/scanparameterselection.ui"
     "${PROJECT_UI_DIR}/serialconsole.ui"
-    "${PROJECT_UI_DIR}/settings.ui"    
+    "${PROJECT_UI_DIR}/settings.ui"
 )
 
 set(PROJECT_RESOURCE_FILES "")
@@ -166,29 +203,41 @@ endif()
 #    "${CMAKE_CURRENT_BINARY_DIR}/general-purpose-control.1"
 #    )
 
-add_executable(general-purpose-control ${GPC_SOURCE_FILES} ${GPC_HEADER_FILES})
+add_executable(general-purpose-control ${PROJECT_SOURCE_FILES} ${PROJECT_HEADER_FILES} ${PROJECT_UI_FILES} ${PROJECT_RESOURCE_FILES} ${qml_QRC})
 
 set_property(TARGET general-purpose-control PROPERTY POSITION_INDEPENDENT_CODE 1)
+
+if(WIN32)
+
+target_link_libraries(general-purpose-control
+    Qt5::SerialPort Qt5::Widgets Qt5::Gui Qt5::Svg
+)
+
+else()
 
 target_link_libraries(general-purpose-control
     Qt5::SerialPort Qt5::Widgets Qt5::Gui Qt5::Svg
     rt
+    pthread
 )
+
+endif()
+
 
 target_include_directories(general-purpose-control PUBLIC
     $<BUILD_INTERFACE:${PROJECT_HEADER_DIR}>
+    ${Qt5Svg_INCLUDE_DIRS}
     ${Qt5Widgets_INCLUDE_DIRS}
-    ${Qt5Quick_INCLUDE_DIRS}
     ${Qt5QuickWidgets_INCLUDE_DIRS}
 )
-if (CMAKE_BUILD_TYPE STREQUAL Release)
-    add_custom_command(TARGET general-purpose-control POST_BUILD
-            COMMAND ${CMAKE_STRIP} "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/general-purpose-control")
-endif ()
+#if (CMAKE_BUILD_TYPE STREQUAL Release)
+#    add_custom_command(TARGET general-purpose-control POST_BUILD
+#            COMMAND ${CMAKE_STRIP} "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/general-purpose-control")
+#endif ()
 
 if(WIN32)
 
-include("${PROJECT_SOURCE_DIR}/../cmake/Windeployqt.cmake")
+include("${PROJECT_SOURCE_DIR}/cmake/Windeployqt.cmake")
 set(windeploy_options
     #--qmldir "${PROJECT_QML_DIR}"
     -opengl
@@ -243,7 +292,7 @@ else()
 
 include(GNUInstallDirs)
 
-#add_custom_target(changelog ALL COMMAND gzip -cn9 "${PROJECT_CONFIG_DIR}/changelog" > "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz")
+add_custom_target(changelog ALL COMMAND gzip -cn9 "${PROJECT_CONFIG_DIR}/changelog" > "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz")
 #add_custom_target(manpage ALL COMMAND gzip -cn9 "${CMAKE_CURRENT_BINARY_DIR}/muondetector-daemon.1" > "${CMAKE_CURRENT_BINARY_DIR}/muondetector-daemon.1.gz")
 #add_custom_target(manpage-login ALL COMMAND gzip -cn9 "${CMAKE_CURRENT_BINARY_DIR}/muondetector-login.1" > "${CMAKE_CURRENT_BINARY_DIR}/muondetector-login.1.gz")
 
