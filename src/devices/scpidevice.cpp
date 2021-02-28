@@ -65,10 +65,12 @@ bool ScpiDevice::checkDevice(QString message){
             correctDeviceConnected = true;
             setUiConnectionState(true);
         }else{
+            correctDeviceConnected = false;
             setUiConnectionState(false);
         }
         qDebug() << "device name: " << deviceName() << " device status... correct device?" << correctDeviceConnected;
     }
+    return correctDeviceConnected;
 }
 
 void ScpiDevice::connectBus(){
