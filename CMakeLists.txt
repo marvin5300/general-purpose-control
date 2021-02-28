@@ -14,6 +14,30 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/version.cmake")
 
+option(BUILD_DOCS "Build doxygen files" ON)
+
+# check if Doxygen is installed (from https://vicrucann.github.io/tutorials/quick-cmake-doxygen/)
+find_package(Doxygen)
+if (DOXYGEN_FOUND AND BUILD_DOCS)
+    # set input and output files
+    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doxygen/Doxyfile.in)
+    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/doxygen/Doxyfile)
+
+    # request to configure the file
+    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+
+    # note the option ALL which allows to build the docs together with the application
+    add_custom_target( doc_doxygen ALL
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating API documentation with Doxygen"
+    )
+elseif (BUILD_DOCS)
+    message("doxygen need to be installed to generate the doxygen documentation. for generating tree views graphviz is needed.")
+else ()
+    message("Selected option doxygen build OFF. Doxygen will not be build.")
+endif ()
+
 if(${BUILD_TIDY})
   set(CMAKE_CXX_CLANG_TIDY
       clang-tidy;
