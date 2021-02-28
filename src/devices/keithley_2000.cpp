@@ -1,4 +1,4 @@
-#include <src/devices/keithley_2000.h>
+#include "devices/keithley_2000.h"
 
 const QMap<QString,DeviceParameterConstraint> Keithley_2000::_deviceParamMap = {
     {"V",DeviceParameterConstraint("V", 0.0, 0.0, READONLY)},

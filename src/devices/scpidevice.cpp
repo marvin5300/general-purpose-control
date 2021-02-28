@@ -1,8 +1,8 @@
-#include <src/devices/scpidevice.h>
-#include <src/serial.h>
+#include "devices/scpidevice.h"
+#include "serial.h"
+#include "ui_measurementdevice.h"
 #include <QThread>
 #include <QVector>
-#include <ui_measurementdevice.h>
 
 void ScpiDevice::queueMeasure(quint64 number){
     measureID = number;
