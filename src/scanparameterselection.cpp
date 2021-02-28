@@ -21,7 +21,7 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     ui->scanParameterTableWidget->setFrameShadow(QTableWidget::Plain);
     ui->scanParameterTableWidget->setFrameShape(QTableWidget::StyledPanel);
     ui->scanParameterTableWidget->setStyleSheet("border: none;");
-    ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/res/close1.png)}:hover{ border-image: url(:/res/close2.png);}");
+    ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/close1.png)}:hover{ border-image: url(:/close2.png);}");
     connect(ui->closeButton, &QPushButton::clicked, this, &ScanParameterSelection::deleteLater);
     QPointer<QStandardItemModel> deviceModel = DeviceManager::getActiveDeviceNameModel();
     connect(ui->deviceSelectionCombobox->model(), &QAbstractItemModel::dataChanged, this, &ScanParameterSelection::keepDeviceSelectionIndex);
