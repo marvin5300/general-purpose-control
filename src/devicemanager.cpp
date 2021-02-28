@@ -1,15 +1,15 @@
-#include <src/devicemanager.h>
+#include "devicemanager.h"
 
-#include <src/devices/keithley_2000.h>
-#include <src/devices/keithley_2410.h>
-#include <src/devices/sourcetronic_st2819a.h>
-#include <src/devices/tektronix_dmm4020.h>
-#include <src/devices/voltcraft_psp1803.h>
-#include <src/devices/rigol_dsa1030a.h>
-#include <src/devices/hp_34401a.h>
-#include <src/devices/hameg_hm8143.h>
-#include <src/devices/gw_instek_gpd4303s.h>
-#include <src/devices/dummy.h>
+#include "devices/keithley_2000.h"
+#include "devices/keithley_2410.h"
+#include "devices/sourcetronic_st2819a.h"
+#include "devices/tektronix_dmm4020.h"
+#include "devices/voltcraft_psp1803.h"
+#include "devices/rigol_dsa1030a.h"
+#include "devices/hp_34401a.h"
+#include "devices/hameg_hm8143.h"
+#include "devices/gw_instek_gpd4303s.h"
+#include "devices/dummy.h"
 #include <QDebug>
 #include <QDir>
 

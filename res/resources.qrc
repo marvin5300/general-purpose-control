@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon.png</file>
+        <file>rs232.png</file>
+        <file>tune.png</file>
+        <file>plus1.png</file>
+        <file>plus2.png</file>
+        <file>close1.png</file>
+        <file>close2.png</file>
+        <file>settings1.png</file>
+    </qresource>
+</RCC>

@@ -1,4 +1,4 @@
-#include <src/devices/gw_instek_gpd4303s.h>
+#include "devices/gw_instek_gpd4303s.h"
 #include <math.h>
 
 const QMap<QString,DeviceParameterConstraint> GW_INSTEK_GPD4303S::_deviceParamMap = {

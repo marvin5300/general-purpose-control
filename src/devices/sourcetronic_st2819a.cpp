@@ -1,4 +1,4 @@
-#include <src/devices/sourcetronic_st2819a.h>
+#include "devices/sourcetronic_st2819a.h"
 
 const QMap<QString,DeviceParameterConstraint> SourceTronic_ST2819A::_deviceParamMap = {
     {"C",DeviceParameterConstraint("C", 0.0, 0.0, READONLY)},

@@ -1,4 +1,4 @@
-#include <src/devices/dummy.h>
+#include "devices/dummy.h"
 
 Dummy::Dummy()
     : MeasurementDevice("not selected")
