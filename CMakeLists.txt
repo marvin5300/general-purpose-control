@@ -14,6 +14,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/version.cmake")
 
+configure_file(
+    "${PROJECT_CONFIG_DIR}/version.h"
+    "${PROJECT_HEADER_DIR}/version.h"
+)
+
 option(BUILD_DOCS "Build doxygen files" ON)
 
 # check if Doxygen is installed (from https://vicrucann.github.io/tutorials/quick-cmake-doxygen/)
