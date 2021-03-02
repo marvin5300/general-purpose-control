@@ -7,10 +7,10 @@
 #include <QStringList>
 #include <QStandardItemModel>
 
-// since "inline" is only available from C++17 or newer this is the main set of functions to fill comboboxes
-// deviceNameList and getDevice hold all device names and information about how to initialise
-// the models can be generated at will and should contain valid device names and port names.
-// Should be enough to edit them here
+/** 
+* @brief Holds all possible device names and creates objects of certain device types.
+* Only device names and classes that are listed here will be available in the final program.
+*/
 class DeviceManager : public QObject
 {
     Q_OBJECT

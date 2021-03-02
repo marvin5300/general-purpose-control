@@ -3,6 +3,11 @@
 
 #include "devices/scpidevice.h"
 
+/**
+* @brief Placeholder for other devices.
+* Like other MeasurementDevice objects it has a device name.
+* It states "not selected".
+*/
 class Dummy : public MeasurementDevice
 {
     Q_OBJECT

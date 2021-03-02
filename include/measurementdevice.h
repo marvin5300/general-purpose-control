@@ -9,15 +9,16 @@
 #include <QLayout>
 #include <QMouseEvent>
 
-// this class is made assuming all devices use rs232 serial connection on scpi message base
-// this is an abstract class not meant to live on its own but only to be inherited from
-
-// basic communication like "*IDN?" command and everything that does not change for different
-// devices are baked fix in here
 namespace Ui {
 class MeasurementDevice;
 }
 
+/**
+* @brief Abstract class that represents a device on the gui.
+* This is an abstract class not meant to live on its own but only to be inherited from.
+* A device can have variable interfaces like uart, spi or i2c.
+* It is all about its device parameters, which
+*/
 class MeasurementDevice : public QFrame
 {
     Q_OBJECT

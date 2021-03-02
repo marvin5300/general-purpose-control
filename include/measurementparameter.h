@@ -8,6 +8,9 @@ enum AccessMode{NONE, READONLY, WRITEONLY, READWRITE};
 static const QStringList accessModeStrings({"NONE", "READONLY", "WRITEONLY", "READWRITE"}); // mode > 1 has write access
 static const QStringList deviceParameterConstraintsHeaderStrings({"Name", "AccessMode", "Min", "Max"});
 
+/**
+* @brief Parameters in a device like U,I,C
+*/
 struct DeviceParameterConstraint{
     DeviceParameterConstraint(QString _name="", double _min_value=.0,
                          double _max_value=.0, AccessMode _mode=NONE){
@@ -22,6 +25,9 @@ struct DeviceParameterConstraint{
     AccessMode mode;
 };
 
+/**
+* @brief One measured value with parameter label
+*/
 struct MeasurementValue{
     MeasurementValue(QString _name="", double _value=0.0){
         name = _name;
