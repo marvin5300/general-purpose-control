@@ -22,7 +22,7 @@ public:
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const{return QMap<QString,DeviceParameterConstraint>();}
     void setScanParameter(MeasurementValue value){value = value;}
     const QString deviceName() {return _deviceName;}
-    void connectBus(){}
+    void connectBus() override{}
 
 private:
     void init();
