@@ -7,6 +7,10 @@ namespace Ui {
 class SerialConsole;
 }
 
+/**
+* Console Dialog that can be used to manually send messages to devices.
+* Uses Serial interface (UART) to transmit (usually scpi-) messages.
+*/
 class SerialConsole : public QDialog
 {
     Q_OBJECT

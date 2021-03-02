@@ -1900,100 +1900,18 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O10">
+    <dia:object type="UML - Implements" version="0" id="O10">
       <dia:attribute name="obj_pos">
-        <dia:point val="46.6527,32.0994"/>
+        <dia:point val="60.4902,17.6176"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="45.8027,27.8214;47.5027,32.1494"/>
-      </dia:attribute>
-      <dia:attribute name="meta">
-        <dia:composite type="dict"/>
-      </dia:attribute>
-      <dia:attribute name="orth_points">
-        <dia:point val="46.6527,32.0994"/>
-        <dia:point val="46.6527,29.5854"/>
-        <dia:point val="46.6159,29.5854"/>
-        <dia:point val="46.6159,27.8714"/>
-      </dia:attribute>
-      <dia:attribute name="orth_orient">
-        <dia:enum val="1"/>
-        <dia:enum val="0"/>
-        <dia:enum val="1"/>
-      </dia:attribute>
-      <dia:attribute name="orth_autoroute">
-        <dia:boolean val="true"/>
-      </dia:attribute>
-      <dia:attribute name="text_colour">
-        <dia:color val="#000000"/>
-      </dia:attribute>
-      <dia:attribute name="line_colour">
-        <dia:color val="#000000"/>
-      </dia:attribute>
-      <dia:attribute name="name">
-        <dia:string>##</dia:string>
-      </dia:attribute>
-      <dia:attribute name="stereotype">
-        <dia:string>##</dia:string>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O4" connection="1"/>
-        <dia:connection handle="1" to="O3" connection="6"/>
-      </dia:connections>
-    </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O11">
-      <dia:attribute name="obj_pos">
-        <dia:point val="30.1225,31.9339"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="29.2725,27.8719;46.6659,31.9839"/>
-      </dia:attribute>
-      <dia:attribute name="meta">
-        <dia:composite type="dict"/>
-      </dia:attribute>
-      <dia:attribute name="orth_points">
-        <dia:point val="30.1225,31.9339"/>
-        <dia:point val="30.1225,29.5279"/>
-        <dia:point val="46.6159,29.5279"/>
-        <dia:point val="46.6159,27.9219"/>
-      </dia:attribute>
-      <dia:attribute name="orth_orient">
-        <dia:enum val="1"/>
-        <dia:enum val="0"/>
-        <dia:enum val="1"/>
-      </dia:attribute>
-      <dia:attribute name="orth_autoroute">
-        <dia:boolean val="true"/>
-      </dia:attribute>
-      <dia:attribute name="text_colour">
-        <dia:color val="#000000"/>
-      </dia:attribute>
-      <dia:attribute name="line_colour">
-        <dia:color val="#000000"/>
-      </dia:attribute>
-      <dia:attribute name="name">
-        <dia:string>##</dia:string>
-      </dia:attribute>
-      <dia:attribute name="stereotype">
-        <dia:string>##</dia:string>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O9" connection="8"/>
-        <dia:connection handle="1" to="O3" connection="16"/>
-      </dia:connections>
-    </dia:object>
-    <dia:object type="UML - Implements" version="0" id="O12">
-      <dia:attribute name="obj_pos">
-        <dia:point val="60.4902,17.6177"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="60.4283,17.5557;63.7132,28.1698"/>
+        <dia:rectangle val="60.4283,17.5557;63.7132,27.5698"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="60.4902,17.6177"/>
+        <dia:point val="60.4902,17.6176"/>
         <dia:point val="63.3151,27.3698"/>
       </dia:attribute>
       <dia:attribute name="line_colour">
@@ -2016,18 +1934,18 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O7" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Implements" version="0" id="O13">
+    <dia:object type="UML - Implements" version="0" id="O11">
       <dia:attribute name="obj_pos">
-        <dia:point val="50.9622,32.4142"/>
+        <dia:point val="50.9622,32.4141"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="50.9007,29.1606;61.4955,32.4756"/>
+        <dia:rectangle val="50.9007,28.9595;61.4955,32.4756"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="50.9622,32.4142"/>
+        <dia:point val="50.9622,32.4141"/>
         <dia:point val="61.3412,29.5595"/>
       </dia:attribute>
       <dia:attribute name="line_colour">
@@ -2050,19 +1968,19 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O7" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O14">
+    <dia:object type="UML - Realizes" version="1" id="O12">
       <dia:attribute name="obj_pos">
-        <dia:point val="60.0484,14.5419"/>
+        <dia:point val="60.0483,14.5419"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="37.7525,12.5143;60.8984,14.7531"/>
+        <dia:rectangle val="37.7525,12.4031;60.8984,14.5919"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="60.0484,14.5419"/>
-        <dia:point val="60.0484,13.1531"/>
+        <dia:point val="60.0483,14.5419"/>
+        <dia:point val="60.0483,13.1531"/>
         <dia:point val="37.8025,13.1531"/>
         <dia:point val="37.8025,12.5643"/>
       </dia:attribute>
@@ -2091,18 +2009,18 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O0" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O15">
+    <dia:object type="UML - Realizes" version="1" id="O13">
       <dia:attribute name="obj_pos">
-        <dia:point val="28.3088,4.61955"/>
+        <dia:point val="28.3088,4.61954"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="27.4588,4.56955;37.8525,9.51359"/>
+        <dia:rectangle val="27.4588,4.56954;37.8525,9.51359"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="28.3088,4.61955"/>
+        <dia:point val="28.3088,4.61954"/>
         <dia:point val="28.3088,7.44157"/>
         <dia:point val="37.8025,7.44157"/>
         <dia:point val="37.8025,9.46359"/>
@@ -2132,7 +2050,7 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O0" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O16">
+    <dia:object type="UML - Realizes" version="1" id="O14">
       <dia:attribute name="obj_pos">
         <dia:point val="46.6159,19.8209"/>
       </dia:attribute>
@@ -2173,7 +2091,7 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O0" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O17">
+    <dia:object type="UML - Realizes" version="1" id="O15">
       <dia:attribute name="obj_pos">
         <dia:point val="29.5414,24.1906"/>
       </dia:attribute>
@@ -2214,12 +2132,12 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O0" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O18">
+    <dia:object type="UML - Realizes" version="1" id="O16">
       <dia:attribute name="obj_pos">
         <dia:point val="18.0277,10.6716"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="17.9777,9.82157;34.6646,12.4428"/>
+        <dia:rectangle val="17.9777,9.82157;34.6646,11.6928"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -2255,12 +2173,12 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O0" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O19">
+    <dia:object type="UML - Realizes" version="1" id="O17">
       <dia:attribute name="obj_pos">
         <dia:point val="44.9861,7.96169"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="40.9403,7.11169;45.0361,11.0878"/>
+        <dia:rectangle val="40.9404,7.11169;45.0361,11.064"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -2269,7 +2187,7 @@ emitted when device measurement finished#</dia:string>
         <dia:point val="44.9861,7.96169"/>
         <dia:point val="42.5882,7.96169"/>
         <dia:point val="42.5882,11.014"/>
-        <dia:point val="40.9903,11.014"/>
+        <dia:point val="40.9904,11.014"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -2296,7 +2214,7 @@ emitted when device measurement finished#</dia:string>
         <dia:connection handle="1" to="O0" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - SmallPackage" version="0" id="O20">
+    <dia:object type="UML - SmallPackage" version="0" id="O18">
       <dia:attribute name="obj_pos">
         <dia:point val="42.8766,2.91132"/>
       </dia:attribute>
@@ -2350,7 +2268,7 @@ emitted when device measurement finished#</dia:string>
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O21">
+    <dia:object type="UML - Message" version="0" id="O19">
       <dia:attribute name="obj_pos">
         <dia:point val="37.8491,3.09146"/>
       </dia:attribute>
@@ -2381,12 +2299,12 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O6" connection="12"/>
-        <dia:connection handle="1" to="O20" connection="8"/>
+        <dia:connection handle="1" to="O18" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O22">
+    <dia:object type="UML - Message" version="0" id="O20">
       <dia:attribute name="obj_pos">
-        <dia:point val="46.6054,4.20451"/>
+        <dia:point val="46.6054,4.2045"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="46.5427,4.14182;51.5719,6.10823"/>
@@ -2395,7 +2313,7 @@ emitted when device measurement finished#</dia:string>
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="46.6054,4.20451"/>
+        <dia:point val="46.6054,4.2045"/>
         <dia:point val="51.4044,5.71163"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
@@ -2414,11 +2332,11 @@ emitted when device measurement finished#</dia:string>
         <dia:point val="49.0049,5.45807"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O20" connection="8"/>
+        <dia:connection handle="0" to="O18" connection="8"/>
         <dia:connection handle="1" to="O2" connection="10"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - SmallPackage" version="0" id="O23">
+    <dia:object type="UML - SmallPackage" version="0" id="O21">
       <dia:attribute name="obj_pos">
         <dia:point val="49.0912,15.9475"/>
       </dia:attribute>
@@ -2472,18 +2390,18 @@ emitted when device measurement finished#</dia:string>
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O24">
+    <dia:object type="UML - Message" version="0" id="O22">
       <dia:attribute name="obj_pos">
-        <dia:point val="48.8193,19.8217"/>
+        <dia:point val="48.8193,19.8216"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="48.7515,17.1624;50.5134,19.8895"/>
+        <dia:rectangle val="48.7514,17.1624;50.5134,19.8894"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="48.8193,19.8217"/>
+        <dia:point val="48.8193,19.8216"/>
         <dia:point val="50.1382,17.3975"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
@@ -2503,22 +2421,22 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O3" connection="16"/>
-        <dia:connection handle="1" to="O23" connection="8"/>
+        <dia:connection handle="1" to="O21" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O25">
+    <dia:object type="UML - Message" version="0" id="O23">
       <dia:attribute name="obj_pos">
         <dia:point val="52.051,15.0184"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="51.9803,9.90401;56.8181,15.0891"/>
+        <dia:rectangle val="51.9803,9.904;56.8181,15.089"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="52.051,15.0184"/>
-        <dia:point val="56.4904,10.2121"/>
+        <dia:point val="56.4903,10.2121"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
         <dia:color val="#000000"/>
@@ -2536,11 +2454,11 @@ emitted when device measurement finished#</dia:string>
         <dia:point val="54.2707,13.1153"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O23" connection="8"/>
+        <dia:connection handle="0" to="O21" connection="8"/>
         <dia:connection handle="1" to="O2" connection="10"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - SmallPackage" version="0" id="O26">
+    <dia:object type="UML - SmallPackage" version="0" id="O24">
       <dia:attribute name="obj_pos">
         <dia:point val="20.2806,16.8524"/>
       </dia:attribute>
@@ -2594,7 +2512,7 @@ emitted when device measurement finished#</dia:string>
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O27">
+    <dia:object type="UML - Message" version="0" id="O25">
       <dia:attribute name="obj_pos">
         <dia:point val="15.353,14.4215"/>
       </dia:attribute>
@@ -2625,15 +2543,15 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O1" connection="20"/>
-        <dia:connection handle="1" to="O26" connection="8"/>
+        <dia:connection handle="1" to="O24" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O28">
+    <dia:object type="UML - Message" version="0" id="O26">
       <dia:attribute name="obj_pos">
         <dia:point val="28.0822,18.3025"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.0199,18.2403;33.7762,20.3619"/>
+        <dia:rectangle val="28.0199,18.2403;33.7761,20.3619"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -2658,11 +2576,11 @@ emitted when device measurement finished#</dia:string>
         <dia:point val="30.8477,19.6335"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O26" connection="8"/>
+        <dia:connection handle="0" to="O24" connection="8"/>
         <dia:connection handle="1" to="O3" connection="16"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - SmallPackage" version="0" id="O29">
+    <dia:object type="UML - SmallPackage" version="0" id="O27">
       <dia:attribute name="obj_pos">
         <dia:point val="7.15725,17.66"/>
       </dia:attribute>
@@ -2716,18 +2634,18 @@ emitted when device measurement finished#</dia:string>
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O30">
+    <dia:object type="UML - Message" version="0" id="O28">
       <dia:attribute name="obj_pos">
-        <dia:point val="7.56928,14.4201"/>
+        <dia:point val="7.56927,14.4201"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="7.49884,14.3496;10.596,17.0483"/>
+        <dia:rectangle val="7.49883,14.3496;10.596,17.0483"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="7.56928,14.4201"/>
+        <dia:point val="7.56927,14.4201"/>
         <dia:point val="10.3008,16.7096"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
@@ -2747,15 +2665,15 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O1" connection="20"/>
-        <dia:connection handle="1" to="O29" connection="8"/>
+        <dia:connection handle="1" to="O27" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O31">
+    <dia:object type="UML - Message" version="0" id="O29">
       <dia:attribute name="obj_pos">
         <dia:point val="13.2388,19.1095"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="13.1687,19.0394;16.6676,21.8885"/>
+        <dia:rectangle val="13.1687,19.0393;16.6676,21.8885"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -2780,11 +2698,11 @@ emitted when device measurement finished#</dia:string>
         <dia:point val="14.8111,20.8255"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O29" connection="8"/>
+        <dia:connection handle="0" to="O27" connection="8"/>
         <dia:connection handle="1" to="O5" connection="12"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - SmallPackage" version="0" id="O32">
+    <dia:object type="UML - SmallPackage" version="0" id="O30">
       <dia:attribute name="obj_pos">
         <dia:point val="20.5695,6.79749"/>
       </dia:attribute>
@@ -2838,9 +2756,9 @@ emitted when device measurement finished#</dia:string>
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O33">
+    <dia:object type="UML - Message" version="0" id="O31">
       <dia:attribute name="obj_pos">
-        <dia:point val="18.027,8.26573"/>
+        <dia:point val="18.0271,8.26573"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="17.9697,7.46126;20.6323,8.76493"/>
@@ -2849,7 +2767,7 @@ emitted when device measurement finished#</dia:string>
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="18.027,8.26573"/>
+        <dia:point val="18.0271,8.26573"/>
         <dia:point val="20.5193,7.86412"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
@@ -2869,21 +2787,21 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O1" connection="20"/>
-        <dia:connection handle="1" to="O32" connection="8"/>
+        <dia:connection handle="1" to="O30" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Message" version="0" id="O34">
+    <dia:object type="UML - Message" version="0" id="O32">
       <dia:attribute name="obj_pos">
-        <dia:point val="25.068,8.0302"/>
+        <dia:point val="25.0681,8.0302"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="25.0079,7.97011;34.7583,10.6688"/>
+        <dia:rectangle val="25.008,7.97011;34.7584,10.6688"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="25.068,8.0302"/>
+        <dia:point val="25.0681,8.0302"/>
         <dia:point val="34.6184,10.2679"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
@@ -2902,11 +2820,11 @@ emitted when device measurement finished#</dia:string>
         <dia:point val="29.8432,9.64906"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O32" connection="8"/>
+        <dia:connection handle="0" to="O30" connection="8"/>
         <dia:connection handle="1" to="O0" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O35">
+    <dia:object type="UML - Class" version="0" id="O33">
       <dia:attribute name="obj_pos">
         <dia:point val="23.3552,40.1632"/>
       </dia:attribute>
@@ -3016,7 +2934,7 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O36">
+    <dia:object type="UML - Class" version="0" id="O34">
       <dia:attribute name="obj_pos">
         <dia:point val="32.9518,40.1632"/>
       </dia:attribute>
@@ -3126,7 +3044,7 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O37">
+    <dia:object type="UML - Class" version="0" id="O35">
       <dia:attribute name="obj_pos">
         <dia:point val="56.2949,40.0984"/>
       </dia:attribute>
@@ -3236,7 +3154,7 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O38">
+    <dia:object type="UML - Class" version="0" id="O36">
       <dia:attribute name="obj_pos">
         <dia:point val="42.9375,40.147"/>
       </dia:attribute>
@@ -3346,21 +3264,21 @@ emitted when device measurement finished#</dia:string>
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O39">
+    <dia:object type="UML - Generalization" version="1" id="O37">
       <dia:attribute name="obj_pos">
-        <dia:point val="26.7852,40.1128"/>
+        <dia:point val="46.6159,27.9219"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="25.9352,35.0998;46.7027,40.1628"/>
+        <dia:rectangle val="30.0725,27.8719;47.4659,31.9839"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="26.7852,40.1128"/>
-        <dia:point val="26.7852,37.2313"/>
-        <dia:point val="46.6527,37.2313"/>
-        <dia:point val="46.6527,35.1498"/>
+        <dia:point val="46.6159,27.9219"/>
+        <dia:point val="46.6159,30.3279"/>
+        <dia:point val="30.1225,30.3279"/>
+        <dia:point val="30.1225,31.9339"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -3383,25 +3301,107 @@ emitted when device measurement finished#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O35" connection="8"/>
+        <dia:connection handle="0" to="O3" connection="16"/>
+        <dia:connection handle="1" to="O9" connection="8"/>
+      </dia:connections>
+    </dia:object>
+    <dia:object type="UML - Generalization" version="1" id="O38">
+      <dia:attribute name="obj_pos">
+        <dia:point val="46.6159,27.9219"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="45.7659,27.8719;47.4659,32.099"/>
+      </dia:attribute>
+      <dia:attribute name="meta">
+        <dia:composite type="dict"/>
+      </dia:attribute>
+      <dia:attribute name="orth_points">
+        <dia:point val="46.6159,27.9219"/>
+        <dia:point val="46.6159,30.3855"/>
+        <dia:point val="46.6527,30.3855"/>
+        <dia:point val="46.6527,32.049"/>
+      </dia:attribute>
+      <dia:attribute name="orth_orient">
+        <dia:enum val="1"/>
+        <dia:enum val="0"/>
+        <dia:enum val="1"/>
+      </dia:attribute>
+      <dia:attribute name="orth_autoroute">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="text_colour">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="line_colour">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="name">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:attribute name="stereotype">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O3" connection="16"/>
         <dia:connection handle="1" to="O4" connection="8"/>
+      </dia:connections>
+    </dia:object>
+    <dia:object type="UML - Generalization" version="1" id="O39">
+      <dia:attribute name="obj_pos">
+        <dia:point val="30.1225,35.0347"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="26.7352,34.9847;30.9725,40.1628"/>
+      </dia:attribute>
+      <dia:attribute name="meta">
+        <dia:composite type="dict"/>
+      </dia:attribute>
+      <dia:attribute name="orth_points">
+        <dia:point val="30.1225,35.0347"/>
+        <dia:point val="30.1225,37.9738"/>
+        <dia:point val="26.7852,37.9738"/>
+        <dia:point val="26.7852,40.1128"/>
+      </dia:attribute>
+      <dia:attribute name="orth_orient">
+        <dia:enum val="1"/>
+        <dia:enum val="0"/>
+        <dia:enum val="1"/>
+      </dia:attribute>
+      <dia:attribute name="orth_autoroute">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="text_colour">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="line_colour">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="name">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:attribute name="stereotype">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O9" connection="8"/>
+        <dia:connection handle="1" to="O33" connection="8"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O40">
       <dia:attribute name="obj_pos">
-        <dia:point val="36.3818,40.1128"/>
+        <dia:point val="30.1225,35.0347"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="35.5318,35.0998;46.7027,40.1628"/>
+        <dia:rectangle val="29.2725,34.9847;36.4318,40.1628"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
+        <dia:point val="30.1225,35.0347"/>
+        <dia:point val="30.1225,37.9738"/>
+        <dia:point val="36.3818,37.9738"/>
         <dia:point val="36.3818,40.1128"/>
-        <dia:point val="36.3818,37.2313"/>
-        <dia:point val="46.6527,37.2313"/>
-        <dia:point val="46.6527,35.1498"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -3424,25 +3424,25 @@ emitted when device measurement finished#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O36" connection="8"/>
-        <dia:connection handle="1" to="O4" connection="8"/>
+        <dia:connection handle="0" to="O9" connection="8"/>
+        <dia:connection handle="1" to="O34" connection="8"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O41">
       <dia:attribute name="obj_pos">
-        <dia:point val="48.3312,40.0966"/>
+        <dia:point val="30.1225,35.0347"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.6027,35.0998;49.1812,40.1466"/>
+        <dia:rectangle val="29.2725,34.9847;48.3813,40.1466"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
+        <dia:point val="30.1225,35.0347"/>
+        <dia:point val="30.1225,37.9656"/>
+        <dia:point val="48.3312,37.9656"/>
         <dia:point val="48.3312,40.0966"/>
-        <dia:point val="48.3312,37.2232"/>
-        <dia:point val="46.6527,37.2232"/>
-        <dia:point val="46.6527,35.1498"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -3465,25 +3465,25 @@ emitted when device measurement finished#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O38" connection="8"/>
-        <dia:connection handle="1" to="O4" connection="8"/>
+        <dia:connection handle="0" to="O9" connection="8"/>
+        <dia:connection handle="1" to="O36" connection="8"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O42">
       <dia:attribute name="obj_pos">
-        <dia:point val="59.2399,40.048"/>
+        <dia:point val="30.1225,35.0347"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.6027,35.0998;60.0899,40.098"/>
+        <dia:rectangle val="29.2725,34.9847;59.2899,40.098"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
+        <dia:point val="30.1225,35.0347"/>
+        <dia:point val="30.1225,37.9414"/>
+        <dia:point val="59.2399,37.9414"/>
         <dia:point val="59.2399,40.048"/>
-        <dia:point val="59.2399,37.1989"/>
-        <dia:point val="46.6527,37.1989"/>
-        <dia:point val="46.6527,35.1498"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -3506,8 +3506,8 @@ emitted when device measurement finished#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O37" connection="8"/>
-        <dia:connection handle="1" to="O4" connection="8"/>
+        <dia:connection handle="0" to="O9" connection="8"/>
+        <dia:connection handle="1" to="O35" connection="8"/>
       </dia:connections>
     </dia:object>
   </dia:layer>
