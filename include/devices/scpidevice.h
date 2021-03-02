@@ -6,7 +6,13 @@
 #include <QList>
 #include <QQueue>
 
-// all devices that use the scpi protocol (commands look like ':TRIGer:SOURce EXTernal')
+/**
+* @brief Abstract class that provides basic functions for scpi devices.
+* All devices that use the scpi protocol (commands look like ':TRIGer:SOURce EXTernal')
+* should be inherited from this class. It provides basic functions to check if 
+* the device connected is correct. It also uses uart over usb/rs232 and therefore
+* the class "Serial".
+*/
 
 class ScpiDevice : public MeasurementDevice
 {

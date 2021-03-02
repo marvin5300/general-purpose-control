@@ -7,6 +7,11 @@
 #include <QFile>
 #include <QMap>
 
+/**
+* @brief Manages all operations related to file access.
+* Also creates valid datafiles from measured values and event counter.
+* Will be fitted with more options regarding different output file formats in the future.
+*/
 class FileHandler : public QObject
 {
     Q_OBJECT

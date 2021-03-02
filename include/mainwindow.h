@@ -8,10 +8,25 @@
 #include <QMap>
 #include <QTimer>
 
+/**
+* @mainpage
+* @section Class-Diagram
+* @image html generalpurposecontrol.png
+* @image latex generalpurposecontrol.ps
+* 
+*/
 namespace Ui {
 class MainWindow;
 }
 
+/**
+* @brief Main window of the application.
+* Has two rows of widgets, one for devices and one for scan-parameter-selections
+* which are used to apply parameter values and loop over them later,
+* for example if you want to ramp the voltage over time.
+* Also has a menu to get to the special functions like settings, file selection
+* or the serial console. Buttons to start or stop a measurement are also here.
+*/
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
