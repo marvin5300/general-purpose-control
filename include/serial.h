@@ -6,7 +6,10 @@
 #include <string>
 #include <QPointer>
 
-// This class only knows basic serial communication
+/**
+* Serial interface (UART) class that uses QSerialPort.
+* This class only knows basic serial communication. 
+*/
 class Serial : public QObject
 {
     Q_OBJECT

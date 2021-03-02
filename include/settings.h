@@ -8,6 +8,9 @@ namespace Ui {
 class Settings;
 }
 
+/**
+* Dialog to change settings like output file and port name filter.
+*/
 class Settings : public QDialog
 {
     Q_OBJECT
