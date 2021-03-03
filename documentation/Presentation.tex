@@ -54,7 +54,7 @@
 
 \date 
 
-\graphicspath{content/figures/} % Location of the graphics files
+\graphicspath{{./content/figures/}} % Location of the graphics files
 
  \pgfdeclareimage[height=1cm]{jlu-logo}{content/figures/jlu-logo.ps}
  %\pgfdeclareimage[height=0.6cm]{panda-logo}{data/PANDA_logo.png}
@@ -78,7 +78,22 @@
 
 \begin{frame}
 	\titlepage
-	%\includegraphics[width=0.4\textwidth]{Aachen19.png}
+\end{frame}
+
+\begin{frame}{Create new device class - inheritance}
+\end{frame}
+
+\begin{frame}{Create new device class - Add to DeviceManager}
+	DeviceManager::getDevice(..) returns newly created device
+	\begin{tiny}
+		\lstinputlisting[style=cppstyle,basicstyle=\tiny]{content/code/devicemanager_short.cpp}
+	\end{tiny}
+\end{frame}
+
+\begin{frame}{Class Diagram}
+	\begin{figure}[H]
+		\includegraphics[width=\textwidth]{generalpurposecontrol.png}
+	\end{figure}
 \end{frame}
 \end{document}
 
