@@ -72,7 +72,7 @@
 %% Dokument Beginn %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\graphicspath{content/figures/} % Location of the graphics files
+\graphicspath{{content/figures/}} % Location of the graphics files {{}} because of windows
 \input{content/title.tex}
 \maketitle
 \thispagestyle{empty}
@@ -98,6 +98,7 @@
 %\input{content/demo/latexexample.tex}
 
 % in diese Datei gehört der Inhalt des Dokumentes:
+\input{content/newdevice.tex}
 \appendix
 \input{content/appendix.tex}
 \end{document}
