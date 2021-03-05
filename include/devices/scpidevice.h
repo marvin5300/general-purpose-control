@@ -79,7 +79,7 @@ protected:
     * Creates scpi message for setting of a parameter
     * @param paramName name of parameter to set for example 'V' for voltage
     */
-    virtual QString translateSet(QString paramName){return "";}
+    virtual QString translateSet(QString paramName, double paramValue){return "";}
 
     /**
     * Parses incoming scpi message to double.
