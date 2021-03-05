@@ -22,6 +22,7 @@ private:
     QMap<QString, DeviceParameterConstraint> deviceParamMap(){return _deviceParamMap;}
     QMap<QString, MeasurementValue> valuesMap;
     QString translateMeas(QString paramName);
+    QString translateSet(QString paramName, double paramValue);
 };
 
 #endif // KEITHLEY_2410_H
