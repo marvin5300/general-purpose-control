@@ -65,6 +65,11 @@ QString Keithley_2410::translateMeas(QString paramName){
     return scpiCommandString;
 }
 
+QString Keithley_2410::translateSet(QString paramName, double paramValue){
+    // TODO: add functionality
+    return "";
+}
+
 void Keithley_2410::init(){
     MeasurementDevice::init(_deviceName, interfaceName,_deviceParamMap);
 }
