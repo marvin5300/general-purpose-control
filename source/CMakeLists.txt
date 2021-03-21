@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(general-purpose-control LANGUAGES CXX C)
 
+option(BUILD_DOCS "Build doxygen files" ON)
+
 string(TIMESTAMP PROJECT_DATE_STRING "%b %d, %Y")
 
 set(PROJECT_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
@@ -18,8 +20,6 @@ configure_file(
     "${PROJECT_CONFIG_DIR}/version.h"
     "${PROJECT_HEADER_DIR}/version.h"
 )
-
-option(BUILD_DOCS "Build doxygen files" ON)
 
 # check if Doxygen is installed (from https://vicrucann.github.io/tutorials/quick-cmake-doxygen/)
 find_package(Doxygen)
