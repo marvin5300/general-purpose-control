@@ -1,33 +1,6 @@
 <map id="i2cdevices" name="i2cdevices">
-<area shape="rect" id="node2" href="dir_8dc31148c3cf493be25f17a9ed734e47.html" title="adafruit_ssd1306" alt="" coords="1329,63,1450,111"/>
-<area shape="rect" id="node16" href="dir_8ee1a5e78eaec319fe5d64075812fc61.html" title="include" alt="" coords="665,159,737,207"/>
-<area shape="rect" id="edge4-headlabel" href="dir_000009_000005.html" title="1" alt="" coords="752,181,760,196"/>
-<area shape="rect" id="node3" href="dir_08932b4a2ead3c09e5e1263506bf576a.html" title="ads1115" alt="" coords="1232,63,1304,111"/>
-<area shape="rect" id="edge6-headlabel" href="dir_000012_000005.html" title="1" alt="" coords="752,182,760,196"/>
-<area shape="rect" id="node4" href="dir_269b562455e41709ae15ff3b7d0a7e76.html" title="bme280" alt="" coords="1136,63,1208,111"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000014_000005.html" title="1" alt="" coords="752,180,760,195"/>
-<area shape="rect" id="node5" href="dir_57101bd55bdd23b1986515af747b6956.html" title="bmp180" alt="" coords="1040,63,1112,111"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000016_000005.html" title="1" alt="" coords="752,184,760,198"/>
-<area shape="rect" id="node6" href="dir_ea20b47a38b61653a775ce8749fd3b75.html" title="eeprom24aa02" alt="" coords="909,63,1016,111"/>
-<area shape="rect" id="edge11-headlabel" href="dir_000018_000005.html" title="1" alt="" coords="753,174,761,189"/>
-<area shape="rect" id="node7" href="dir_11cb22ba6d9ebb7eaccd105dc2db47a1.html" title="hmc5883" alt="" coords="811,63,885,111"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000020_000005.html" title="1" alt="" coords="754,158,762,173"/>
-<area shape="rect" id="node8" href="dir_b911b4f4c5654395e9a87a3ab1ac4f10.html" title="lm75" alt="" coords="715,63,787,111"/>
-<area shape="rect" id="edge12-headlabel" href="dir_000025_000005.html" title="1" alt="" coords="725,139,733,154"/>
-<area shape="rect" id="node9" href="dir_567f6118c8444b769975ab7a92b92235.html" title="mcp4728" alt="" coords="616,63,691,111"/>
-<area shape="rect" id="edge9-headlabel" href="dir_000027_000005.html" title="1" alt="" coords="685,131,693,146"/>
-<area shape="rect" id="node10" href="dir_f8d793d1c9849246a506ebebba31d120.html" title="pca9536" alt="" coords="520,63,592,111"/>
-<area shape="rect" id="edge5-headlabel" href="dir_000029_000005.html" title="1" alt="" coords="649,143,657,158"/>
-<area shape="rect" id="node11" href="dir_8a7b0b517d7fb1ea98ab8a45edf7cfaa.html" title="sht21" alt="" coords="424,63,496,111"/>
-<area shape="rect" id="edge13-headlabel" href="dir_000035_000005.html" title="1" alt="" coords="644,159,652,174"/>
-<area shape="rect" id="node12" href="dir_a45989cac7c8a5b0d60606a64c1e61b5.html" title="sht31" alt="" coords="328,63,400,111"/>
-<area shape="rect" id="edge8-headlabel" href="dir_000037_000005.html" title="2" alt="" coords="643,165,651,180"/>
-<area shape="rect" id="node13" href="dir_b9ad8e959a273510464eea11b6ecc389.html" title="tca9546a" alt="" coords="229,63,304,111"/>
-<area shape="rect" id="edge10-headlabel" href="dir_000039_000005.html" title="1" alt="" coords="643,163,651,177"/>
-<area shape="rect" id="node14" href="dir_59b78770a219d079fc83ecafc2d12a71.html" title="ubloxi2c" alt="" coords="133,63,205,111"/>
-<area shape="rect" id="edge7-headlabel" href="dir_000041_000005.html" title="1" alt="" coords="643,164,651,179"/>
-<area shape="rect" id="node15" href="dir_ba7497d19597dfad4d96a82b9fd7c9d6.html" title="x9119" alt="" coords="37,63,109,111"/>
-<area shape="rect" id="edge14-headlabel" href="dir_000044_000005.html" title="1" alt="" coords="643,165,651,180"/>
-<area shape="rect" id="clust2" href="dir_ec688a2440de53dd9ef9c54848d99d18.html" alt="" coords="27,52,1569,121"/>
-<area shape="rect" id="clust1" href="dir_3769c1dc9f5f2bbf1977be76b6eb9816.html" title="i2c" alt="" coords="16,16,1580,132"/>
+<area shape="rect" id="node1" href="dir_ec688a2440de53dd9ef9c54848d99d18.html" title="i2cdevices" alt="" coords="27,52,111,100"/>
+<area shape="rect" id="node2" href="dir_8ee1a5e78eaec319fe5d64075812fc61.html" title="include" alt="" coords="33,148,105,196"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000004_000005.html" title="2" alt="" coords="74,122,82,137"/>
+<area shape="rect" id="clust1" href="dir_3769c1dc9f5f2bbf1977be76b6eb9816.html" title="i2c" alt="" coords="16,16,123,111"/>
 </map>

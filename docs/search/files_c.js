@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pca9536_2ecpp_907',['pca9536.cpp',['../pca9536_8cpp.html',1,'']]],
-  ['pca9536_2eh_908',['pca9536.h',['../pca9536_8h.html',1,'']]]
+  ['voltcraft_5fpsp1803_2ecpp_868',['voltcraft_psp1803.cpp',['../voltcraft__psp1803_8cpp.html',1,'']]],
+  ['voltcraft_5fpsp1803_2eh_869',['voltcraft_psp1803.h',['../voltcraft__psp1803_8h.html',1,'']]]
 ];

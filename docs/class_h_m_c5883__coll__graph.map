@@ -1,13 +1,13 @@
 <map id="HMC5883" name="HMC5883">
-<area shape="rect" id="node1" title=" " alt="" coords="331,1503,505,1888"/>
-<area shape="rect" id="node2" href="$classi2c_device.html" title=" " alt="" coords="253,248,437,1425"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,65,83"/>
-<area shape="rect" id="node4" title=" " alt="" coords="113,5,259,83"/>
-<area shape="rect" id="node5" title=" " alt="" coords="283,5,406,83"/>
-<area shape="rect" id="node6" title=" " alt="" coords="431,5,469,83"/>
-<area shape="rect" id="node7" title=" " alt="" coords="545,5,600,83"/>
-<area shape="rect" id="node8" title=" " alt="" coords="625,5,686,83"/>
-<area shape="rect" id="node9" title=" " alt="" coords="461,798,538,875"/>
-<area shape="rect" id="node10" title=" " alt="" coords="563,798,609,875"/>
-<area shape="rect" id="node11" title=" " alt="" coords="673,798,763,875"/>
+<area shape="rect" id="node1" title=" " alt="" coords="398,1503,571,1727"/>
+<area shape="rect" id="node2" href="$classi2c_device.html" title=" " alt="" coords="264,248,448,1425"/>
+<area shape="rect" id="node3" title=" " alt="" coords="17,5,77,83"/>
+<area shape="rect" id="node4" title=" " alt="" coords="125,5,270,83"/>
+<area shape="rect" id="node5" title=" " alt="" coords="295,5,418,83"/>
+<area shape="rect" id="node6" title=" " alt="" coords="442,5,481,83"/>
+<area shape="rect" id="node7" title=" " alt="" coords="557,5,612,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="636,5,698,83"/>
+<area shape="rect" id="node9" title=" " alt="" coords="472,798,550,875"/>
+<area shape="rect" id="node10" title=" " alt="" coords="600,798,646,875"/>
+<area shape="rect" id="node11" title=" " alt="" coords="710,798,800,875"/>
 </map>

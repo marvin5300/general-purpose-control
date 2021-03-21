@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['pga1v_1484',['PGA1V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a77508904760521780e07e2711ec4d84b',1,'ADS1115']]],
-  ['pga256mv_1485',['PGA256MV',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a13ee905fe95a642f85d7e127b9c29785',1,'ADS1115']]],
-  ['pga2v_1486',['PGA2V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a852690b484e24596a2c30b32cf650d2d',1,'ADS1115']]],
-  ['pga4v_1487',['PGA4V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a7f271af65a619f6863d93aee8d5e8ea4',1,'ADS1115']]],
-  ['pga512mv_1488',['PGA512MV',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a7ad9bb3df1ba36d71e6c1d6cfb176116',1,'ADS1115']]],
-  ['pga6v_1489',['PGA6V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a420bc5a367b9f7eb1063b4890b3da3ae',1,'ADS1115']]],
-  ['polarity_5finversion_1490',['POLARITY_INVERSION',['../class_p_c_a9536.html#af3bd974631bd8cf068142e302a81935da334d52cecb269d7da4230b21a6f7c2c4',1,'PCA9536']]]
+  ['pga1v_1400',['PGA1V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a5a178752e25d914227d33187e04175e0',1,'ADS1115']]],
+  ['pga256mv_1401',['PGA256MV',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8aa4d2b63a6c9006ca9fce1dfee48b5fae',1,'ADS1115']]],
+  ['pga2v_1402',['PGA2V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a944760ea0e3fa6e320bbe85cd3d934fd',1,'ADS1115']]],
+  ['pga4v_1403',['PGA4V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a2e26a0eca477d891471bf0411254e8e1',1,'ADS1115']]],
+  ['pga512mv_1404',['PGA512MV',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8a548613ed24957c04d81cfcdec095fac9',1,'ADS1115']]],
+  ['pga6v_1405',['PGA6V',['../class_a_d_s1115.html#a13eab0b48e331cc134d13a04f96be5e8af2865d2e31cf0b00b8dce87d2a3d88f8',1,'ADS1115']]],
+  ['polarity_5finversion_1406',['POLARITY_INVERSION',['../class_p_c_a9536.html#af3bd974631bd8cf068142e302a81935dad2c55520e41d807a3b3dee1b8d1ab2b5',1,'PCA9536']]]
 ];

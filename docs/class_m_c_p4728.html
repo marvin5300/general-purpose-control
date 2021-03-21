@@ -77,13 +77,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="mcp4728_8h_source.html">mcp4728.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="i2cdevices__old_2i2cdevices_8h_source.html">i2cdevices.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MCP4728:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_c_p4728__inherit__graph.png" border="0" usemap="#a_m_c_p4728_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_m_c_p4728_inherit__map" id="a_m_c_p4728_inherit__map">
-<area shape="rect" title=" " alt="" coords="35,1421,159,1763"/>
+<area shape="rect" title=" " alt="" coords="35,1421,159,1631"/>
 <area shape="rect" href="classi2c_device.html" title=" " alt="" coords="5,5,189,1373"/>
 </map>
 </div>
@@ -92,7 +92,7 @@ Collaboration diagram for MCP4728:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_c_p4728__coll__graph.png" border="0" usemap="#a_m_c_p4728_coll__map" alt="Collaboration graph"/></div>
 <map name="a_m_c_p4728_coll__map" id="a_m_c_p4728_coll__map">
-<area shape="rect" title=" " alt="" coords="385,1488,509,1815"/>
+<area shape="rect" title=" " alt="" coords="472,1488,596,1683"/>
 <area shape="rect" href="classi2c_device.html" title=" " alt="" coords="267,248,451,1425"/>
 <area shape="rect" title=" " alt="" coords="5,5,65,83"/>
 <area shape="rect" title=" " alt="" coords="99,5,244,83"/>
@@ -112,28 +112,12 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aa9d5ba709430921f38e50bb3083a876b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876b">CFG_GAIN</a> { <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b">GAIN2</a> = 1
-, <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b">GAIN2</a> = 1
+<tr class="memitem:aa9d5ba709430921f38e50bb3083a876b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876b">CFG_GAIN</a> { <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba8a5322b4c34a94604c6d4557c9aab272">GAIN1</a> = 0
+, <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba94ebc2463b40ac614d917c8311c4660f">GAIN2</a> = 1
  }</td></tr>
 <tr class="separator:aa9d5ba709430921f38e50bb3083a876b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac6760bb36e3f0fb8a2fbb713a59008e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008e">CFG_VREF</a> { <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0">VREF_VDD</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d">VREF_2V</a> = 1
-, <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0">VREF_VDD</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d">VREF_2V</a> = 1
- }</td></tr>
-<tr class="separator:aac6760bb36e3f0fb8a2fbb713a59008e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9d5ba709430921f38e50bb3083a876b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876b">CFG_GAIN</a> { <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b">GAIN2</a> = 1
-, <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b">GAIN2</a> = 1
- }</td></tr>
-<tr class="separator:aa9d5ba709430921f38e50bb3083a876b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac6760bb36e3f0fb8a2fbb713a59008e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008e">CFG_VREF</a> { <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0">VREF_VDD</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d">VREF_2V</a> = 1
-, <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0">VREF_VDD</a> = 0
-, <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d">VREF_2V</a> = 1
+<tr class="memitem:aac6760bb36e3f0fb8a2fbb713a59008e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008e">CFG_VREF</a> { <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ead18d18d0849dc8acfaf6411375f89ab0">VREF_VDD</a> = 0
+, <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008ea06ac1385fbf7185119f867e5b73319e9">VREF_2V</a> = 1
  }</td></tr>
 <tr class="separator:aac6760bb36e3f0fb8a2fbb713a59008e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_classi2c_device"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classi2c_device')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classi2c_device.html">i2cDevice</a></td></tr>
@@ -184,23 +168,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a96cfa3306fce1826b351c5c7be24a4c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa76fadd19f861b16f8922158c52d1ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aaa76fadd19f861b16f8922158c52d1ed">setVoltage</a> (uint8_t channel, float voltage, bool toEEPROM=false)</td></tr>
 <tr class="separator:aaa76fadd19f861b16f8922158c52d1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa89cbdf62365be23cb6e3e2acc03a4e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aa89cbdf62365be23cb6e3e2acc03a4e7">setValue</a> (uint8_t channel, uint16_t value, uint8_t gain=<a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a>, bool toEEPROM=false)</td></tr>
-<tr class="separator:aa89cbdf62365be23cb6e3e2acc03a4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b35dff91b53baf5d9e6d367b69c180c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#a5b35dff91b53baf5d9e6d367b69c180c">writeChannel</a> (uint8_t channel, const <a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;channelData)</td></tr>
-<tr class="separator:a5b35dff91b53baf5d9e6d367b69c180c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86032879a072657552183081317278c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#a86032879a072657552183081317278c5">readChannel</a> (uint8_t channel, <a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;channelData)</td></tr>
-<tr class="separator:a86032879a072657552183081317278c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa807660bc89aefaa7f2a32bfc7f72a52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aa807660bc89aefaa7f2a32bfc7f72a52">MCP4728</a> ()</td></tr>
-<tr class="separator:aa807660bc89aefaa7f2a32bfc7f72a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ce662dbaf30eae02fe603c25afe78f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#a9ce662dbaf30eae02fe603c25afe78f0">MCP4728</a> (const char *busAddress, uint8_t slaveAddress)</td></tr>
-<tr class="separator:a9ce662dbaf30eae02fe603c25afe78f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a360f8b582371c7dac3e9192577e48889"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#a360f8b582371c7dac3e9192577e48889">MCP4728</a> (uint8_t slaveAddress)</td></tr>
-<tr class="separator:a360f8b582371c7dac3e9192577e48889"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96cfa3306fce1826b351c5c7be24a4c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#a96cfa3306fce1826b351c5c7be24a4c8">devicePresent</a> ()</td></tr>
-<tr class="separator:a96cfa3306fce1826b351c5c7be24a4c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa76fadd19f861b16f8922158c52d1ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aaa76fadd19f861b16f8922158c52d1ed">setVoltage</a> (uint8_t channel, float voltage, bool toEEPROM=false)</td></tr>
-<tr class="separator:aaa76fadd19f861b16f8922158c52d1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa89cbdf62365be23cb6e3e2acc03a4e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aa89cbdf62365be23cb6e3e2acc03a4e7">setValue</a> (uint8_t channel, uint16_t value, uint8_t gain=<a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a>, bool toEEPROM=false)</td></tr>
+<tr class="memitem:aa89cbdf62365be23cb6e3e2acc03a4e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#aa89cbdf62365be23cb6e3e2acc03a4e7">setValue</a> (uint8_t channel, uint16_t value, uint8_t gain=<a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba8a5322b4c34a94604c6d4557c9aab272">GAIN1</a>, bool toEEPROM=false)</td></tr>
 <tr class="separator:aa89cbdf62365be23cb6e3e2acc03a4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4714fe78e336cfec53acfe5cdcb5c14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#ab4714fe78e336cfec53acfe5cdcb5c14">setChannel</a> (uint8_t channel, const <a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;channelData)</td></tr>
 <tr class="separator:ab4714fe78e336cfec53acfe5cdcb5c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -346,8 +314,6 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:adb8ba64390bdadfa1391987c6e267a28"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#adb8ba64390bdadfa1391987c6e267a28">code2voltage</a> (const <a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;channelData)</td></tr>
 <tr class="separator:adb8ba64390bdadfa1391987c6e267a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1351081324a24c66b6b6bfce77bffe5e"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_p4728.html#a1351081324a24c66b6b6bfce77bffe5e">code2voltage</a> (const <a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;channelData)</td></tr>
-<tr class="separator:a1351081324a24c66b6b6bfce77bffe5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classi2c_device"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classi2c_device')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classi2c_device.html">i2cDevice</a></td></tr>
 <tr class="memitem:a509daa60cf32f95ed6f4c2cd33824563 inherit pub_static_methods_classi2c_device"><td class="memItemLeft" align="right" valign="top">static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classi2c_device.html#a509daa60cf32f95ed6f4c2cd33824563">getNrDevices</a> ()</td></tr>
 <tr class="separator:a509daa60cf32f95ed6f4c2cd33824563 inherit pub_static_methods_classi2c_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -420,7 +386,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="aa9d5ba709430921f38e50bb3083a876b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9d5ba709430921f38e50bb3083a876b">&#9670;&nbsp;</a></span>CFG_GAIN <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d5ba709430921f38e50bb3083a876b">&#9670;&nbsp;</a></span>CFG_GAIN</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -431,36 +397,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42"></a>GAIN1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b"></a>GAIN2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42"></a>GAIN1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b"></a>GAIN2&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<a id="aa9d5ba709430921f38e50bb3083a876b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9d5ba709430921f38e50bb3083a876b">&#9670;&nbsp;</a></span>CFG_GAIN <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876b">MCP4728::CFG_GAIN</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42"></a>GAIN1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b"></a>GAIN2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42"></a>GAIN1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876bae2ab54d5ffab85742bb37b4684fa3d8b"></a>GAIN2&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876ba8a5322b4c34a94604c6d4557c9aab272"></a>GAIN1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa9d5ba709430921f38e50bb3083a876ba94ebc2463b40ac614d917c8311c4660f"></a>GAIN2&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <a id="aac6760bb36e3f0fb8a2fbb713a59008e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac6760bb36e3f0fb8a2fbb713a59008e">&#9670;&nbsp;</a></span>CFG_VREF <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aac6760bb36e3f0fb8a2fbb713a59008e">&#9670;&nbsp;</a></span>CFG_VREF</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -471,37 +415,15 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0"></a>VREF_VDD&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d"></a>VREF_2V&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0"></a>VREF_VDD&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d"></a>VREF_2V&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<a id="aac6760bb36e3f0fb8a2fbb713a59008e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac6760bb36e3f0fb8a2fbb713a59008e">&#9670;&nbsp;</a></span>CFG_VREF <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_m_c_p4728.html#aac6760bb36e3f0fb8a2fbb713a59008e">MCP4728::CFG_VREF</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0"></a>VREF_VDD&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d"></a>VREF_2V&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea5fdac423c84ba62fb0cb2a9b5de9b4b0"></a>VREF_VDD&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea9bf54f84b3cfcc228f4bdfc59f35a07d"></a>VREF_2V&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ead18d18d0849dc8acfaf6411375f89ab0"></a>VREF_VDD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aac6760bb36e3f0fb8a2fbb713a59008ea06ac1385fbf7185119f867e5b73319e9"></a>VREF_2V&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa807660bc89aefaa7f2a32bfc7f72a52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa807660bc89aefaa7f2a32bfc7f72a52">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[1/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa807660bc89aefaa7f2a32bfc7f72a52">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -526,7 +448,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a id="a9ce662dbaf30eae02fe603c25afe78f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ce662dbaf30eae02fe603c25afe78f0">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[2/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce662dbaf30eae02fe603c25afe78f0">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -562,94 +484,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a id="a360f8b582371c7dac3e9192577e48889"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a360f8b582371c7dac3e9192577e48889">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[3/6]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MCP4728::MCP4728 </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>slaveAddress</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa807660bc89aefaa7f2a32bfc7f72a52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa807660bc89aefaa7f2a32bfc7f72a52">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[4/6]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MCP4728::MCP4728 </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9ce662dbaf30eae02fe603c25afe78f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ce662dbaf30eae02fe603c25afe78f0">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[5/6]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MCP4728::MCP4728 </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>busAddress</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>slaveAddress</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a360f8b582371c7dac3e9192577e48889"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a360f8b582371c7dac3e9192577e48889">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[6/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a360f8b582371c7dac3e9192577e48889">&#9670;&nbsp;</a></span>MCP4728() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -676,7 +511,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="adb8ba64390bdadfa1391987c6e267a28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb8ba64390bdadfa1391987c6e267a28">&#9670;&nbsp;</a></span>code2voltage() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adb8ba64390bdadfa1391987c6e267a28">&#9670;&nbsp;</a></span>code2voltage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -701,61 +536,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a1351081324a24c66b6b6bfce77bffe5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1351081324a24c66b6b6bfce77bffe5e">&#9670;&nbsp;</a></span>code2voltage() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static float MCP4728::code2voltage </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;&#160;</td>
-          <td class="paramname"><em>channelData</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a96cfa3306fce1826b351c5c7be24a4c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96cfa3306fce1826b351c5c7be24a4c8">&#9670;&nbsp;</a></span>devicePresent() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MCP4728::devicePresent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="classi2c_device.html#aa542f842807997b370d97639bffeacc6">i2cDevice</a>.</p>
-
-</div>
-</div>
-<a id="a96cfa3306fce1826b351c5c7be24a4c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96cfa3306fce1826b351c5c7be24a4c8">&#9670;&nbsp;</a></span>devicePresent() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a96cfa3306fce1826b351c5c7be24a4c8">&#9670;&nbsp;</a></span>devicePresent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -782,35 +564,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a id="a86032879a072657552183081317278c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86032879a072657552183081317278c5">&#9670;&nbsp;</a></span>readChannel() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MCP4728::readChannel </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>channel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;&#160;</td>
-          <td class="paramname"><em>channelData</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a86032879a072657552183081317278c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86032879a072657552183081317278c5">&#9670;&nbsp;</a></span>readChannel() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a86032879a072657552183081317278c5">&#9670;&nbsp;</a></span>readChannel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -866,7 +620,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a id="aa89cbdf62365be23cb6e3e2acc03a4e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa89cbdf62365be23cb6e3e2acc03a4e7">&#9670;&nbsp;</a></span>setValue() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa89cbdf62365be23cb6e3e2acc03a4e7">&#9670;&nbsp;</a></span>setValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -887,47 +641,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>gain</em> = <code><a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a></code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>toEEPROM</em> = <code>false</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa89cbdf62365be23cb6e3e2acc03a4e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa89cbdf62365be23cb6e3e2acc03a4e7">&#9670;&nbsp;</a></span>setValue() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MCP4728::setValue </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>channel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>gain</em> = <code><a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba3d17845c6ada8c55d7aa12303ea33f42">GAIN1</a></code>, </td>
+          <td class="paramname"><em>gain</em> = <code><a class="el" href="class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba8a5322b4c34a94604c6d4557c9aab272">GAIN1</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -946,7 +660,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a id="aaa76fadd19f861b16f8922158c52d1ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa76fadd19f861b16f8922158c52d1ed">&#9670;&nbsp;</a></span>setVoltage() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa76fadd19f861b16f8922158c52d1ed">&#9670;&nbsp;</a></span>setVoltage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -968,68 +682,6 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>toEEPROM</em> = <code>false</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aaa76fadd19f861b16f8922158c52d1ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa76fadd19f861b16f8922158c52d1ed">&#9670;&nbsp;</a></span>setVoltage() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MCP4728::setVoltage </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>channel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>voltage</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>toEEPROM</em> = <code>false</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5b35dff91b53baf5d9e6d367b69c180c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b35dff91b53baf5d9e6d367b69c180c">&#9670;&nbsp;</a></span>writeChannel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MCP4728::writeChannel </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>channel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="struct_m_c_p4728_1_1_dac_channel.html">DacChannel</a> &amp;&#160;</td>
-          <td class="paramname"><em>channelData</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1087,9 +739,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="mcp4728_8h_source.html">mcp4728.h</a></li>
 <li><a class="el" href="i2cdevices__old_2i2cdevices_8h_source.html">i2cdevices_old/i2cdevices.h</a></li>
-<li><a class="el" href="mcp4728_8cpp.html">mcp4728.cpp</a></li>
 <li><a class="el" href="i2cdevices_8cpp.html">i2cdevices.cpp</a></li>
 </ul>
 </div><!-- contents -->

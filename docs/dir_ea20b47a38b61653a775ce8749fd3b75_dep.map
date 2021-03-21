@@ -1,6 +1,0 @@
-<map id="eeprom24aa02" name="eeprom24aa02">
-<area shape="rect" id="node1" href="dir_ea20b47a38b61653a775ce8749fd3b75.html" title="eeprom24aa02" alt="" coords="27,52,133,100"/>
-<area shape="rect" id="node2" href="dir_8ee1a5e78eaec319fe5d64075812fc61.html" title="include" alt="" coords="44,148,116,196"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000018_000005.html" title="1" alt="" coords="84,122,92,137"/>
-<area shape="rect" id="clust1" href="dir_ec688a2440de53dd9ef9c54848d99d18.html" title="i2cdevices" alt="" coords="16,16,144,111"/>
-</map>
