@@ -1,0 +1,4 @@
+<map id="SerialConsole" name="SerialConsole">
+<area shape="rect" id="node1" title="Console Dialog that can be used to manually send messages to devices." alt="" coords="5,131,215,296"/>
+<area shape="rect" id="node2" href="$class_q_dialog.html" title=" " alt="" coords="76,5,144,83"/>
+</map>

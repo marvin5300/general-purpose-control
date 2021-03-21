@@ -1,0 +1,5 @@
+<map id="QDialog" name="QDialog">
+<area shape="rect" id="node1" title=" " alt="" coords="176,5,244,83"/>
+<area shape="rect" id="node2" href="$class_serial_console.html" title="Console Dialog that can be used to manually send messages to devices." alt="" coords="5,131,215,296"/>
+<area shape="rect" id="node3" href="$class_settings.html" title="Dialog to change settings like output file and port name filter." alt="" coords="239,153,384,274"/>
+</map>

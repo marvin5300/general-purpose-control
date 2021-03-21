@@ -1,0 +1,5 @@
+<map id="Dummy" name="Dummy">
+<area shape="rect" id="node1" title="Placeholder for other devices." alt="" coords="5,740,231,935"/>
+<area shape="rect" id="node2" href="$class_measurement_device.html" title="Abstract class that represents a device on the gui." alt="" coords="5,131,231,692"/>
+<area shape="rect" id="node3" href="$class_q_frame.html" title=" " alt="" coords="83,5,153,83"/>
+</map>

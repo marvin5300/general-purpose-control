@@ -1,0 +1,9 @@
+<map id="devices" name="devices">
+<area shape="rect" id="node2" href="dir_3769c1dc9f5f2bbf1977be76b6eb9816.html" title="i2c" alt="" coords="133,63,205,111"/>
+<area shape="rect" id="node4" href="dir_8ee1a5e78eaec319fe5d64075812fc61.html" title="include" alt="" coords="85,159,157,207"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000003_000005.html" title="19" alt="" coords="142,139,156,154"/>
+<area shape="rect" id="node3" href="dir_59d0dba8ce3693999af97bb1fe0743fb.html" title="spi" alt="" coords="37,63,109,111"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000031_000005.html" title="3" alt="" coords="105,131,113,146"/>
+<area shape="rect" id="clust2" href="dir_3232e509896e1ad5ff7c97358cf223b4.html" alt="" coords="27,52,312,121"/>
+<area shape="rect" id="clust1" href="dir_96d553498d9584ffd97541c009cfd4b6.html" title="src" alt="" coords="16,16,323,132"/>
+</map>

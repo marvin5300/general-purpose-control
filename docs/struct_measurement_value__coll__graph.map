@@ -1,0 +1,5 @@
+<map id="MeasurementValue" name="MeasurementValue">
+<area shape="rect" id="node1" title="One measured value with parameter label." alt="" coords="5,145,159,223"/>
+<area shape="rect" id="node2" title=" " alt="" coords="8,5,68,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="93,5,159,83"/>
+</map>

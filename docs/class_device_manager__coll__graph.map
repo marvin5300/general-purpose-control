@@ -1,0 +1,8 @@
+<map id="DeviceManager" name="DeviceManager">
+<area shape="rect" id="node1" title="Holds all possible device names and creates objects of certain device types." alt="" coords="224,189,431,384"/>
+<area shape="rect" id="node2" href="$class_q_object.html" title=" " alt="" coords="5,13,76,90"/>
+<area shape="rect" id="node3" title=" " alt="" coords="101,13,223,90"/>
+<area shape="rect" id="node4" title=" " alt="" coords="248,13,407,90"/>
+<area shape="rect" id="node5" title=" " alt="" coords="431,5,613,97"/>
+<area shape="rect" id="node6" title=" " alt="" coords="637,5,812,97"/>
+</map>

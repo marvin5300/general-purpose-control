@@ -1,0 +1,4 @@
+<map id="Settings" name="Settings">
+<area shape="rect" id="node1" title="Dialog to change settings like output file and port name filter." alt="" coords="5,131,151,252"/>
+<area shape="rect" id="node2" href="$class_q_dialog.html" title=" " alt="" coords="44,5,112,83"/>
+</map>
