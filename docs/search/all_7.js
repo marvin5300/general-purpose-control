@@ -5,7 +5,7 @@ var searchData=
   ['gain1_190',['GAIN1',['../class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba8a5322b4c34a94604c6d4557c9aab272',1,'MCP4728']]],
   ['gain2_191',['GAIN2',['../class_m_c_p4728.html#aa9d5ba709430921f38e50bb3083a876ba94ebc2463b40ac614d917c8311c4660f',1,'MCP4728']]],
   ['gather_5fi2c_5fbusses_192',['gather_i2c_busses',['../i2cbusses_8c.html#a3eea5874e128d8e459efd7c182a63dd3',1,'gather_i2c_busses(void):&#160;i2cbusses.c'],['../i2cbusses_8h.html#a3eea5874e128d8e459efd7c182a63dd3',1,'gather_i2c_busses(void):&#160;i2cbusses.c']]],
-  ['generalpurposecontrol_193',['GeneralPurposeControl',['../index.html',1,'']]],
+  ['general_2dpurpose_2dcontrol_193',['general-purpose-control',['../index.html',1,'']]],
   ['generateinterfacelist_194',['generateInterfaceList',['../class_device_manager.html#ac611a5ad5c952726b61866824d1f1e6f',1,'DeviceManager']]],
   ['getactivedevicenamemodel_195',['getActiveDeviceNameModel',['../class_device_manager.html#aa51704e69ae11d752a83c370f8639735',1,'DeviceManager']]],
   ['getaddress_196',['getAddress',['../classi2c_device.html#a252b57494a0e50ee222a8ab18e2271ec',1,'i2cDevice::getAddress() const'],['../classi2c_device.html#a252b57494a0e50ee222a8ab18e2271ec',1,'i2cDevice::getAddress() const']]],
