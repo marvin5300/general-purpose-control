@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['main_365',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_366',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['main_364',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
+  ['main_2ecpp_365',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['mainpage_2emd_366',['mainpage.md',['../mainpage_8md.html',1,'']]],
   ['mainwindow_367',['MainWindow',['../class_main_window.html',1,'MainWindow'],['../class_main_window.html#a996c5a2b6f77944776856f08ec30858d',1,'MainWindow::MainWindow()']]],
   ['mainwindow_2ecpp_368',['mainwindow.cpp',['../mainwindow_8cpp.html',1,'']]],
   ['mainwindow_2eh_369',['mainwindow.h',['../mainwindow_8h.html',1,'']]],
@@ -35,8 +36,8 @@ var searchData=
   ['mode_5fnormal_397',['MODE_NORMAL',['../classi2c_device.html#ac891864ec70230524b3f58a174554e49a139b2c701ec7e2a41580f4f553752905',1,'i2cDevice']]],
   ['mode_5funreachable_398',['MODE_UNREACHABLE',['../classi2c_device.html#ac891864ec70230524b3f58a174554e49a7dd56fe153fe478328e23a781f4dc819',1,'i2cDevice']]],
   ['more_5fadapters_399',['more_adapters',['../i2cbusses_8c.html#a61fb1d0ad73036a4249c2c9e7b32d360',1,'i2cbusses.c']]],
-  ['mouseclickx_400',['mouseClickX',['../class_measurement_device.html#a8616a3ff5eb2e5add230209453e54289',1,'MeasurementDevice::mouseClickX()'],['../class_scan_parameter_selection.html#a51843128252597b8b1521796cae932ec',1,'ScanParameterSelection::mouseClickX()']]],
-  ['mouseclicky_401',['mouseClickY',['../class_scan_parameter_selection.html#adac0537eecd5c14ba7b0bba4e0d42917',1,'ScanParameterSelection::mouseClickY()'],['../class_measurement_device.html#aee230f38ede5f300829e1af236c45406',1,'MeasurementDevice::mouseClickY()']]],
+  ['mouseclickx_400',['mouseClickX',['../class_scan_parameter_selection.html#a51843128252597b8b1521796cae932ec',1,'ScanParameterSelection::mouseClickX()'],['../class_measurement_device.html#a8616a3ff5eb2e5add230209453e54289',1,'MeasurementDevice::mouseClickX()']]],
+  ['mouseclicky_401',['mouseClickY',['../class_measurement_device.html#aee230f38ede5f300829e1af236c45406',1,'MeasurementDevice::mouseClickY()'],['../class_scan_parameter_selection.html#adac0537eecd5c14ba7b0bba4e0d42917',1,'ScanParameterSelection::mouseClickY()']]],
   ['mousemoveevent_402',['mouseMoveEvent',['../class_measurement_device.html#acc82617b0b786a488698294119ee81aa',1,'MeasurementDevice::mouseMoveEvent()'],['../class_scan_parameter_selection.html#aa8ceff80c38db2fadb3909de7ea13a5b',1,'ScanParameterSelection::mouseMoveEvent()']]],
   ['mousepressevent_403',['mousePressEvent',['../class_measurement_device.html#ac200cc3ca434766074b45e0ef44d620e',1,'MeasurementDevice::mousePressEvent()'],['../class_scan_parameter_selection.html#a1fa5d09bf9395e1f7dbccccb2a32a4c9',1,'ScanParameterSelection::mousePressEvent(QMouseEvent *event)']]],
   ['mousereleaseevent_404',['mouseReleaseEvent',['../class_scan_parameter_selection.html#a969fe22d093564ba70dbd16385bb3b03',1,'ScanParameterSelection::mouseReleaseEvent()'],['../class_measurement_device.html#a0f3a208fa158192d05101a2cac8e4334',1,'MeasurementDevice::mouseReleaseEvent()']]],
