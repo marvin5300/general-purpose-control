@@ -8,13 +8,6 @@
 #include <QMap>
 #include <QTimer>
 
-/**
-* @mainpage
-* @section Class-Diagram
-* @image html generalpurposecontrol.png
-* @image latex generalpurposecontrol.ps
-* 
-*/
 namespace Ui {
 class MainWindow;
 }
