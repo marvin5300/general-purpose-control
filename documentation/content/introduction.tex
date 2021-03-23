@@ -1,0 +1,47 @@
+\newpage
+\section{Introduction}
+This manual should give you an insight into the general purpose control software.
+This software is intended to be used as control software for all kinds of lab measurement devices and generally all devices that can be connected by some kind of serial interface (e.g. uart, spi or i2c). The main focus is on lab devices that use the scpi protocol standard for messages which uses plain text over uart (via RS232) to transmit data. As stop character usually a linefeed, carriage return or both are being used. Not all lab devices use this standard and not all which use the standard are consistent in their usage. Specific commands vary a lot so there is a class for each device that translates the specific commands from hardware level to the abstract form that the readout program understands. More about this later. \par\bigskip
+
+Here a list about which devices are already thought of or are already \\supported/implemented:\\
+(exists means there is already a child class for this device)
+
+\begin{center}
+\polyglott
+\rowcolors{2}{gray!10}{white}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|}
+\rowcolor{gray!20}
+\hline
+device name & conn. type & exists & works partially & complete \\
+\hline
+Keithley 2000 & uart (scpi) & \cmark & \cmark & \\
+Keithley 2410 & uart (scpi) & \cmark & \cmark & \\
+Rigol DSA1030A &  & \cmark & & \\
+Sourcetronic ST2819A &  & \cmark & & \\
+Tektronix DMM4020 &  & \cmark & & \\
+Voltcraft PSP1803 &  & \cmark & & \\
+HP 34401A & & \cmark & & \\
+Hameg HM8143 & & \cmark & & \\
+GW Instek GPD4303S & & \cmark & & \\
+\hline
+Adafruit ssd1306 & i2c & & & \\
+ADS1115 & i2c & & & \\
+
+BME280 & i2c & & & \\
+BMP180 & i2c & & & \\
+EEPROM24AA02 & i2c & & & \\
+HMC5883 & i2c & & & \\
+LM75 & i2c & & & \\
+
+MCP4728 & i2c & & & \\
+PCA9536 & i2c & & & \\
+SHT21 & i2c & & & \\
+SHT31 & i2c & & & \\
+TCA9546A & i2c & & & \\
+X9119 & i2c & & & \\
+\hline
+TDC7200 & spi & & & \\
+GPX2 & spi & & & \\
+\hline
+\end{tabularx}
+\end{center}
