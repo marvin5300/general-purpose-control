@@ -75,18 +75,12 @@ bool Serial::scanMessage(std::string& buffer){
             if (!message.empty()){
                 emit receivedMessage(QString::fromStdString(message));
                 qDebug() << "received: " << QString::fromStdString(message);
-                processMessage(message);
                 return true;
             }
         }
         message += buffer[i];
     }
     return false;
-}
-
-void Serial::processMessage(std::string& message){
-
-// here comes all the fun stuff to do with parsing messages from the device
 }
 
 void Serial::sendScpiCommand(QString command){
