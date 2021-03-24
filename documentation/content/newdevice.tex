@@ -1,6 +1,75 @@
-
-\section{Create new device class}
-\subsection{Add class to DeviceManager getDevice function}
-Make sure that the getDevice function returns the correct newly created MeasurementDevice subclass.
-\lstinputlisting[style=cppstyle]{content/code/devicemanager.cpp}
 \newpage
+\section{How to: Create new device class}
+Since the program is designed to feature a variety of different interfaces, protocols and devices, inheritance is used to try to bundle multiple similar connected devices together. This prevents code from being redundant and creates a better structure of the code. The best example is the ScpiDevice class which is directly inherited from MeasurementDevice and features functions that all devices, which use the scpi protocol via uart, have.
+\lstinputlisting[style=cppstyle]{content/code/scpidevice.h}
+(functions for sending and receiving messages are the same for every scpi device but the content of the message changes)\par\bigskip
+For devices that use different interfaces the process of adding a new device is somewhat similar but this section focuses on the ScpiDevice class because it is the standard protocol for lab devices.\par\bigskip
+To add new devices to the program following steps must be done:
+\begin{enumerate}
+	\item Create a new class that inherits from some other device class like MeasurementDevice or ScpiDevice or other depending on the hardware interface and protocol used by the device. The device must have a device parameter map which defines the devices physical parameters like voltage or current etc. and how they can be accessed.
+	\item Add the new device class to the DeviceManager to make it show up as possible device in the drop down menu.
+	\item Define functions so that queueMeasure, and setScanParameter do the correct things and implement the other functions for communicating with the hardware device. For devices inherited from ScpiDevice only translate functions have to be implemented which create the message texts for different purposes.
+\end{enumerate}
+\par\bigskip
+Which functions are required by the main window for measurements \\(that include readout and setting of scan parameter)?
+How does one cycle work?
+\begin{enumerate}
+	\item Main window connects all relevant signals and slots and tells the \\
+	ScanParameterSelection in the queue to initialize and set values.
+	\item ScanParameterSelection tells the underlying devices to write a parameter value. When ready they will report the ready state to the main window.
+	\item When all parameters are set a timer is started and after the timeout a measure command (signal) is sent to all MeasurementDevice objects.
+	\item MeasurementDevice objects will queue the measure and report back to the main window when measure is completed. The measurement values will be sent to the FileHandler class for saving to file. Then start at 1 again (without initialization).
+\end{enumerate}
+
+\newpage
+\subsection{Create new class}
+\subsubsection{Create a new scpi protocol based class}
+With the Keithley 2410 as an example for a scpi protocol based device it can be explained how to create a new class:
+\lstinputlisting[style=cppstyle]{content/code/keithley_2410.h}\par\bigskip
+Only the functions translateMeas, translateSet, translateInc, deviceName and the device parameter map are really relevant since all standard functionality for scpi protocol is handled in ScpiDevice class (e.g. communicating with the Serial interface, queueing messages etc.).\par\bigskip
+The device parameter map defines the physical parameters a device can handle (interact with) such as for example voltage, current or resistance. It also shows if the parameter is read only or can be set by the device (high voltage supply for example). The other parameters in the device parameter map are the limits of the device which do not yet have any functionality but will prevent some bad things from happening in the future (for example open a warning if you try to apply higher voltage as output than another device can handle).
+\par\bigskip
+The translate functions are just there to define the device specific commands for measurement or scan parameter set functionality. For example ":MEAS:VOLT?" is the command string to initiate a voltage measurement on Keithley devices. The translateMeas function translates the abstract parameter name "V" for voltage to a measurement command string that this specific device understands. The same thing can be done for setting a voltage and this is done in function translateSet which also gets the to be set parameter value as an argument. The translateInc function has the sole purpose of translating a message received from the hardware device via uart into a numerical value. Often devices send the unit together with the value as a string so the value has to be parsed correctly then.
+\newpage
+\lstinputlisting[style=cppstyle]{content/code/keithley_2410.cpp}
+\par\bigskip
+There is also the function deviceName which must return the device designation returned by the hardware device when sending the universally (for scpi) valid "IDN?" command. It is used by ScpiDevice to validate the correct device connected to the selected port. Also important is setting up the init function and translate functions so that the correct terminator char is sent and received. This might take a bit of tweaking of the Serial class or ScpiDevice class to work for every hardware device.
+\newpage
+\subsubsection{Create a new class for any interface or protocol}
+If the hardware device does not use uart or scpi inheriting from ScpiDevice is not an option. The class must be inherited directly from MeasurementDevice or somee other child of MeasurementDevice that is the generalized class for the specific interface or protocol. How to create a class directly inherited from MeasurementDevice will be shown at the example of the ScpiDevie class.
+\par\bigskip
+There are a few functions that must exist and have specific functionality because they are getting called by other classes. Also some signals have to be emitted at certain points.
+\par\bigskip
+\begin{itemize}
+	\item setScanParameter function must send a command to the hardware device to set a certain parameter to a certain value.
+	\lstinputlisting[style=cppstyle]{content/code/setscanparameter.cpp}
+	scanParameterReady must be emitted when this is done or will be done soon. This will always contain the device designation and the event number.
+	\par\bigskip
+	\item queueMeasure function checks which parameters should be measured and remembers the active measurement parameters. It must somehow tell the hardware device to measure (synchronous or asynchronous). After measurement is complete the class \underline{must} emit a measureReady signal. How this is implemented is not important as long as queueMeasure function exists.
+	\lstinputlisting[style=cppstyle]{content/code/queuemeasure.cpp}
+	\par\bigskip
+	\item onReceivedMessage is a function that will be probably be obsolete in future version of MeasurementDevice and is only relevant for asynchronous communication with the hardware interface.
+	\par\bigskip
+	\item connectBus is the abstract function for initialization of the serial interface. It is automatically called when the interface selection changes in the GUI. In this function the connection to the asynchronous serial interface can be opened. It must be made sure that the automatically emitted closeConnection signal closes the serial connection cleanly.
+	\lstinputlisting[style=cppstyle]{content/code/connectbus.cpp}
+	\par\bigskip
+	\item checkDevice function is not needed but it is recommended to create some kind of function that checks if the connected device is correct and then signals this status to the widget.
+	\lstinputlisting[style=cppstyle]{content/code/checkdevice.cpp}
+\end{itemize}
+\par\bigskip
+To sum it up: it must be made sure that 
+\begin{enumerate}
+	\item setScanParameter sets the parameter (writes the parameter)
+	\item queueMeasure function initiates a measurement
+	\item scanParameterReady is emitted when scan parameter is written
+	\item measureReady is emitted when all scheduled measurements for this iteration are finished
+	\item all pure virtual functions in MeasurementDevice are created in the child class\\
+	(or it will be an abstract class, you cannot instantiate an abstract class)
+	\item the child class that represents a hardware device has a device parameter map as stated earlier
+\end{enumerate}
+
+\newpage
+\subsection{Add class to DeviceManager getDevice function}
+Make sure that the getDevice function in the DeviceManager class returns the correct newly created class (which must be directly or indirectly inherited from MeasurementDevice to be stored in a pointer of type MeasurementDevice, see polymorphism). This will make the device show up in the drop down menu when adding a new device to the layout in the main window (by clicking the upper plus sign button).
+\par\smallskip
+\lstinputlisting[style=cppstyle]{content/code/devicemanager.cpp}
