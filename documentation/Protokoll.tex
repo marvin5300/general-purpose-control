@@ -26,6 +26,8 @@
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 \usepackage{listings}
 
+\usepackage{tabularx}
+
 
 \newcommand{\margin}{-0.5cm}
 \newenvironment{changemargin}[2]{%
@@ -69,15 +71,73 @@
 \input{content/Silbentrennung}
 
 \listfiles % schreibt alle verwendeten Dateien in die log Datei
+
+
+% custom fonts and math extensions
+\usepackage{fontspec}
+\usepackage{unicode-math} 
+\usepackage{amsmath}                % Für fancy Formel-Umgebungen.
+\usepackage{amssymb}                % Für fancy Mathe-Zeichen.
+\usepackage{amsfonts}               % Für fancy Mathe-Schrift im math mode (Cambria Math)
+\usepackage{siunitx}
+
+\newfontfamily{\amethysta}{Amethysta-Regular}
+[Path = fonts/amethysta/, Extension = .ttf]
+\DeclareTextFontCommand{\textdedication}{\amethysta}
+
+%\newfontfamily{\computermodern}{cmunrm}
+%[Path = fonts/computer-modern/, Extension = .ttf]
+%\DeclareTextFontCommand{\textdedication}{\computermodern}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newfontfamily{\polyglott}{polyglott}
+[Path = fonts/polyglott/, Extension = .ttf]
+\DeclareTextFontCommand{\textdedication}{\polyglott}
+
+\setmainfont[Path = fonts/amethysta/, Extension = .ttf]{Amethysta-Regular}
+%\setmainfont[Path = fonts/cormorant/, Extension = .ttf]{Cormorant-Regular}
+\setmathfont{Cambria Math}
+
+% select toc font
+\usepackage{tocloft,lipsum,pgffor,sectsty}
+
+\setcounter{tocdepth}{2}% Include up to \subsection in ToC
+
+% Font changes to ToC content of sectional units
+\renewcommand{\cftpartfont}{\polyglott\bfseries}% \part font in ToC
+\renewcommand{\cftsecfont}{\normalfont\sffamily\large\bfseries}           % \section font in ToC
+\renewcommand{\cftsubsecfont}{\normalfont\sffamily\large}        % \subsection font in ToC
+%\renewcommand{\cftsubsubsecfont}{\polyglott\small}       % \subsubsection font in ToC
+
+% Font changes to document content of sectional units
+\renewcommand{\partfont}{\normalfont\sffamily\Huge\bfseries}
+\renewcommand{\sectionfont}{\normalfont\sffamily\Huge\bfseries}
+
+\usepackage{titlesec}
+
+\titleformat*{\section}{\sffamily\LARGE\bfseries}
+\titleformat*{\subsection}{\sffamily\Large\bfseries}
+\titleformat*{\subsubsection}{\sffamily\large\bfseries}
+\titleformat*{\paragraph}{\sffamily\large\bfseries}
+\titleformat*{\subparagraph}{\sffamily\large\bfseries}
+
 %% Dokument Beginn %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}
+\begin{document}	
 
 \graphicspath{{content/figures/}} % Location of the graphics files {{}} because of windows
+
 \input{content/title.tex}
 \maketitle
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{content/figures/jlu-logo.ps}
+\end{figure}
 \thispagestyle{empty}
 \newpage
-\tableofcontents
+{\tableofcontents}
 \thispagestyle{empty}
 \newcommand{\env}[1]{\texttt{#1}}
 \newcommand{\command}[1]{\texttt{#1}}
@@ -98,6 +158,8 @@
 %\input{content/demo/latexexample.tex}
 
 % in diese Datei gehört der Inhalt des Dokumentes:
+\input{content/introduction.tex}
+\input{content/classes.tex}
 \input{content/newdevice.tex}
 \appendix
 \input{content/appendix.tex}
