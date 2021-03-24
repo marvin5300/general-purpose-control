@@ -1,4 +1,4 @@
 <map id="Serial" name="Serial">
-<area shape="rect" id="node1" title="Serial interface (UART) class that uses QSerialPort." alt="" coords="5,131,160,443"/>
+<area shape="rect" id="node1" title="Serial interface (UART) class that uses QSerialPort." alt="" coords="5,131,160,428"/>
 <area shape="rect" id="node2" href="$class_q_object.html" title=" " alt="" coords="47,5,118,83"/>
 </map>

@@ -29,6 +29,5 @@ var searchData=
   ['print_482',['print',['../class_adafruit___g_f_x.html#a5d0e5e485d3af5a2baa991cdca5b240d',1,'Adafruit_GFX']]],
   ['printf_483',['printf',['../class_adafruit___g_f_x.html#ab20221db50d878f9595c82b5de3e51f6',1,'Adafruit_GFX']]],
   ['probeprogress_484',['probeProgress',['../class_main_window.html#a28ae1373d604af9d0837cc47e990bf98',1,'MainWindow']]],
-  ['processmessage_485',['processMessage',['../class_serial.html#a68595faadd76d1e25ee6d02d507f7fdf',1,'Serial']]],
-  ['progresscarry_486',['progressCarry',['../class_scan_parameter_selection.html#a609ecf3359a0a1236625163cda169faf',1,'ScanParameterSelection']]]
+  ['progresscarry_485',['progressCarry',['../class_scan_parameter_selection.html#a609ecf3359a0a1236625163cda169faf',1,'ScanParameterSelection']]]
 ];

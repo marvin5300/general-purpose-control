@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title=" " alt="" coords="303,5,373,83"/>
 <area shape="rect" id="node2" href="$class_device_manager.html" title="Holds all possible device names and creates objects of certain device types." alt="" coords="5,153,212,435"/>
 <area shape="rect" id="node3" href="$class_file_handler.html" title="Manages all operations related to file access." alt="" coords="237,131,439,457"/>
-<area shape="rect" id="node4" href="$class_serial.html" title="Serial interface (UART) class that uses QSerialPort." alt="" coords="463,138,618,450"/>
+<area shape="rect" id="node4" href="$class_serial.html" title="Serial interface (UART) class that uses QSerialPort." alt="" coords="463,145,618,443"/>
 </map>
