@@ -177,6 +177,8 @@ void ScanParameterSelection::nextScanParameterStep(){
     bool fixedMode = ui->scanParameterAdjustMode->currentText()=="fixed";
     if (fixedMode){
         emit completedLoop();
+        MeasurementDevice* device = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
+        device->scanParameterReady(device->deviceName(),0);
         return;
     }
 
