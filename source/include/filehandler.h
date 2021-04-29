@@ -39,9 +39,10 @@ private:
     QPointer<QFile> outputFile;
     bool _autoOutput = false;
     quint64 lastWrittenLine = 0;
-    QStringList fileHeaderStrings = {"time"};
+    QStringList fileHeaderStrings = {"time"/*,"Wert"*/};
     QMap<quint64, QStringList> valueLineListMap;
     quint64 bufferedLines = 100;
+    QString x,y=0;
 };
 
 #endif // FILEHANDLER_H

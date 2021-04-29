@@ -29,12 +29,14 @@ struct DeviceParameterConstraint{
 * @brief One measured value with parameter label
 */
 struct MeasurementValue{
-    MeasurementValue(QString _name="", double _value=0.0){
+    MeasurementValue(QString _name="", double _value=0.0, double _value1=0.0){
         name = _name;
         value = _value;
+        value1 = _value1;
     }
     QString name;
     double value;
+    double value1;
 };
 
 #endif // MEASUREMENTPARAMETER_H

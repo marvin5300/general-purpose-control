@@ -3,6 +3,10 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QDateTime>
+#include <serial.h>
+#include <QObject>
+#include <string>
+
 
 FileHandler::FileHandler(QObject *parent) : QObject(parent)
 {
@@ -66,10 +70,13 @@ void FileHandler::setOutputAutomatic(bool autoOutput){
     }
 }
 
-void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> values, quint64 number){
-    //qDebug() << deviceName << " " << number;
+void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>values, quint64 number){
+    //qDebug() << deviceName << " " << number //number gibt cycle nummer an
     for (auto value : values){
-        qDebug() << value.name << " " << value.value;
+        qDebug() << value.name << value.value;
+    }
+    for (auto value1 : values){
+        qDebug() << value1.name << value1.value1;
     }
     if (outputFile.isNull()){
         return;
@@ -78,7 +85,9 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> 
         return;
     }
     QStringList valuesList;
-    /*for (auto value : values){
+    //valuesList=new QStringList();
+    /*
+    for (auto value : values){
         valuesList.append(QString(value.name+"["+deviceName+"]:%1").arg(value.value));
     }
     */
@@ -93,19 +102,45 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue> 
     for (int i = 0; i < fileHeaderStrings.size(); i++){
         // make sure size of the values list and fileHeaderStrings are same size
         // so no seg fault occurs
+        //valuesList.QStringList();
         valuesList.append(QString());
     }
-    qDebug() << "valuesList size" << valuesList.size();
+    qDebug() <<"valueslist1"<< valuesList<<"FILEHEADERSTRINGS "<<fileHeaderStrings;
+    qDebug() <<"valuesList size" << valuesList.size();
     valuesList[0] = (QString("%1").arg(QDateTime::currentMSecsSinceEpoch()));
     qDebug() << "after insert timestamp";
     for (auto value : values){
         QString fileHeader = QString(value.name+"["+deviceName+"]");
-        qDebug() << "insert " << value.value << " at "<<(fileHeaderStrings.indexOf(fileHeader));
+        qDebug() << "insert " << value.value << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
         valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value.value);
     }
+    /*for (auto value1 : values){
+        QString fileHeader = QString(value1.name+"["+deviceName+"]");
+        qDebug() << "insert " << value1.value1 << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
+        valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value1.value1);
+    }
+    */
+    if (valuesList[1]!="")
+    {
+        x=valuesList[1];
+        qDebug()<<x<<"x";
+    }
+    if (valuesList[2]!="")
+    {
+        y=valuesList[2];
+        qDebug()<<y<<"y";
+    }
+
+    qDebug()<< "valuelist2";
     qDebug() << "after filling valuesList";
+    valuesList[1]=QString("%1").arg(x);
+    valuesList[2]=QString("%1").arg(y);
+    qDebug() << valuesList;
     valueLineListMap.insert(number, valuesList);
+
+    qDebug()<<"valuelinelistmap" <<valueLineListMap;
     if (number > lastWrittenLine + bufferedLines || number < lastWrittenLine){
+        qDebug()<<"testbuffer";
         writeBufferToFile(false); // writes only older buffered lines to file
     }
 }

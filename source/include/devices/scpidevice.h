@@ -86,7 +86,7 @@ protected:
     * @param receivedString message to be parsed
     */
     virtual double translateInc(QString receivedString){return 0;}
-
+    virtual double translateInc1(QString receivedString){return 0;}
     /**
     * Checks if correct device is set.
     * Checks if answer to *IDN? contains deviceName()

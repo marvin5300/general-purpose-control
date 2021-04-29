@@ -6,6 +6,7 @@
 
 void ScpiDevice::queueMeasure(quint64 number){
     measureID = number;
+    qDebug()<<"queueMeasure";
     activeMeasParams.clear();
     for (int i = 0; i < ui->parameterTableWidget->rowCount(); i++){
         auto item = ui->parameterTableWidget->item(i,0);
@@ -25,7 +26,7 @@ void ScpiDevice::queueMeasure(quint64 number){
 }
 
 void ScpiDevice::setScanParameter(MeasurementValue value){
-    //qDebug() << "setScanParameter: device status "<<correctDeviceConnected <<" deviceName: "<<deviceName();
+    qDebug() << "setScanParameter: device status "<<correctDeviceConnected <<" deviceName: "<<deviceName();
     if (!correctDeviceConnected){
         return;
     }
@@ -36,6 +37,7 @@ void ScpiDevice::setScanParameter(MeasurementValue value){
         emit scanParameterReady(deviceName(),0);
     }
 }
+
 
 void ScpiDevice::onReceivedMessage(QString message){
     if (!correctDeviceConnected){
@@ -50,7 +52,17 @@ void ScpiDevice::onReceivedMessage(QString message){
         return;
     }
     double val = translateInc(message);
-    measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val));
+    double val1 = translateInc1(message);
+    if (val1 !=0)
+    {
+       measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val,val1));
+    }else
+    {
+        measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val));
+    }
+
+    //measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val,val1));
+    qDebug() <<"TEST!"<<message<<val<<val1;
     if (activeMeasParams.isEmpty()){
         emit measuredValues(deviceName(),measureResults,measureID);
         emit measureReady(deviceName(),measureID);

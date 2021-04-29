@@ -10,6 +10,7 @@
 #include "devices/hameg_hm8143.h"
 #include "devices/gw_instek_gpd4303s.h"
 #include "devices/dummy.h"
+#include "devices/sourcetronic_st2826.h"
 #include <QDebug>
 #include <QDir>
 
@@ -30,7 +31,8 @@ const QStringList DeviceManager::deviceNameList({
                                            "RIGOL DSA1030A",
                                            "HP 34401A",
                                            "Hameg HM8143",
-                                           "GPD-4303S"
+                                           "GPD-4303S",
+                                           "ST2826"
                                         });
 
 QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString portName){
@@ -64,6 +66,9 @@ QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString
     }
     if (deviceName == deviceNameList.at(8)){
         device = new GW_INSTEK_GPD4303S(portName);
+    }
+    if (deviceName == deviceNameList.at(9)){
+        device = new SourceTronic_ST2826(portName);
     }
     activeDevicesList.append(device);
     return device;

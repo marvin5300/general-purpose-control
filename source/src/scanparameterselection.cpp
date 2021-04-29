@@ -150,6 +150,7 @@ ScanParameterSelection::~ScanParameterSelection()
 }
 
 void ScanParameterSelection::scanParameterInit(){
+    qDebug() <<"ScanParamSel:ScanParameterInit ";
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
         return;
     }
@@ -166,6 +167,7 @@ void ScanParameterSelection::onDeviceScanParameterReady(QString deviceName, quin
 }
 
 void ScanParameterSelection::nextScanParameterStep(){
+    qDebug()<<"nextStep";
     // changes scan parameter value to the next step (within selected range and settings)
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
         emit completedLoop();
@@ -180,7 +182,7 @@ void ScanParameterSelection::nextScanParameterStep(){
 
     // following should only happen when ramping
     setScanCounter++;
-
+    qDebug() <<"Scan Param:setscancounter: "<<setScanCounter;
     MeasurementValue scanParameter;
     // determine which value will be next and if the loop is finished
     bool newLoop = false;
