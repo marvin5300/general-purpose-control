@@ -182,7 +182,7 @@ void MainWindow::onScanParamSelReady(QString deviceName, quint64 number){
 }
 
 void MainWindow::onTimerTimeout(){
-qDebug()<<"Mainw timer";
+qDebug()<<"Mainw timer!";
     measurementReadyCounter = DeviceManager::activeDevicesList.size();
     emit measure(++measCount);
 }

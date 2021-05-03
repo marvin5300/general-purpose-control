@@ -189,11 +189,14 @@ void ScanParameterSelection::nextScanParameterStep(){
     // determine which value will be next and if the loop is finished
     bool newLoop = false;
     if (ui->scanParameterAdjustMode->currentText()=="ramp"){
+        MeasurementDevice* device = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
+        device->scanParameterReady(device->deviceName(),0);
         // if ramping
         if (parameterCurrentValue == parameterEndValue||
                 (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){
             //qDebug() << "deviceSelectionIndex: " << deviceSelectionIndex << " completedLoop";
             emit completedLoop();
+            
             newLoop = true;
         }
         switch(ui->stepsCombobox->currentIndex()){
@@ -211,7 +214,7 @@ void ScanParameterSelection::nextScanParameterStep(){
         scanParameter.value = parameterCurrentValue;
         if (newLoop){
             parameterCurrentValue = parameterBeginValue;
-            scanParameter.value = parameterBeginValue;
+            scanParameter.value = parameterBeginValue;   
         }
     }
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
