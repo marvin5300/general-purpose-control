@@ -86,8 +86,8 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
     }
     QStringList valuesList;
     //valuesList=new QStringList();
-    /*
-    for (auto value : values){
+   
+    /*for (auto value : values){
         valuesList.append(QString(value.name+"["+deviceName+"]:%1").arg(value.value));
     }
     */
@@ -99,14 +99,17 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
             correct_columns();
         }
     }
+    
     for (int i = 0; i < fileHeaderStrings.size(); i++){
         // make sure size of the values list and fileHeaderStrings are same size
         // so no seg fault occurs
         //valuesList.QStringList();
         valuesList.append(QString());
+        //valuesList.append(fileHeaderStrings);
     }
     qDebug() <<"valueslist1"<< valuesList<<"FILEHEADERSTRINGS "<<fileHeaderStrings;
     qDebug() <<"valuesList size" << valuesList.size();
+    //valuesList[0] =(QString("%1").arg(fileHeaderStrings[0]));
     valuesList[0] = (QString("%1").arg(QDateTime::currentMSecsSinceEpoch()));
     qDebug() << "after insert timestamp";
     for (auto value : values){
@@ -131,14 +134,15 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         qDebug()<<y<<"y";
     }
 
-    qDebug()<< "valuelist2";
+    
     qDebug() << "after filling valuesList";
     valuesList[1]=QString("%1").arg(x);
     valuesList[2]=QString("%1").arg(y);
     qDebug() << valuesList;
+    valueLineListMap[0];
+    valueLineListMap.insert(0, fileHeaderStrings);//header in position0
     valueLineListMap.insert(number, valuesList);
-
-    qDebug()<<"valuelinelistmap" <<valueLineListMap;
+    qDebug()<<"valuelinelistmap: " <<valueLineListMap;
     if (number > lastWrittenLine + bufferedLines || number < lastWrittenLine){
         qDebug()<<"testbuffer";
         writeBufferToFile(false); // writes only older buffered lines to file
@@ -164,6 +168,7 @@ void FileHandler::writeBufferToFile(bool endOfMeasurement){
     if (endOfMeasurement){
         outputFile->close();
         outputFile.clear();
+        valueLineListMap.clear();//elements of valueLineListMap deleted
     }
 }
 

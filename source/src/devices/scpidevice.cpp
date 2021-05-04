@@ -6,7 +6,6 @@
 
 void ScpiDevice::queueMeasure(quint64 number){
     measureID = number;
-    qDebug()<<"queueMeasure";
     activeMeasParams.clear();
     for (int i = 0; i < ui->parameterTableWidget->rowCount(); i++){
         auto item = ui->parameterTableWidget->item(i,0);
@@ -36,6 +35,13 @@ void ScpiDevice::setScanParameter(MeasurementValue value){
     }else{
         emit scanParameterReady(deviceName(),0);
     }
+    if(deviceName()=="ST2826"){
+        emit scpiCommand("FUNC:IMP CpQ");
+    }
+    if(deviceName()=="ST2819A"){
+        emit scpiCommand("FUNC:IMP CpQ");
+    }
+    
 }
 
 

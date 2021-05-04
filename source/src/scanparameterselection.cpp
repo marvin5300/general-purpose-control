@@ -160,14 +160,15 @@ void ScanParameterSelection::scanParameterInit(){
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     scanParameter.value = parameterBeginValue;
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
+    qDebug()<<"ScanParamINIT"<<ui->scanParameterSelectionCombobox->currentText();
 }
 
 void ScanParameterSelection::onDeviceScanParameterReady(QString deviceName, quint64 number){
     emit scanParameterReady(deviceName, number);
+    qDebug()<<"onDevicescanready";
 }
 
 void ScanParameterSelection::nextScanParameterStep(){
-    qDebug()<<"nextStep";
     // changes scan parameter value to the next step (within selected range and settings)
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
         emit completedLoop();

@@ -4,6 +4,9 @@
 #include "scanparameterselection.h"
 #include "devicemanager.h"
 #include "settings.h"
+#include "devices/sourcetronic_st2826.h"
+#include "devices/scpidevice.h"
+#include "devices/dummy.h"
 #include <QFileDialog>
 #include <QPalette>
 #include <QStandardPaths>
@@ -126,19 +129,19 @@ void MainWindow::onStartMeasurementButtonClicked(){
             connect(this,&MainWindow::measure, device, &MeasurementDevice::queueMeasure);
             connect(device,&MeasurementDevice::measuredValues,fileHandler,&FileHandler::onReceivingValues);
             connect(device,&MeasurementDevice::measureReady,this,&MainWindow::onMeasureReady);
-            qDebug()<<"Test MAINWINDOW3";
+            
         }
 
         // start measurement routine
         //pendingScanParameters = ui->scanValuesHorizontalLayout->count()-2; // beware there are already 2 items in this layout
         int interval = ui->intervalspinbox->value();
         intervalTimer.setInterval(interval);
-        qDebug()<<"Test MAINWINDOW";
         connectScanValues(true); // connect
+        qDebug()<<"Start?";
         scanParameterReadyCounter = numberOfScanparameterSelections;
         emit scanInit();
         ui->progressBar->setValue(0);
-    }else{ qDebug()<<"Test MAINWINDOW2";
+    }else{ 
         for (QPointer<MeasurementDevice> device : DeviceManager::activeDevicesList){
             disconnect(this,&MainWindow::measure, device, &MeasurementDevice::queueMeasure);
             disconnect(device,&MeasurementDevice::measuredValues,fileHandler,&FileHandler::onReceivingValues);
@@ -156,22 +159,16 @@ void MainWindow::onStartMeasurementButtonClicked(){
 
 void MainWindow::onMeasureReady(QString deviceName, quint64 number){
     measurementReadyCounter--;
-    qDebug()<<"Mainw onscan2";
-    qDebug() << "onMeasureReady, readyCounter:  "<<measurementReadyCounter << " device: "<<deviceName;
     if (measurementReadyCounter>0){
-        qDebug()<<"Mainw onscan3";
         return;
     }
     qDebug() << "measurement ongoing = "<<ongoingMeasurement;
     scanParameterReadyCounter = numberOfScanparameterSelections;
     this->nextInterval();
-    qDebug()<<"Mainw onscan4";
     this->probeProgress(0);
-    qDebug()<<"Main onMeasureReady";
 }
 
 void MainWindow::onScanParamSelReady(QString deviceName, quint64 number){
-    qDebug()<<"Mainw onscanparam!";
     if (scanParameterReadyCounter>0){
         scanParameterReadyCounter--;
     }
@@ -182,7 +179,6 @@ void MainWindow::onScanParamSelReady(QString deviceName, quint64 number){
 }
 
 void MainWindow::onTimerTimeout(){
-qDebug()<<"Mainw timer!";
     measurementReadyCounter = DeviceManager::activeDevicesList.size();
     emit measure(++measCount);
 }
@@ -193,7 +189,6 @@ void MainWindow::onFinishedMeasurement(){
         // if it is checked, measCycle will not go up and measurements will continue forever
         measCycle++;
     }
-    qDebug()<<"int STOP!?";
     intervalTimer.stop();
     for (QPointer<MeasurementDevice> device : DeviceManager::activeDevicesList){
         disconnect(this,&MainWindow::measure, device, &MeasurementDevice::queueMeasure);
@@ -217,15 +212,19 @@ void MainWindow::onFinishedMeasurement(){
 
 void MainWindow::connectScanValues(bool doConnect){
     qDebug() <<"StartScanValue";
+    
+       
+
+
+
     if (doConnect){
         numberOfScanparameterSelections = ui->scanValuesHorizontalLayout->count()-2;
-        qDebug()<<"nextint2";
         if (numberOfScanparameterSelections < 1){
             // if there is no scan value only measurement:
             scanParameterReadyCounter = numberOfScanparameterSelections;
             connect(this, &MainWindow::nextInterval, this, &MainWindow::onFinishedMeasurement);
-            qDebug()<<"nexttint";
             intervalTimer.start();
+            qDebug()<<"Test1";
             return;
         }
         for (int i = ui->scanValuesHorizontalLayout->count()-2; i>1 ; i--){
@@ -247,7 +246,7 @@ void MainWindow::connectScanValues(bool doConnect){
                 &ScanParameterSelection::nextScanParameterStep);
         connect(dynamic_cast<ScanParameterSelection *>(ui->scanValuesHorizontalLayout->itemAt(1)->widget()), &ScanParameterSelection::completedLoop,
                 this, &MainWindow::onFinishedMeasurement);
-    }else{
+    }else{ qDebug()<<"Test2";
         if (numberOfScanparameterSelections < 1){
             // if there is no scan value only measurement:
             disconnect(this, &MainWindow::nextInterval, this, &MainWindow::onFinishedMeasurement);
