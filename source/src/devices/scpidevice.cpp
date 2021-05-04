@@ -36,10 +36,10 @@ void ScpiDevice::setScanParameter(MeasurementValue value){
         emit scanParameterReady(deviceName(),0);
     }
     if(deviceName()=="ST2826"){
-        emit scpiCommand("FUNC:IMP CpQ");
+        emit scpiCommand("FUNC:IMP CpD");
     }
     if(deviceName()=="ST2819A"){
-        emit scpiCommand("FUNC:IMP CpQ");
+        emit scpiCommand("FUNC:IMP CpD");
     }
     
 }

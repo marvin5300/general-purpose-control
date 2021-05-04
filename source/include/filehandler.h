@@ -42,7 +42,7 @@ private:
     QStringList fileHeaderStrings = {"time"/*,"Wert"*/};
     QMap<quint64, QStringList> valueLineListMap;
     quint64 bufferedLines = 100;
-    QString x,y=0;
+    QString x,y,z,a=0;
 };
 
 #endif // FILEHANDLER_H

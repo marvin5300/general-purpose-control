@@ -99,7 +99,21 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
             correct_columns();
         }
     }
-    
+    qDebug()<<"1"<<fileHeaderStrings;
+    for (auto value1 : values){
+        if(value1.name=="C,x"){
+        //value1.name="Q";
+        qDebug()<<value1.name;
+        value1.name="D";
+        QString fileHeader = QString(value1.name+"["+deviceName+"]");
+        if (!fileHeaderStrings.contains(fileHeader)){
+            fileHeaderStrings.append(fileHeader);
+            correct_columns();
+        }
+        }
+    }
+    qDebug()<<"2"<<fileHeaderStrings;
+
     for (int i = 0; i < fileHeaderStrings.size(); i++){
         // make sure size of the values list and fileHeaderStrings are same size
         // so no seg fault occurs
@@ -107,22 +121,33 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         valuesList.append(QString());
         //valuesList.append(fileHeaderStrings);
     }
-    qDebug() <<"valueslist1"<< valuesList<<"FILEHEADERSTRINGS "<<fileHeaderStrings;
+
+    qDebug() <<"valueslist1"<< valuesList<<"FILEHEADERSTRINGS: "<<fileHeaderStrings;
     qDebug() <<"valuesList size" << valuesList.size();
     //valuesList[0] =(QString("%1").arg(fileHeaderStrings[0]));
     valuesList[0] = (QString("%1").arg(QDateTime::currentMSecsSinceEpoch()));
     qDebug() << "after insert timestamp";
     for (auto value : values){
         QString fileHeader = QString(value.name+"["+deviceName+"]");
-        qDebug() << "insert " << value.value << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
+        qDebug() << "insert: " << value.value << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
         valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value.value);
     }
-    /*for (auto value1 : values){
-        QString fileHeader = QString(value1.name+"["+deviceName+"]");
-        qDebug() << "insert " << value1.value1 << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
+    for (auto value1 : values){
+        //value1.name="Q";
+        QString fileHeader = QString(value1.name+"["+deviceName+"]"); 
+        qDebug()<<value1.name<<"val1.name";
+        if (value1.name=="C,x")
+        {   value1.name="D";
+            QString fileHeader = QString(value1.name+"["+deviceName+"]");
+            value1.name="D"; 
+        qDebug() <<fileHeader;
+        qDebug() << "insert D" << value1.value1 << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
         valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value1.value1);
+        }
     }
-    */
+    
+
+
     if (valuesList[1]!="")
     {
         x=valuesList[1];
@@ -133,11 +158,27 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         y=valuesList[2];
         qDebug()<<y<<"y";
     }
+    if (valuesList[3]!="")
+    {
+        z=valuesList[3];
+        qDebug()<<z<<"z";
+    }
+    if (valuesList.size()>4 && valuesList[4]!="")
+    {
+        a=valuesList[4];
+        qDebug()<<a<<"a";
+    }
 
     
     qDebug() << "after filling valuesList";
     valuesList[1]=QString("%1").arg(x);
     valuesList[2]=QString("%1").arg(y);
+    valuesList[3]=QString("%1").arg(z);
+    if(valuesList.size()>4){
+    valuesList[4]=QString("%1").arg(a);
+    }
+    
+  
     qDebug() << valuesList;
     valueLineListMap[0];
     valueLineListMap.insert(0, fileHeaderStrings);//header in position0
@@ -171,11 +212,8 @@ void FileHandler::writeBufferToFile(bool endOfMeasurement){
         valueLineListMap.clear();//elements of valueLineListMap deleted
     }
 }
-
 void FileHandler::correct_columns(){
-
 }
-
 void FileHandler::writeLine(QString line){
     if (outputFile.isNull()||(outputFile->isOpen()==false)){
         return;
@@ -183,14 +221,12 @@ void FileHandler::writeLine(QString line){
     QTextStream out(outputFile);
     out << line << endl;
 }
-
 const QString FileHandler::getFilePath(){
     if (outputFile.isNull()){
         return "";
     }
     return outputFile->fileName();
 }
-
 const QString FileHandler::getFileName(){
     if (outputFile.isNull()){
         return "";

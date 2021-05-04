@@ -2,6 +2,13 @@
     "files.associations": {
         "array": "cpp",
         "string_view": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "list": "cpp",
+        "functional": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "variant": "cpp"
     }
 }
