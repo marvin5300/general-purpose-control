@@ -99,7 +99,6 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
             correct_columns();
         }
     }
-    qDebug()<<"1"<<fileHeaderStrings;
     for (auto value1 : values){
         if(value1.name=="C,x"){
         //value1.name="Q";
@@ -121,9 +120,7 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         valuesList.append(QString());
         //valuesList.append(fileHeaderStrings);
     }
-
     qDebug() <<"valueslist1"<< valuesList<<"FILEHEADERSTRINGS: "<<fileHeaderStrings;
-    qDebug() <<"valuesList size" << valuesList.size();
     //valuesList[0] =(QString("%1").arg(fileHeaderStrings[0]));
     valuesList[0] = (QString("%1").arg(QDateTime::currentMSecsSinceEpoch()));
     qDebug() << "after insert timestamp";
@@ -135,7 +132,6 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
     for (auto value1 : values){
         //value1.name="Q";
         QString fileHeader = QString(value1.name+"["+deviceName+"]"); 
-        qDebug()<<value1.name<<"val1.name";
         if (value1.name=="C,x")
         {   value1.name="D";
             QString fileHeader = QString(value1.name+"["+deviceName+"]");
@@ -147,49 +143,43 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
     }
     
 
-
+/*valuesList will be created for every step for each device, Keithley has 2 values, sourcetronic 3. The second valueslist will overwrite der first
+so the 1. will be saved if its not "" and added in the 2. list. Size make sure that number of elements fit to valueslist. */
     if (valuesList[1]!="")
     {
         x=valuesList[1];
-        qDebug()<<x<<"x";
     }
-    if (valuesList[2]!="")
+    if (valuesList.size()>2 && valuesList[2]!="")
     {
         y=valuesList[2];
-        qDebug()<<y<<"y";
     }
-    if (valuesList[3]!="")
+    if (valuesList.size()>3 && valuesList[3]!="")
     {
         z=valuesList[3];
-        qDebug()<<z<<"z";
     }
     if (valuesList.size()>4 && valuesList[4]!="")
     {
         a=valuesList[4];
-        qDebug()<<a<<"a";
     }
-
-    
-    qDebug() << "after filling valuesList";
-    valuesList[1]=QString("%1").arg(x);
+    qDebug() << "after filling valuesList:";
+    valuesList[1]=QString("%1").arg(x);//adding 1. valueslist to 2.
+    if(valuesList.size()>2){
     valuesList[2]=QString("%1").arg(y);
+    }
+    if(valuesList.size()>3){
     valuesList[3]=QString("%1").arg(z);
+    }
     if(valuesList.size()>4){
     valuesList[4]=QString("%1").arg(a);
     }
-    
-  
-    qDebug() << valuesList;
     valueLineListMap[0];
     valueLineListMap.insert(0, fileHeaderStrings);//header in position0
     valueLineListMap.insert(number, valuesList);
-    qDebug()<<"valuelinelistmap: " <<valueLineListMap;
+    //qDebug()<<"valuelinelistmap: " <<valueLineListMap;
     if (number > lastWrittenLine + bufferedLines || number < lastWrittenLine){
-        qDebug()<<"testbuffer";
         writeBufferToFile(false); // writes only older buffered lines to file
     }
 }
-
 void FileHandler::writeBufferToFile(bool endOfMeasurement){
     qDebug() << "write buffer to file, end of measurement: "<<endOfMeasurement;
     qDebug() << "buffer: "<<valueLineListMap;

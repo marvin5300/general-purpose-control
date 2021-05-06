@@ -68,7 +68,7 @@ void ScpiDevice::onReceivedMessage(QString message){
     }
 
     //measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val,val1));
-    qDebug() <<"TEST!"<<message<<val<<val1;
+    //qDebug() <<"TEST!"<<message<<val<<val1;
     if (activeMeasParams.isEmpty()){
         emit measuredValues(deviceName(),measureResults,measureID);
         emit measureReady(deviceName(),measureID);

@@ -211,12 +211,6 @@ void MainWindow::onFinishedMeasurement(){
 }
 
 void MainWindow::connectScanValues(bool doConnect){
-    qDebug() <<"StartScanValue";
-    
-       
-
-
-
     if (doConnect){
         numberOfScanparameterSelections = ui->scanValuesHorizontalLayout->count()-2;
         if (numberOfScanparameterSelections < 1){
@@ -224,7 +218,6 @@ void MainWindow::connectScanValues(bool doConnect){
             scanParameterReadyCounter = numberOfScanparameterSelections;
             connect(this, &MainWindow::nextInterval, this, &MainWindow::onFinishedMeasurement);
             intervalTimer.start();
-            qDebug()<<"Test1";
             return;
         }
         for (int i = ui->scanValuesHorizontalLayout->count()-2; i>1 ; i--){
