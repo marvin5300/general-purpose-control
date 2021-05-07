@@ -19,6 +19,7 @@ public:
     explicit FileHandler(QObject *parent = nullptr);
     const QString getFilePath();
     const QString getFileName();
+    
 
 signals:
     void openedFileName(const QString filename);
@@ -42,7 +43,8 @@ private:
     QStringList fileHeaderStrings = {"time"/*,"Wert"*/};
     QMap<quint64, QStringList> valueLineListMap;
     quint64 bufferedLines = 100;
-    QString x,y,z,a=0;
+    QString x,y,z,a,device=0;
+    double wert;
 };
 
 #endif // FILEHANDLER_H

@@ -73,10 +73,16 @@ void FileHandler::setOutputAutomatic(bool autoOutput){
 void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>values, quint64 number){
     //qDebug() << deviceName << " " << number //number gibt cycle nummer an
     for (auto value : values){
-        qDebug() << value.name << value.value;
+        if(value.name=="I")
+        qDebug() <<value.name << value.value;
     }
     for (auto value1 : values){
         qDebug() << value1.name << value1.value1;
+        if(value1.name=="I")
+        {wert=value1.value1;
+        //device=value1.name;
+        qDebug()<<"wert"<<wert;}
+
     }
     if (outputFile.isNull()){
         return;
@@ -84,6 +90,7 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
     if (deviceName==""||values.empty()){
         return;
     }
+
     QStringList valuesList;
     //valuesList=new QStringList();
    
@@ -91,7 +98,7 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         valuesList.append(QString(value.name+"["+deviceName+"]:%1").arg(value.value));
     }
     */
-    qDebug() << "size";
+    qDebug() << "size:";
     for (auto value : values){
         QString fileHeader = QString(value.name+"["+deviceName+"]");
         if (!fileHeaderStrings.contains(fileHeader)){
@@ -111,8 +118,6 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         }
         }
     }
-    qDebug()<<"2"<<fileHeaderStrings;
-
     for (int i = 0; i < fileHeaderStrings.size(); i++){
         // make sure size of the values list and fileHeaderStrings are same size
         // so no seg fault occurs
@@ -120,14 +125,23 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         valuesList.append(QString());
         //valuesList.append(fileHeaderStrings);
     }
-    qDebug() <<"valueslist1"<< valuesList<<"FILEHEADERSTRINGS: "<<fileHeaderStrings;
+    qDebug() <<"valueslist1:"<< valuesList<<"FILEHEADERSTRINGS: "<<fileHeaderStrings;
     //valuesList[0] =(QString("%1").arg(fileHeaderStrings[0]));
     valuesList[0] = (QString("%1").arg(QDateTime::currentMSecsSinceEpoch()));
     qDebug() << "after insert timestamp";
-    for (auto value : values){
+    for (auto value : values)
+    {
+        if(value.name=="I" && deviceName=="MODEL 2410")
+        {
         QString fileHeader = QString(value.name+"["+deviceName+"]");
-        qDebug() << "insert: " << value.value << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
-        valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value.value);
+        qDebug() << "insert: " << wert << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
+        valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(wert);
+        }
+        else{
+                QString fileHeader = QString(value.name+"["+deviceName+"]");
+                qDebug() << "insert: " << value.value << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
+                valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value.value);
+            }
     }
     for (auto value1 : values){
         //value1.name="Q";
@@ -141,8 +155,6 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         valuesList[(fileHeaderStrings.indexOf(fileHeader))] = QString("%1").arg(value1.value1);
         }
     }
-    
-
 /*valuesList will be created for every step for each device, Keithley has 2 values, sourcetronic 3. The second valueslist will overwrite der first
 so the 1. will be saved if its not "" and added in the 2. list. Size make sure that number of elements fit to valueslist. */
     if (valuesList[1]!="")

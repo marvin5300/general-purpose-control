@@ -59,6 +59,12 @@ void ScpiDevice::onReceivedMessage(QString message){
     }
     double val = translateInc(message);
     double val1 = translateInc1(message);
+    qDebug()<<"ActiveMeas: "<<val<<val1;//einsetzen, keithley gibt für :MEAS:CURR? immer Volt,Strom,... aus mit value.name val und val1 tauschen
+    /*
+    if (value.name=="I")
+    {
+        val=val1;
+    }*/
     if (val1 !=0)
     {
        measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val,val1));
@@ -66,7 +72,7 @@ void ScpiDevice::onReceivedMessage(QString message){
     {
         measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val));
     }
-
+    
     //measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val,val1));
     //qDebug() <<"TEST!"<<message<<val<<val1;
     if (activeMeasParams.isEmpty()){
