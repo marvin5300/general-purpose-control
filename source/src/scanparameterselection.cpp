@@ -5,6 +5,9 @@
 #include <QDebug>
 #include <QPainter>
 #include <QTimer>
+#include <math.h>
+#include <math.h>
+#include <QtMath>
 
 ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     QFrame(parent),
@@ -185,24 +188,27 @@ void ScanParameterSelection::nextScanParameterStep(){
 
     // following should only happen when ramping
     setScanCounter++;
-    qDebug() <<"Scan Param:setscancounter: "<<setScanCounter;
+    qDebug() <<"Scan Param:setscancounter: "<<setScanCounter<<"Stepnumber: "<<stepNumber;
+    qDebug()<<"Value: "<<parameterCurrentValue;
     MeasurementValue scanParameter;
     // determine which value will be next and if the loop is finished
     bool newLoop = false;
-    if (ui->scanParameterAdjustMode->currentText()=="ramp"){
+    if (ui->scanParameterAdjustMode->currentText()=="ramp"&& ui->logStepsButton->isChecked()==false){
         MeasurementDevice* device = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
         device->scanParameterReady(device->deviceName(),0);
         // if ramping
         if (parameterCurrentValue == parameterEndValue||
-                (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){
+                  (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){
+                  //(parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber))){  
             //qDebug() << "deviceSelectionIndex: " << deviceSelectionIndex << " completedLoop";
+            qDebug()<<"RAMPING";
             emit completedLoop();
-            
             newLoop = true;
         }
         switch(ui->stepsCombobox->currentIndex()){
         case 0:
             parameterCurrentValue = parameterCurrentValue + (parameterEndValue-parameterBeginValue)/(stepNumber-1);
+            //parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber);
             break;
         case 1:
             parameterCurrentValue = parameterCurrentValue + stepNumber;
@@ -215,9 +221,48 @@ void ScanParameterSelection::nextScanParameterStep(){
         scanParameter.value = parameterCurrentValue;
         if (newLoop){
             parameterCurrentValue = parameterBeginValue;
-            scanParameter.value = parameterBeginValue;   
+            scanParameter.value = parameterBeginValue;
         }
     }
+
+
+    if (ui->scanParameterAdjustMode->currentText()=="ramp" && ui->logStepsButton->isChecked()==true){
+        MeasurementDevice* device = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
+        device->scanParameterReady(device->deviceName(),0);
+        // if ramping
+        if (parameterCurrentValue == parameterEndValue|| 
+                (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){          
+                //(parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber))){
+            qDebug()<<"Value end: "<<parameterCurrentValue;
+            double loga = log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber);
+            qDebug()<<"LogRamping: "<< loga;
+            emit completedLoop();
+            newLoop = true;
+        }                 
+        switch(ui->stepsCombobox->currentIndex()){
+        case 0:
+            parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber);
+            qDebug()<<"Value case0"<<parameterCurrentValue;
+            break;
+        case 1:
+            parameterCurrentValue = parameterCurrentValue + stepNumber;
+            qDebug()<<"Value case1 "<<parameterCurrentValue;
+        default:
+            break;
+        }
+        if (parameterCurrentValue>parameterEndValue){
+            parameterCurrentValue = parameterEndValue;
+            qDebug()<<"Value>end"<<parameterCurrentValue;
+        }
+        scanParameter.value = parameterCurrentValue;
+        if (newLoop){
+            parameterCurrentValue = parameterBeginValue;
+            scanParameter.value = parameterBeginValue; 
+            qDebug()<<"Value newloop "<<parameterCurrentValue; 
+            qDebug()<<"Value newloop1"<<scanParameter.value; 
+        }
+    }
+    
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
 }

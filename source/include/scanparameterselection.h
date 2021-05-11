@@ -103,7 +103,7 @@ private:
     * Number of steps to complete one measurement loop
     */
     quint64 stepNumber = 100;
-
+    
     /**
     * Tracks scan loop step. Increases each step.
     */

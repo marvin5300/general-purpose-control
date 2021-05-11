@@ -16,7 +16,7 @@ public slots:
     //void onReceivedMessage(QString message);
 private:
     void init();
-    const QString _deviceName = "MODEL 2410";
+    const QString _deviceName = "2410";
     static const QMap<QString, DeviceParameterConstraint> _deviceParamMap;
     static const char _terminator;
     QMap<QString, DeviceParameterConstraint> deviceParamMap(){return _deviceParamMap;}

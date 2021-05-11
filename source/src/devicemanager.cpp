@@ -24,7 +24,7 @@ QStringList DeviceManager::_masks = {"ttyUSB*", "ttyA*"};
 
 const QStringList DeviceManager::deviceNameList({
                                            "MODEL 2000",
-                                           "MODEL 2410",
+                                           "2410",
                                            "ST2819A",
                                            "DMM4020",
                                            "PSP1803",

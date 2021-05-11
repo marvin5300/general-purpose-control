@@ -98,6 +98,7 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
         valuesList.append(QString(value.name+"["+deviceName+"]:%1").arg(value.value));
     }
     */
+ 
     qDebug() << "size:";
     for (auto value : values){
         QString fileHeader = QString(value.name+"["+deviceName+"]");
@@ -131,7 +132,7 @@ void FileHandler::onReceivingValues(QString deviceName, QList<MeasurementValue>v
     qDebug() << "after insert timestamp";
     for (auto value : values)
     {
-        if(value.name=="I" && deviceName=="MODEL 2410")
+        if(value.name=="I" && deviceName=="2410")
         {
         QString fileHeader = QString(value.name+"["+deviceName+"]");
         qDebug() << "insert: " << wert << " at "<<(fileHeaderStrings.indexOf(fileHeader));//index of filehandler ist c,q, stop bit?
@@ -184,8 +185,12 @@ so the 1. will be saved if its not "" and added in the 2. list. Size make sure t
     if(valuesList.size()>4){
     valuesList[4]=QString("%1").arg(a);
     }
-    valueLineListMap[0];
+   
+    
+    
+    qDebug()<<"fileheader strings"<<fileHeaderStrings;
     valueLineListMap.insert(0, fileHeaderStrings);//header in position0
+    //valueLineListMap.insert(0, fileHeaderStrings.replaceInStrings(" ",""));
     valueLineListMap.insert(number, valuesList);
     //qDebug()<<"valuelinelistmap: " <<valueLineListMap;
     if (number > lastWrittenLine + bufferedLines || number < lastWrittenLine){
