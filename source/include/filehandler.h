@@ -19,7 +19,6 @@ public:
     explicit FileHandler(QObject *parent = nullptr);
     const QString getFilePath();
     const QString getFileName();
-    
 
 signals:
     void openedFileName(const QString filename);
