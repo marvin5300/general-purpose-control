@@ -1,5 +1,6 @@
 *.vs
 *.user
+**.vscode
 Makefile
 Makefile.Release
 Makefile.Debug
