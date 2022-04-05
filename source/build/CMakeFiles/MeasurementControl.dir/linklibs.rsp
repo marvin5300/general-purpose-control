@@ -1,0 +1,1 @@
+ C:/msys64/mingw64/lib/libQt5SerialPort.dll.a C:/msys64/mingw64/lib/libQt5Svg.dll.a C:/msys64/mingw64/lib/libQt5Widgets.dll.a C:/msys64/mingw64/lib/libQt5Gui.dll.a C:/msys64/mingw64/lib/libQt5Core.dll.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

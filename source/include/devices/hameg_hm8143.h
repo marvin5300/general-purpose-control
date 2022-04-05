@@ -1,7 +1,7 @@
 #ifndef HAMEG_HM8143_H
 #define HAMEG_HM8143_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 class Hameg_HM8143 : public ScpiDevice
 {

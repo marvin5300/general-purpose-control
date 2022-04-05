@@ -1,7 +1,7 @@
 #ifndef VOLTCRAFT_PSP1803_H
 #define VOLTCRAFT_PSP1803_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 class Voltcraft_PSP1803 : public ScpiDevice
 {

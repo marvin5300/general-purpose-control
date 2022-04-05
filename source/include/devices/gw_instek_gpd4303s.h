@@ -1,7 +1,7 @@
 #ifndef GW_INSTEK_GPD4303S_H
 #define GW_INSTEK_GPD4303S_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 class GW_INSTEK_GPD4303S : public ScpiDevice
 {

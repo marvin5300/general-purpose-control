@@ -1,4 +1,4 @@
-#include "devices/rigol_dsa1030a.h"
+#include <devices/rigol_dsa1030a.h>
 
 const QMap<QString,DeviceParameterConstraint> RIGOL_DSA1030A::_deviceParamMap = {
 };

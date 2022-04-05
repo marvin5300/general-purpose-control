@@ -1,4 +1,4 @@
-#include "devices/tektronix_dmm4020.h"
+#include <devices/tektronix_dmm4020.h>
 
 const QMap<QString,DeviceParameterConstraint> Tektronix_DMM4020::_deviceParamMap = {
 };

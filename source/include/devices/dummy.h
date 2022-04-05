@@ -1,7 +1,7 @@
 #ifndef DUMMY_H
 #define DUMMY_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 /**
 * @brief Placeholder for other devices.

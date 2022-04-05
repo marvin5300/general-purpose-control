@@ -1,7 +1,7 @@
 #ifndef DSA1030A_H
 #define DSA1030A_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 class RIGOL_DSA1030A : public ScpiDevice
 {

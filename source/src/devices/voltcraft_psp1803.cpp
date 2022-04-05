@@ -1,4 +1,4 @@
-#include "devices/voltcraft_psp1803.h"
+#include <devices/voltcraft_psp1803.h>
 
 const QMap<QString,DeviceParameterConstraint> Voltcraft_PSP1803::_deviceParamMap = {
 };

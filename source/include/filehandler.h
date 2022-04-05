@@ -1,7 +1,7 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 
-#include "measurementparameter.h"
+#include <measurementparameter.h>
 #include <QObject>
 #include <QPointer>
 #include <QFile>
@@ -19,6 +19,7 @@ public:
     explicit FileHandler(QObject *parent = nullptr);
     const QString getFilePath();
     const QString getFileName();
+    
 
 signals:
     void openedFileName(const QString filename);
@@ -39,9 +40,11 @@ private:
     QPointer<QFile> outputFile;
     bool _autoOutput = false;
     quint64 lastWrittenLine = 0;
-    QStringList fileHeaderStrings = {"time"};
+    QStringList fileHeaderStrings = {"time"/*,"Wert"*/};
     QMap<quint64, QStringList> valueLineListMap;
     quint64 bufferedLines = 100;
+    QString x,y,z,a,device=0;
+    double wert;
 };
 
 #endif // FILEHANDLER_H

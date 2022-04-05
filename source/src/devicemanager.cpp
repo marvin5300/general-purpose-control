@@ -1,15 +1,16 @@
-#include "devicemanager.h"
+#include <devicemanager.h>
 
-#include "devices/keithley_2000.h"
-#include "devices/keithley_2410.h"
-#include "devices/sourcetronic_st2819a.h"
-#include "devices/tektronix_dmm4020.h"
-#include "devices/voltcraft_psp1803.h"
-#include "devices/rigol_dsa1030a.h"
-#include "devices/hp_34401a.h"
-#include "devices/hameg_hm8143.h"
-#include "devices/gw_instek_gpd4303s.h"
-#include "devices/dummy.h"
+#include <devices/keithley_2000.h>
+#include <devices/keithley_2410.h>
+#include <devices/sourcetronic_st2819a.h>
+#include <devices/tektronix_dmm4020.h>
+#include <devices/voltcraft_psp1803.h>
+#include <devices/rigol_dsa1030a.h>
+#include <devices/hp_34401a.h>
+#include <devices/hameg_hm8143.h>
+#include <devices/gw_instek_gpd4303s.h>
+#include <devices/dummy.h>
+#include <devices/sourcetronic_st2826.h>
 #include <QDebug>
 #include <QDir>
 
@@ -23,14 +24,15 @@ QStringList DeviceManager::_masks = {"ttyUSB*", "ttyA*"};
 
 const QStringList DeviceManager::deviceNameList({
                                            "MODEL 2000",
-                                           "MODEL 2410",
+                                           "2410",
                                            "ST2819A",
                                            "DMM4020",
                                            "PSP1803",
                                            "RIGOL DSA1030A",
                                            "HP 34401A",
                                            "Hameg HM8143",
-                                           "GPD-4303S"
+                                           "GPD-4303S",
+                                           "ST2826"
                                         });
 
 QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString portName){
@@ -65,6 +67,9 @@ QPointer<MeasurementDevice> DeviceManager::getDevice(QString deviceName, QString
     if (deviceName == deviceNameList.at(8)){
         device = new GW_INSTEK_GPD4303S(portName);
     }
+    if (deviceName == deviceNameList.at(9)){
+        device = new SourceTronic_ST2826(portName);
+    }
     activeDevicesList.append(device);
     return device;
 }
@@ -88,12 +93,14 @@ void DeviceManager::removeDevice(QPointer<MeasurementDevice> device){
                     && activeDevicesList.at(i)->getLocalId() == device->getLocalId()){
                 activeDevicesList.removeAt(i);
                 actualizeDeviceNameModel();
+                //qDebug() << "number of devices" <<  activeDevicesList.size(); //use to get number of active devices
                 return;
             }
         }else{
             activeDevicesList.removeAt(i);
         }
     }
+  
 }
 
 QPointer<QStandardItemModel> DeviceManager::getActiveDeviceNameModel(){

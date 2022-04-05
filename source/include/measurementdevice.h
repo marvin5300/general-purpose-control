@@ -2,7 +2,7 @@
 #define MEASUREMENT_DEVICE_H
 
 #include "measurementparameter.h"
-#include <QFrame>
+#include  <QFrame>
 #include <QPointer>
 #include <QMap>
 #include <QStandardItemModel>
@@ -97,7 +97,8 @@ public:
     * @return device name
     */
     virtual const QString deviceName() = 0;
-
+    
+     
     /**
     * Returns the id of this device.
     * On each new MeasurementDevice initialization the counter will be counted up.
@@ -118,6 +119,8 @@ public:
     * @param value parameter to be set to a value value
     */
     virtual void setScanParameter(MeasurementValue value) = 0;
+
+    void switchOutputOff(void);
 
 public slots:
     /**
@@ -165,6 +168,12 @@ public slots:
     * Closes the device.
     */
     void exit();
+
+    /**
+     * set checkackable parameter for device, if prameter exists
+     * @retval: 0 = succeed; 1 = failed (no parameter found)
+     */
+    unsigned int setMeasureParam(DeviceParameterConstraint _parameterConstraint);
 
 protected:
     /**

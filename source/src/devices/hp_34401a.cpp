@@ -1,4 +1,4 @@
-#include "devices/hp_34401a.h"
+#include <devices/hp_34401a.h>
 
 const QMap<QString,DeviceParameterConstraint> HP_34401A::_deviceParamMap = {
 };

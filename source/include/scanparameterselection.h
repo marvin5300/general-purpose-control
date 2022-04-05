@@ -7,6 +7,7 @@
 #include <QStandardItemModel>
 #include <QLayout>
 #include <QTimer>
+#include <devices/keithley_2410.h>
 //#include <QMouseEvent>
 
 namespace Ui {
@@ -37,6 +38,8 @@ signals:
     */
     void scanParameterReady(QString deviceName, quint64 number);
 
+    void scanParameterSelectionChanged(int _index);
+
 public:
     explicit ScanParameterSelection(QWidget *parent = nullptr);
     ~ScanParameterSelection();
@@ -46,6 +49,12 @@ public:
     * Used to move this widget when drag and dropping.
     */
     QPointer<QHBoxLayout> layout;
+
+    /**
+     * counts the scan parameter objects
+     */
+    static int numberOfObjects;
+    
 
 public slots:
     /**
@@ -73,7 +82,18 @@ public slots:
     */
     void onDeviceScanParameterReady(QString deviceName, quint64 number);
 
+     /**
+     * getter for number of objects
+     */
+    static int getNumberOfScanParameterselection(void); 
+
+    /**
+     * enables to change scnparameters from program code
+     */
+    void setScanparameters(QString _deviceName, QString _scanParam, QString _scanMode, int _numberOfSteps, double _minVal, double _maxVal);
+
 private slots:
+    
     /**
     * Called when device selection drop box changes selection.
     */
@@ -91,6 +111,14 @@ private slots:
     */
     void onScanParameterAdjustModeChanged(QString mode);
 
+    /**
+     * decrase static counter of object
+     */
+    void decraseNumberOfObject(void);
+
+    
+    
+
 private:
     Ui::ScanParameterSelection *ui;
     QPointer<MeasurementDevice> lastSelectedDevice;
@@ -103,7 +131,7 @@ private:
     * Number of steps to complete one measurement loop
     */
     quint64 stepNumber = 100;
-
+    
     /**
     * Tracks scan loop step. Increases each step.
     */
@@ -124,6 +152,8 @@ private:
     int oldY = 0;
     int mouseClickX = 0;
     int mouseClickY = 0;
+
+    
 };
 
 #endif // SCANPARAMETERSELECTION_H

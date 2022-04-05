@@ -1,0 +1,4 @@
+C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/MeasurementControl.dir
+C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/edit_cache.dir
+C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/rebuild_cache.dir
+C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/MeasurementControl_autogen.dir

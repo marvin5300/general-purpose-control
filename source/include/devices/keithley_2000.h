@@ -1,7 +1,7 @@
 #ifndef KEITHLEY_2000_H
 #define KEITHLEY_2000_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 /* Connection: serial over RS-232
  * Supported baudrates: 19.2k; 9600; 4800; 2400; 1200; 600; 300
@@ -33,14 +33,21 @@ public:
     const QMap<QString,DeviceParameterConstraint> getDeviceParameterConstraints()const;
     const QString getInterfaceName()const;
     const QString deviceName() {return _deviceName;}
+    public slots:
 
 private:
     void init();
     const QString _deviceName = "MODEL 2000";
     static const QMap<QString, DeviceParameterConstraint> _deviceParamMap;
+     static const char _terminator;
     QMap<QString, DeviceParameterConstraint> deviceParamMap(){return _deviceParamMap;}
     QMap<QString, MeasurementValue> valuesMap;
     QString translateMeas(QString paramName);
+    QString translateSet(QString paramName, double paramValue);
+    double translateInc(QString receivedString);
+    double translateInc1(QString receivedString);
+    void setOutputState(bool on);
+    bool _outputOn = false;
 };
 
 #endif // KEITHLEY_2000_H

@@ -2,7 +2,7 @@
 #define MEASUREMENTPARAMETER_H
 #include <QString>
 #include <QStringList>
-//#include "ui_measurementdevice.h"
+#include <ui_measurementdevice.h>
 
 enum AccessMode{NONE, READONLY, WRITEONLY, READWRITE};
 static const QStringList accessModeStrings({"NONE", "READONLY", "WRITEONLY", "READWRITE"}); // mode > 1 has write access
@@ -29,12 +29,14 @@ struct DeviceParameterConstraint{
 * @brief One measured value with parameter label
 */
 struct MeasurementValue{
-    MeasurementValue(QString _name="", double _value=0.0){
+    MeasurementValue(QString _name="", double _value=0.0, double _value1=0.0){
         name = _name;
         value = _value;
+        value1 = _value1;
     }
     QString name;
     double value;
+    double value1;
 };
 
 #endif // MEASUREMENTPARAMETER_H

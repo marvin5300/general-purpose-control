@@ -1,0 +1,177 @@
+[
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\MeasurementControl_autogen\\mocs_compilation.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\build\\MeasurementControl_autogen\\mocs_compilation.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen/mocs_compilation.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\main.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\main.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/main.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\mainwindow.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\mainwindow.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/mainwindow.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\CLogger.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\CLogger.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CLogger.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\chighlighter.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\chighlighter.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/chighlighter.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\cprobersystem.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\cprobersystem.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cprobersystem.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\CPosition.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\CPosition.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CPosition.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\cdevice.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\cdevice.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cdevice.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\cprobervisu.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\cprobervisu.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cprobervisu.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\cmeasurementdevice.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\cmeasurementdevice.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cmeasurementdevice.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\cmeasurementcontrol.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\cmeasurementcontrol.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cmeasurementcontrol.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\CSynchcommConsumer.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\CSynchcommConsumer.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CSynchcommConsumer.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\CSynchcommProducer.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\CSynchcommProducer.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CSynchcommProducer.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\CPositionVisuXYZ.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\CPositionVisuXYZ.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CPositionVisuXYZ.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\CPositionVisuXY.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\CPositionVisuXY.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CPositionVisuXY.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\measurementdevice.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\measurementdevice.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/measurementdevice.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devicemanager.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devicemanager.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devicemanager.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\serial.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\serial.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/serial.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\serialconsole.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\serialconsole.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/serialconsole.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\settings.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\settings.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/settings.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\scanparameterselection.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\scanparameterselection.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/scanparameterselection.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\filehandler.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\filehandler.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/filehandler.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\scpidevice.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\scpidevice.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/scpidevice.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\dummy.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\dummy.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/dummy.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\sourcetronic_st2819a.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\sourcetronic_st2819a.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/sourcetronic_st2819a.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\keithley_2410.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\keithley_2410.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/keithley_2410.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\keithley_2000.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\keithley_2000.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/keithley_2000.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\gw_instek_gpd4303s.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\gw_instek_gpd4303s.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/gw_instek_gpd4303s.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\hameg_hm8143.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\hameg_hm8143.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/hameg_hm8143.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\hp_34401a.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\hp_34401a.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/hp_34401a.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\rigol_dsa1030a.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\rigol_dsa1030a.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/rigol_dsa1030a.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\sourcetronic_st2826.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\sourcetronic_st2826.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/sourcetronic_st2826.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\tektronix_dmm4020.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\tektronix_dmm4020.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/tektronix_dmm4020.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\src\\devices\\voltcraft_psp1803.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\src\\devices\\voltcraft_psp1803.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/voltcraft_psp1803.cpp"
+},
+{
+  "directory": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB @CMakeFiles/MeasurementControl.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MeasurementControl.dir\\MeasurementControl_autogen\\PNK5WDWK6L\\qrc_resources.cpp.obj -c C:\\Users\\erikj\\Documents\\Studium\\Master\\Master-Thesis\\30_Engineering\\41_JLUSoftware\\general-purpose-control\\source\\build\\MeasurementControl_autogen\\PNK5WDWK6L\\qrc_resources.cpp",
+  "file": "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen/PNK5WDWK6L/qrc_resources.cpp"
+}
+]

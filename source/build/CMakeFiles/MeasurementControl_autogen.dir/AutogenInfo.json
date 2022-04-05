@@ -1,0 +1,550 @@
+{
+	"BUILD_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source",
+	"CMAKE_EXECUTABLE" : "C:/Program Files/CMake/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/CMakeLists.txt",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/3.22.0/CMakeSystem.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/3.22.0/CMakeCXXCompiler.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeGenericSystem.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/WindowsPaths.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCXXInformation.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/GNU.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-GNU.cmake",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/3.22.0/CMakeRCCompiler.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeRCInformation.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-windres.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5Config.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5Config.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Svg/Qt5SvgConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Svg/Qt5SvgConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeParseArguments.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QJp2Plugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QMngPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QVirtualKeyboardPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWebGLIntegrationPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWindowsIntegrationPlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeParseArguments.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5SerialPort/Qt5SerialPortConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5SerialPort/Qt5SerialPortConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5LinguistTools/Qt5LinguistToolsConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5LinguistTools/Qt5LinguistToolsConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5LinguistTools/Qt5LinguistToolsMacros.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeParseArguments.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5QuickCompiler/Qt5QuickCompilerConfig.cmake",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeParseArguments.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5Config.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Network/Qt5NetworkConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Network/Qt5Network_QGenericEnginePlugin.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5SerialPort/Qt5SerialPortConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5SerialPort/Qt5SerialPortConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Svg/Qt5SvgConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Svg/Qt5SvgConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"C:/msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/resources.qrc"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/CLogger.h",
+			"MU",
+			"6YEA5652QU/moc_CLogger.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/CPosition.h",
+			"MU",
+			"6YEA5652QU/moc_CPosition.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/CPositionVisuXY.h",
+			"MU",
+			"6YEA5652QU/moc_CPositionVisuXY.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/CPositionVisuXYZ.h",
+			"MU",
+			"6YEA5652QU/moc_CPositionVisuXYZ.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/CSynchcommConsumer.h",
+			"MU",
+			"6YEA5652QU/moc_CSynchcommConsumer.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/CSynchcommProducer.h",
+			"MU",
+			"6YEA5652QU/moc_CSynchcommProducer.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/EnumHelper.h",
+			"MU",
+			"6YEA5652QU/moc_EnumHelper.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/GlobalConsts.h",
+			"MU",
+			"6YEA5652QU/moc_GlobalConsts.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/cdevice.h",
+			"MU",
+			"6YEA5652QU/moc_cdevice.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/chighlighter.h",
+			"MU",
+			"6YEA5652QU/moc_chighlighter.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/cmeasurementcontrol.h",
+			"MU",
+			"6YEA5652QU/moc_cmeasurementcontrol.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/cmeasurementdevice.h",
+			"MU",
+			"6YEA5652QU/moc_cmeasurementdevice.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/cprobersystem.h",
+			"MU",
+			"6YEA5652QU/moc_cprobersystem.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/cprobervisu.h",
+			"MU",
+			"6YEA5652QU/moc_cprobervisu.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devicemanager.h",
+			"MU",
+			"6YEA5652QU/moc_devicemanager.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/dummy.h",
+			"MU",
+			"5YXSHRQA26/moc_dummy.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/gw_instek_gpd4303s.h",
+			"MU",
+			"5YXSHRQA26/moc_gw_instek_gpd4303s.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/hameg_hm8143.h",
+			"MU",
+			"5YXSHRQA26/moc_hameg_hm8143.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/hp_34401a.h",
+			"MU",
+			"5YXSHRQA26/moc_hp_34401a.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/keithley_2000.h",
+			"MU",
+			"5YXSHRQA26/moc_keithley_2000.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/keithley_2410.h",
+			"MU",
+			"5YXSHRQA26/moc_keithley_2410.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/rigol_dsa1030a.h",
+			"MU",
+			"5YXSHRQA26/moc_rigol_dsa1030a.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/scpidevice.h",
+			"MU",
+			"5YXSHRQA26/moc_scpidevice.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/sourcetronic_st2819a.h",
+			"MU",
+			"5YXSHRQA26/moc_sourcetronic_st2819a.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/sourcetronic_st2826.h",
+			"MU",
+			"5YXSHRQA26/moc_sourcetronic_st2826.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/tektronix_dmm4020.h",
+			"MU",
+			"5YXSHRQA26/moc_tektronix_dmm4020.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/devices/voltcraft_psp1803.h",
+			"MU",
+			"5YXSHRQA26/moc_voltcraft_psp1803.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/filehandler.h",
+			"MU",
+			"6YEA5652QU/moc_filehandler.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/mainwindow.h",
+			"MU",
+			"6YEA5652QU/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/measurementdevice.h",
+			"MU",
+			"6YEA5652QU/moc_measurementdevice.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/measurementparameter.h",
+			"MU",
+			"6YEA5652QU/moc_measurementparameter.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/scanparameterselection.h",
+			"MU",
+			"6YEA5652QU/moc_scanparameterselection.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/serial.h",
+			"MU",
+			"6YEA5652QU/moc_serial.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/serialconsole.h",
+			"MU",
+			"6YEA5652QU/moc_serialconsole.cpp",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include/settings.h",
+			"MU",
+			"6YEA5652QU/moc_settings.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_SERIALPORT_LIB",
+		"QT_SVG_LIB",
+		"QT_WIDGETS_LIB"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/include",
+		"C:/msys64/mingw64/include/QtSvg",
+		"C:/msys64/mingw64/include/QtWidgets",
+		"C:/msys64/mingw64/include/QtGui",
+		"C:/msys64/mingw64/include/QtCore",
+		"C:/msys64/mingw64/share/qt5/mkspecs/win32-g++",
+		"C:/msys64/mingw64/include/QtSerialPort",
+		"C:/msys64/mingw64/include",
+		"C:/msys64/mingw64/include/c++/11.2.0",
+		"C:/msys64/mingw64/include/c++/11.2.0/x86_64-w64-mingw32",
+		"C:/msys64/mingw64/include/c++/11.2.0/backward",
+		"C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/11.2.0/include",
+		"C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed",
+		"C:/msys64/mingw64/x86_64-w64-mingw32/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"C:/msys64/mingw64/bin/g++.exe",
+		"-dM",
+		"-E",
+		"-c",
+		"C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/MeasurementControl_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/msys64/mingw64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "C:/msys64/mingw64/bin/uic.exe",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/MeasurementControl_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CLogger.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CPosition.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CPositionVisuXY.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CPositionVisuXYZ.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CSynchcommConsumer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/CSynchcommProducer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cdevice.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/chighlighter.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cmeasurementcontrol.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cmeasurementdevice.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cprobersystem.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/cprobervisu.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devicemanager.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/dummy.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/gw_instek_gpd4303s.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/hameg_hm8143.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/hp_34401a.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/keithley_2000.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/keithley_2410.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/rigol_dsa1030a.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/scpidevice.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/sourcetronic_st2819a.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/sourcetronic_st2826.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/tektronix_dmm4020.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/devices/voltcraft_psp1803.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/filehandler.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/main.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/measurementdevice.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/scanparameterselection.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/serial.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/serialconsole.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src/settings.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : 
+	[
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/src"
+	],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

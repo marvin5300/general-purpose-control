@@ -1,7 +1,7 @@
 #ifndef HP_34401A_H
 #define HP_34401A_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 class HP_34401A : public ScpiDevice
 {

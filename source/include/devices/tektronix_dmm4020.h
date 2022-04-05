@@ -1,7 +1,7 @@
 #ifndef TEKTRONIX_DMM4020_H
 #define TEKTRONIX_DMM4020_H
 
-#include "devices/scpidevice.h"
+#include <devices/scpidevice.h>
 
 class Tektronix_DMM4020 : public ScpiDevice
 {

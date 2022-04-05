@@ -1,0 +1,29 @@
+{
+	"BUILD_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source",
+	"CMAKE_SOURCE_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source",
+	"INCLUDE_DIR" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/MeasurementControl_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/icon.png",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/close2.png",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/settings1.png",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/close1.png",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/rs232.png",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/plus2.png",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/tune.png",
+		"C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/plus1.png"
+	],
+	"LOCK_FILE" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/MeasurementControl_autogen.dir/AutoRcc_resources_PNK5WDWK6L_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "PNK5WDWK6L",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "C:/msys64/mingw64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/build/CMakeFiles/MeasurementControl_autogen.dir/AutoRcc_resources_PNK5WDWK6L_Used.txt",
+	"SOURCE" : "C:/Users/erikj/Documents/Studium/Master/Master-Thesis/30_Engineering/41_JLUSoftware/general-purpose-control/source/res/resources.qrc",
+	"VERBOSITY" : 0
+}

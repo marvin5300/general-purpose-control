@@ -1,10 +1,13 @@
-#include "scanparameterselection.h"
-#include "ui_scanparameterselection.h"
-#include "devicemanager.h"
+#include <scanparameterselection.h>
+#include <ui_scanparameterselection.h>
+#include <devicemanager.h>
 #include <QSizePolicy>
 #include <QDebug>
 #include <QPainter>
 #include <QTimer>
+#include <math.h>
+#include <math.h>
+#include <QtMath>
 
 ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     QFrame(parent),
@@ -23,11 +26,16 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
     ui->scanParameterTableWidget->setStyleSheet("border: none;");
     ui->closeButton->setStyleSheet(":!hover{ border-image: url(:/close1.png)}:hover{ border-image: url(:/close2.png);}");
     connect(ui->closeButton, &QPushButton::clicked, this, &ScanParameterSelection::deleteLater);
+    
+    connect(ui->closeButton,&QPushButton::clicked, this, &ScanParameterSelection::decraseNumberOfObject);
+
     QPointer<QStandardItemModel> deviceModel = DeviceManager::getActiveDeviceNameModel();
     connect(ui->deviceSelectionCombobox->model(), &QAbstractItemModel::dataChanged, this, &ScanParameterSelection::keepDeviceSelectionIndex);
     connect(ui->deviceSelectionCombobox,
             static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &ScanParameterSelection::onDeviceSelectionChanged);
+    connect(ui->scanParameterSelectionCombobox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), 
+    this, &ScanParameterSelection::scanParameterSelectionChanged);
     ui->deviceSelectionCombobox->setModel(deviceModel);
     connect(ui->scanParameterAdjustMode, &QComboBox::currentTextChanged, this,
             &ScanParameterSelection::onScanParameterAdjustModeChanged);
@@ -54,9 +62,31 @@ ScanParameterSelection::ScanParameterSelection(QWidget *parent) :
                      if(ok){this->stepNumber = temp;}
                      else{ui->stepsEdit->setText(QString("%1").arg(stepNumber));}
                      });
+
+    /*connect(ui->fromEdit, &QLineEdit::textChanged, this,
+            [this](){bool ok = false;
+                                 double temp = ui->fromEdit->text().toDouble(&ok);
+                                 if(ok){this->parameterBeginValue = temp;
+                                        this->parameterCurrentValue = temp;}
+                                 else{ui->fromEdit->setText(QString("%1").arg(parameterBeginValue));}
+                                });
+    connect(ui->toEdit, &QLineEdit::textChanged, this,
+            [this](){bool ok = false;
+                                 double temp = ui->toEdit->text().toDouble(&ok);
+                                 if(ok){this->parameterEndValue = temp;}
+                                 else{ui->toEdit->setText(QString("%1").arg(parameterEndValue));}
+                                });
+    connect(ui->stepsEdit, &QLineEdit::textChanged, this,
+            [this](){bool ok = false;
+                     double temp = ui->stepsEdit->text().toDouble(&ok);
+                     if(ok){this->stepNumber = temp;}
+                     else{ui->stepsEdit->setText(QString("%1").arg(stepNumber));}
+                     });*/
     timer.setInterval(1000);
     timer.setSingleShot(true);
     connect(&timer, &QTimer::timeout, this, [this](){mouseReleaseReady = true;});
+    numberOfObjects++;
+    qDebug() << "number of scan parameter windows: " << getNumberOfScanParameterselection();
 }
 
 void ScanParameterSelection::keepDeviceSelectionIndex(){
@@ -81,6 +111,10 @@ void ScanParameterSelection::onDeviceSelectionChanged(int selectedIndex){
     deviceSelectionIndex = selectedIndex;
     lastSelectedDevice = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
     connect(DeviceManager::activeDevicesList.at(deviceSelectionIndex),&MeasurementDevice::scanParameterReady, this,&ScanParameterSelection::onDeviceScanParameterReady);
+    if(qobject_cast<Keithley_2410 *>(DeviceManager::activeDevicesList.at(deviceSelectionIndex))){
+                Keithley_2410 * keithley = qobject_cast<Keithley_2410 *>(DeviceManager::activeDevicesList.at(deviceSelectionIndex));
+                connect(this, &ScanParameterSelection::scanParameterSelectionChanged, keithley, &Keithley_2410::on_scanParameterSelectionBoxChanged);
+            }
     QMap<QString,DeviceParameterConstraint> deviceParameterConstraints = DeviceManager::activeDevicesList.at(selectedIndex)->getDeviceParameterConstraints();
     ui->scanParameterSelectionCombobox->clear();
     ui->scanParameterTableWidget->clear();
@@ -150,6 +184,7 @@ ScanParameterSelection::~ScanParameterSelection()
 }
 
 void ScanParameterSelection::scanParameterInit(){
+    qDebug() <<"ScanParamSel:ScanParameterInit ";
     if (deviceSelectionIndex>=DeviceManager::activeDevicesList.size()){
         return;
     }
@@ -159,10 +194,12 @@ void ScanParameterSelection::scanParameterInit(){
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     scanParameter.value = parameterBeginValue;
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
+    qDebug()<<"ScanParamINIT"<<ui->scanParameterSelectionCombobox->currentText();
 }
 
 void ScanParameterSelection::onDeviceScanParameterReady(QString deviceName, quint64 number){
     emit scanParameterReady(deviceName, number);
+    qDebug()<<"onDevicescanready";
 }
 
 void ScanParameterSelection::nextScanParameterStep(){
@@ -175,26 +212,34 @@ void ScanParameterSelection::nextScanParameterStep(){
     bool fixedMode = ui->scanParameterAdjustMode->currentText()=="fixed";
     if (fixedMode){
         emit completedLoop();
+        MeasurementDevice* device = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
+        device->scanParameterReady(device->deviceName(),0);
         return;
     }
 
     // following should only happen when ramping
     setScanCounter++;
-
+    qDebug() <<"Scan Param:setscancounter: "<<setScanCounter<<"Stepnumber: "<<stepNumber;
+    qDebug()<<"Value: "<<parameterCurrentValue;
     MeasurementValue scanParameter;
     // determine which value will be next and if the loop is finished
     bool newLoop = false;
-    if (ui->scanParameterAdjustMode->currentText()=="ramp"){
+    if (ui->scanParameterAdjustMode->currentText()=="ramp"&& ui->logStepsButton->isChecked()==false){
+        MeasurementDevice* device = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
+        device->scanParameterReady(device->deviceName(),0);
         // if ramping
         if (parameterCurrentValue == parameterEndValue||
-                (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){
+                  (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){
+                  //(parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber))){  
             //qDebug() << "deviceSelectionIndex: " << deviceSelectionIndex << " completedLoop";
+            qDebug()<<"RAMPING";
             emit completedLoop();
             newLoop = true;
         }
         switch(ui->stepsCombobox->currentIndex()){
         case 0:
             parameterCurrentValue = parameterCurrentValue + (parameterEndValue-parameterBeginValue)/(stepNumber-1);
+            //parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber);
             break;
         case 1:
             parameterCurrentValue = parameterCurrentValue + stepNumber;
@@ -210,6 +255,46 @@ void ScanParameterSelection::nextScanParameterStep(){
             scanParameter.value = parameterBeginValue;
         }
     }
+
+
+    if (ui->scanParameterAdjustMode->currentText()=="ramp" && ui->logStepsButton->isChecked()==true){
+        MeasurementDevice* device = DeviceManager::activeDevicesList.at(deviceSelectionIndex);
+        device->scanParameterReady(device->deviceName(),0);
+        // if ramping
+        if (parameterCurrentValue == parameterEndValue || 
+                (parameterEndValue-parameterCurrentValue)<0.1*(parameterEndValue-parameterBeginValue)/(stepNumber-1)){          
+                //(parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber))){
+            qDebug()<<"Value end: "<<parameterCurrentValue;
+            double loga = log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber);
+            qDebug()<<"LogRamping: "<< loga;
+            emit completedLoop();
+            newLoop = true;
+        }                 
+        switch(ui->stepsCombobox->currentIndex()){
+        case 0:
+            parameterCurrentValue = parameterEndValue*log((double) stepNumber/(stepNumber-setScanCounter))/log((double) stepNumber);
+            qDebug()<<"Value case0"<<parameterCurrentValue;
+            break;
+        case 1:
+            parameterCurrentValue = parameterCurrentValue + stepNumber;
+            qDebug()<<"Value case1 "<<parameterCurrentValue;
+        default:
+            break;
+        }
+        if (parameterCurrentValue>parameterEndValue){
+            parameterCurrentValue = parameterEndValue;
+            qDebug()<<"Value>end"<<parameterCurrentValue;
+        }
+        scanParameter.value = parameterCurrentValue;
+        if (newLoop){
+            parameterCurrentValue = parameterBeginValue;
+            scanParameter.value = parameterBeginValue;
+            setScanCounter=0;
+            qDebug()<<"stepnumber_sacncounter"<<stepNumber<<setScanCounter;
+            qDebug()<<"Value newloop "<<parameterCurrentValue; 
+            qDebug()<<"Value newloop1"<<scanParameter.value; 
+        }
+    }  
     scanParameter.name = ui->scanParameterSelectionCombobox->currentText();
     DeviceManager::activeDevicesList.at(deviceSelectionIndex)->setScanParameter(scanParameter);
 }
@@ -224,6 +309,56 @@ void ScanParameterSelection::progressCarry(int progress){
     progressCurrentLoop += 0.01*progress*increment;
     int percentage = (int)(100.0*progressCurrentLoop);
     emit addProgress(percentage);
+}
+
+int ScanParameterSelection::numberOfObjects{0};
+
+int ScanParameterSelection::getNumberOfScanParameterselection(void)
+{
+    return numberOfObjects;
+}
+
+void ScanParameterSelection::decraseNumberOfObject(void)
+{
+    numberOfObjects--;
+}
+
+void ScanParameterSelection::setScanparameters(QString _deviceName, QString _scanParam, QString _scanMode, 
+        int _numberOfSteps, double _minVal, double _maxVal)
+{
+    // set combobox "fixed" or "ramped"
+    if(_scanMode == "fixed"
+    || _scanMode == "ramp")
+    {
+        ui->scanParameterAdjustMode->setCurrentText(_scanMode);
+        
+        if(_scanMode == "ramp")
+        {
+            ui->toEdit->setHidden(false);
+            ui->toLabel->setHidden(false);
+            ui->stepsEdit->setHidden(false);
+            ui->stepsCombobox->setHidden(false);
+            ui->logStepsButton->setHidden(false);
+            ui->fromLabel->setText("from:");
+        }
+        if(_scanMode == "fixed")
+        {
+            ui->toEdit->setHidden(true);
+            ui->toLabel->setHidden(true);
+            ui->stepsEdit->setHidden(true);
+            ui->stepsCombobox->setHidden(true);
+            ui->logStepsButton->setHidden(true);
+            ui->fromLabel->setText("value:");
+        }
+    
+    }
+    ui->scanParameterSelectionCombobox->setCurrentText(_scanParam);
+    // set number of steps
+    ui->stepsEdit->setText(QString::number(_numberOfSteps));
+    // set measurement range
+    ui->toEdit->setText(QString::number(_maxVal));
+    ui->fromEdit->setText(QString::number(_minVal));
+    scanParameterInit();
 }
 
 // drag & drop actions:

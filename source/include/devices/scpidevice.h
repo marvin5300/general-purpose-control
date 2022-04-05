@@ -24,6 +24,11 @@ signals:
     * @param command sent scpi command string
     */
     void scpiCommand(QString command);
+
+    /**
+     * starts timer after set command*
+     */
+    void startMeasurementTimer();
 public:
     /**
     * Constructor of ScpiDevice is the same as MeasurementDevice
@@ -36,7 +41,7 @@ public slots:
     * and emits measuredValues and measureReady on finished measurement.
     * @param message received message
     */
-    void onReceivedMessage(QString message);
+    void onReceivedMessage(QString message) override;
 
     /**
     * For each checked measurment parameter (activeMeasParam) sends a measure string to interface.
@@ -55,7 +60,9 @@ public slots:
     * Uses translateSet to create a device specific measurement string to interface.
     * @param value parameter and value to be set
     */
-    void setScanParameter(MeasurementValue value);
+    void setScanParameter(MeasurementValue value) override;
+
+ 
 protected:
     /**
     * Map of all device parameter constraints
@@ -86,7 +93,7 @@ protected:
     * @param receivedString message to be parsed
     */
     virtual double translateInc(QString receivedString){return 0;}
-
+    virtual double translateInc1(QString receivedString){return 0;}
     /**
     * Checks if correct device is set.
     * Checks if answer to *IDN? contains deviceName()

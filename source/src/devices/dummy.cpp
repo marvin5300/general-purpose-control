@@ -1,4 +1,4 @@
-#include "devices/dummy.h"
+#include <devices/dummy.h>
 
 Dummy::Dummy()
     : MeasurementDevice("not selected")
@@ -20,3 +20,4 @@ void Dummy::init(){
 void Dummy::queueMeasure(quint64 count){
 
 }
+

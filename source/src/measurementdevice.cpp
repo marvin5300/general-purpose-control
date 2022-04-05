@@ -1,10 +1,12 @@
-#include "measurementdevice.h"
-#include "ui_measurementdevice.h"
-#include "devicemanager.h"
-#include "serial.h"
+#include <measurementdevice.h>
+#include <ui_measurementdevice.h>
+#include <devicemanager.h>
+#include <serial.h>
 #include <QThread>
 #include <QList>
 #include <QPainter>
+#include <QDebug>
+#include <QStringList>
 
 quint64 MeasurementDevice::globalIdCounter = 0;
 
@@ -46,6 +48,7 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName, QMap<Q
 
     // setup table widget
     ui->parameterTableWidget->clear();
+    int row = constraintsMap.size(); // for debug
     ui->parameterTableWidget->setRowCount(constraintsMap.size());
     ui->parameterTableWidget->setColumnCount(deviceParameterConstraintsHeaderStrings.size());
     //QStringList temp;
@@ -57,36 +60,44 @@ void MeasurementDevice::init(QString _deviceName, QString _interfaceName, QMap<Q
     ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->parameterTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
+    // outer for loop to change device table
     unsigned int i = 0;
     for (auto constraint : constraintsMap){
         ui->parameterTableWidget->setColumnWidth(i,20);
         QTableWidgetItem *item = new QTableWidgetItem(constraint.name);
         item->setCheckState(Qt::Unchecked);
-        item->setFlags(item->flags()|Qt::ItemIsUserCheckable);
+        item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
         ui->parameterTableWidget->setItem(i,0,item);
         //ui->parameterTableWidget->setItem(i,1,new QTableWidgetItem(constraint.name));
         //ui->parameterTableWidget->item(i,0)->setCheckState(Qt::Unchecked);
+        QString accessModeTest = accessModeStrings.at(constraint.mode);
         ui->parameterTableWidget->setItem(i,1,new QTableWidgetItem(accessModeStrings.at(constraint.mode)));
         ui->parameterTableWidget->setItem(i,2,new QTableWidgetItem(QString("%1").arg(constraint.max_value)));
         ui->parameterTableWidget->setItem(i,3,new QTableWidgetItem(QString("%1").arg(constraint.min_value)));
+      
+        
+        // inner for loop to change columns
         for (int k = 0; k < 4; k++){
             ui->parameterTableWidget->item(i,k)->setFlags(
                         ui->parameterTableWidget->item(i,k)->flags() &
-                        ~Qt::ItemIsEditable & ~Qt::ItemIsSelectable | Qt::ItemNeverHasChildren);
-            ui->parameterTableWidget->item(i,k)->setTextAlignment(Qt::AlignCenter);
+                        ~Qt::ItemIsEditable & ~Qt::ItemIsSelectable | Qt::ItemNeverHasChildren);        // set item properties
+            ui->parameterTableWidget->item(i,k)->setTextAlignment(Qt::AlignCenter);   
         }
-        ui->parameterTableWidget->item(i,0)->setFlags(ui->parameterTableWidget->item(i,0)->flags() | Qt::ItemIsUserCheckable); //  | Qt::ItemIsEditable | Qt::ItemIsSelectable
+        ui->parameterTableWidget->item(i,0)->setFlags(ui->parameterTableWidget->item(i,0)->flags() | Qt::ItemIsUserCheckable); //  item in first column is checkable
         i++;
+        
     }
     ui->parameterTableWidget->resizeColumnsToContents();
     ui->parameterTableWidget->resizeRowsToContents();
+    
    // ui->parameterTableWidget->setColumnWidth(0,0);
     // adjusting the settings here for different measurement parameter structs
     /*ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(
                 deviceParameterConstraintsHeaderStrings.size()-1,QHeaderView::Stretch);*/
     ui->parameterTableWidget->horizontalHeader()->setSectionResizeMode(
                 deviceParameterConstraintsHeaderStrings.size()-2,QHeaderView::Stretch);
-
+                
+    
 }
 
 quint64 MeasurementDevice::getLocalId()const{
@@ -152,6 +163,21 @@ void MeasurementDevice::exit(){
     this->deleteLater();
 }
 
+unsigned int MeasurementDevice::setMeasureParam(DeviceParameterConstraint _parameterConstraint)
+{
+    int len = ui->parameterTableWidget->rowCount();
+    for( int i = 0; i < len; i++)
+    {
+        if(_parameterConstraint.name == ui->parameterTableWidget->item(i,0)->text()
+            && accessModeStrings.at(_parameterConstraint.mode) == ui->parameterTableWidget->item(i,1)->text()
+            && ui->parameterTableWidget->item(i,0)->flags() & Qt::ItemIsUserCheckable)
+        {
+            ui->parameterTableWidget->item(i,0)->setCheckState(Qt::Checked);    // check found parameter
+            return 0; // parameter found
+        }
+    }
+    return 1; // no parameter found
+}
 // functions for drag and drop moving the widget
 
 void MeasurementDevice::mouseMoveEvent(QMouseEvent *event){
@@ -170,7 +196,6 @@ void MeasurementDevice::mouseMoveEvent(QMouseEvent *event){
     else if(x > LeftBorder) x = LeftBorder;
     move(x, oldY);
 }
-
 
 void MeasurementDevice::mousePressEvent(QMouseEvent *event)
 {
@@ -246,3 +271,5 @@ void MeasurementDevice::mouseReleaseEvent(QMouseEvent *)
     layout->update();
     //this->saveGeometry();
 }
+
+

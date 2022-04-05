@@ -1,5 +1,5 @@
-#include "devices/scpidevice.h"
-#include "serial.h"
+#include <devices/scpidevice.h>
+#include <serial.h>
 #include "ui_measurementdevice.h"
 #include <QThread>
 #include <QVector>
@@ -13,29 +13,44 @@ void ScpiDevice::queueMeasure(quint64 number){
             activeMeasParams.append(item->text());
         }
     }
-    if (activeMeasParams.size()==0){
+    if (activeMeasParams.size()==0){ 
         emit measureReady(deviceName(),measureID);
     }
     if (!correctDeviceConnected){
         return;
     }
     for (int i = 0; i < activeMeasParams.size(); i++){
+        // wait for timer done
         emit scpiCommand(translateMeas(activeMeasParams.at(i)));
     }
 }
 
 void ScpiDevice::setScanParameter(MeasurementValue value){
-    //qDebug() << "setScanParameter: device status "<<correctDeviceConnected <<" deviceName: "<<deviceName();
+    qDebug() << "setScanParameter: device status "<<correctDeviceConnected <<" deviceName: "<<deviceName();
     if (!correctDeviceConnected){
         return;
     }
+
     if (value.name!=""&&deviceParamMap().value(value.name).mode>1){
         emit scpiCommand(QString(translateSet(value.name, value.value)+"%1").arg(value.value));
+        // start measurement delay
+        emit startMeasurementTimer();
+        emit scpiCommand("OUTPUT ON");
+        qDebug() << "value.name"<<value.name;
         emit scanParameterReady(deviceName(),0);
     }else{
         emit scanParameterReady(deviceName(),0);
     }
+    /*
+    if(deviceName()=="ST2826"){
+        emit scpiCommand("FUNC:IMP CpD");
+    }
+    if(deviceName()=="ST2819A"){
+        emit scpiCommand("FUNC:IMP CpD");
+    }
+    */
 }
+
 
 void ScpiDevice::onReceivedMessage(QString message){
     if (!correctDeviceConnected){
@@ -50,7 +65,23 @@ void ScpiDevice::onReceivedMessage(QString message){
         return;
     }
     double val = translateInc(message);
-    measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val));
+    double val1 = translateInc1(message);
+    qDebug()<<"ActiveMeas: "<<val<<val1;//einsetzen, keithley gibt für :MEAS:CURR? immer Volt,Strom,... aus mit value.name val und val1 tauschen
+    /*
+    if (value.name=="I")
+    {
+        val=val1;
+    }*/
+    if (val1 !=0)
+    {
+       measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val,val1));
+    }else
+    {
+        measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val));
+    }
+    
+    //measureResults.append(MeasurementValue(activeMeasParams.takeFirst(),val,val1));
+    //qDebug() <<"TEST!"<<message<<val<<val1;
     if (activeMeasParams.isEmpty()){
         emit measuredValues(deviceName(),measureResults,measureID);
         emit measureReady(deviceName(),measureID);

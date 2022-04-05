@@ -1,9 +1,13 @@
 #include "devices/keithley_2410.h"
+//#include <QDebug>
+
 
 const QMap<QString,DeviceParameterConstraint> Keithley_2410::_deviceParamMap = {
-    {"V",DeviceParameterConstraint("V", 0.0, 0.0, READWRITE)},
-    {"I",DeviceParameterConstraint("I", 0.0, 0.0, READWRITE)},
-    {"R",DeviceParameterConstraint("R", 0.0, 0.0, READONLY)}
+    // keys have to bw unique
+    {"I",DeviceParameterConstraint("I", 0.0, 0.0, READWRITE)}, 
+    {"R",DeviceParameterConstraint("R", 0.0, 0.0, READONLY)},
+    {"V",DeviceParameterConstraint("V", 0.0, 0.0, READWRITE)}
+    
 };
 
 Keithley_2410::Keithley_2410(QString _interfaceName, quint32 _baudRate, QWidget *parent)
@@ -19,6 +23,20 @@ const QString Keithley_2410::getInterfaceName()const{
     return interfaceName;
 }
 
+void Keithley_2410::init(){
+    int row = _deviceParamMap.size();
+    MeasurementDevice::init(_deviceName, interfaceName,_deviceParamMap);
+}
+
+
+void Keithley_2410::setOutputState(bool on){
+    if (!_outputOn&&on){
+        emit scpiCommand("OUTPUT ON");
+    }
+    if (_outputOn&&!on){
+        emit scpiCommand("OUTPUT OFF");
+    }
+}
 /*
 void Keithley_2410::onReceivedMessage(QString message){
     if (!correctDeviceConnected){
@@ -53,24 +71,83 @@ void Keithley_2410::onReceivedMessage(QString message){
 
 QString Keithley_2410::translateMeas(QString paramName){
     QString scpiCommandString = "";
-    if (paramName=="V"){
-        scpiCommandString = ":MEAS:VOLT?";
-    }
     if (paramName=="I"){
         scpiCommandString = ":MEAS:CURR?";
     }
     if (paramName=="R"){
         scpiCommandString = ":MEAS:RES?";
     }
+     if (paramName=="V"){
+        scpiCommandString = ":MEAS:VOLT?";
+    }
     return scpiCommandString;
 }
 
 QString Keithley_2410::translateSet(QString paramName, double paramValue){
-    // TODO: add functionality
-    return "";
+    QString scpiCommandString = "";
+    if (paramName=="I"){
+        scpiCommandString = ":SOUR:CURR:LEV ";
+    }
+    if (paramName=="R"){
+        scpiCommandString = ":SOUR:FREQ ";
+    }
+    if (paramName=="V"){
+        scpiCommandString = ":SOUR:VOLT ";
+    }
+    return scpiCommandString;
+}
+double Keithley_2410::translateInc(QString receivedString){
+    QString message = receivedString;
+    //message.chop(0); // chop 2: the '\r' and the measurement unit
+    //bool ok = false;
+    QStringList wert1=message.split(",");
+    double val = wert1[0].toDouble();//toDouble(&ok);
+    //double val1 = wert1[1].toDouble();
+    //double val2 = wert1[2].toDouble();
+    //if (!ok){
+    //return NAN;
+    //}
+    return val;
+}
+double Keithley_2410::translateInc1(QString receivedString){
+    QString message = receivedString;
+    //message.chop(0); // chop 2: the '\r' and the measurement unit
+    //bool ok = false;
+    QStringList wert1=message.split(",");
+    int x=wert1.size();
+    if(wert1.size()>1)
+    //if (wert1[1]!=0)
+    {
+     double val1 = wert1[1].toDouble();
+     return val1;
+    }
+    else{//double val1=0.0;
+        double val1=wert1[0].toDouble();
+    return val1;}
+    //double val = wert1[0].toDouble();//toDouble(&ok);
+    //double val2 = wert1[2].toDouble();
+    //qDebug()<<"TEST1"<<wert1<<val1;//<<val2;
+    //if (!ok){
+    //    return NAN;
+    //}
+    //return val1;
 }
 
-void Keithley_2410::init(){
-    MeasurementDevice::init(_deviceName, interfaceName,_deviceParamMap);
+void Keithley_2410::switchOutputOff(void)
+{
+ emit scpiCommand("OUTPUT OFF");   
 }
 
+void Keithley_2410::on_scanParameterSelectionBoxChanged(int _index)
+{
+    switch(_index)
+    {
+        case 0:
+            emit scpiCommand(":SOUR:FUNC CURR");
+            emit scpiCommand(":SOUR:CURR:RANG 10E-3");
+            break;
+        case 1:
+            emit scpiCommand(":SOUR:FUNC VOLT");
+            break;
+    }
+}

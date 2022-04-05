@@ -1,0 +1,14 @@
+#ifndef GLOBALCONSTS_H
+#define GLOBALCONSTS_H
+
+#define ROWS 3
+#define COLUMNS 3
+
+#define THRESHOLD_VOLTAGE       0
+#define DRAINSOURCE_LEACKAGE    1
+#define GATESOURCE_LECKAGE      2
+#define INPUT_CAPACITANCE       3
+#define OUTPUT_CAPACITANCE      4
+#define FEEDBACK_CAPACITANCE    5
+
+#endif // GLOBALCONSTS_H
